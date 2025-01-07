@@ -68,7 +68,8 @@ class ImageController extends Controller
             if ($validator->fails())
                 return ApiResponseClass::sendValidationError($validator->errors()
             );
-            $Image=$this->ImageRepository->update($request->all(), $id);
+            $validatedData = $validator->validated();
+            $Image=$this->ImageRepository->update($validatedData, $id);
             return ApiResponseClass::sendResponse($Image,'Image is updated successfully.');
         } catch (Exception $e) {
             return ApiResponseClass::sendError('Error Update Image: ' . $e->getMessage());
