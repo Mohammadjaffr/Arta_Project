@@ -119,7 +119,7 @@ class CategoryController extends Controller
         try {
             $category=$this->CategoryRepository->getById($id);
             if($this->CategoryRepository->delete($category->id)){
-                return ApiResponseClass::sendResponse($category, "{$category->id} unsaved successfully.");
+                return ApiResponseClass::sendResponse($category, "{$category->id} unsaved successfully");
             }
             return ApiResponseClass::sendError("Category with ID {$id} may not be found or not deleted. Try again.");
         } catch (Exception $e) {
