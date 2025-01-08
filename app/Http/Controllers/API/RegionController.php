@@ -96,13 +96,14 @@ class RegionController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'name' => ['required','string'],
+                'name' => ['nullable','string'],
                 'parent_id' => ['nullable',Rule::exists('Regions','id')]
             ]);
             if ($validator->fails())
                 return ApiResponseClass::sendValidationError($validator->errors()
-                );
-            $Regions=$this->RegionRepository->update($request->all(),$id);
+            );
+            $validatedData = $validator->validated();
+            $Regions=$this->RegionRepository->update($validatedData,$id);
             return ApiResponseClass::sendResponse($Regions,'Region is updated successfully.');
         } catch (Exception $e) {
             return ApiResponseClass::sendError('Error save Region: ' . $e->getMessage());

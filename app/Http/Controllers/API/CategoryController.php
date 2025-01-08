@@ -98,13 +98,14 @@ class CategoryController extends Controller
         try {
             $validator = Validator::make($request->all(),
                 [
-                'name' => ['required','string'],
+                'name' => ['nullable','string'],
                 'parent_id' => ['nullable',Rule::exists('categories','id')]
             ]);
             if ($validator->fails()){
                 return ApiResponseClass::sendValidationError($validator->errors());
             }
-            $Categorie=$this->CategoryRepository->update($request->all(), $id);
+            $validatedData = $validator->validated();
+            $Categorie=$this->CategoryRepository->update($validatedData, $id);
             return ApiResponseClass::sendResponse($Categorie,'category is updated successfully.');
         } catch (Exception $e) {
             return ApiResponseClass::sendError('Error save category: ' . $e->getMessage());
