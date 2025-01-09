@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers\API;
 
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Classes\ApiResponseClass;
 use App\Http\Controllers\Controller;
+use App\Repositories\UserRepository;
 use App\Repositories\CategoryRepository;
+use Laravel\Sanctum\PersonalAccessToken;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
-use Exception;
 
 class CategoryController extends Controller
 {
     /**
      * Create a new class instance.
      */
-    public function __construct(private CategoryRepository $CategoryRepository)
+    public function __construct(private CategoryRepository $CategoryRepository,private UserRepository $UserRepository)
     {
         //
     }
@@ -61,6 +63,9 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         try {
+            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('create-categorie')){
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
             $validator = Validator::make($request->all(), [
                 'name' => ['required','string'],
                 'parent_id' => ['nullable',Rule::exists('categories','id')]
@@ -81,13 +86,13 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        try{
-            $Category = $this->CategoryRepository->getById($id);
-            return ApiResponseClass::sendResponse($Category, " data getted  successfully");
-        }catch(Exception $e)
-        {
-            return ApiResponseClass::sendError('Error returned Category: ' . $e->getMessage());
-        }
+        // try{
+        //     $Category = $this->CategoryRepository->getById($id);
+        //     return ApiResponseClass::sendResponse($Category, " data getted  successfully");
+        // }catch(Exception $e)
+        // {
+        //     return ApiResponseClass::sendError('Error returned Category: ' . $e->getMessage());
+        // }
     }
 
     /**
@@ -95,6 +100,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('update-categorie')){
+            return ApiResponseClass::sendError('Unauthorized', 403);
+        }
         try {
             $validator = Validator::make($request->all(),
                 [
@@ -115,8 +123,11 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
+        if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('destroy-categorie')){
+            return ApiResponseClass::sendError('Unauthorized', 403);
+        }
         try {
             $category=$this->CategoryRepository->getById($id);
             if($this->CategoryRepository->delete($category->id)){
