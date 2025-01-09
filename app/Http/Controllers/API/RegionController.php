@@ -80,13 +80,13 @@ class RegionController extends Controller
      */
     public function show($id)
     {
-        try{
-            $Region = $this->RegionRepository->getById($id);
-            return ApiResponseClass::sendResponse($Region, " data getted  successfully");
-        }catch(Exception $e)
-        {
-            return ApiResponseClass::sendError('Error returned Region: ' . $e->getMessage());
-        }
+        // try{
+        //     $Region = $this->RegionRepository->getById($id);
+        //     return ApiResponseClass::sendResponse($Region, " data getted  successfully");
+        // }catch(Exception $e)
+        // {
+        //     return ApiResponseClass::sendError('Error returned Region: ' . $e->getMessage());
+        // }
     }
 
     /**
