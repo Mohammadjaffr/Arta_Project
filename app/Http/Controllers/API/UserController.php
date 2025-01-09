@@ -23,9 +23,12 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() // https://example.com?like=name,meh
+    public function index(Request $request) // https://example.com?like=name,meh
     {
         try {
+            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('view-users')){
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
             $Users=$this->UserRepository->index();
             return ApiResponseClass::sendResponse($Users, 'All Users retrieved successfully.');
         } catch (Exception $e) {
@@ -33,13 +36,16 @@ class UserController extends Controller
         }
 
     }
-
+   
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
         try{
+            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('view-user')){
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
             $User = $this->UserRepository->getById($id);
             return ApiResponseClass::sendResponse($User, " data getted  successfully");
         }catch(Exception $e)
@@ -79,9 +85,12 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
         try {
+            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('destroy-user')){
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
             $User=$this->UserRepository->getById($id);
             if($this->UserRepository->delete($User->id)){
                 return ApiResponseClass::sendResponse($User, "{$User->id} unsaved successfully.");

@@ -5,12 +5,13 @@ namespace App\Http\Controllers\API;
 
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Classes\ApiResponseClass;
 use App\Http\Controllers\Controller;
+use App\Repositories\UserRepository;
 use App\Repositories\ListingRepository;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use Laravel\Sanctum\PersonalAccessToken;
+use Illuminate\Support\Facades\Validator;
 
 
 class ListingController extends Controller
@@ -18,7 +19,7 @@ class ListingController extends Controller
     /**
      * Create a new class instance.
     */
-    public function __construct(private ListingRepository $ListingRepository)
+    public function __construct(private ListingRepository $ListingRepository,private UserRepository $UserRepository)
     {
         //
     }
@@ -41,6 +42,9 @@ class ListingController extends Controller
     public function store(Request $request)
     {
         try {
+            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('create-listing')){
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
             $validator = validator::make($request->all(),[
                 'title'=>['required','string','max:255'],
                 'description'=>['required','string'],
@@ -89,6 +93,9 @@ class ListingController extends Controller
     public function update(Request $request, $id)
     {
         try {
+            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('update-listing')){
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
             $validator = Validator::make($request->all(), [
                 'title'=>['nullable','string','max:255'],
                 'description'=>['nullable','string'],
@@ -111,9 +118,12 @@ class ListingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         try {
+            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('destroy-listing')){
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
             $Listing=$this->ListingRepository->getById($id);
             if($this->ListingRepository->delete($Listing->id)){
                 return ApiResponseClass::sendResponse($Listing, "{$Listing->id} unsaved successfully.");

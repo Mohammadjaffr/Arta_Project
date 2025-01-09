@@ -35,9 +35,23 @@ class PermissionSeeder extends Seeder
             ['id' => 16, 'name' => 'update-permission', 'display_name' => 'تعديل صلاحية'],
 
             ['id' => 17, 'name' => 'create-role', 'display_name' => 'إنشاء نوع'],
-            ['id' => 18, 'name' => 'destroy-role', 'display_name' => 'حذف نزع'],
-            ['id' => 19, 'name' => 'view-role', 'display_name' => 'عرض نزع'],
-            ['id' => 20, 'name' => 'update-role', 'display_name' => 'تعديل نزع'],
+            ['id' => 18, 'name' => 'destroy-role', 'display_name' => 'حذف نوع'],
+            ['id' => 19, 'name' => 'view-role', 'display_name' => 'عرض نوع'],
+            ['id' => 20, 'name' => 'update-role', 'display_name' => 'تعديل نوع'],
+            
+            ['id' => 21, 'name' => 'create-complaint', 'display_name' => 'إنشاء شكوى'],
+            ['id' => 22, 'name' => 'destroy-complaint', 'display_name' => 'حذف شكوى'],
+            ['id' => 23, 'name' => 'view-complaint', 'display_name' => 'عرض شكوى'],
+            ['id' => 24, 'name' => 'update-complaint', 'display_name' => 'تعديل شكوى'],
+
+            ['id' => 26, 'name' => 'destroy-user', 'display_name' => 'حذف مستخدم'],
+            ['id' => 27, 'name' => 'view-users', 'display_name' => 'عرض المستخدمين'],
+            ['id' => 27, 'name' => 'view-user', 'display_name' => 'عرض مستخدم'],
+
+            ['id' => 28, 'name' => 'create-listing', 'display_name' => 'إنشاء إعلان'],
+            ['id' => 29, 'name' => 'destroy-listing', 'display_name' => 'حذف إعلان'],
+            ['id' => 30, 'name' => 'update-listing', 'display_name' => 'تعديل إعلان'],
+            
         ];
         DB::table('permissions')->insert($Permissions);
     }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Classes\ApiResponseClass;
 use App\Http\Controllers\Controller;
+use App\Repositories\UserRepository;
 use Laravel\Sanctum\PersonalAccessToken;
 use App\Repositories\ComplaintRepository;
 use Illuminate\Support\Facades\Validator;
@@ -16,7 +17,7 @@ class ComplaintController extends Controller
     /**
      * Create a new class instance.
     */
-    public function __construct(private ComplaintRepository $ComplaintRepository)
+    public function __construct(private ComplaintRepository $ComplaintRepository,private UserRepository $UserRepository)
     {
         //
     }
@@ -24,9 +25,12 @@ class ComplaintController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() // https://example.com?listing_id=[value]  ||  https://example.com?user_id=[value]
+    public function index(Request $request) // https://example.com?listing_id=[value]  ||  https://example.com?user_id=[value]
     {
         try {
+            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('view-complaint')){
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
             $Complaint=$this->ComplaintRepository->index();
             return ApiResponseClass::sendResponse($Complaint, 'All Complaint retrieved successfully.');
         } catch (Exception $e) {
@@ -40,6 +44,9 @@ class ComplaintController extends Controller
     public function store(Request $request)
     {
         try {
+            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('create-complaint')){
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
             $validator = validator::make($request->all(),[
                 'listing_id'=>['required',Rule::exists('listings','id')],
                 'content'=>['required','string'],
@@ -59,9 +66,12 @@ class ComplaintController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
         try {
+            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('view-complaint')){
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
             $Complaint=$this->ComplaintRepository->getById($id);
             return ApiResponseClass::sendResponse($Complaint, " data getted successfully");
         }catch(Exception $e)
@@ -81,9 +91,12 @@ class ComplaintController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
         try {
+            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('destroy-complaint')){
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
             $Complaint=$this->ComplaintRepository->getById($id);
             if($this->ComplaintRepository->delete($Complaint->id)){
                 return ApiResponseClass::sendResponse($Complaint, "{$Complaint->id} unsaved successfully.");
