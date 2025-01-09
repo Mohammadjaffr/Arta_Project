@@ -16,6 +16,7 @@ Route::get('/add', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/account', [App\Http\Controllers\HomeController::class, 'account'])->name('account');
+Route::get('/edit_password', [App\Http\Controllers\HomeController::class, 'edit_password'])->name('edit_password');
 Route::resource('/category' ,CategoryController::class);
 
 

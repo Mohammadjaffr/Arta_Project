@@ -29,4 +29,9 @@ class HomeController extends Controller
         return view('livewire.account');
 
     }
+    public function edit_password(){
+        return view('livewire.make_password_account');
+
+    }
 }
+
