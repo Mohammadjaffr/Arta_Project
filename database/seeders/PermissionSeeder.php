@@ -16,7 +16,7 @@ class PermissionSeeder extends Seeder
         $Permissions = [
             ['id' => 1, 'name' => 'create-categorie', 'display_name' => 'إنشاء صنف'],
             ['id' => 2, 'name' => 'destroy-categorie', 'display_name' => 'حذف صنف'],
-            ['id' => 3, 'name' => 'view-categorie', 'display_name' => 'عرض صنف'],
+            // ['id' => 3, 'name' => 'view-categorie', 'display_name' => 'عرض صنف'],
             ['id' => 4, 'name' => 'update-categorie', 'display_name' => 'تعديل صنف'],
 
             ['id' => 5, 'name' => 'create-region', 'display_name' => 'إنشاء منطقة'],

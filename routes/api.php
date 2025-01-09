@@ -35,13 +35,15 @@ Route::middleware(['check.auth'])->group(function () {
 });
 
 Route::get('/category',[CategoryController::class,'index']);
+Route::get('/category/{id}',[CategoryController::class,'show']);
 Route::get('/categories/parents', [CategoryController::class,'getParents']);
 Route::get('/categories/{id}/children', [CategoryController::class,'getChildren']);
 
 Route::apiResource('/listing',ListingController::class)->except(['store','update']);
 // Route::apiResource('/comment',CommentController::class)->except(['store']);
 
-Route::get('/region',[CategoryController::class,'index']);
+Route::get('/region',[RegionController::class,'index']);
+Route::get('/region/{id}',[RegionController::class,'show']);
 Route::get('/regions/parents', [RegionController::class,'getParents']);
 Route::get('/regions/{id}/children', [RegionController::class,'getChildren']);
 
