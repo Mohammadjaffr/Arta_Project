@@ -97,13 +97,13 @@ class ListingController extends Controller
                 return ApiResponseClass::sendError('Unauthorized', 403);
             }
             $validator = Validator::make($request->all(), [
-                'title'=>['nullable','string','max:255'],
-                'description'=>['nullable','string'],
-                'price'=>['nullable','numeric','between:0,99999999.99'],
-                'category_id'=>['nullable',Rule::exists('categories','id')->where(function ($query){return $query->where('parent_id', '!=', null);})],
-                'region_id'=>['nullable',Rule::exists('regions','id')->where(function ($query){return $query->where('parent_id', '!=', null);})],
-                'status'=>['nullable','in:جديد,شبه جديد,مستعمل'],
-                'primary_image'=>['nullable','image','max:2048'],
+                'title'=>['sometimes','string','max:255'],
+                'description'=>['sometimes','string'],
+                'price'=>['sometimes','numeric','between:0,99999999.99'],
+                'category_id'=>['sometimes',Rule::exists('categories','id')->where(function ($query){return $query->where('parent_id', '!=', null);})],
+                'region_id'=>['sometimes',Rule::exists('regions','id')->where(function ($query){return $query->where('parent_id', '!=', null);})],
+                'status'=>['sometimes','in:جديد,شبه جديد,مستعمل'],
+                'primary_image'=>['sometimes','image','max:2048'],
             ]);
             if ($validator->fails())
                 return ApiResponseClass::sendValidationError($validator->errors());

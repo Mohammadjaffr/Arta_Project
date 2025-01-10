@@ -47,4 +47,8 @@ class listing extends Model
     {
         return $this->hasMany(image::class);
     }
+
+    public function complaints(){
+        return $this->hasMany(Complaint::class);
+    }
 }

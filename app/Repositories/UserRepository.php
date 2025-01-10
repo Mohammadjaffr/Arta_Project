@@ -25,7 +25,7 @@ class UserRepository implements RepositoriesInterface
 
     public function getById($id) : User
     {
-        return User::findOrFail($id);
+        return User::with(['listings'])->findOrFail($id);
     }
 
     public function store(array $data) : User
@@ -86,5 +86,23 @@ class UserRepository implements RepositoriesInterface
             'password'=>$data['password'],
         ]);
         return true;
+    }
+
+    public function assignRole($user_id,$role){
+        $user = $this->getById($user_id);
+        if(!$user->hasRole($role)){
+            $user->addRole($role);
+            return $user->getRoles();
+        }
+        return $user->getRoles();
+    }
+
+    public function revokeRole($user_id,$role){
+        $user = $this->getById($user_id);
+        if($user->hasRole($role)){
+            $user->removeRole($role);
+            return $user->getRoles();
+        }
+        return $user->getRoles();
     }
 }

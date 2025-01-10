@@ -8,6 +8,7 @@ use App\Classes\ApiResponseClass;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
 use Laravel\Sanctum\PersonalAccessToken;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -46,8 +47,10 @@ class UserController extends Controller
             if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('view-user')){
                 return ApiResponseClass::sendError('Unauthorized', 403);
             }
-            $User = $this->UserRepository->getById($id);
-            return ApiResponseClass::sendResponse($User, " data getted  successfully");
+            $user = $this->UserRepository->getById($id);
+            $permissions = $user->allPermissions()->pluck('display_name', 'name')->toArray();
+            $result= $result=['user' => $user, 'permissions' => $permissions];
+            return ApiResponseClass::sendResponse($result, " data getted  successfully");
         }catch(Exception $e)
         {
             return ApiResponseClass::sendError('Error returned User: ' . $e->getMessage());
@@ -61,10 +64,10 @@ class UserController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'name' => ['nullable', 'string', 'max:255'],
-                'whatsapp_number'=>['nullable','string','max:16','regex:/^[0-9]+$/'],
-                'contact_number'=>['nullable','string','max:16','regex:/^[0-9]+$/'],
-                'image'=>['nullable','image','max:2048']
+                'name' => ['sometimes', 'string', 'max:255'],
+                'whatsapp_number'=>['sometimes','string','max:16','regex:/^[0-9]+$/'],
+                'contact_number'=>['sometimes','string','max:16','regex:/^[0-9]+$/'],
+                'image'=>['sometimes','image','max:2048']
             ]);
             if ($validator->fails())
                 return ApiResponseClass::sendValidationError($validator->errors()
@@ -121,6 +124,44 @@ class UserController extends Controller
             return ApiResponseClass::sendError('Error change Password: ' . $e->getMessage());
         }
         
+    }
+
+    public function assignRole(Request $request, $user_id){
+        try {
+            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('assignRole')){
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
+            $validator = Validator::make($request->all(), [
+                'role' => ['required','string',Rule::exists('roles','name')]
+            ]);
+            if ($validator->fails()) {
+                return response()->json($validator->errors(), 422);
+            }
+            $roles=$this->UserRepository->assignRole($user_id,$request->role);
+            return ApiResponseClass::sendResponse(['roles'=>$roles]," {$request->role} Role assigned successfully. ",);
+
+            
+        } catch (Exception $e) {
+            return ApiResponseClass::sendError('Error User Not Found: ' . $e->getMessage());
+        }
+    }
+
+    public function revokeRole(Request $request, $user_id) {
+        try {
+            if (!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('revokeRole')) {
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
+            $validator = Validator::make($request->all(), [
+                'role' => ['required', 'string', Rule::exists('roles', 'name')]
+            ]);
+            if ($validator->fails()) {
+                return response()->json($validator->errors(), 422);
+            }
+            $roles = $this->UserRepository->revokeRole($user_id, $request->role);
+            return ApiResponseClass::sendResponse(['roles' => $roles], "The role {$request->role} has been successfully revoked.");
+        } catch (Exception $e) {
+            return ApiResponseClass::sendError('Error User Not Found: ' . $e->getMessage());
+        }
     }
 
 }

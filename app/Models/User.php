@@ -56,4 +56,16 @@ class User extends Authenticatable implements LaratrustUser
             'password' => 'hashed',
         ];
     }
+
+    public function listings(){
+        return $this->hasMany(Listing::class);
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
+    public function complaints(){
+        return $this->hasMany(Complaint::class);
+    }
 }

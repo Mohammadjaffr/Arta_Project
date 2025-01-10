@@ -58,7 +58,8 @@ class UserAuthController extends Controller
         if ($user && Hash::check($password, $user->password)){
             Auth::login($user);
             $token = $user->createToken($user->username . '-AuthToken')->plainTextToken;
-            $result= $result=['token' => $token, 'user' => $user];
+            $permissions = $user->allPermissions()->pluck('display_name', 'name')->toArray();
+            $result= $result=['token' => $token, 'user' => $user, 'permissions' => $permissions];
             return ApiResponseClass::sendResponse($result, 'User logged in successfully');
         }
          return ApiResponseClass::sendError('Unauthorized', ['error' => 'Invalid credentials'], 401);

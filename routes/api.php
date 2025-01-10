@@ -30,8 +30,10 @@ Route::middleware(['check.auth'])->group(function () {
     Route::apiResource('/complaint',ComplaintController::class)->except(['update','show']);
     Route::apiResource('/image',ImageController::class)->except(['index','show']);
     Route::apiResource('/permission',PermissionController::class)->only(['index']);
-    Route::apiResource('/role',RoleController::class);
+    Route::apiResource('/role',RoleController::class)->except(['update']);
     Route::post('/changePassword',[UserController::class,'changePassword']);
+    Route::post('/assignRole/{user_id}',[UserController::class,'assignRole']);
+    Route::post('/revokeRole/{user_id}',[UserController::class,'revokeRole']);
 });
 
 Route::get('/category',[CategoryController::class,'index']);

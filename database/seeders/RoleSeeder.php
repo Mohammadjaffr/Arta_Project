@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\Role;
+use Illuminate\Database\Seeder;
+use Laratrust\Models\Permission;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class RoleSeeder extends Seeder
 {
@@ -13,11 +14,13 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        Role::create(
-            ['name'=>'admin',
-            'display_name'=>'أدمن']
-        )->permissions()->attach([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]);
-
+        $adminRole = Role::create([
+            'name' => 'admin',
+            'display_name' => 'أدمن'
+        ]);
+        $permissions = Permission::all()->pluck('id')->toArray();
+        $adminRole->permissions()->attach($permissions);
+        
         Role::create(
             ['name'=>'user',
             'display_name'=>'مستخدم']

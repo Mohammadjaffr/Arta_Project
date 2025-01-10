@@ -16,7 +16,7 @@ class PermissionSeeder extends Seeder
         $Permissions = [
             ['id' => 1, 'name' => 'create-categorie', 'display_name' => 'إنشاء صنف'],
             ['id' => 2, 'name' => 'destroy-categorie', 'display_name' => 'حذف صنف'],
-            // ['id' => 3, 'name' => 'view-categorie', 'display_name' => 'عرض صنف'],
+            ['id' => 3, 'name' => 'view-categorie', 'display_name' => 'عرض صنف'],
             ['id' => 4, 'name' => 'update-categorie', 'display_name' => 'تعديل صنف'],
 
             ['id' => 5, 'name' => 'create-region', 'display_name' => 'إنشاء منطقة'],
@@ -34,23 +34,26 @@ class PermissionSeeder extends Seeder
             ['id' => 15, 'name' => 'view-permission', 'display_name' => 'عرض صلاحية'],
             ['id' => 16, 'name' => 'update-permission', 'display_name' => 'تعديل صلاحية'],
 
-            ['id' => 17, 'name' => 'create-role', 'display_name' => 'إنشاء نوع'],
-            ['id' => 18, 'name' => 'destroy-role', 'display_name' => 'حذف نوع'],
-            ['id' => 19, 'name' => 'view-role', 'display_name' => 'عرض نوع'],
-            ['id' => 20, 'name' => 'update-role', 'display_name' => 'تعديل نوع'],
+            ['id' => 17, 'name' => 'create-role', 'display_name' => 'إنشاء دور'],
+            ['id' => 18, 'name' => 'destroy-role', 'display_name' => 'حذف دور'],
+            ['id' => 19, 'name' => 'view-role', 'display_name' => 'عرض دور'],
+            ['id' => 20, 'name' => 'update-role', 'display_name' => 'تعديل دور'],
             
             ['id' => 21, 'name' => 'create-complaint', 'display_name' => 'إنشاء شكوى'],
             ['id' => 22, 'name' => 'destroy-complaint', 'display_name' => 'حذف شكوى'],
             ['id' => 23, 'name' => 'view-complaint', 'display_name' => 'عرض شكوى'],
             ['id' => 24, 'name' => 'update-complaint', 'display_name' => 'تعديل شكوى'],
 
-            ['id' => 26, 'name' => 'destroy-user', 'display_name' => 'حذف مستخدم'],
-            ['id' => 27, 'name' => 'view-users', 'display_name' => 'عرض المستخدمين'],
+            ['id' => 25, 'name' => 'destroy-user', 'display_name' => 'حذف مستخدم'],
+            ['id' => 26, 'name' => 'view-users', 'display_name' => 'عرض المستخدمين'],
             ['id' => 27, 'name' => 'view-user', 'display_name' => 'عرض مستخدم'],
 
             ['id' => 28, 'name' => 'create-listing', 'display_name' => 'إنشاء إعلان'],
             ['id' => 29, 'name' => 'destroy-listing', 'display_name' => 'حذف إعلان'],
             ['id' => 30, 'name' => 'update-listing', 'display_name' => 'تعديل إعلان'],
+            
+            ['id' => 31, 'name' => 'assignRole', 'display_name' => 'تعيين دور'],
+            ['id' => 32, 'name' => 'revokeRole', 'display_name' => 'سحب دور'],
             
         ];
         DB::table('permissions')->insert($Permissions);
