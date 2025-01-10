@@ -30,8 +30,21 @@ class HomeController extends Controller
 
     }
     public function edit_password(){
-        return view('livewire.make_password_account');
+        return view('livewire.edit_password');
 
     }
+    public function edit_email(){
+        return view('livewire.edit_email');
+
+    }
+    public function edit_number(){
+        return view('livewire.edit_number');
+
+    }
+    public function edit_name(){
+        return view('livewire.edit_name');
+
+    }
+
 }
 

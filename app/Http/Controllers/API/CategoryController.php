@@ -86,13 +86,13 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        // try{
-        //     $Category = $this->CategoryRepository->getById($id);
-        //     return ApiResponseClass::sendResponse($Category, " data getted  successfully");
-        // }catch(Exception $e)
-        // {
-        //     return ApiResponseClass::sendError('Error returned Category: ' . $e->getMessage());
-        // }
+         try{
+             $Category = $this->CategoryRepository->getById($id);
+             return ApiResponseClass::sendResponse($Category, " data got  successfully");
+         }catch(Exception $e)
+         {
+             return ApiResponseClass::sendError('Error returned Category: ' . $e->getMessage());
+         }
     }
 
     /**

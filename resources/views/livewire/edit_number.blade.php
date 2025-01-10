@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'حسابي')
+@section('title', 'تعديل الرقم')
 @section('contact')
     <div  style="background-image: url({{'assets/images/'}});background-repeat:repeat">
 
@@ -12,59 +12,32 @@
                     <h2>تعيين كلمة المرور</h2>
                 </div>
                 <div class="m-3 " style="position: relative">
-                    <a href="{{ url('home') }}" style="height: 45px; width: 45px;">
+                    <a href="{{ url('account') }}" style="height: 45px; width: 45px;">
                         <button class="rounded-circle" style="height: 45px; border: none; background-color: #D2E1E8; width: 45px;">
                             <img src="{{ asset('assets/img/chevron-right.svg') }}">
                         </button>
                     </a>
                 </div>
             </div>
+
             {{-- form for add new listing --}}
         </header>
         <div  class="container  w-75">
-            <div>
-                <div class=" d-flex justify-content-center border rounded-2" style="width: 180px;margin-left: 45%; background-image: url({{'assets/images/person.png'}});background-repeat: no-repeat; height: 150px;">
-                    <button href="#" class="border bg-white text-center rounded-top-5 rounded-start-5  " style="position:absolute;width: 50px;right: 44%;top: 28%; height: 50px;" ><img class="mt-2" style="width: 20px;height: 30px;" src="{{asset('assets/images/camera.svg')}}"></button>
-                </div>
-                <div class="d-flex justify-content-center" >
-                    <a href="#" class="mt-2 "><img style="width: 40px;height: 40px;" src="{{asset('assets/images/pen.png')}}"></a>
-                    <h5 class="mt-3 mx-2">محمد سالم</h5>
-                </div>
-            </div>
 
-            <div dir="rtl" class="m-3  " style="">
-                <h3>تعديل الكملف الشخصي</h3>
-                <div class="border rounded-3">
-                    <div class="d-block  ">
-                        <a href="{{route('edit_name')}}" class="border justify-content-between btn btn-light d-flex" style="position: relative">
-                            <h5 class="text-center">تعديل الاسم</h5>
-                            <img class="text-center" src="{{asset('assets/images/arrow-left1.svg')}}">
-                        </a>
-                    </div>
-                    <div class="d-block ">
-                        <a href="{{route('edit_email')}}" class="border justify-content-between btn btn-light d-flex" style="position: relative">
-                            <h5 class="text-center">تعديل الايميل</h5>
-                            <img class="text-center" src="{{asset('assets/images/arrow-left1.svg')}}">
-                        </a>
-                    </div>
-                    <div class="d-block ">
-                        <a  href="{{route('edit_number')}}" class="border justify-content-between btn btn-light d-flex" style="position: relative">
-                            <h5 class="text-center">تعديل ارقام التواصل</h5>
-                           <img class="text-center" src="{{asset('assets/images/arrow-left1.svg')}}">
-                        </a>
-                    </div>
-                    <div class="d-block ">
-                        <a  href="{{route('edit_password')}}" class="border justify-content-between btn btn-light d-flex" style="position: relative">
-                            <h5 class="text-center">تعديل كلمة المرور</h5>
-                            <img class="text-center" src="{{asset('assets/images/arrow-left1.svg')}}">
-                        </a>
-                    </div>
+            <form dir="rtl" class="border rounded-4 p-3 w-50" style="position: relative;left: 35vh;margin: 20px;">
+                <label>الرقم القديم</label>
+{{--                @if ($showConfirmePassword)--}}
+{{--                    <input class="form-control rounded-4 py-2 @error('password') border-red @else custom-input @enderror" name="password_confirmation" type="text" required>--}}
+{{--                @else--}}
+                <input class="form-control  m-2" type="password" name="password" id="password" value="{{ old('password') }}">
+                <label>الرقم الجديده</label>
+                <input class="form-control  m-2" type="password" >
 
-                </div>
-            </div>
+                <button class="btn  w-50 mt-3 w-50 text-white" style="margin-right: 160px;background-color: #01496B">حفظ التغير</button>
+            </form>
         </div>
 
-        <br>
+
 
         <footer class="mt-5">
             <div class="row">
@@ -91,11 +64,8 @@
         </footer>
 
 
-
-
-
     </div>
-@endsection
+
 
 
 
