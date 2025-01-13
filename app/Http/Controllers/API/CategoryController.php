@@ -66,7 +66,7 @@ class CategoryController extends Controller
             if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('create-categorie')){
                 return ApiResponseClass::sendError('Unauthorized', 403);
             }
-            $validator = Validator::make($request->all(), [
+            $validator = Validator::make($request->all(),[
                 'name' => ['required','string'],
                 'parent_id' => ['nullable',Rule::exists('categories','id')]
             ]);
