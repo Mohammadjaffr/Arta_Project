@@ -31,6 +31,8 @@
 
 </div>
 
+
+
         <div class="border rounded-3 m-4 py-2 d-flex" style="direction: rtl;background-color: #D2E1E8">
             <div class="text-end m-2 "><img class="" style="width: 100px;height: 100px;" src="{{asset('assets/images/Rectangle 87.png')}}"></div>
             <div class="text-end m-2 d-block">
@@ -44,62 +46,25 @@
                     <div class="mx-2"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}"><label>25000ريال سعودي</label></div>
                 </div>
             </div>
-
-            <button class="text-center mt-5 text-white rounded-4 border " style="width: 200px;background-color: #97282A; margin-right: 650px; height: 60px;">
-                ازالة الاعلان
-            </button>
-        </div>
-       <div class="border rounded-3 m-4 py-2 d-flex" style="direction: rtl;background-color: #D2E1E8">
-           <div class="text-end m-2 "><img class="" style="width: 100px;height: 100px;" src="{{asset('assets/images/Rectangle 87.png')}}"></div>
-           <div class="text-end m-2 d-block">
-               سياره تيوتا موديل 2006
-               <div class="d-flex ">
-                   <div class="" ><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}"><label>المكلا</label></div>
-                   <div class="" style="margin-right: 40px"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}"><label>منذ 30 دقيقة</label></div>
-               </div>
-               <div class="d-flex">
-                   <div class=""><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}"><label>ابرهيم علي</label></div>
-                   <div class="mx-2"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}"><label>25000ريال سعودي</label></div>
-               </div>
-           </div>
-
-           <button class="text-center mt-5 text-white rounded-4 border " style="width: 200px;background-color: #97282A; margin-right: 650px; height: 60px;">
-               ازالة الاعلان
-           </button>
-       </div>
-        <div class="border rounded-3 m-4 py-2 d-flex" style="direction: rtl;background-color: #D2E1E8">
-            <div class="text-end m-2 "><img class="" style="width: 100px;height: 100px;" src="{{asset('assets/images/Rectangle 87.png')}}"></div>
-            <div class="text-end m-2 d-block">
-                سياره تيوتا موديل 2006
-                <div class="d-flex ">
-                    <div class="" ><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}"><label>المكلا</label></div>
-                    <div class="" style="margin-right: 40px"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}"><label>منذ 30 دقيقة</label></div>
-                </div>
-                <div class="d-flex">
-                    <div class=""><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}"><label>ابرهيم علي</label></div>
-                    <div class="mx-2"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}"><label>25000ريال سعودي</label></div>
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">الغأ</button>
+                            <button type="button" class="btn btn-danger">حذف</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <button class="text-center mt-5 text-white rounded-4 border " style="width: 200px;background-color: #97282A; margin-right: 650px; height: 60px;">
-                ازالة الاعلان
-            </button>
-        </div>
-        <div class="border rounded-3 m-4 py-2 d-flex" style="direction: rtl;background-color: #D2E1E8">
-            <div class="text-end m-2 "><img class="" style="width: 100px;height: 100px;" src="{{asset('assets/images/Rectangle 87.png')}}"></div>
-            <div class="text-end m-2 d-block">
-                سياره تيوتا موديل 2006
-                <div class="d-flex ">
-                    <div class="" ><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}"><label>المكلا</label></div>
-                    <div class="" style="margin-right: 40px"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}"><label>منذ 30 دقيقة</label></div>
-                </div>
-                <div class="d-flex">
-                    <div class=""><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}"><label>ابرهيم علي</label></div>
-                    <div class="mx-2"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}"><label>25000ريال سعودي</label></div>
-                </div>
-            </div>
-
-            <button class="text-center mt-5 text-white rounded-4 border " style="width: 200px;background-color: #97282A; margin-right: 650px; height: 60px;">
+            <button type="button" class="btn btn-light rounded-4 text-white mt-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="width: 200px;background-color: #97282A; margin-right: 650px; height: 60px;">
                 ازالة الاعلان
             </button>
         </div>
