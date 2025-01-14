@@ -67,38 +67,42 @@
                         </div>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center " style="direction: rtl">
+                <div class="d-flex justify-content-center border border-dark p-3  " style="direction: rtl">
                     <form style="background: none; border: none; position: relative;">
-                        <img style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);" class="p-2" src="{{ asset('assets/images/search.svg') }}" alt="Search Icon">
-                        <input class="rounded-4 p-2 pl-5 " type="search" style="width: 450px; padding-left: 40px;" placeholder="ابحث هنا...">
+                        <img style="position: absolute; left: 1px; top: 40%; transform: translateY(-50%);" class="p-2" src="{{ asset('assets/images/search.svg') }}" alt="Search Icon">
+                        <input class="rounded-4 p-2 pl-5 form-control" type="text" style="width: 450px; padding-left: 40px;" placeholder="ابحث هنا...">
                     </form>
-                    <div style="display: flex; align-items: center;">
-                        <select class="border-2 rounded-4 py-2 px-2 mx-3" style="width: 100px;">
+                    <div class="mx-2 ">
+                        <select class="form-select border-2 rounded-4 w-auto" style="width: 100px;direction: ltr">
                             <option>المدينة</option>
                             <option>القطن</option>
                             <option>سيئون</option>
                         </select>
-
-                        <select class="border-2 rounded-4 py-2 px-2 mx-2" style="width: 100px;">
+                        </div>
+                    <div>
+                        <select class="form-select border-2 rounded-4 w-auto  " style="width: 100px;">
                             <option>المنطقة</option>
                             <option>القطن</option>
                             <option>سيئون</option>
                         </select>
-
+                    </div>
+                        <div>
                         <form class="mx-2" style="background: none; border: none; direction: ltr; position: relative;">
-                            <img style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);" class="py-3" src="{{ asset('assets/images/arrow-down.svg') }}" alt="Arrow Down">
+                            <img style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);" class="py-2" src="{{ asset('assets/images/arrow-down.svg') }}" alt="Arrow Down">
                             <button class="btn btn-primary px-2 border-2 rounded-4 py-2" type="submit" style="width: 130px; padding-left: 40px;">
                                 اقل سعرا
                             </button>
                         </form>
-
-                        <form class="mx-2" style="background: none; border: none; direction: ltr; position: relative;">
+                        </div>
+                            <div>
+                        <form class="form mx-2" style="background: none; border: none; direction: ltr; position: relative;">
                             <img style="position: absolute; left: 2px; top: 50%; transform: translateY(-50%);" class="p-2" src="{{ asset('assets/images/arrow-up.svg') }}" alt="Arrow Up">
                             <button class="btn btn-primary px-2 border-2 rounded-4 py-2" type="submit" style="width: 130px; padding-left: 40px;">
                                 اعلى سعرا
                             </button>
                         </form>
-                    </div>
+                            </div>
+
                 </div>
 
             </div>

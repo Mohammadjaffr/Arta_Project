@@ -1,3 +1,6 @@
+@extends('layouts.master')
+@section('title', 'تعديل الاسم')
+@section('contact')
 <div  style="background-image: url({{'assets/images/'}});background-repeat:repeat">
 
     <header>    {{-- navbar add new listing --}}
@@ -71,3 +74,4 @@
 
 
 </div>
+@endsection

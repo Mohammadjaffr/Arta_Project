@@ -33,32 +33,33 @@
             </div>
 
             <div dir="rtl" class="m-3  " style="">
-                <h3>تعديل الكملف الشخصي</h3>
+                <h3>تعديل الملف الشخصي</h3>
                 <div class="border rounded-3">
                     <div class="d-block  ">
-                        <button  class="border justify-content-between btn  w-100  p-2 d-flex" style="position: relative">
+                        <a href="{{url('edit_name')}}"  class="border justify-content-between btn btn-light  w-100  p-2 d-flex" style="position: relative">
                             <h5 class="text-center">تعديل الاسم</h5>
-                            <a href="{{url('home')}}"><img class="text-center" src="{{asset('assets/images/arrow-left1.svg')}}"></a>
-                        </button>
+                            <img class="text-center" src="{{asset('assets/images/arrow-left1.svg')}}">
+                        </a>
                     </div>
-                    <div class="d-block ">
-                        <div class="border justify-content-between  p-2 d-flex" style="position: relative">
-                            <h5 class="text-center">تعديل كلمة المرور</h5>
-                            <a href="#"><img class="text-center" src="{{asset('assets/images/arrow-left1.svg')}}"></a>
-                        </div>
-                    </div>
-                    <div class="d-block ">
-                        <div class="border justify-content-between  p-2 d-flex" style="position: relative">
+                    <div class="d-block  ">
+                        <a href="{{url('edit_email')}}"  class="border justify-content-between btn btn-light  w-100  p-2 d-flex" style="position: relative">
                             <h5 class="text-center">تعديل البريد الاكتروني</h5>
-                            <a href="#"><img class="text-center" src="{{asset('assets/images/arrow-left1.svg')}}"></a>
-                        </div>
+                            <img class="text-center" src="{{asset('assets/images/arrow-left1.svg')}}">
+                        </a>
                     </div>
-                    <div class="d-block ">
-                        <div class="border justify-content-between  p-2 d-flex" style="position: relative">
+                    <div class="d-block  ">
+                        <a href="{{url('edit_password')}}"  class="border justify-content-between btn btn-light  w-100  p-2 d-flex" style="position: relative">
+                            <h5 class="text-center">تعديل كلمة المرور</h5>
+                            <img class="text-center" src="{{asset('assets/images/arrow-left1.svg')}}">
+                        </a>
+                    </div>
+                    <div class="d-block  ">
+                        <a href="{{url('edit_number')}}"  class="border justify-content-between btn btn-light  w-100  p-2 d-flex" style="position: relative">
                             <h5 class="text-center">تعديل ارقام التواصل</h5>
-                            <a href="#"><img class="text-center" src="{{asset('assets/images/arrow-left1.svg')}}"></a>
-                        </div>
+                            <img class="text-center" src="{{asset('assets/images/arrow-left1.svg')}}">
+                        </a>
                     </div>
+
                 </div>
             </div>
         </div>

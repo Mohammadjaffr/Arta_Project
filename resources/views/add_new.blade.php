@@ -69,16 +69,16 @@
             </form>
         </div>
     </div>
-    <div class="container border  col-5 rounded-5 text-end p-3" style="width: auto; height: auto;background-color:rgba(1, 73, 107, 0.68);">
+    <div class=" border rounded-5 text-end p-3 w-50" style="background-color:rgba(1, 73, 107, 0.68);">
         <div class="container p-3">
             <h6>رفع الصوره</h6>
             <div><label class="px-3">حدد الصوره الاساسيه</label><img class="border  border-amber-600 rounded-2 " style="width: 70px;height: 70px" src="{{asset('assets/images/facebook.svg')}}"></div>
         </div>
-        <div class="row">
-            <div class="col-lg-3 text-center"><input class="border  rounded-3 p-3 " src="{{asset('assets/images/add-photo.png')}}" style="width: 100px; height: 100px;background-color: #C3C3C3C3" type="image" alt="" ></div>
-            <div class="col-lg-3"><input class="border rounded-3" style="width: 120px; height: 100px;background-color: #C3C3C3C3" type="image" alt="" ></div>
-            <div class="col-lg-3"><input class="border rounded-3" style="width: 120px; height: 100px;background-color: #C3C3C3C3" type="image" alt="" ></div>
-            <div class="col-lg-3"><input class="border rounded-3" style="width: 120px; height: 100px;background-color: #C3C3C3C3" type="image" alt="" ></div>
+        <div class="d-flex justify-content-center">
+            <div class="text-center"><input class="border  rounded-3 p-3 " src="{{asset('assets/images/add-photo.png')}}" style="width: 100px; height: 100px;background-color: #C3C3C3C3" type="image" alt="" ></div>
+            <div class=""><input class="border rounded-3" style="width: 120px; height: 100px;background-color: #C3C3C3C3" type="image" alt="" ></div>
+            <div class=""><input class="border rounded-3" style="width: 120px; height: 100px;background-color: #C3C3C3C3" type="image" alt="" ></div>
+            <div class=""><input class="border rounded-3" style="width: 120px; height: 100px;background-color: #C3C3C3C3" type="image" alt="" ></div>
         </div>
     </div>
     <div class="container text-center my-5">
@@ -103,7 +103,7 @@
                 <button style="border: none;background-color: white"><img style="width:150px" src="{{asset('assets/images/googlestore.png')}}"></button>
             </div>
             <div class="col-4 text-center py-3">تواصل معنا: info@company.com <br> جميع الحقوق محفوظة @ 2024. <br></div>
-            <div class="col-4 text-center text-end py-3">"نص تجريبي يستخدم في تصميم الواجهات والمشاريع. هذا النص هو مجرد نص وهمي يهدف إلى ملء المساحات، وعادةً ما يُستخدم في الطباعة والتصميم."</div>
+            <div class="col-4 text-center  py-3">"نص تجريبي يستخدم في تصميم الواجهات والمشاريع. هذا النص هو مجرد نص وهمي يهدف إلى ملء المساحات، وعادةً ما يُستخدم في الطباعة والتصميم."</div>
 
         </div>
     </div>
