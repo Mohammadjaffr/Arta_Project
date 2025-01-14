@@ -41,4 +41,10 @@ class HomeController extends Controller
     public function edit_number(){
         return view('livewire.edit_number');
     }
+    public function show_info(){
+        return view('livewire.show_info');
+    }
+    public function account_show(){
+        return view('livewire.account_show');
+    }
 }

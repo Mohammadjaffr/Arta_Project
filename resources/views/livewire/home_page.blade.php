@@ -2,7 +2,7 @@
         <div class="border rounded-3  d-flex  p-2 justify-content-between " style="position: relative;flex-direction: row">
             <div>  <a class="" href="#"><input type="" style="width: 82px;position: relative; height: 82px;border-radius: calc(100px);" class="border" src="{{asset('assets/images/person.png')}}"></a>
                 @if( Auth::user()->name)
-                    <span class="mx-4"><a class="link fw-bold text-decoration-none" href="{{route('account')}}" style="border: none;background:none;font-size: 20px">{{Auth::user()->name}}</a></span>
+                    <span class="mx-4"><a class="link fw-bold text-decoration-none" href="{{route('account_show')}}" style="border: none;background:none;font-size: 20px">{{Auth::user()->name}}</a></span>
                 @else
                     <span class="mx-4"><button class="btn btn-primary border" style="font-size: 20px">تسجيل الدخول</button></span>
                 @endif
@@ -67,12 +67,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center border border-dark p-3  " style="direction: rtl">
-                    <form style="background: none; border: none; position: relative;">
-                        <img style="position: absolute; left: 1px; top: 40%; transform: translateY(-50%);" class="p-2" src="{{ asset('assets/images/search.svg') }}" alt="Search Icon">
+                <div class="d-flex justify-content-space p-3  " style="direction: rtl">
+                    <form  style="background: none; border: none; position: relative;">
+                        <img  style="position: absolute; left: 1px; top: 40%; transform: translateY(-50%);" class="p-2 " src="{{ asset('assets/images/search.svg') }}" alt="Search Icon">
                         <input class="rounded-4 p-2 pl-5 form-control" type="text" style="width: 450px; padding-left: 40px;" placeholder="ابحث هنا...">
                     </form>
-                    <div class="mx-2 ">
+                    <div class="mx-2">
                         <select class="form-select border-2 rounded-4 w-auto" style="width: 100px;direction: ltr">
                             <option>المدينة</option>
                             <option>القطن</option>
@@ -87,21 +87,22 @@
                         </select>
                     </div>
                         <div>
-                        <form class="mx-2" style="background: none; border: none; direction: ltr; position: relative;">
-                            <img style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);" class="py-2" src="{{ asset('assets/images/arrow-down.svg') }}" alt="Arrow Down">
-                            <button class="btn btn-primary px-2 border-2 rounded-4 py-2" type="submit" style="width: 130px; padding-left: 40px;">
+                        <form class="mx-2">
+                            <a href="#" class="btn btn-light px-2 border-2 rounded-4 py-2" type="submit" style="background-color: #046998">
                                 اقل سعرا
-                            </button>
+                                <img src="{{ asset('assets/images/arrow-down.svg') }}" class="mx-2" alt="#">
+                            </a>
                         </form>
                         </div>
-                            <div>
-                        <form class="form mx-2" style="background: none; border: none; direction: ltr; position: relative;">
-                            <img style="position: absolute; left: 2px; top: 50%; transform: translateY(-50%);" class="p-2" src="{{ asset('assets/images/arrow-up.svg') }}" alt="Arrow Up">
-                            <button class="btn btn-primary px-2 border-2 rounded-4 py-2" type="submit" style="width: 130px; padding-left: 40px;">
+                    <div>
+                        <form class="mx-2">
+                            <a href="#" class="btn btn-light px-2 border-2 rounded-4 py-2" type="submit" style="background-color: #046998">
                                 اعلى سعرا
-                            </button>
+                                <img src="{{ asset('assets/images/arrow-up.svg')}}" class="mx-2" alt="#">
+                            </a>
                         </form>
-                            </div>
+                    </div>
+
 
                 </div>
 
@@ -119,65 +120,28 @@
                         <div class="d-block justify-content-md-between">
                             <div><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}"><label>ابرهيم علي</label></div>
                             <div><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}"><label>25000ريال سعودي</label></div>
-                        </div></div>
-                </div>
-
-                <div class="text-end m-2 position-relative" style="right: 51%;top: 40px">
-                    <button class="btn border text-white rounded-4" style="width: 200px;background-color: #046998; height: 60px;">
-                        عرض التفصيل
-                        <img class="float-start" src="{{asset('assets/images/arrow-left1.svg')}}">
-                    </button>
-                </div>
-            </div>
-            <div class="border rounded-3 m-4 py-2 d-flex" style="direction: rtl;background-color: #D2E1E8">
-                <div class="text-end m-2 mt-3"><img class="" style="width: 100px;height: 100px;" src="{{asset('assets/images/Rectangle 87.png')}}" alt="#"></div>
-                <div class="text-end m-2 mt-3 ">
-                    <h4>  سياره تيوتا موديل 2006</h4>
-                    <div class="d-flex justify-content-md-between">
-                        <div class="d-block justify-content-md-around ">
-                            <div><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}"><label>المكلا</label></div>
-                            <div><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}"><label>منذ 30 دقيقة</label></div>
                         </div>
-                        <div class="d-block justify-content-md-between">
-                            <div><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}"><label>ابرهيم علي</label></div>
-                            <div><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}"><label>25000ريال سعودي</label></div>
-                        </div></div>
-                </div>
-                <div class="text-end m-2 position-relative" style="right: 51%;top: 40px">
-                    <button class="text-center border text-white rounded-4" style="width: 200px;background-color: #046998; height: 60px;">
-                        عرض التفصيل
-                        <img class="float-start" src="{{asset('assets/images/arrow-left1.svg')}}">
-                    </button>
+                    </div>
                 </div>
 
-            </div>
-            <div class="border rounded-3 m-4 py-2 d-flex" style="direction: rtl;background-color: #D2E1E8">
-                <div class="text-end m-2 mt-3"><img class="" style="width: 100px;height: 100px;" src="{{asset('assets/images/Rectangle 87.png')}}" alt="#"></div>
-                <div class="text-end m-2 mt-3 ">
-                    <h4>  سياره تيوتا موديل 2006</h4>
-                    <div class="d-flex justify-content-md-between">
-                        <div class="d-block justify-content-md-around ">
-                            <div><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}"><label>المكلا</label></div>
-                            <div><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}"><label>منذ 30 دقيقة</label></div>
-                        </div>
-                        <div class="d-block justify-content-md-between">
-                            <div><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}"><label>ابرهيم علي</label></div>
-                            <div><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}"><label>25000ريال سعودي</label></div>
-                        </div></div>
-                </div>
-
-                <div class="text-end m-2 position-relative" style="right: 51%;top: 40px">
-                    <button class="text-center border text-white rounded-4" style="width: 200px;background-color: #046998; height: 60px;">
+                <div class="text-end m-2 position-relative" style="right: 50%;top: 40px">
+                    <a href="{{url('show_info')}}" class="btn btn-light border text-white rounded-4" style="width: 200px;background-color: #046998; height: 45px;">
                         عرض التفصيل
                         <img class="float-start" src="{{asset('assets/images/arrow-left1.svg')}}">
-                    </button>
+                    </a>
                 </div>
             </div>
 
-            <button class="text-center btn btn-blue w-25 border border-dark  rounded-4 text-black m-3">مشاهدة المزيد</button>
+
+            <div class="m-2  d-flex justify-content-center" >
+                <a href="{{url('show_info')}}" class="btn btn-light border text-white rounded-4" style="width: 200px;background-color: #046998; height: 45px;">
+                                        مشاهدة المزيد
+                    <img class="float-start" src="{{asset('assets/images/arrow-left1.svg')}}">
+                </a>
+            </div>
         </div>
         <hr>
-       @extends('layouts.footer')
+       @include('layouts.footer')
     </div>
 
 
