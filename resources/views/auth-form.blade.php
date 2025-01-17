@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول</title>
-    @vite(['resources/sass/app.scss','resources/js/app.js'])
-    <link rel="stylesheet" href="{{asset('assets/css/custom-style.css')}}">
-    @livewireStyles
-</head>
+@extends('layouts.head')
 <body>
     @livewire('auth-form')
 
     @livewireScripts
     <script>
-        function changeUrl(url) {
-            history.pushState(null, '', url);
+       function updateTitleBasedOnUrl() {
+        const currentUrl = window.location.pathname;
+        if (currentUrl.includes('login')) {
+            document.title = 'تسجيل دخول';
+        } else if (currentUrl.includes('register')) {
+            document.title = 'إنشاء حساب';
         }
+    }
+    function changeUrl(url) {
+        history.pushState(null, '', url);
+        updateTitleBasedOnUrl(); 
+    }
+    window.onload = updateTitleBasedOnUrl;
     </script>
 
 
