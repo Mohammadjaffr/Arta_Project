@@ -21,7 +21,7 @@
     </header>
     <div class="container">
 <div >
-    <div class="border rounded " style="width: 150px;margin-left: 64vh; background-image: url({{'assets/images/'}}); height: 150px;position: relative;">
+    <div class="border rounded " style="width: 150px;margin-left: 64vh; background-image: url({{'assets/images/person.png'}}); height: 150px;position: relative;">
         <a href="#" class="border bg-white text-center rounded-top-5 rounded-start-5 " style="position:absolute;width: 50px;height: 50px;left: 98px;top: 99px;" ><img class="mt-2" style="width: 20px;height: 30px;" src="{{asset('assets/images/camera.svg')}}"></a>
     </div>
     <div class="d-flex" style="margin-left: 66vh">
@@ -51,7 +51,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">حذف الاعلان</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">

@@ -9,10 +9,10 @@
                     <img class="py-3" style="width: 130px;right: 50vh; height: 130px;"  src="{{asset('assets/img/icon.png')}}">
                 </div>
                 <div class="mt-4 "  style="position: relative">
-                    <h2>تعيين كلمة المرور</h2>
+                    <h2>حسابي</h2>
                 </div>
                 <div class="m-3 " style="position: relative">
-                    <a href="{{ url('home') }}" style="height: 45px; width: 45px;">
+                    <a href="{{ url('account_show') }}" style="height: 45px; width: 45px;">
                         <button class="rounded-circle" style="height: 45px; border: none; background-color: #D2E1E8; width: 45px;">
                             <img src="{{ asset('assets/img/chevron-right.svg') }}">
                         </button>
@@ -23,13 +23,10 @@
         </header>
         <div  class="container  w-75">
             <div >
-                <div class="border rounded " style="width: 150px;margin-left: 60vh; background-image: url({{'assets/images/person.png'}}); height: 150px;position: relative;">
-                    <a href="#" class="border bg-white text-center rounded-top-5 rounded-start-5 " style="position:absolute;width: 50px;height: 50px;left: 98px;top: 99px;" ><img class="mt-2" style="width: 20px;height: 30px;" src="{{asset('assets/images/camera.svg')}}"></a>
-                </div>
-                <div class="d-flex" style="margin-left: 62vh">
-                    <a href="{{url('account')}}" class="mt-2 "><img style="width: 40px;height: 40px;" src="{{asset('assets/images/pen.png')}}"></a>
-                    <h5 class="mt-3 mx-2">محمد سالم</h5>
-                </div>
+{{--                <div class="d-flex" style="margin-left: 62vh">--}}
+{{--                    <a href="{{url('account_show')}}" class="mt-2 "><img style="width: 40px;height: 40px;" src="{{asset('assets/images/pen.png')}}"></a>--}}
+{{--                    <h5 class="mt-3 mx-2">محمد سالم</h5>--}}
+{{--                </div>--}}
 
             </div>
             <div dir="rtl" class="m-3  " style="">
