@@ -30,20 +30,30 @@
     </div>
 
 </div>
-
-
-
         <div class="border rounded-3 m-4 py-2 d-flex" style="direction: rtl;background-color: #D2E1E8">
             <div class="text-end m-2 "><img class="" style="width: 100px;height: 100px;" src="{{asset('assets/images/Rectangle 87.png')}}"></div>
             <div class="text-end m-2 d-block">
-                سياره تيوتا موديل 2006
-                <div class="d-flex ">
-                    <div class="" ><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}"><label>المكلا</label></div>
-                    <div class="" style="margin-right: 40px"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}"><label>منذ 30 دقيقة</label></div>
+                <h4 class="text-truncate" style="max-width: 400px;">سياره تيوتا موديل 2006</h4>
+                <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center m-2">
+                        <img class="mx-1" style="width: 25px;" src="{{asset('assets/images/Map Point.png')}}" alt="الموقع">
+                        <label class="text-truncate" style="max-width: 150px;">المكلا</label>
+                    </div>
+                    <div class="d-flex align-items-center m-2">
+                        <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}" alt="الوقت">
+                        <label class="text-truncate" style="max-width: 150px;">منذ 30 دقيقة</label>
+                    </div>
                 </div>
-                <div class="d-flex">
-                    <div class=""><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}"><label>ابرهيم علي</label></div>
-                    <div class="mx-2"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}"><label>25000ريال سعودي</label></div>
+                <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center mx-2">
+                        <img class="mx-1" style="width: 25px;" src="{{asset('assets/images/User Rounded.png')}}">
+                        <label class="text-truncate" style="max-width: 150px;">ابرهيم علي</label>
+                    </div>
+                    
+                    <div class="d-flex align-items-center mx-2">
+                        <img class="mx-1" style="width: 25px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}">
+                        <label class="text-truncate" style="max-width: 150px;">25000ريال سعودي</label>
+                    </div>
                 </div>
             </div>
             <!-- Modal -->
