@@ -20,9 +20,9 @@
         <div class="container text-center">
                 {{--contact--}}
             <div style="direction: rtl">
-                <div class="d-flex border rounded-4 justify-content-between m-3 " >
-                    <div class="bg-danger w-50 border rounded-end-4"><img style="width: fit-content;height: fit-content;" src="{{asset('assets/images/person.png')}}" class="card-img-top" alt="..."></div>
-                    <div class="bg-info w-50 border rounded-start-4 "></div>
+                <div class="d-flex border rounded-4 justify-content-start m-3 " style="height: 419px;background-color: #FFCF55;" >
+                    <div class="border rounded-end-4" style="flex-grow: 1;height: 419px;;"><img style="width: fit-content;height: fit-content;" src="{{asset('assets/images/box_ads.gif')}}" class="card-img-top" alt="..."></div>
+                    <div class="border rounded-start-4 " style=""><img class="border rounded-start-4 " style="width: fit-content;flex-grow: 1; height: 419px;" src="{{asset('assets/images/markting.gif')}}"></div>
                 </div>
                 @if(Auth::user()->name)
                     <a href="{{route('category.index')}}" class="btn btn-blue rounded-start-5 my-3" style="float: left;background-color: #FECA81">اضافة اعلان<img class="mx-2" src="{{asset('assets/images/plus.png')}}" alt="#"></a>

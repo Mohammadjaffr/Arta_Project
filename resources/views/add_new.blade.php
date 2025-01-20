@@ -75,10 +75,10 @@
             <div><label class="px-3">حدد الصوره الاساسيه</label><img class="border  border-amber-600 rounded-2 " style="width: 70px;height: 70px" src="{{asset('assets/images/facebook.svg')}}"></div>
         </div>
         <div class="d-flex justify-content-center">
-            <div class="text-center"><input class="border  rounded-3 p-3 " src="{{asset('assets/images/add-photo.png')}}" style="width: 100px; height: 100px;background-color: #C3C3C3C3" type="image" alt="" ></div>
+            <div class="text-center"><input class="border  rounded-3 p-3 " src="{{asset('assets/images/add-photo.png')}}" style="width: 100px; height: 100px;background-color: #C3C3C3C3" type="file" alt="" ></div>
             <div class=""><input class="border rounded-3" style="width: 120px; height: 100px;background-color: #C3C3C3C3" type="image" alt="" ></div>
-            <div class=""><input class="border rounded-3" style="width: 120px; height: 100px;background-color: #C3C3C3C3" type="image" alt="" ></div>
-            <div class=""><input class="border rounded-3" style="width: 120px; height: 100px;background-color: #C3C3C3C3" type="image" alt="" ></div>
+            <div class=""><input class="border rounded-3" style="width: 120px; height: 100px;background-color: #C3C3C3C3" type="file" alt="" ></div>
+            <div class=""><input class="border rounded-3" style="width: 120px; height: 100px;background-color: #C3C3C3C3" type="file" alt="" ></div>
         </div>
     </div>
     <div class="container text-center my-5">
