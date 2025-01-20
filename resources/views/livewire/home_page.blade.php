@@ -31,87 +31,112 @@
                 @endif
                 <br>
                 <h5 class="float-end"> الفئات</h5>
-
-                <div class="">
-                    <div class="d-flex m-5" style="column-gap: 18px">
-                        <div class="card" style="width: 15rem;height: 14rem;border: none;">
-                            <a href="#"><img src="{{asset('assets/images/Autos.png')}}" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <h5 class="card-title">السيارات</h5>
+                <div class="container mt-5">
+                    <div class="row align-items-start">
+                        <div class="col-12 col-md-9">
+                            <div class="table-responsive" style="overflow-x: auto;">
+                                <table class="table">
+                                    <tr>
+                                        <td>
+                                            <div class="card" style="width: 10rem; height: 10rem; border: none;">
+                                                <a href="#"><img src="{{asset('assets/images/Autos.png')}}" class="card-img-top" alt="..."></a>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">السيارات</h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="card" style="width: 10rem; height: 10rem; border: none;">
+                                                <a href="#"><img src="{{asset('assets/images/Autos.png')}}" class="card-img-top" alt="..."></a>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">السيارات</h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="card" style="width: 10rem; height: 10rem; border: none;">
+                                                <a href="#"><img src="{{asset('assets/images/Autos.png')}}" class="card-img-top" alt="..."></a>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">السيارات</h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="card" style="width: 10rem; height: 10rem; border: none;">
+                                                <a href="#"><img src="{{asset('assets/images/Autos.png')}}" class="card-img-top" alt="..."></a>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">السيارات</h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="card" style="width: 10rem; height: 10rem; border: none;">
+                                                <a href="#"><img src="{{asset('assets/images/Autos.png')}}" class="card-img-top" alt="..."></a>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">السيارات</h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="card" style="width: 10rem; height: 10rem; border: none;">
+                                                <a href="#"><img src="{{asset('assets/images/Autos.png')}}" class="card-img-top" alt="..."></a>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">السيارات</h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
-                        <div class="card" style="width: 15rem;border: none; height: 14rem">
-                            <a href="#"><img src="{{asset('assets/images/Autos.png')}}" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <h5 class="card-title">السيارات</h5>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 15rem;border: none; height: 14rem">
-                            <a href="#"><img src="{{asset('assets/images/Autos.png')}}" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <h5 class="card-title">السيارات</h5>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 15rem;border: none; height: 14rem">
-                            <a href="#"><img src="{{asset('assets/images/Autos.png')}}" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <h5 class="card-title">السيارات</h5>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 15rem;border: none; height: 14rem">
-                            <a href="#"><img src="{{asset('assets/images/Autos.png')}}" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <h5 class="card-title">السيارات</h5>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 15rem;border: none; height: 14rem">
-                            <a href="#"><img src="{{asset('assets/images/Autos.png')}}" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <h5 class="card-title">السيارات</h5>
+                        <div class="col-12 col-md-3 d-flex justify-content-center flex-column align-items-center">
+                            <div class="card" style="width: 100%; max-width: 10rem; height: 12rem; border:none;">
+                                <a href="#"><img src="{{asset('assets/images/Autos.png')}}" class="card-img-top" alt="..."></a>
+                                <div class="card-body">
+                                    <h5 class="card-title">الكل</h5>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    {{--search--}}
-                    <div class="d-flex justify-content-space p-3  " style="direction: rtl">
-                        <form  style="background: none; border: none; position: relative;">
-                            <img  style="position: absolute; left: 1px; top: 40%; transform: translateY(-50%);" class="p-2 " src="{{ asset('assets/images/search.svg') }}" alt="Search Icon">
-                            <input class="rounded-4 p-2 pl-5 form-control" type="text" style="width: 450px; padding-left: 40px;" placeholder="ابحث هنا...">
-                        </form>
-                        <div class="mx-2">
-                            <select class="form-select border-2 rounded-4 w-auto" style="width: 100px;direction: ltr">
-                                <option>المدينة</option>
-                                <option>القطن</option>
-                                <option>سيئون</option>
-                            </select>
-                        </div>
-                        <div>
-                            <select class="form-select border-2 rounded-4 w-auto  " style="width: 100px;">
-                                <option>المنطقة</option>
-                                <option>القطن</option>
-                                <option>سيئون</option>
-                            </select>
-                        </div>
-                        <div>
-                            <form class="mx-2">
-                                <a href="#" class="btn btn-light px-2 border-2 rounded-4 py-2" type="submit" style="background-color: #046998">
-                                    اقل سعرا
-                                    <img src="{{ asset('assets/images/arrow-down.svg') }}" class="mx-2" alt="#">
-                                </a>
-                            </form>
-                        </div>
-                        <div>
-                            <form class="mx-2">
-                                <a href="#" class="btn btn-light px-2 border-2 rounded-4 py-2" type="submit" style="background-color: #046998">
-                                    اعلى سعرا
-                                    <img src="{{ asset('assets/images/arrow-up.svg')}}" class="mx-2" alt="#">
-                                </a>
-                            </form>
-                        </div>
-
-
-                    </div>
-                    {{-- end search--}}
                 </div>
+                 {{--search--}}
+                 <div class="d-flex justify-content-space p-3  " style="direction: rtl">
+                    <form  style="background: none; border: none; position: relative;">
+                        <img  style="position: absolute; left: 1px; top: 40%; transform: translateY(-50%);" class="p-2 " src="{{ asset('assets/images/search.svg') }}" alt="Search Icon">
+                        <input class="rounded-4 p-2 pl-5 form-control" type="text" style="width: 450px; padding-left: 40px;" placeholder="ابحث هنا...">
+                    </form>
+                    <div class="mx-2">
+                        <select class="form-select border-2 rounded-4 w-auto" style="width: 100px;direction: ltr">
+                            <option>المدينة</option>
+                            <option>القطن</option>
+                            <option>سيئون</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select class="form-select border-2 rounded-4 w-auto  " style="width: 100px;">
+                            <option>المنطقة</option>
+                            <option>القطن</option>
+                            <option>سيئون</option>
+                        </select>
+                    </div>
+                    <div>
+                        <form class="mx-2">
+                            <a href="#" class="btn btn-light px-2 border-2 rounded-4 py-2" type="submit" style="background-color: #046998">
+                                اقل سعرا
+                                <img src="{{ asset('assets/images/arrow-down.svg') }}" class="mx-2" alt="#">
+                            </a>
+                        </form>
+                    </div>
+                    <div>
+                        <form class="mx-2">
+                            <a href="#" class="btn btn-light px-2 border-2 rounded-4 py-2" type="submit" style="background-color: #046998">
+                                اعلى سعرا
+                                <img src="{{ asset('assets/images/arrow-up.svg')}}" class="mx-2" alt="#">
+                            </a>
+                        </form>
+                    </div>
+                </div>
+                {{-- end search--}}
             </div>
             {{-- end contact--}}
             <div class="border rounded-3 m-4 py-2 d-flex" style="direction: rtl;background-color: #D2E1E8">
