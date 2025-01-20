@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-@extends('layouts.head')
-@section('title' ,'إعادة تعيين كلمة المرور')
-<body>
+@extends('layouts.master')
+@section('title', 'إعادة تعيين كلمة المرور')
+@section('contact')
     <div class="row">
         <div class="col-md-5 d-none d-lg-flex row ">
-            <div class="col-2 ">  <img style="width:100vh ;min-height: 100vh;max-height: 112vh " src="{{asset('assets/img/backgroundlogin.png')}}"></div>
-            <div class="col-lg-4 mt-1">    <img height="200px" width="200px" style="margin-right: 100px" src="{{asset('assets/img/icon.png')}}"></div>
+            <div class="col-2 ">  <img style="width:100vh ;min-height: 100vh;max-height: 112vh " src="{{asset('assets/images/backgroundlogin.png')}}"></div>
+            <div class="col-lg-4 mt-1">    <img height="200px" width="200px" style="margin-right: 100px" src="{{asset('assets/images/icon_arta.png')}}"></div>
             <h5 class="col-5 text-center mt-0 ms-4 " style="padding-top: 35%" >لا تفوت الفرصة، كن جزءًا  <br>من مجتمع المتسوقين الأذكياء</h5>
         </div>
         <div class="col-12 col-md-5 container my-5 p-3 rounded-5 custom-shadow" style="background-color: #E7E7E7;min-width: 450px; max-width: 500px; max-height: fit-content">
@@ -24,11 +22,11 @@
             <hr>
             <div class="row text-center d-flex justify-content-center">
                 <div class="col-5 mx-2 btn border shadow rounded-4 custom-button">
-                    <img src="{{asset('assets/img/apple-icon.png')}}" alt="Apple">
+                    <img src="{{asset('assets/images/apple-icon.png')}}" alt="Apple">
                     <span>المواصلة مع أبل</span>
                 </div>
                 <div class="col-5 mx-2 btn border shadow rounded-4 custom-button">
-                    <img src="{{asset('assets/img/google.svg')}}" alt="Google">
+                    <img src="{{asset('assets/images/google.svg')}}" alt="Google">
                     <span>المواصلة مع قوقل</span>
                 </div>
             </div>
@@ -36,6 +34,4 @@
         </div>
 
     </div>
-
-</body>
-</html>
+@endsection

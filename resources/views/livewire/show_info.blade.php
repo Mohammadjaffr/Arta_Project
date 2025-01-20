@@ -1,14 +1,8 @@
 @extends('layouts.master')
 @section('title', 'المعلومات')
 @section('contact')
-{{--    <div dir="rtl" class="text-end d-none d-md-flex me-2 p-3 px-4">--}}
-{{--        <a href="{{ url('home') }}" style="height: 45px; width: 45px;">--}}
-{{--            <button class="rounded-circle" style="height: 45px; border: none; background-color: #D2E1E8; width: 45px;">--}}
-{{--                <img src="{{ asset('assets/img/chevron-right.svg') }}">--}}
-{{--            </button>--}}
-{{--        </a>--}}
-{{--    </div>--}}
-    <div dir="rtl" class="m-5">
+    <div dir="rtl">
+        <div class="container my-4">
     <div class="border rounded-4" style="background-color: #f7FBFA" >
         <div class="m-3 border rounded-3"  >
             <div id="info_slid" class="carousel slide">
@@ -119,5 +113,5 @@
                 </div>
             </div>
         </div>
-@include('layouts.footer')
+        </div>
 @endsection

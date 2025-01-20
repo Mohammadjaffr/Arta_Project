@@ -1,25 +1,7 @@
 @extends('layouts.master')
 @section('title', 'حسابي')
 @section('contact')
-    <header>    {{-- navbar add new listing --}}
-        <div class="d-flex  my-3 justify-content-md-between"  style="position: relative;">
-            <div class="mx-2 ">
-                <img class="py-3" style="width: 130px;right: 50vh; height: 130px;"  src="{{asset('assets/img/icon.png')}}">
-            </div>
-            <div class="mt-4 "  style="position: relative">
-                <h2>حسابي</h2>
-            </div>
-            <div class="m-3 " style="position: relative">
-                <a href="{{ url('home') }}" style="height: 45px; width: 45px;">
-                    <button class="rounded-circle" style="height: 45px; border: none; background-color: #D2E1E8; width: 45px;">
-                        <img src="{{ asset('assets/img/chevron-right.svg') }}">
-                    </button>
-                </a>
-            </div>
-        </div>
-        {{-- form for add new listing --}}
-    </header>
-    <div class="container">
+    <div class="container my-5">
 <div >
     <div class="border rounded " style="width: 150px;margin-left: 64vh; background-image: url({{'assets/images/person.png'}}); height: 150px;position: relative;">
         <a href="#" class="border bg-white text-center rounded-top-5 rounded-start-5 " style="position:absolute;width: 50px;height: 50px;left: 98px;top: 99px;" ><img class="mt-2" style="width: 20px;height: 30px;" src="{{asset('assets/images/camera.svg')}}"></a>
@@ -49,7 +31,7 @@
                         <img class="mx-1" style="width: 25px;" src="{{asset('assets/images/User Rounded.png')}}">
                         <label class="text-truncate" style="max-width: 150px;">ابرهيم علي</label>
                     </div>
-                    
+
                     <div class="d-flex align-items-center mx-2">
                         <img class="mx-1" style="width: 25px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}">
                         <label class="text-truncate" style="max-width: 150px;">25000ريال سعودي</label>

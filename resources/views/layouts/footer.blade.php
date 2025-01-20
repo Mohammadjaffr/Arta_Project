@@ -16,7 +16,7 @@
                 </button>
             </div>
             <div class="col-12 col-md-6 text-center text-md-end">
-               <img style="max-width: 150px; max-height: 200px; height:auto" src="{{asset('assets/img/icon.png')}}" alt="Logo">
+               <img style="max-width: 150px; max-height: 200px; height:auto" src="{{asset('assets/images/icon.png')}}" alt="Logo">
             </div>
         </div>
         <div class="row text-center">

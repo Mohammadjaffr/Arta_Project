@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-5 d-none d-lg-flex row ">
-        <div class="col-2 ">  <img style="width:100dvh ;min-height: 100vh;max-height: 120vh " src="{{asset('assets/img/backgroundlogin.png')}}"></div>
-        <div class="col-lg-4 mt-1">    <img height="200px" width="200px" style="margin-right: 100px" src="{{asset('assets/img/icon.png')}}"></div>
+        <div class="col-2 ">  <img style="width:100dvh ;min-height: 100vh;max-height: 120vh " src="{{asset('assets/images/backgroundlogin.png')}}"></div>
+        <div class="col-lg-4 mt-1">    <img height="200px" width="200px" style="margin-right: 100px" src="{{asset('assets/images/icon.png')}}"></div>
         <h5 class="col-5 text-center mt-0 ms-4 " style="padding-top: 35%" >لا تفوت الفرصة، كن جزءًا  <br>من مجتمع المتسوقين الأذكياء</h5>
     </div>
 
@@ -35,10 +35,10 @@
                         <div class="d-flex align-items-center position-relative">
                             @if ($showPassword)
                                 <input class="form-control rounded-4 py-2 custom-input @error('password') is-invalid @enderror" type="text" name="password" id="password" required autocomplete="current-password">
-                                <img wire:click="togglePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/img/eye-off.svg')}}">
+                                <img wire:click="togglePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/images/eye-off.svg')}}">
                             @else
                                 <input class="form-control rounded-4 py-2 custom-input @error('password') is-invalid @enderror" type="password" name="password" id="password" required autocomplete="current-password">
-                                <img wire:click="togglePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/img/eye.svg')}}">
+                                <img wire:click="togglePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/images/eye.svg')}}">
                             @endif
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -78,7 +78,7 @@
                         @error('name')
                             <span class="me-2 custom-validation-error">
                                 <strong>{{ $message }}</strong>
-                                <img src="{{asset('assets/img/Vector.svg')}}" alt="">
+                                <img src="{{asset('assets/images/Vector.svg')}}" alt="">
                             </span>
                         @enderror
                     </div>
@@ -91,7 +91,7 @@
                         @error('email')
                             <span class="me-2 custom-validation-error">
                                 <strong>{{ $message }}</strong>
-                                <img src="{{asset('assets/img/Vector.svg')}}" alt="">
+                                <img src="{{asset('assets/images/Vector.svg')}}" alt="">
                             </span>
                         @enderror
                     </div>
@@ -104,10 +104,10 @@
                             <div class="d-flex align-items-center position-relative">
                             @if ($showConfirmePassword)
                             <input class="form-control rounded-4 py-2 @error('password') border-red @else custom-input @enderror" name="password_confirmation" type="text" required>
-                            <img wire:click="toggleConfirmePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/img/eye-off.svg')}}">
+                            <img wire:click="toggleConfirmePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/images/eye-off.svg')}}">
                             @else
                             <input class="form-control rounded-4 py-2 @error('password') border-red @else custom-input @enderror" name="password_confirmation" type="password" required>
-                            <img wire:click="toggleConfirmePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/img/eye.svg')}}">
+                            <img wire:click="toggleConfirmePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/images/eye.svg')}}">
                             @endif
                             </div>
                         </div>
@@ -116,17 +116,17 @@
                             <div class="d-flex align-items-center position-relative">
                             @if ($showPassword)
                             <input class="form-control rounded-4 py-2 @error('password') border-red @else custom-input @enderror" name="password" type="text" required>
-                            <img wire:click="togglePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/img/eye-off.svg')}}">
+                            <img wire:click="togglePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/images/eye-off.svg')}}">
                             @else
                             <input class="form-control rounded-4 py-2 @error('password') border-red @else custom-input @enderror" name="password" type="password" required>
-                            <img wire:click="togglePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/img/eye.svg')}}">
+                            <img wire:click="togglePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/images/eye.svg')}}">
                             @endif
                             </div>
                         </div>
                         @error('password')
                             <span class="me-2 custom-validation-error">
                                 <strong>{{ $message }}</strong>
-                                <img src="{{asset('assets/img/Vector.svg')}}" alt="">
+                                <img src="{{asset('assets/images/Vector.svg')}}" alt="">
                             </span>
                         @enderror
                     </div>
@@ -141,7 +141,7 @@
                             @error('whatsapp_number')
                                 <span class="me-2 custom-validation-error">
                                     <strong>{{ $message }}</strong>
-                                    <img src="{{asset('assets/img/Vector.svg')}}" alt="">
+                                    <img src="{{asset('assets/images/Vector.svg')}}" alt="">
                                 </span>
                             @enderror
                         </div>
@@ -154,7 +154,7 @@
                             @error('contact_number')
                                 <span class="me-2 custom-validation-error">
                                     <strong>{{ $message }}</strong>
-                                    <img src="{{asset('assets/img/Vector.svg')}}" alt="">
+                                    <img src="{{asset('assets/images/Vector.svg')}}" alt="">
                                 </span>
                             @enderror
                         </div>
@@ -177,14 +177,14 @@
             <div class="row text-center d-flex justify-content-center">
                 {{-- start login with apple --}}
                 <div class="col-5 mx-2 btn border shadow rounded-4 custom-button">
-                    <img src="{{asset('assets/img/apple-icon.png')}}" alt="Apple">
+                    <img src="{{asset('assets/images/apple-icon.png')}}" alt="Apple">
                     <span>المواصلة مع أبل</span>
                 </div>
                 {{-- end login with apple --}}
 
                 {{-- start login with google --}}
                 <div class="col-5 mx-2 btn border shadow rounded-4 custom-button">
-                    <img src="{{asset('assets/img/google.svg')}}" alt="Google">
+                    <img src="{{asset('assets/images/google.svg')}}" alt="Google">
                     <span>المواصلة مع قوقل</span>
                 </div>
                 {{-- end login with google --}}
@@ -195,7 +195,7 @@
     <div class=" d-none d-md-flex me-2 p-3 col-1 px-4">
         <a href="{{ url('/') }}" style="height: 45px; width: 45px;">
             <button class="rounded-circle" style="height: 45px; border: none; background-color: #D2E1E8; width: 45px;">
-                <img src="{{ asset('assets/img/chevron-right.svg') }}">
+                <img src="{{ asset('assets/images/chevron-right.svg') }}">
             </button>
         </a>
     </div>
