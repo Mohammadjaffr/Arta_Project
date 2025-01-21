@@ -21,7 +21,7 @@
         <div class="container mt-5">
             <div class="row align-items-start">
                 <div class="col-12 col-md-9">
-                    <div class="table-responsive" style="overflow-x: auto;">
+                    <div class="table-responsive scrollable" style="overflow-x: auto;">
                         <table class="table">
                             <tr>
                                 <td>
