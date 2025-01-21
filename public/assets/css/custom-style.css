@@ -48,7 +48,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #046998; 
+    background:var(--primary-custom-color); 
     border-radius: 10px; 
 }
 
@@ -58,7 +58,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .scrollable {
     scrollbar-width: thin;
-    scrollbar-color: #046998 #f1f1f1; 
+    scrollbar-color: var(--primary-custom-color) #f1f1f1; 
 }
 .nav-link:hover {
     background-color:var(--warning-custom-color); 
