@@ -84,7 +84,7 @@
                     </div>
                     <div class="col-12 col-md-3 d-flex justify-content-center flex-column align-items-center">
                         <div class="card" style="width: 100%; max-width: 10rem; height: 12rem; border:none;">
-                            <a href="#"><img style="width: 10rem;height: 6rem;" src="{{asset('assets/images/more_ads.png')}}" class="card-img-top border rounded-circle" alt="..."></a>
+                            <a href="#" class="border"  style="background-color: #F2F2F7;border-radius: calc(100%)"><img style="width: 10rem;height: 6rem; border-radius: 20px" src="{{asset('assets/images/more_ads.png')}}" class="card-img-top " alt="..."></a>
                             <div class="card-body">
                                 <h5 class="card-title">الكل</h5>
                             </div>
