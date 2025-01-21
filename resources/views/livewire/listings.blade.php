@@ -16,6 +16,10 @@
                             <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}">
                             <label>منذ 30 دقيقة</label>
                         </td>
+                        <td>
+                            <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/status_ads.png')}}">
+                            <label>جديد </label>
+                        </td>
                     </tr>
                     <tr>
                         <td>
