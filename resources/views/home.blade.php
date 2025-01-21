@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('title' ,'لصفحة الرئيسية')
-
 @section('contact')
 <div class="container text-center">
     {{--contact--}}
