@@ -1,5 +1,5 @@
 <header>
-<div class="border rounded-3  d-flex  p-3 justify-content-between " style="position: relative;flex-direction: row">
+<div class="border rounded-3  d-flex  p-3 justify-content-between ">
     <div class="d-flex mb-3 align-items-center mb-md-0">
         <a class="" href="#"><input type="image" alt="#" style="width: 82px;position: relative; height: 82px;border-radius: calc(100px);" class="border" src="{{asset('assets/images/person.png')}}"></a>
         @if( Auth::user()->name)

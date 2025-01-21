@@ -35,3 +35,24 @@ input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+::-webkit-scrollbar {
+    width: 12px; 
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #046998; 
+    border-radius: 10px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background:#FFCF55; 
+}
+
+.scrollable {
+    scrollbar-width: thin;
+    scrollbar-color: #046998 #f1f1f1; 
+}
