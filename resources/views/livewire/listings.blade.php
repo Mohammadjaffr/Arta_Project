@@ -31,7 +31,7 @@
                             <label>25000ريال سعودي</label>
                         </td>
                         <td>
-                            <span class="badge rounded-pill text-dark" style="background-color: #FFCF55; font-size: 0.875rem; padding: 0.25rem 0.5rem;">سيارات</span>
+                            <span class="badge rounded-pill text-dark" style="background-color: var(--warning-custom-color); font-size: 0.875rem; padding: 0.25rem 0.5rem;">سيارات</span>
                         </td>
                     </tr>
                 </table>
@@ -75,7 +75,7 @@
                             <label>25000ريال سعودي</label>
                         </td>
                         <td>
-                            <span class="badge rounded-pill text-dark" style="background-color: #FFCF55; font-size: 0.875rem; padding: 0.25rem 0.5rem;">سيارات</span>
+                            <span class="badge rounded-pill text-dark" style="background-color:var(--warning-custom-color); font-size: 0.875rem; padding: 0.25rem 0.5rem;">سيارات</span>
                         </td>
                     </tr>
                 </table>
