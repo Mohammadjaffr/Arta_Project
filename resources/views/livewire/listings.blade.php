@@ -30,8 +30,12 @@
                             <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}">
                             <label>25000ريال سعودي</label>
                         </td>
+                        <td>
+                            <span class="badge rounded-pill text-dark" style="background-color: #FFCF55; font-size: 0.875rem; padding: 0.25rem 0.5rem;">سيارات</span>
+                        </td>
                     </tr>
                 </table>
+               
             </div>
             
             <div class="col-12 col-lg-3 d-flex justify-content-center align-items-center mb-2 mb-lg-0">
@@ -56,6 +60,10 @@
                             <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}">
                             <label>منذ 30 دقيقة</label>
                         </td>
+                        <td>
+                            <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/status_ads.png')}}">
+                            <label>جديد </label>
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -65,6 +73,9 @@
                         <td>
                             <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}">
                             <label>25000ريال سعودي</label>
+                        </td>
+                        <td>
+                            <span class="badge rounded-pill text-dark" style="background-color: #FFCF55; font-size: 0.875rem; padding: 0.25rem 0.5rem;">سيارات</span>
                         </td>
                     </tr>
                 </table>

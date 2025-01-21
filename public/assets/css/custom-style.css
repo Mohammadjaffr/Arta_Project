@@ -1,3 +1,7 @@
+:root {
+    --primary-custom-color: rgba(0, 91, 134, 0.88);
+    --warning-custom-color: #FFCF55; 
+}
 .custom-shadow {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
 }
