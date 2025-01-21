@@ -61,14 +61,11 @@ input[type="number"]::-webkit-outer-spin-button {
     scrollbar-color: var(--primary-custom-color) #f1f1f1; 
 }
 .nav-link:hover {
-    background-color:var(--warning-custom-color); 
-    color:white; 
-    border-radius: 5px;
+    color:var(--primary-custom-color);
     font-weight: bold;
 }
 .active-bg {
-    background-color:var(--warning-custom-color);
-    color: black; 
-    border-radius: 5px;
+    color:var(--primary-custom-color);
+    font-weight: bold;
 }
 

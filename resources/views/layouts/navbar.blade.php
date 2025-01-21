@@ -1,14 +1,15 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow" dir="rtl" id="navbar">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow" style="max-height: 120px" dir="rtl" id="navbar">
     <div class="container-fluid">
-        <div style="width: 150px; height: 100px;">
-            <img alt="" class="mt-3 mx-lg-3 mx-1" style="max-width: 150px; max-height: 200px; height:auto" src="{{asset('assets/images/icon.png')}}">
+        <div class="d-flex flex-column align-items-center justify-content-between mt-1" style="width: 150px; height: 100px;">
+            <img alt="icon" style="max-width: 150px; max-height: 200px; height:auto" src="{{asset('assets/images/icon.png')}}">
+            <h3 style="color: var(--primary-custom-color);font-weight: bold;" >منصة عرطة</h3>
         </div>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="collapse navbar-collapse bg-light"  id="navbarNavDropdown">
             <div class="mx-auto text-center">
                 <ul class="navbar-nav d-inline-flex">
                     <li>
