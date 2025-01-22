@@ -13,12 +13,12 @@
             <div class="mx-auto text-center">
                 <ul class="navbar-nav d-inline-flex">
                     <li>
-                        @if(Auth::user()->name)
+                        @if(Auth::user())
                             <div class="d-lg-none text-center mb-2">
                                 <a class="link fw-bold text-decoration-none" href="{{route('account_show')}}" style="font-size: 20px">{{Auth::user()->name}}</a>
                             </div>
                         @else
-                            <span class="mx-4">
+                            <span class="d-lg-none text-center mb-2">
                                 <button class="btn btn-primary border" style="font-size: 20px">تسجيل الدخول</button>
                             </span>
                         @endif
@@ -36,14 +36,17 @@
             </div>
         </div>
 
-        @if(Auth::user()->name)
+        @if(Auth::user())
             <span class="d-none d-lg-flex align-items-center mx-4">
                 <a class="link fw-bold text-decoration-none p-0 mx-2" href="{{route('account_show')}}" style="border: none; background: none; font-size: 20px">{{Auth::user()->name}}</a>
                 <img class="ms-2" src="{{asset('assets/images/person.png')}}" alt="" style="width: 82px; height: 82px; border-radius: 50%;">
             </span>
         @else
-            <span class="mx-4">
-                <button class="btn btn-primary border" style="font-size: 20px">تسجيل الدخول</button>
+            <span class="d-none d-lg-flex align-items-center mx-4">
+                <a href="{{route('login')}}">
+                    <button class="btn btn-primary border" style="font-size: 20px">تسجيل الدخول</button>
+                </a>
+                
             </span>
         @endif
     </div>
