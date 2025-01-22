@@ -1,70 +1,108 @@
 @extends('layouts.master')
 @section('title', 'اضافة اعلان')
 @section('contact')
-    <div>
-        <div class="col-6 text-end container  p-lg-5 ">
-            <form>
-                <label class="py-3">اختر القسم الرئيسي</label>
-                <select class="form-select  border-2 text-end"  style="border-color: #62A1BE">
-                    <option> العقارات</option>
-                    <option> السيارات</option>
-                    <option> الملابس</option>
-                </select>
-                <label class="py-3">المدينه</label>
-                <select class="form-select  border-2 text-end" style="border-color: #62A1BE">
-                    <option> سيئون</option>
-                    <option> القطن</option>
-                    <option> تريم</option>
-                </select>
-                <h6 class="py-3"> اسم الاعلان</h6>
-                <input class="form-control border-2 " type="text" style="border-color: #62A1BE" >
-                <h6 class="py-3">تفاصيل الاعلان</h6>
-                <input class="form-control border-2  py-lg-5" type="text" style="border-color: #62A1BE" >
-                <h6 class="py-3">سعر الاعلان</h6>
-                <input class="form-control border-2  py-2" type="number" style="border-color: #62A1BE" >
-                <h6 class="py-3" >رقم الجوال</h6>
-                <input class="form-control border-2  py-2" type="number" style="border-color: #62A1BE" >
-                <h6 class="py-3">رقم الواتساب</h6>
-                <input class="form-control border-2  py-2" type="number"  style="border-color: #62A1BE">
-                <h6 class="py-3">حالة المنتج</h6>
-                <div class="d-flex float-end">
-                    <div class="form-check px-3 ">
-                        <input class="form-check-input" style="border-color: #62A1BE" type="radio" value="option1" name="ads">
-                        <label class="form-check-label">
-                            جديد
-                        </label>
+    <div class="container">
+        <!-- النموذج -->
+        <div dir="rtl" class="row justify-content-center">
+            <div class="col-12 col-lg-6 p-lg-5">
+                <form>
+                    <!-- اختر القسم الرئيسي -->
+                    <label class="py-3">اختر القسم الرئيسي</label>
+                    <select class="form-select border-2 text-end" style="border-color: #62A1BE">
+                        <option>العقارات</option>
+                        <option>السيارات</option>
+                        <option>الملابس</option>
+                    </select>
+
+                    <!-- المدينة -->
+                    <label class="py-3">المدينة</label>
+                    <select class="form-select border-2 text-end" style="border-color: #62A1BE">
+                        <option>سيئون</option>
+                        <option>القطن</option>
+                        <option>تريم</option>
+                    </select>
+
+                    <!-- اسم الإعلان -->
+                    <h6 class="py-3">اسم الإعلان</h6>
+                    <input class="form-control border-2" type="text" style="border-color: #62A1BE">
+
+                    <!-- تفاصيل الإعلان -->
+                    <h6 class="py-3">تفاصيل الإعلان</h6>
+                    <textarea class="form-control border-2" style="border-color: #62A1BE" rows="4"></textarea>
+
+                    <!-- سعر الإعلان -->
+                    <h6 class="py-3">سعر الإعلان</h6>
+                    <input class="form-control border-2" type="number" style="border-color: #62A1BE">
+
+                    <!-- رقم الجوال -->
+                    <h6 class="py-3">رقم الجوال</h6>
+                    <input class="form-control border-2" type="number" style="border-color: #62A1BE">
+
+                    <!-- رقم الواتساب -->
+                    <h6 class="py-3">رقم الواتساب</h6>
+                    <input class="form-control border-2" type="number" style="border-color: #62A1BE">
+
+                    <!-- حالة المنتج -->
+                    <h6 class="py-3">حالة المنتج</h6>
+                    <div class="d-flex justify-content-start">
+                        <div class="form-check px-3">
+                            <input class="form-check-input" style="border-color: #62A1BE" type="radio" name="ads" value="new">
+                            <label class="form-check-label">جديد</label>
+                        </div>
+                        <div class="form-check px-3">
+                            <input class="form-check-input" style="border-color: #62A1BE" type="radio" name="ads" value="used">
+                            <label class="form-check-label">مستعمل</label>
+                        </div>
+                        <div class="form-check px-3">
+                            <input class="form-check-input" style="border-color: #62A1BE" type="radio" name="ads" value="semi-new">
+                            <label class="form-check-label">شبه جديد</label>
+                        </div>
                     </div>
-                    <div class="form-check px-3">
-                        <input class="form-check-input" style="border-color: #62A1BE" type="radio" name="ads" value="option2">
-                        <label class="form-check-label">
-                            مستعمل
-                        </label>
-                    </div>
-                    <div class="form-check px-3 border-2" >
-                        <input class="form-check-input" style="border-color: #62A1BE" type="radio" name="ads" value="option3">
-                        <label class="form-check-label">
-                            شبه جديد
-                        </label>
+                </form>
+            </div>
+        </div>
+
+        <!-- رفع الصورة -->
+{{--        @livewire('image-uploader')--}}
+        <div class="row justify-content-center my-4">
+            <div class="col-12 col-md-8 border border-dark rounded-5 p-3" style="background-color: rgba(1, 73, 107, 0.68);">
+                <div class="text-end">
+                    <h6>رفع الصورة</h6>
+                    <div>
+                        <label class="px-3">حدد الصورة الأساسية</label>
+                        <!-- الصورة الأساسية -->
+                        <img id="mainImage" class="border border-amber-600 rounded-2" style="width: 70px; height: 70px; cursor: pointer;" src="{{asset('assets/images/facebook.svg')}}" alt="صورة أساسية">
+                        <!-- حقل رفع الملف المخفي -->
+                        <input id="fileInput" type="file" accept="image/*" style="display: none;">
                     </div>
                 </div>
+                <div class="d-flex flex-wrap justify-content-evenly mt-3">
+                    <!-- مربعات رفع الصور -->
+                    <div class="text-center">
+                        <img class="border rounded-3 p-3 image-preview" style="width: 100px; height: 100px; background-color: #C3C3C3; cursor: pointer;" src="{{asset('assets/images/add-photo.png')}}" alt="إضافة صورة">
+                        <input type="file" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="text-center">
+                        <img class="border rounded-3 image-preview" style="width: 120px; height: 100px; background-color: #C3C3C3; cursor: pointer;" src="{{asset('assets/images/add-photo.png')}}" alt="إضافة صورة">
+                        <input type="file" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="text-center">
+                        <img class="border rounded-3 image-preview" style="width: 120px; height: 100px; background-color: #C3C3C3; cursor: pointer;" src="{{asset('assets/images/add-photo.png')}}" alt="إضافة صورة">
+                        <input type="file" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="text-center">
+                        <img class="border rounded-3 image-preview" style="width: 120px; height: 100px; background-color: #C3C3C3; cursor: pointer;" src="{{asset('assets/images/add-photo.png')}}" alt="إضافة صورة">
+                        <input type="file" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            </form>
+        <!-- زر حفظ ونشر الإعلان -->
+        <div class="row justify-content-center my-5">
+            <div class="col-12 text-center">
+                <input class="btn w-25 rounded-4 py-3 text-white" style="background-color: #01496B;" type="submit" value="حفظ ونشر الإعلان">
+            </div>
         </div>
-    </div>
-    <div class="border border-dark rounded-5 text-end p-3" style="background-color:rgba(1, 73, 107, 0.68);margin: 0px 500px;">
-        <div class="container p-3">
-            <h6>رفع الصوره</h6>
-            <div><label class="px-3">حدد الصوره الاساسيه</label><img class="border  border-amber-600 rounded-2 " style="width: 70px;height: 70px" src="{{asset('assets/images/facebook.svg')}}"></div>
-        </div>
-        <div class="d-flex justify-content-md-evenly ">
-            <div class="text-center"><input class="border  rounded-3 p-3 " src="{{asset('assets/images/add-photo.png')}}" style="width: 100px; height: 100px;background-color: #C3C3C3C3" type="file" alt="" ></div>
-            <div class=""><input class="border rounded-3" style="width: 120px; height: 100px;background-color: #C3C3C3C3" type="image" alt="" ></div>
-            <div class=""><input class="border rounded-3" style="width: 120px; height: 100px;background-color: #C3C3C3C3" type="file" alt="" ></div>
-            <div class=""><input class="border rounded-3" style="width: 120px; height: 100px;background-color: #C3C3C3C3" type="file" alt="" ></div>
-        </div>
-    </div>
-    <div class="container text-center my-5">
-        <input class="w-25 border rounded-4 py-3 text-center text-white" type="submit" style="background-color: #01496B" value="حفظ ونشر الاعلان">
-
     </div>
 @endsection
