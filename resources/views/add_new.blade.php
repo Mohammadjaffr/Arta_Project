@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', 'اضافة اعلان')
 @section('contact')
-    <div class="row " >
+    <div>
         <div class="col-6 text-end container  p-lg-5 ">
             <form>
                 <label class="py-3">اختر القسم الرئيسي</label>
@@ -67,5 +67,4 @@
         <input class="w-25 border rounded-4 py-3 text-center text-white" type="submit" style="background-color: #01496B" value="حفظ ونشر الاعلان">
 
     </div>
-    <hr>
 @endsection
