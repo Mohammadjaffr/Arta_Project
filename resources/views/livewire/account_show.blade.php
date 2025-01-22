@@ -44,10 +44,6 @@
                     </tr>
                     <tr>
                         <td>
-                            <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}">
-                            <label>ابرهيم علي</label>
-                        </td>
-                        <td>
                             <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}">
                             <label>25000ريال سعودي</label>
                         </td>
