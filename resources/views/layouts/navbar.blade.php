@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="d-flex flex-column align-items-center justify-content-between mt-1" style="width: 150px; height: 100px;">
             <img alt="icon" style="max-width: 150px; max-height: 200px; height:auto" src="{{asset('assets/images/icon.png')}}">
-            <h3 style="color: var(--primary-custom-color);font-weight: bold;" >منصة عرطة</h3>
+            <h3 style="color: var(--primary-custom-color);font-weight: bold; font-family: 'Tajawal', sans-serif;" >منصة عرطة</h3>
         </div>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
