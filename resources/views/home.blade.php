@@ -16,7 +16,7 @@
 
         @endif
         <br>
-        <h5 class="float-end"> الفئات</h5>
+        <h1 class="float-end" style="color:var(--primary-custom-color)"> الفئات</h1>
         <div class="container mt-5">
             <div class="row align-items-start">
                 <div class="col-12 col-md-9">
