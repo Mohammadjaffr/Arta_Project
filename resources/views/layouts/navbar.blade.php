@@ -24,7 +24,7 @@
                         @endif
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5 mx-2 @if(request()->is('/')) active-bg @endif" aria-current="page" href="{{ url('/home') }}">الرئيسية</a>
+                        <a class="nav-link fs-5 mx-2 @if(request()->is('/')) active-bg @endif" aria-current="page" href="{{ url('/') }}">الرئيسية</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-5 mx-2 @if(request()->is('about')) active-bg @endif" href="{{ url('about') }}">من نحن</a>
