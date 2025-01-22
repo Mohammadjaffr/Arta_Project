@@ -15,7 +15,7 @@
                     <li>
                         @if(Auth::user())
                             <div class="d-lg-none text-center mb-2">
-                                <a class="link fw-bold text-decoration-none" href="{{route('account_show')}}" style="font-size: 20px">{{Auth::user()->name}}</a>
+                                <a class="link fw-bold text-decoration-none" style="color: var(--warning-custom-color);font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 20px" href="{{route('account_show')}}" style="font-size: 20px">{{Auth::user()->name}}</a>
                             </div>
                         @else
                             <span class="d-lg-none text-center mb-2">
@@ -24,13 +24,13 @@
                         @endif
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5 mx-2 @if(request()->is('/')) active-bg @endif" aria-current="page" href="{{ url('/') }}">الرئيسية</a>
+                        <a class="nav-link fs-5 mx-2" @if(request()->is('/')) style="color: var(--primary-custom-color);font-weight: bold;" @endif href="{{ url('/') }}">الرئيسية</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5 mx-2 @if(request()->is('about')) active-bg @endif" href="{{ url('about') }}">من نحن</a>
+                        <a class="nav-link fs-5 mx-2"@if(request()->is('about')) style="color: var(--primary-custom-color);font-weight: bold;" @endif href="{{ url('about') }}">من نحن</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5 mx-2 @if(request()->is('contact')) active-bg @endif" href="{{ url('contact') }}">اتصل بنا</a>
+                        <a class="nav-link fs-5 mx-2" @if(request()->is('contact')) style="color: var(--primary-custom-color);font-weight: bold;" @endif  href="{{ url('contact') }}">اتصل بنا</a>
                     </li>
                 </ul>
             </div>
