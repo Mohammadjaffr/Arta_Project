@@ -2,6 +2,9 @@
     --primary-custom-color: rgba(0, 91, 134, 0.88);
     --warning-custom-color: #FFCF55; 
 }
+body {
+    font-family: 'Cairo', sans-serif;
+}
 .custom-shadow {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
 }
@@ -61,14 +64,11 @@ input[type="number"]::-webkit-outer-spin-button {
     scrollbar-color: var(--primary-custom-color) #f1f1f1; 
 }
 .nav-link:hover {
-    background-color:var(--warning-custom-color); 
-    color:white; 
-    border-radius: 5px;
+    color:var(--primary-custom-color);
     font-weight: bold;
 }
 .active-bg {
-    background-color:var(--warning-custom-color);
-    color: black; 
-    border-radius: 5px;
+    color:var(--primary-custom-color);
+    font-weight: bold;
 }
 

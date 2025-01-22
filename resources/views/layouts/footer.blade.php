@@ -15,8 +15,9 @@
                     <img style="width: 25px;" src="{{asset('assets/images/whatsapp.svg')}}" alt="WhatsApp">
                 </button>
             </div>
-            <div class="col-12 col-md-6 text-center text-md-end">
-               <img style="max-width: 150px; max-height: 200px; height:auto" src="{{asset('assets/images/icon.png')}}" alt="Logo">
+            <div class="col-12 col-md-6 d-flex flex-column align-items-md-end align-items-center justify-content-between">
+                <img alt="icon" style="max-width: 150px; max-height: 200px; height:auto" src="{{asset('assets/images/icon.png')}}">
+                <h3 class="me-4" style="color: var(--primary-custom-color);font-weight: bold; font-family: 'Tajawal', sans-serif;" >منصة عرطة</h3>
             </div>
         </div>
         <div class="row text-center">

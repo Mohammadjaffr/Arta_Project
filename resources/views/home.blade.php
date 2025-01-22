@@ -4,13 +4,21 @@
 <div class="container text-center">
     {{--contact--}}
     <div style="direction: rtl">
-        <div class="d-flex flex-wrap rounded-4 m-3 align-items-center justify-content-between" style="background-color: #FFCF55;" >
-            <div class="rounded-end-4 " style="flex-grow: 2;height: 419px;">
-                <h2 class="my-4 d-flex justify-content-start mx-4" >بيع الي ماتحتاجه</h2>
-                <img style="width: fit-content;height: fit-content;" src="{{asset('assets/images/box_ads.gif')}}" class="card-img-top d-flex justify-content-start" alt="..."></div>
-            <div class="rounded-start-4  " style=""><img class="rounded-start-4 " style="width: fit-content;flex-grow: 1; height: 419px;" src="{{asset('assets/images/markting.gif')}}"></div>
+        <div class="d-flex flex-wrap rounded-4 m-3 align-items-center" style="background-color: #FFCF55;">
+            <div class="rounded-start-4 position-relative" style="flex: 1; min-width: 300px; height: 419px; padding: 0;">
+                <img class="border rounded-4 rounded-start-0 " src="{{asset('assets/images/box_ads.gif')}}" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;" alt="...">
+                <div class="m-4" style="position: absolute; top: 10px; right: 10px; color:black;">
+                    <h1 style="font-family: 'Cairo', sans-serif;">بيع الي ماتحتاجه</h1>
+                </div>
+            </div>
+            <div class="rounded-end-4 position-relative" style="flex: 1; min-width: 300px; height: 419px; padding: 0;">
+                <img class="border rounded-4 rounded-end-0" src="{{asset('assets/images/markting.gif')}}" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;" alt="...">
+                <div class="m-4"  style="position: absolute; bottom: 10px; right: 10px; color:black;">
+                    <h1 style="font-family: 'Cairo', sans-serif;">واشتري الي تحتاجه</h1>
+                </div>
+            </div>
         </div>
-        @if(Auth::user()->name)
+        @if(Auth::user())
             <a href="{{route('category.index')}}" class="btn btn-blue rounded-start-5 my-3" style="float: left;background-color: #FECA81">اضافة اعلان<img class="mx-2" src="{{asset('assets/images/plus.png')}}" alt="#"></a>
         @else
 
