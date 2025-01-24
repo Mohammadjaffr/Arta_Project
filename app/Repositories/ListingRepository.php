@@ -20,11 +20,11 @@ class ListingRepository implements RepositoriesInterface
     {
         //
     }
-    
+
     public function index($region_id = null, $category_id = null)
     {
         $query = Listing::query();
-        
+
         if ($region_id) {
             $region = Region::with('children')->find($region_id);
             if ($region) {
@@ -47,7 +47,7 @@ class ListingRepository implements RepositoriesInterface
 
         return $query->with(['user:id,name,username,email,contact_number,whatsapp_number','category:id,name','region:id,name','images','comments.user'])->filter()->paginate(10);
     }
-    
+
     public function getById($id) : listing
     {
         return listing::with(['user','category','region','images','comments'])->findOrFail($id);
@@ -60,7 +60,7 @@ class ListingRepository implements RepositoriesInterface
         $File_path = Storage::putFileAs('Primary_images',$data['primary_image'],$filename);
         $File_path ='storage/'.$File_path;
         $data['primary_image']=$File_path;
-        return listing::create($data);
+        return listing::query()->create($data);
     }
 
     public function update(array $data,$id) : listing
@@ -98,7 +98,7 @@ class ListingRepository implements RepositoriesInterface
         }
         return $listing->delete() > 0;
      });
-       
+
     }
 
     public function saveImages($images,$listing_id){
