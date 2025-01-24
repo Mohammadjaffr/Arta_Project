@@ -17,12 +17,7 @@ class Listings extends Component
     }
     public function render()
     {
-<<<<<<< Updated upstream
         $listings=$this->ListingRepository->index();
         return view('livewire.listings',compact('listings'));
-=======
-        $awad=$this->ListingRepository->index();
-        return view('livewire.listings',compact('awad'));
->>>>>>> Stashed changes
     }
 }
