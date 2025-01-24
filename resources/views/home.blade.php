@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title' ,'لصفحة الرئيسية')
 @section('contact')
-<div class="container text-center">
+<div class="container">
     {{--contact--}}
     <div style="direction: rtl">
         <!-- Code for large screens: 
@@ -40,7 +40,7 @@
             <div></div>
             @endif
         </div>
-        <div class="container mt-2">
+        <div class="container mt-2 text-center">
             <div class="row align-items-start">
                 <div class="col-12">
                     <div class="table-responsive scrollable" style="overflow-x: auto;">
