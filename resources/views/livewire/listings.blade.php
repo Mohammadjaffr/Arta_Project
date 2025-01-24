@@ -4,20 +4,13 @@
             <div class="col-12 col-lg-2 text-center my-2">
                 <img class="img-fluid" src="{{asset('assets/images/Rectangle 87.png')}}" alt="#" style="max-height: 150px; min-height: 150px;">
             </div>
-<<<<<<< Updated upstream
             @foreach($listings as $listing)
                 <div class="col-12 col-lg-7 my-2">
                     <h4 class="text-xxl-end text-xl-end text-lg-end text-center" >{{$listing->title}}</h4>
-=======
-            @foreach($awad as $l)
-                <div class="col-12 col-lg-7 my-2">
-                    <h4 class="text-xxl-end text-xl-end text-lg-end text-center" >سياره تيوتا موديل 2006</h4>
->>>>>>> Stashed changes
                     <table class="table table-responsive">
                         <tr>
                             <td>
                                 <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}">
-<<<<<<< Updated upstream
                                 <label>{{$listing->region->name}}</label>
                             </td>
                             <td>
@@ -27,23 +20,11 @@
                             <td>
                                 <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/status_ads.png')}}">
                                 <label>{{$listing->status}} </label>
-=======
-                                <label>المكلا</label>
-                            </td>
-                            <td>
-                                <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}">
-                                <label>منذ 30 دقيقة</label>
-                            </td>
-                            <td>
-                                <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/status_ads.png')}}">
-                                <label>جديد </label>
->>>>>>> Stashed changes
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}">
-<<<<<<< Updated upstream
                                 <label>{{$listing->user->name}}</label>
                             </td>
                             <td>
@@ -52,16 +33,6 @@
                             </td>
                             <td>
                                 <span class="badge rounded-pill text-dark" style="background-color: var(--warning-custom-color); font-size: 0.875rem; padding: 0.25rem 0.5rem;">{{$listing->category->name}}</span>
-=======
-                                <label>ابرهيم علي</label>
-                            </td>
-                            <td>
-                                <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}">
-                                <label>25000ريال سعودي</label>
-                            </td>
-                            <td>
-                                <span class="badge rounded-pill text-dark" style="background-color: var(--warning-custom-color); font-size: 0.875rem; padding: 0.25rem 0.5rem;">سيارات</span>
->>>>>>> Stashed changes
                             </td>
                         </tr>
                     </table>
@@ -69,64 +40,14 @@
                 </div>
 
                 <div class="col-12 col-lg-3 d-flex justify-content-center align-items-center mb-2 mb-lg-0">
-<<<<<<< Updated upstream
                     <a href="{{url('show_info/'.$listing->id)}}" class="btn border text-white rounded-4 d-flex justify-content-center align-items-center" style="width: 100%; background-color: #046998; height: 45px;">
-=======
-                    <a href="{{url('show_info/'.$l->id)}}" class="btn border text-white rounded-4 d-flex justify-content-center align-items-center" style="width: 100%; background-color: #046998; height: 45px;">
->>>>>>> Stashed changes
                         <h5 class="text-align-center m-0">عرض التفاصيل</h5>
                     </a>
                 </div>
             @endforeach
 
-<<<<<<< Updated upstream
-=======
         </div>
-        <div class="row px-0 my-4 shadow">
-            <div class="col-12 col-lg-2 text-center  my-2">
-                <img class="img-fluid" src="{{asset('assets/images/Rectangle 87.png')}}" alt="#" style="max-height: 150px; min-height: 150px;">
-            </div>
-            <div class="col-12 col-lg-7 my-2">
-                <h4 class="text-xxl-end text-xl-end text-lg-end text-center" >سياره تيوتا موديل 2006</h4>
-                <table class="table table-responsive">
-                    <tr>
-                        <td>
-                            <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}">
-                            <label>المكلا</label>
-                        </td>
-                        <td>
-                            <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}">
-                            <label>منذ 30 دقيقة</label>
-                        </td>
-                        <td>
-                            <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/status_ads.png')}}">
-                            <label>جديد </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}">
-                            <label>ابرهيم علي</label>
-                        </td>
-                        <td>
-                            <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}">
-                            <label>25000ريال سعودي</label>
-                        </td>
-                        <td>
-                            <span class="badge rounded-pill text-dark" style="background-color:var(--warning-custom-color); font-size: 0.875rem; padding: 0.25rem 0.5rem;">سيارات</span>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="col-12 col-lg-3 d-flex justify-content-center align-items-center mb-2 mb-lg-0">
-                <a href="{{url('show_info')}}" class="btn border text-white rounded-4 d-flex justify-content-center align-items-center" style="width: 100%; background-color: #046998; height: 45px;">
-                    <h5 class="text-align-center m-0">عرض التفاصيل</h5>
-                </a>
-            </div>
->>>>>>> Stashed changes
-        </div>
-
+        
     </div>
 
     <div class="my-4 d-flex justify-content-center" >
