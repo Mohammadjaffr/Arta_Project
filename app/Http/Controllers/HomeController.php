@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\CategoryRepository;
+use App\Repositories\ListingRepository;
+use App\Repositories\RegionRepository;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,7 +14,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(private CategoryRepository $CategoryRepository,private RegionRepository $RegionRepository,private ListingRepository $ListingRepository)
     {
         // $this->middleware('auth');
     }
@@ -23,7 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $cat=$this->CategoryRepository->getParents();
+        $ra=$this->RegionRepository->getParents();
+
+        return view('home',[
+            'cat'=>$cat,
+            'ra'=>$ra,
+        ]);
     }
     public function account(){
         return view('livewire.account');
@@ -41,8 +50,9 @@ class HomeController extends Controller
     public function edit_number(){
         return view('livewire.edit_number');
     }
-    public function show_info(){
-        return view('livewire.show_info');
+    public function show_info($id){
+        $ls=$this->ListingRepository->getById($id);
+        return view('livewire.show_info',compact('ls'));
     }
     public function account_show(){
         return view('livewire.account_show');
