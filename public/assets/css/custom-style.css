@@ -72,3 +72,11 @@ input[type="number"]::-webkit-outer-spin-button {
     font-weight: bold;
 }
 
+.listing {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.listing:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}

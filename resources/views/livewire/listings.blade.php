@@ -1,6 +1,6 @@
 <div>
     <div class="container-fluid my-4" style="direction: rtl; background-color: #F7FBFA;">
-        <div class="row px-0 my-4 shadow">
+        <div class="row listing px-0 my-4 shadow">
             <div class="col-12 col-lg-2 text-center my-2">
                 <img class="img-fluid" src="{{asset('assets/images/Rectangle 87.png')}}" alt="#" style="max-height: 150px; min-height: 150px;">
             </div>
@@ -43,8 +43,8 @@
                     <h5 class="text-align-center m-0">عرض التفاصيل</h5>
                 </a>
             </div>
-        </div>
-        <div class="row px-0 my-4 shadow">
+        </div> 
+        <div class="row listing px-0 my-4 shadow">
             <div class="col-12 col-lg-2 text-center  my-2">
                 <img class="img-fluid" src="{{asset('assets/images/Rectangle 87.png')}}" alt="#" style="max-height: 150px; min-height: 150px;">
             </div>
