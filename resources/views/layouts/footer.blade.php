@@ -2,16 +2,16 @@
     <div class="container">
         <div class="row m-0 justify-content-between align-items-center">
             <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-start mb-3 mb-md-4">
-                <button class="rounded-circle me-2" style="height: 45px; border: none; background-color: #BDD6F4; width: 45px;">
+                <button class="rounded-circle me-2 social-button" style="height: 45px; border: none; background-color: #BDD6F4; width: 45px;">
                     <img src="{{asset('assets/images/facebook.svg')}}" alt="Facebook">
                 </button>
-                <button class="rounded-circle me-2" style="height: 45px; border: none; background-color: #BDD6F4; width: 45px;">
+                <button class="rounded-circle me-2 social-button" style="height: 45px; border: none; background-color: #BDD6F4; width: 45px;">
                     <img src="{{asset('assets/images/twitter.svg')}}" alt="Twitter">
                 </button>
-                <button class="rounded-circle me-2" style="height: 45px; border: none; background-color: #BDD6F4; width: 45px;">
+                <button class="rounded-circle me-2 social-button" style="height: 45px; border: none; background-color: #BDD6F4; width: 45px;">
                     <img src="{{asset('assets/images/instagram.svg')}}" alt="Instagram">
                 </button>
-                <button class="rounded-circle" style="height: 45px; border: none; background-color: #BDD6F4; width: 45px;">
+                <button class="rounded-circle social-button" style="height: 45px; border: none; background-color: #BDD6F4; width: 45px;">
                     <img style="width: 25px;" src="{{asset('assets/images/whatsapp.svg')}}" alt="WhatsApp">
                 </button>
             </div>

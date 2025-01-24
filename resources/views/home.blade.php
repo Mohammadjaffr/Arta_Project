@@ -35,7 +35,7 @@
         <div class="d-flex flex-row justify-content-between">
             <h1 style="color:var(--primary-custom-color)"> الفئات</h1>
             @if(Auth::user())
-                <a href="{{route('category.index')}}" class="btn btn-blue rounded-start-5 my-3" style="float: left;background-color: #FECA81">اضافة اعلان<img class="mx-2" src="{{asset('assets/images/plus.png')}}" alt="#"></a>
+                <a href="{{route('category.index')}}" class="btn btn-blue rounded-start-5 my-3 add-ads-button" style="float: left;background-color: #FECA81">اضافة اعلان<img class="mx-2" src="{{asset('assets/images/plus.png')}}" alt="#"></a>
             @else
             <div></div>
             @endif
