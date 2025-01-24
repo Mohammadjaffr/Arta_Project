@@ -50,9 +50,9 @@ class HomeController extends Controller
     public function edit_number(){
         return view('livewire.edit_number');
     }
-    public function show_info(){
-        $ls=$this->ListingRepository->index();
-        return view('livewire.show_info',compact('ls'));
+    public function show_info($id){
+        $listings=$this->ListingRepository->getById($id);
+        return view('livewire.show_info',compact('listings'));
     }
     public function account_show(){
         return view('livewire.account_show');
