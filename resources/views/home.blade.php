@@ -4,23 +4,23 @@
 <div class="container">
     {{--contact--}}
     <div style="direction: rtl">
-        <!-- Code for large screens: 
+        <!-- Code for large screens:
         - Displays images with text overlay using absolute positioning. -->
         <div class="d-none d-lg-flex flex-wrap rounded-4 m-3 align-items-center">
             <div class="rounded-start-4 position-relative" style="flex: 1; min-width: 300px; height: 419px; padding: 0;">
-                <img class="border rounded-4 rounded-start-0 " src="{{asset('assets/images/box_ads.gif')}}" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;" alt="...">
+                <img class="border rounded-4 rounded-start-0 img-fluid" src="{{asset('assets/images/box_ads.gif')}}" style="width: 100%; height: 100%; object-fit: cover;" alt="...">
                 <div class="m-4" style="position: absolute; top: 10px; right: 10px; color:black;">
                     <h1 style="font-family: 'Cairo', sans-serif;">بيع الي ماتحتاجه</h1>
                 </div>
             </div>
             <div class="rounded-end-4 position-relative" style="flex: 1; min-width: 300px; height: 419px; padding: 0;">
-                <img class="border rounded-4 rounded-end-0" src="{{asset('assets/images/markting.gif')}}" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;" alt="...">
+                <img class="border rounded-4 rounded-end-0 img-fluid" src="{{asset('assets/images/markting.gif')}}"  style="width: 100%; height: 100%; object-fit: cover;" alt="...">
                 <div class="m-4"  style="position: absolute; bottom: 10px; right: 10px; color:black;">
                     <h1 style="font-family: 'Cairo', sans-serif;">واشتري الي تحتاجه</h1>
                 </div>
             </div>
         </div>
-        <!-- Code for small screens: 
+        <!-- Code for small screens:
         - Displays images with text below each image for better readability. -->
         <div class="d-flex flex-wrap mt-3 align-items-center">
             <div class="d-block d-lg-none d-flex flex-column align-items-center" style="flex: 1; min-width: 300px; height: 419px; padding: 0;">

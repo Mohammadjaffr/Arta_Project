@@ -35,15 +35,15 @@
                         </td>
                     </tr>
                 </table>
-               
+
             </div>
-            
+
             <div class="col-12 col-lg-3 d-flex justify-content-center align-items-center mb-2 mb-lg-0">
                 <a href="{{url('show_info')}}" class="btn border text-white rounded-4 d-flex justify-content-center align-items-center" style="width: 100%; background-color: #046998; height: 45px;">
                     <h5 class="text-align-center m-0">عرض التفاصيل</h5>
                 </a>
             </div>
-        </div> 
+        </div>
         <div class="row listing px-0 my-4 shadow">
             <div class="col-12 col-lg-2 text-center  my-2">
                 <img class="img-fluid" src="{{asset('assets/images/Rectangle 87.png')}}" alt="#" style="max-height: 150px; min-height: 150px;">
@@ -80,7 +80,7 @@
                     </tr>
                 </table>
             </div>
-            
+
             <div class="col-12 col-lg-3 d-flex justify-content-center align-items-center mb-2 mb-lg-0">
                 <a href="{{url('show_info')}}" class="btn border text-white rounded-4 d-flex justify-content-center align-items-center" style="width: 100%; background-color: #046998; height: 45px;">
                     <h5 class="text-align-center m-0">عرض التفاصيل</h5>

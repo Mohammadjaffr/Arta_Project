@@ -39,17 +39,16 @@
             <div class="text-end m-2 d-block">
 
                 <h5 class="d-flex ">
-                    <div class="" ><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}"><label>{{$listings->region->name}}</label></div>
+                    <div class="" ><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}"><label>المكلا</label></div>
                     <div class="" style="margin-right: 40px"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}"><label>منذ 30 دقيقة</label></div>
                 </h5>
                 <h5 class="d-flex">
                     <div class=""><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}"><label>ابرهيم علي</label></div>
-                    <div class="mx-2"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}"><label>{{$listings->price}}</label></div>
+                    <div class="mx-2"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}"><label>25000ريال سعودي</label></div>
                 </h5>
         </div>
     </div>
-        <h3  class="mx-3" style="flex-direction: row;background-color: #FECA81;border-radius: calc(20px);width: 100px;height: 35px;text-align: center">
-
+        <h3  class="mx-3" style="flex-direction: row;background-color: #FECA81;border-radius: calc(20px);width: 100px;height: 35px;text-align: center">سيارات
         </h3>
     </div>
         <div class="p-2 my-3">
