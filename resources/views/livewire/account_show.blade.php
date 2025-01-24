@@ -21,7 +21,7 @@
                 <h5 class="m-0">محمد سالم</h5>
             </div>
         </div>
-        <div dir="rtl" class="row px-0 my-4 shadow">
+        <div dir="rtl" class="row listing px-0 my-4 shadow">
             <div class="col-12 col-lg-2 text-center  my-2">
                 <img class="img-fluid" src="{{asset('assets/images/Rectangle 87.png')}}" alt="#" style="max-height: 150px; min-height: 150px;">
             </div>

@@ -24,14 +24,14 @@
     </div>
 
     <!-- العنوان -->
-    <div class="position-absolute p-2 p-md-3 mt-3 py-5" style="left: 50%; transform: translateX(-50%);">
+    <div class="position-absolute p-2 p-md-3 py-5" style="left: 50%; transform: translateX(-50%);">
         <h2 class="mb-0" style="font-size: 1.2rem; font-weight: bold;">إضافة إعلان</h2>
     </div>
 
     <!-- الشعار والاسم -->
     <div class="position-absolute my-3 my-md-4" style="width: 100px; height: auto; left: 1%;">
-        <img alt="icon" style="max-width: 100%; height:auto;" src="{{asset('assets/images/icon.png')}}">
-        <h3 style="color: black; font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 1rem;">منصة عرطة</h3>
+        <img alt="icon" style="max-width: 100%; height: auto;" src="{{asset('assets/images/icon.png')}}">
+        <h3 style="color: var(--primary-custom-color); font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 1rem;">منصة عرطة</h3>
     </div>
 </div>
 
@@ -97,40 +97,8 @@
     </div>
 
     <!-- رفع الصورة -->
-    {{--        @livewire('image-uploader')--}}
-    <div class="row justify-content-center my-4">
-        <div class="col-12 col-md-8 border border-dark rounded-5 p-3" style="background-color: rgba(1, 73, 107, 0.68);">
-            <div class="text-end">
-                <h6>رفع الصورة</h6>
-                <div>
-                    <label class="px-3">حدد الصورة الأساسية</label>
-                    <!-- الصورة الأساسية -->
-                    <img id="mainImage" class="border border-amber-600 rounded-2" style="width: 70px; height: 70px; cursor: pointer;" src="{{asset('assets/images/facebook.svg')}}" alt="صورة أساسية">
-                    <!-- حقل رفع الملف المخفي -->
-                    <input id="fileInput" type="file" accept="image/*" style="display: none;">
-                </div>
-            </div>
-            <div class="d-flex flex-wrap justify-content-evenly mt-3">
-                <!-- مربعات رفع الصور -->
-                <div class="text-center">
-                    <img class="border rounded-3 p-3 image-preview" style="width: 100px; height: 100px; background-color: #C3C3C3; cursor: pointer;" src="{{asset('assets/images/add-photo.png')}}" alt="إضافة صورة">
-                    <input type="file" accept="image/*" style="display: none;">
-                </div>
-                <div class="text-center">
-                    <img class="border rounded-3 image-preview" style="width: 120px; height: 100px; background-color: #C3C3C3; cursor: pointer;" src="{{asset('assets/images/add-photo.png')}}" alt="إضافة صورة">
-                    <input type="file" accept="image/*" style="display: none;">
-                </div>
-                <div class="text-center">
-                    <img class="border rounded-3 image-preview" style="width: 120px; height: 100px; background-color: #C3C3C3; cursor: pointer;" src="{{asset('assets/images/add-photo.png')}}" alt="إضافة صورة">
-                    <input type="file" accept="image/*" style="display: none;">
-                </div>
-                <div class="text-center">
-                    <img class="border rounded-3 image-preview" style="width: 120px; height: 100px; background-color: #C3C3C3; cursor: pointer;" src="{{asset('assets/images/add-photo.png')}}" alt="إضافة صورة">
-                    <input type="file" accept="image/*" style="display: none;">
-                </div>
-            </div>
-        </div>
-    </div>
+            @livewire('image-uploader')
+   
 
     <!-- زر حفظ ونشر الإعلان -->
     <div class="row justify-content-center my-5">

@@ -1,5 +1,5 @@
 :root {
-    --primary-custom-color: rgba(٢٥٥, ٢٥٥, ٢٥٥, 0.88);
+    --primary-custom-color:  rgba(24, 88, 120, 1);
     --warning-custom-color: #FFCF55;
 }
 body {
@@ -72,3 +72,19 @@ input[type="number"]::-webkit-outer-spin-button {
     font-weight: bold;
 }
 
+.listing {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.listing:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card{
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 8rem; height: 8rem; border: none;
+}
+.card:hover{
+    transform: scale(1.1);
+}
