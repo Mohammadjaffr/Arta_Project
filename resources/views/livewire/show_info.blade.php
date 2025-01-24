@@ -2,6 +2,7 @@
 @section('title', 'المعلومات')
 @section('contact')
     <div dir="rtl">
+
         <div class="container my-4">
     <div class="border rounded-4" style="background-color: #f7FBFA" >
         <div class="m-3 border rounded-3"  >
@@ -38,17 +39,25 @@
             <div class="text-end m-2 d-block">
 
                 <h5 class="d-flex ">
-                    <div class="" ><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}"><label>المكلا</label></div>
+<<<<<<< Updated upstream
+                    <div class="" ><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}"><label>{{$listings->region->name}}</label></div>
+=======
+                    <div class="" ><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}"><label>{{$ls->region->name}}</label></div>
+>>>>>>> Stashed changes
                     <div class="" style="margin-right: 40px"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}"><label>منذ 30 دقيقة</label></div>
                 </h5>
                 <h5 class="d-flex">
                     <div class=""><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}"><label>ابرهيم علي</label></div>
-                    <div class="mx-2"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}"><label>25000ريال سعودي</label></div>
+<<<<<<< Updated upstream
+                    <div class="mx-2"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}"><label>{{$listings->price}}</label></div>
+=======
+                    <div class="mx-2"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}"><label>{{$ls->price}}</label></div>
+>>>>>>> Stashed changes
                 </h5>
         </div>
     </div>
         <h3  class="mx-3" style="flex-direction: row;background-color: #FECA81;border-radius: calc(20px);width: 100px;height: 35px;text-align: center">
-            سيارات
+
         </h3>
     </div>
         <div class="p-2 my-3">

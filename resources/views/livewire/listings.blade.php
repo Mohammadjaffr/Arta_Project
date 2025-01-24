@@ -87,8 +87,9 @@
                 </a>
             </div>
         </div>
+
     </div>
-    
+
     <div class="my-4 d-flex justify-content-center" >
         <a href="{{url('show_info')}}" class="btn btn-light border text-white rounded-4" style="width: 200px;background-color: #046998; height: 45px;">
                                 مشاهدة المزيد
