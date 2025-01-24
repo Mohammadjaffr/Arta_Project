@@ -24,23 +24,14 @@
     </div>
 
     <!-- العنوان -->
-<<<<<<< Updated upstream
     <div class="position-absolute p-2 p-md-3 mt-3 py-5" style="left: 50%; transform: translateX(-50%);">
-=======
-    <div class="position-absolute p-2 p-md-3 py-5" style="left: 50%; transform: translateX(-50%);">
->>>>>>> Stashed changes
         <h2 class="mb-0" style="font-size: 1.2rem; font-weight: bold;">إضافة إعلان</h2>
     </div>
 
     <!-- الشعار والاسم -->
     <div class="position-absolute my-3 my-md-4" style="width: 100px; height: auto; left: 1%;">
-<<<<<<< Updated upstream
         <img alt="icon" style="max-width: 100%; height:auto;" src="{{asset('assets/images/icon.png')}}">
         <h3 style="color: black; font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 1rem;">منصة عرطة</h3>
-=======
-        <img alt="icon" style="max-width: 100%; height: auto;" src="{{asset('assets/images/icon.png')}}">
-        <h3 style="color: var(--primary-custom-color); font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 1rem;">منصة عرطة</h3>
->>>>>>> Stashed changes
     </div>
 </div>
 
@@ -102,7 +93,6 @@
                     </div>
                 </div>
             </form>
-<<<<<<< Updated upstream
         </div>
     </div>
 
@@ -142,15 +132,6 @@
         </div>
     </div>
 
-=======
-        </div>
-    </div>
-
-    <!-- رفع الصورة -->
-            @livewire('image-uploader')
-   
-
->>>>>>> Stashed changes
     <!-- زر حفظ ونشر الإعلان -->
     <div class="row justify-content-center my-5">
         <div class="col-12 text-center">
