@@ -4,6 +4,10 @@
 <div class="container text-center">
     {{--contact--}}
     <div style="direction: rtl">
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         <!-- Code for large screens:
         - Displays images with text overlay using absolute positioning. -->
         <div class="d-none d-lg-flex flex-wrap rounded-4 m-3 align-items-center">
@@ -20,6 +24,10 @@
                 </div>
             </div>
         </div>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         <!-- Code for small screens:
         - Displays images with text below each image for better readability. -->
         <div class="d-flex flex-wrap mt-3 align-items-center">
@@ -32,6 +40,7 @@
                 <h1 class="m-2" style="color: black; font-family: 'Cairo', sans-serif;">واشتري الي تحتاجه</h1>
             </div>
         </div>
+<<<<<<< Updated upstream
         <div class="d-flex flex-row justify-content-between">
             <h1 style="color:var(--primary-custom-color)"> الفئات</h1>
             @if(Auth::user())
@@ -40,6 +49,16 @@
             <div></div>
             @endif
         </div>
+=======
+
+        @if(Auth::user())
+            <a href="{{route('category.index')}}" class="btn btn-blue rounded-start-5 my-3" style="float: left;background-color: #FECA81">اضافة اعلان<img class="mx-2" src="{{asset('assets/images/plus.png')}}" alt="#"></a>
+        @else
+
+        @endif
+        <br>
+        <h1 class="float-end" style="color:var(--primary-custom-color)"> الفئات</h1>
+>>>>>>> Stashed changes
         <div class="container mt-2">
             <div class="row align-items-start">
                 <div class="col-12">
@@ -48,6 +67,7 @@
 
                             <tr>
                                 @foreach($cat as $c)
+<<<<<<< Updated upstream
                                 <td>
                                     <div class="card" style="width: 8rem; height: 8rem; border: none;"> <!-- Reduced card size -->
                                         <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/Autos.png')}}" class="card-img-top img-fluid" alt="..."></a>
@@ -62,42 +82,88 @@
 {{--                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/sports.png')}}" class="card-img-top" alt="..."></a>--}}
 {{--                                        <div class="card-body">--}}
 {{--                                            <h5 style="font-size: 0.8rem;">رياضه</h5>--}}
+=======
+                                    <td>
+                                        <div class="card" style="width: 10rem; height: 10rem; border: none;">
+                                            <a href="#"><img style="width: 10rem;height: 6rem;" src="{{asset('assets/images/Autos.png')}} " class="card-img-top img-fluid" alt="..."></a>
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{$c->name}}</h5>
+                                            </div>
+                                        </div>
+                                    </td>
+                                @endforeach
+
+{{--                                <td>--}}
+{{--                                    <div class="card" style="width: 10rem; height: 10rem; border: none;">--}}
+{{--                                        <a href="#"><img style="width: 10rem;height: 6rem;" src="{{asset('assets/images/sports.png')}}" class="card-img-top" alt="..."></a>--}}
+{{--                                        <div class="card-body">--}}
+{{--                                            <h5 class="card-title">رياضه</h5>--}}
+>>>>>>> Stashed changes
 {{--                                        </div>--}}
 {{--                                    </div>--}}
 {{--                                </td>--}}
 {{--                                <td>--}}
+<<<<<<< Updated upstream
 {{--                                    <div class="card" style="width: 8rem; height: 8rem; border: none;"> <!-- Reduced card size -->--}}
 {{--                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/electronic.png')}}" class="card-img-top" alt="..."></a>--}}
 {{--                                        <div class="card-body">--}}
 {{--                                            <h5 style="font-size: 0.8rem;">الاكترونيات</h5>--}}
+=======
+{{--                                    <div class="card" style="width: 10rem; height: 10rem; border: none;">--}}
+{{--                                        <a href="#"><img  style="width: 10rem;height: 6rem;"  src="{{asset('assets/images/electronic.png')}}" class="card-img-top" alt="..."></a>--}}
+{{--                                        <div class="card-body">--}}
+{{--                                            <h5 class="card-title">الاكترونيات</h5>--}}
+>>>>>>> Stashed changes
 {{--                                        </div>--}}
 {{--                                    </div>--}}
 {{--                                </td>--}}
 {{--                                <td>--}}
+<<<<<<< Updated upstream
 {{--                                    <div class="card" style="width: 8rem; height: 8rem; border: none;"> <!-- Reduced card size -->--}}
 {{--                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/furniture.png')}}" class="card-img-top" alt="..."></a>--}}
 {{--                                        <div class="card-body">--}}
 {{--                                            <h5 style="font-size: 0.8rem;">الاثاث</h5>--}}
+=======
+{{--                                    <div class="card" style="width: 10rem; height: 10rem; border: none;">--}}
+{{--                                        <a href="#"><img  style="width: 10rem;height: 6rem;" src="{{asset('assets/images/furniture.png')}}" class="card-img-top" alt="..."></a>--}}
+{{--                                        <div class="card-body">--}}
+{{--                                            <h5 class="card-title">الاثاث</h5>--}}
+>>>>>>> Stashed changes
 {{--                                        </div>--}}
 {{--                                    </div>--}}
 {{--                                </td>--}}
 {{--                                <td>--}}
+<<<<<<< Updated upstream
 {{--                                    <div class="card" style="width: 8rem; height: 8rem; border: none;"> <!-- Reduced card size -->--}}
 {{--                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/houses.png')}}" class="card-img-top" alt="..."></a>--}}
 {{--                                        <div class="card-body">--}}
 {{--                                            <h5 style="font-size: 0.8rem;">عقارات</h5>--}}
+=======
+{{--                                    <div class="card" style="width: 10rem; height: 10rem; border: none;">--}}
+{{--                                        <a href="#"><img style="width: 10rem;height: 6rem;" src="{{asset('assets/images/houses.png')}}" class="card-img-top" alt="..."></a>--}}
+{{--                                        <div class="card-body">--}}
+{{--                                            <h5 class="card-title">عقارات</h5>--}}
+>>>>>>> Stashed changes
 {{--                                        </div>--}}
 {{--                                    </div>--}}
 {{--                                </td>--}}
 {{--                                <td>--}}
+<<<<<<< Updated upstream
 {{--                                    <div class="card" style="width: 8rem; height: 8rem; border: none;"> <!-- Reduced card size -->--}}
 {{--                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/motor.png')}}" class="card-img-top" alt="..."></a>--}}
 {{--                                        <div class="card-body">--}}
 {{--                                            <h5 style="font-size: 0.8rem;">مركبات</h5>--}}
+=======
+{{--                                    <div class="card" style="width: 10rem; height: 10rem; border: none;">--}}
+{{--                                        <a href="#"><img style="width: 10rem;height: 6rem;" src="{{asset('assets/images/motor.png')}}" class="card-img-top" alt="..."></a>--}}
+{{--                                        <div class="card-body">--}}
+{{--                                            <h5 class="card-title">مركبات</h5>--}}
+>>>>>>> Stashed changes
 {{--                                        </div>--}}
 {{--                                    </div>--}}
 {{--                                </td>--}}
 {{--                                <td>--}}
+<<<<<<< Updated upstream
 {{--                                    <div class="card" style="width: 8rem; height: 8rem; border: none;"> <!-- Reduced card size -->--}}
 {{--                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/women_s_fashion.png')}}" class="card-img-top" alt="..."></a>--}}
 {{--                                        <div class="card-body">--}}
@@ -106,6 +172,15 @@
 {{--                                    </div>--}}
 {{--                                </td>--}}
                                 @endforeach
+=======
+{{--                                    <div class="card" style="width: 10rem; height: 10rem; border: none;">--}}
+{{--                                        <a href="#"><img style="width: 10rem;height: 6rem;" src="{{asset('assets/images/women_s_fashion.png')}}" class="card-img-top" alt="..."></a>--}}
+{{--                                        <div class="card-body">--}}
+{{--                                            <h5 class="card-title">ازياء نسائية</h5>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </td>--}}
+>>>>>>> Stashed changes
                             </tr>
 
                         </table>
@@ -120,9 +195,12 @@
                 <input class="form-control rounded-4 ps-2" type="text" placeholder="ابحث هنا...">
             </form>
             <select class="form-select w-auto rounded-4">
-                <option>المدينة</option>
-                <option>القطن</option>
-                <option>سيئون</option>
+                <option>المحافظه</option>
+                @foreach($ra as $r)
+                    <option value="{{$r->id}}">{{$r->name}}</option>
+                @endforeach
+
+
             </select>
             <select class="form-select w-auto rounded-4">
                 <option>المنطقة</option>

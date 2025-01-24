@@ -39,12 +39,20 @@
             <div class="text-end m-2 d-block">
 
                 <h5 class="d-flex ">
+<<<<<<< Updated upstream
                     <div class="" ><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}"><label>{{$listings->region->name}}</label></div>
+=======
+                    <div class="" ><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}"><label>{{$ls->region->name}}</label></div>
+>>>>>>> Stashed changes
                     <div class="" style="margin-right: 40px"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}"><label>منذ 30 دقيقة</label></div>
                 </h5>
                 <h5 class="d-flex">
                     <div class=""><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}"><label>ابرهيم علي</label></div>
+<<<<<<< Updated upstream
                     <div class="mx-2"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}"><label>{{$listings->price}}</label></div>
+=======
+                    <div class="mx-2"><img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}"><label>{{$ls->price}}</label></div>
+>>>>>>> Stashed changes
                 </h5>
         </div>
     </div>
