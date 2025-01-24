@@ -100,3 +100,10 @@ input[type="number"]::-webkit-outer-spin-button {
     background-color: #A4C8E1; 
     transform: scale(1.1);
 }
+
+.add-ads-button {
+    transition: background-color 0.3s, transform 0.3s;
+}
+.add-ads-button:hover {
+    transform: scale(1.1); 
+}
