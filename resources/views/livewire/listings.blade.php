@@ -126,7 +126,7 @@
             </div>
 >>>>>>> Stashed changes
         </div>
-        
+
     </div>
 
     <div class="my-4 d-flex justify-content-center" >
