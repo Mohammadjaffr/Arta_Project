@@ -44,6 +44,10 @@
                     </tr>
                     <tr>
                         <td>
+                            <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}">
+                            <label>ابرهيم علي</label>
+                        </td>
+                        <td>
                             <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}">
                             <label>25000ريال سعودي</label>
                         </td>
@@ -55,7 +59,28 @@
             </div>
 
             <div class="col-12 col-lg-3 d-flex justify-content-center align-items-center mb-2 mb-lg-0">
-                <a href="{{url('show_info')}}" class="btn border text-white rounded-4 d-flex justify-content-center align-items-center" style="width: 100%; background-color: #97282A; height: 45px;">
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">هل أنت متأكد أنك ترغب في إزالة هذا الإعلان؟</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                هذه العملية لايمكن التراجع عنها
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">الغأء</button>
+                                <button type="button" class="btn btn-light text-white" style="background-color: #97282A">إزالة الإعلان</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="{{url('show_info')}}" class="btn  btn-light border text-white rounded-4 d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="width: 100%; background-color: #97282A; height: 45px;">
                     <h5 class="text-align-center m-0">حذف الاعلان</h5>
                 </a>
             </div>
