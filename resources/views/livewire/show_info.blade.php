@@ -33,10 +33,10 @@
                                 <img class="border rounded-3 image-preview" style="width: 80px; height: 60px; object-fit: cover;" src="{{ asset('assets/images/car.jpg') }}" alt="Preview 1" data-bs-target="#info_slid" data-bs-slide-to="0">
                             </div>
                             <div class="text-center">
-                                <img class="border rounded-3 image-preview" style="width: 80px; height: 60px; object-fit: cover; cursor: pointer;" src="{{ asset('assets/images/women_s_fashion.png') }}" alt="Preview 2" data-bs-target="#info_slid" data-bs-slide-to="1">
+                                <img class="border rounded-3 image-preview" style="width: 80px; height: 60px; object-fit: cover; " src="{{ asset('assets/images/women_s_fashion.png') }}" alt="Preview 2" data-bs-target="#info_slid" data-bs-slide-to="1">
                             </div>
                             <div class="text-center">
-                                <img class="border rounded-3 image-preview" style="width: 80px; height: 60px; object-fit: cover; cursor: pointer;" src="{{ asset('assets/images/car.jpg') }}" alt="Preview 3" data-bs-target="#info_slid" data-bs-slide-to="2">
+                                <img class="border rounded-3 image-preview" style="width: 80px; height: 60px; object-fit: cover;" src="{{ asset('assets/images/car.jpg') }}" alt="Preview 3" data-bs-target="#info_slid" data-bs-slide-to="2">
                             </div>
                         </div>
 

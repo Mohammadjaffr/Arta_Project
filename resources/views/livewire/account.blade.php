@@ -1,8 +1,7 @@
 @extends('layouts.master')
 @section('title', 'حسابي')
 @section('contact')
-    <div  style="background-image: url({{'assets/images/'}});background-repeat:repeat">
-        <div dir="rtl" class="container my-5">
+        <div dir="rtl" class="container">
 
                 <h3>تعديل الملف الشخصي</h3>
                 <div class="border rounded-3">
@@ -31,7 +30,6 @@
                         </a>
                     </div>
             </div>
-        </div>
     </div>
 @endsection
 
