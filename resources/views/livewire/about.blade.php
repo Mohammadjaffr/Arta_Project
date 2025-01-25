@@ -1,69 +1,72 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>من نحن - عرطة</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+@extends('layouts.master')
+@section('title', 'من نحن')
+@section('contact')
+
     <style>
-        /* تنسيق خاص للبطاقات */
-        .card:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        .hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+
         }
     </style>
-</head>
-<body>
-@include('layouts.navbar')
-<div class="container my-5" dir="rtl">
-    <h1 class="text-center mb-4">من نحن</h1>
-    <p class="lead text-center mb-5">مرحبًا بكم في موقع عرطة، منصتكم المفضلة للتواصل والمشاركة.</p>
 
-    <div class="row">
-        <div class="col-md-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title"><i class="fas fa-info-circle"></i> رؤيتنا</h5>
-                    <p class="card-text">نسعى إلى أن نكون المنصة الرائدة في مجال التواصل الاجتماعي وتبادل المعلومات، حيث يمكن للجميع التعبير عن آرائهم ومشاركة أفكارهم.</p>
+    <div id="d" class="container rounded-5 my-5" dir="rtl" style="background-color: rgba(188,210,218,0.69)">
+        <div class="">
+            <div class=" p-4">
+                <h1 class="text-center mb-4">من نحن</h1>
+                <p class="lead text-center">مرحبًا بكم في <strong>حراج</strong>، المنصة الأولى التي تهدف إلى تسهيل عملية البيع والشراء بين المستخدمين في [البلد أو المنطقة]. نحن نقدم لكم مساحة آمنة وسهلة الاستخدام للعثور على ما تبحثون عنه أو لعرض منتجاتكم وخدماتكم.</p>
+
+                <div class="row mt-4">
+                    <div class=" col-md-6 mb-4 hover-effect">
+                        <div class="h-100">
+                            <div class="">
+                                <h2><i class="fas fa-eye"></i> رؤيتنا</h2>
+                                <p>رؤيتنا هي أن نكون الوجهة الأولى للأفراد والشركات الذين يبحثون عن حلول سريعة وموثوقة للبيع والشراء في [البلد أو المنطقة].</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-6 mb-4 hover-effect">
+                        <div class="h-100">
+                            <div class="">
+                                <h2><i class="fas fa-bullseye"></i> مهمتنا</h2>
+                                <p>مهمتنا هي توفير منصة سهلة الاستخدام وآمنة تمكن المستخدمين من التواصل بسلاسة، مع ضمان تجربة مستخدم ممتازة وجودة عالية للخدمات المقدمة.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title"><i class="fas fa-users"></i> مهمتنا</h5>
-                    <p class="card-text">توفير بيئة آمنة ومريحة لكل المستخدمين، وتعزيز التواصل الفعال والمثمر بين الأفراد والمجتمعات.</p>
+
+                <div class="row mt-4">
+                    <div class="col-md-6 mb-4 hover-effect">
+                        <div class="h-100">
+                            <div class="">
+                                <h2><i class="fas fa-handshake"></i> قيمنا</h2>
+                                <p>نؤمن بالشفافية، الأمان، والجودة. نحرص على توفير بيئة آمنة ومريحة لجميع المستخدمين.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4 hover-effect">
+                        <div class="h-100">
+                            <div class="">
+                                <h2><i class="fas fa-users"></i> فريق العمل</h2>
+                                <p>نحن فريق من المحترفين الذين يعملون بجد لتطوير وتحسين المنصة لتلبية احتياجاتكم. نهدف دائمًا إلى تقديم أفضل الخدمات والدعم الفني.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-12 hover-effect">
+                        <div class="">
+                            <div class="">
+                                <h2><i class="fas fa-star"></i> لماذا نحن؟</h2>
+                                <p>نحن نتميز بسهولة الاستخدام، الأمان، والدعم الفني المتواصل. نقدم لكم تجربة فريدة ومميزة في عالم البيع والشراء.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title"><i class="fas fa-check-circle"></i> قيمنا</h5>
-                    <p class="card-text">نؤمن بالقيم الأساسية مثل النزاهة، الاحترام، والشفافية. نحن ملتزمون بتقديم محتوى ذو جودة عالية ومفيد للجميع.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title"><i class="fas fa-heart"></i> لماذا تختار عرطة؟</h5>
-                    <p class="card-text">لأننا نضع مستخدمينا في المقام الأول، ونقدم لهم كل ما يحتاجونه لتحقيق تجربة متميزة ومفيدة.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-@include('layouts.footer')
-</body>
-</html>
+@endsection
