@@ -9,7 +9,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse bg-light" id="navbarNavDropdown" style="position: absolute; top: 100%; left: 0; right: 0; z-index: 1000;">
+        <div class="collapse navbar-collapse bg-light" id="navbarNavDropdown" style="z-index: 1000;">
             <div class="mx-auto text-center">
                 <ul class="navbar-nav d-inline-flex">
                     <li>
