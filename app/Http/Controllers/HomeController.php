@@ -56,5 +56,10 @@ class HomeController extends Controller
     }
     public function account_show(){
         return view('livewire.account_show');
+    } public function contact(){
+        return view('livewire.contact');
+    }
+     public function about(){
+        return view('livewire.about');
     }
 }

@@ -7,11 +7,14 @@
                 <!-- Carousel Section -->
                 <div class="m-3 border rounded-3 ">
                     <div id="info_slid" class="carousel slide position-relative">
+                        <!-- Carousel Indicators -->
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#info_slid" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#info_slid" data-bs-slide-to="1" aria-label="Slide 2"></button>
                             <button type="button" data-bs-target="#info_slid" data-bs-slide-to="2" aria-label="Slide 3"></button>
                         </div>
+
+                        <!-- Carousel Inner -->
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img src="{{ asset('assets/images/car.jpg') }}" class="d-block w-100 img-fluid" style="height: 400px; object-fit: cover;" alt="...">
@@ -22,21 +25,22 @@
                             <div class="carousel-item">
                                 <img src="{{ asset('assets/images/car.jpg') }}" class="d-block w-100 img-fluid" style="height: 400px; object-fit: cover;" alt="...">
                             </div>
+                        </div>
 
-                            <!-- Image Previews -->
-                            <div class="text-center position-absolute" style="top: 70%; right: 1%;">
-                                <img class="border rounded-3 image-preview w-75" style="width: 120px; height: 100px; background-color: #C3C3C3; cursor: pointer;" src="{{ asset('assets/images/car.jpg') }}" alt="إضافة صورة">
-                                <input type="file" accept="image/*" style="display: none;">
+                        <!-- Image Previews -->
+                        <div class="position-absolute d-flex justify-content-center" style="bottom: 10px; right:-12%; transform: translateX(-50%); gap: 10px;">
+                            <div class="text-center">
+                                <img class="border rounded-3 image-preview" style="width: 80px; height: 60px; object-fit: cover;" src="{{ asset('assets/images/car.jpg') }}" alt="Preview 1" data-bs-target="#info_slid" data-bs-slide-to="0">
                             </div>
-                            <div class="text-center position-absolute" style="top: 70%; right: 13%;">
-                                <img class="border rounded-3 image-preview w-75" style="width: 120px; height: 100px; background-color: #C3C3C3; cursor: pointer;" src="{{ asset('assets/images/car.jpg') }}" alt="إضافة صورة">
-                                <input type="file" accept="image/*" style="display: none;">
+                            <div class="text-center">
+                                <img class="border rounded-3 image-preview" style="width: 80px; height: 60px; object-fit: cover; cursor: pointer;" src="{{ asset('assets/images/women_s_fashion.png') }}" alt="Preview 2" data-bs-target="#info_slid" data-bs-slide-to="1">
                             </div>
-                            <div class="text-center position-absolute" style="top: 70%; right: 25%;">
-                                <img class="border rounded-3 image-preview w-75" style="width: 120px; height: 100px; background-color: #C3C3C3; cursor: pointer;" src="{{ asset('assets/images/car.jpg') }}" alt="إضافة صورة">
-                                <input type="file" accept="image/*" style="display: none;">
+                            <div class="text-center">
+                                <img class="border rounded-3 image-preview" style="width: 80px; height: 60px; object-fit: cover; cursor: pointer;" src="{{ asset('assets/images/car.jpg') }}" alt="Preview 3" data-bs-target="#info_slid" data-bs-slide-to="2">
                             </div>
                         </div>
+
+                        <!-- Carousel Controls -->
                         <button class="carousel-control-prev" type="button" data-bs-target="#info_slid" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
@@ -45,39 +49,54 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
-                    </div>
-                </div>
+                    </div>                </div>
 
                 <!-- Ad Details Section -->
                 <div class="col-12 col-lg-7 my-2">
-                    <h4 class="text-xxl-end text-xl-end text-lg-end text-center mx-4">سياره تيوتا موديل 2006</h4>
-                    <div class="table-responsive">
-                        <table class="table table-responsive">
+                    <h4 class="text-xxl-end text-xl-end text-lg-end text-center mx-4">سيارة تويوتا موديل 2006</h4>
+
+                    <div class="table-responsive mt-3">
+                        <table class="table table-hover">
+                            <!-- الصف الأول: الموقع، الوقت، الحالة -->
                             <tr>
-                                <td>
-                                    <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}">
-                                    <label>{{$listings->region->name}}</label>
+                                <td class="align-middle">
+                                    <div class="d-flex align-items-center">
+                                        <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}" alt="موقع">
+                                        <label class="mb-0">{{$listings->region->name}}</label>
+                                    </div>
                                 </td>
-                                <td>
-                                    <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}">
-                                    <label>{{$listings->created_at}}</label>
+                                <td class="align-middle">
+                                    <div class="d-flex align-items-center">
+                                        <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}" alt="وقت">
+                                        <label class="mb-0">{{$listings->created_at}}</label>
+                                    </div>
                                 </td>
-                                <td>
-                                    <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/status_ads.png')}}">
-                                    <label>{{$listings->status}} </label>
+                                <td class="align-middle">
+                                    <div class="d-flex align-items-center">
+                                        <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/status_ads.png')}}" alt="حالة">
+                                        <label class="mb-0">{{$listings->status}}</label>
+                                    </div>
                                 </td>
                             </tr>
+
+                            <!-- الصف الثاني: المستخدم، السعر، الفئة -->
                             <tr>
-                                <td>
-                                    <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}">
-                                    <label>{{$listings->user->name}}</label>
+                                <td class="align-middle">
+                                    <div class="d-flex align-items-center">
+                                        <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}" alt="مستخدم">
+                                        <label class="mb-0">{{$listings->user->name}}</label>
+                                    </div>
                                 </td>
-                                <td>
-                                    <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}">
-                                    <label>{{$listings->price}}</label>
+                                <td class="align-middle">
+                                    <div class="d-flex align-items-center">
+                                        <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}" alt="سعر">
+                                        <label class="mb-0">{{$listings->price}}</label>
+                                    </div>
                                 </td>
-                                <td>
-                                    <span class="badge rounded-pill text-dark" style="background-color:var(--warning-custom-color); font-size: 0.875rem; padding: 0.25rem 0.5rem;">{{$listings->category->name}}</span>
+                                <td class="align-middle">
+                    <span class="badge rounded-pill text-dark" style="background-color:var(--warning-custom-color); font-size: 0.875rem; padding: 0.25rem 0.5rem;">
+                        {{$listings->category->name}}
+                    </span>
                                 </td>
                             </tr>
                         </table>
