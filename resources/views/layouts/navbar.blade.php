@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow" style="max-height: 120px" dir="rtl" id="navbar">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow" style="max-height: 120px; position: relative;" dir="rtl" id="navbar">
     <div class="container-fluid">
         <div class="d-flex flex-column align-items-center justify-content-between mt-1" style="width: 150px; height: 100px;">
             <img alt="icon" style="max-width: 150px; max-height: 200px; height:auto" src="{{asset('assets/images/icon.png')}}">
@@ -9,7 +9,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse bg-light"  id="navbarNavDropdown">
+        <div class="collapse navbar-collapse bg-light" id="navbarNavDropdown" style="position: absolute; top: 100%; left: 0; right: 0; z-index: 1000;">
             <div class="mx-auto text-center">
                 <ul class="navbar-nav d-inline-flex">
                     <li>
@@ -46,7 +46,6 @@
                 <a href="{{route('login')}}">
                     <button class="btn btn-primary border" style="font-size: 20px">تسجيل الدخول</button>
                 </a>
-
             </span>
         @endif
     </div>

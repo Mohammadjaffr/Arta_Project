@@ -1,12 +1,12 @@
 @extends('layouts.master')
 @section('title', 'المعلومات')
 @section('contact')
-    <div dir="rtl" style="margin-top: 150px;">
-        <div class="container my-4 w-50">
-            <div class="border rounded-4 w-100 w-md-75 w-lg-50 mx-auto" style="background-color: #f7FBFA">
+    <div dir="rtl" class=" mt-5">
+        <div class="container my-4 w-50 ">
+            <div class="border rounded-4 w-100 w-md-75 w-lg-50 mx-auto " style="background-color: #f7FBFA">
                 <!-- Carousel Section -->
-                <div class="m-3 border rounded-3">
-                    <div id="info_slid" class="carousel slide">
+                <div class="m-3 border rounded-3 ">
+                    <div id="info_slid" class="carousel slide position-relative">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#info_slid" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#info_slid" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -93,7 +93,7 @@
             </div>
 
             <!-- Action Buttons Section -->
-            <div dir="rtl" class="d-flex flex-wrap justify-content-center">
+            <div class="d-flex flex-wrap justify-content-center">
                 <a href="#" class="btn btn-light border rounded-3 d-flex p-2 m-2" style="background-color: #559FC1;">
                     <div class="mx-2"><img src="{{ asset('assets/images/Vector.png') }}" style="width: 30px; height: 30px;"></div>
                     <div>{{$listings->user->contact_number}}</div>
