@@ -13,7 +13,7 @@
         }
     </style>
 
-    <div id="d" class="container rounded-5 my-5" dir="rtl" style="background-color: rgba(255,255,255,0.36)">
+    <div  class="container rounded-5 my-5" dir="rtl" style="background-color: rgba(255,255,255,0.36)">
         <div class="">
             <div class="col-md-12 d ">
                 <div class="d rounded-3 hover-effect">

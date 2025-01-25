@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'تعديل الاسم')
+@section('title', 'اتصل بنا')
 @section('contact')
     <div class="my-5" dir="rtl">
         <!-- معلومات الاتصال -->
