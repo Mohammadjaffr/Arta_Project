@@ -17,7 +17,7 @@
             </div>
             <div class="col-12 col-md-6 d-flex flex-column align-items-md-end align-items-center justify-content-between">
                 <img alt="icon" style="max-width: 150px; max-height: 200px; height:auto" src="{{asset('assets/images/icon.png')}}">
-                <h3 class="me-4" style="color: var(--primary-custom-color);font-weight: bold; font-family: 'Tajawal', sans-serif;" >منصة عرطة</h3>
+                <h3 class="me-4 fw-bold" style="color: var(--primary-custom-color);font-family: 'Tajawal', sans-serif;" >منصة عرطة</h3>
             </div>
         </div>
         <div class="row text-center">
