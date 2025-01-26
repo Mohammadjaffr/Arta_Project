@@ -4,7 +4,6 @@
         <div class="col-lg-4 mt-1">    <img height="100px" width="200px" style="margin-right: 110px" src="{{asset('assets/images/icon.png')}}"></div>
         <h5 class="col-5 text-center mt-0 ms-4 " style="padding-top: 35%" >لا تفوت الفرصة، كن جزءًا  <br>من مجتمع المتسوقين الأذكياء</h5>
     </div>
-
     <div class="col-12 col-md-5 position-absolute container my-5 p-3 rounded-5 custom-shadow" style="background-color: #E7E7E7;min-width: 450px; max-width: 500px; max-height: fit-content;right: 15%">
         <div class="rounded-5 d-flex" style="background-color: rgba(1, 73, 107, 0.68)">
             <button onclick="changeUrl('/register');" wire:click="toggleFormRegister" class="btn w-50 text-white my-2 ms-2 rounded-5 {{ $showLogin ? '' : 'custom-bg-primary' }}">انشاء حساب</button>
@@ -192,11 +191,11 @@
             {{-- end login with apple and google --}}
 
     </div>
-    <div class=" d-none d-md-flex me-2 p-3 col-1 px-4">
+    {{-- <div class=" d-none d-sm-flex me-2 p-3 col-1 px-4">
         <a href="{{ url('/') }}" style="height: 45px; width: 45px;">
             <button class="rounded-circle" style="height: 45px; border: none; background-color: #D2E1E8; width: 45px;">
                 <img src="{{ asset('assets/images/chevron-right.svg') }}">
             </button>
         </a>
-    </div>
+    </div> --}}
 </div>
