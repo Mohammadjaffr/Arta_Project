@@ -9,7 +9,7 @@ use Mehradsadeghi\FilterQueryString\FilterQueryString;
 class listing extends Model
 {
     use HasFactory,FilterQueryString;
-    
+
     protected $fillable = [
         'title',
         'user_id',

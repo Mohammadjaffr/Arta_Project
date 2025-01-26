@@ -26,12 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $cat=$this->CategoryRepository->getParents();
-        $ra=$this->RegionRepository->getParents();
-
+        $category=$this->CategoryRepository->getParents();
+        $region=$this->RegionRepository->getParents();
         return view('home',[
-            'cat'=>$cat,
-            'ra'=>$ra,
+            'categories'=>$category,
+            'regions'=>$region,
         ]);
     }
     public function account(){

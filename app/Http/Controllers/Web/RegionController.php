@@ -5,6 +5,8 @@ namespace App\Http\Controllers\web;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\RegionRepository;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class RegionController extends Controller
 {
@@ -15,21 +17,22 @@ class RegionController extends Controller
     {
         //
     }
-    
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-    }
+        $regions_show=$this->RegionRepository->index();
+        $regions=$this->RegionRepository->getParents();
+        return view('add_new',compact('regions','regions_show'));    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('add_new');
     }
 
     /**
@@ -37,7 +40,16 @@ class RegionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => ['required','string'],
+            'parent_id' => ['nullable',Rule::exists('Regions','id')]
+        ]);
+        if ($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+         $this->RegionRepository->store((array)$request);
+        return redirect()->route('regions.index');
+
     }
 
     /**
