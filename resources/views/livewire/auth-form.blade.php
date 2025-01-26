@@ -1,11 +1,11 @@
-<div class="row">
-    <div class="col-md-5 d-none d-lg-flex row ">
+<div>
+    <div class="col-md-5 d-none d-lg-flex row position-absolute ">
         <div class="col-2 ">  <img style="width:100dvh ;min-height: 100vh;max-height: 120vh " src="{{asset('assets/images/backgroundlogin.png')}}"></div>
         <div class="col-lg-4 mt-1">    <img height="100px" width="200px" style="margin-right: 110px" src="{{asset('assets/images/icon.png')}}"></div>
         <h5 class="col-5 text-center mt-0 ms-4 " style="padding-top: 35%" >لا تفوت الفرصة، كن جزءًا  <br>من مجتمع المتسوقين الأذكياء</h5>
     </div>
 
-    <div class="col-12 col-md-5 container my-5 p-3 rounded-5 custom-shadow" style="background-color: #E7E7E7;min-width: 450px; max-width: 500px; max-height: fit-content">
+    <div class="col-12 col-md-5 position-absolute container my-5 p-3 rounded-5 custom-shadow" style="background-color: #E7E7E7;min-width: 450px; max-width: 500px; max-height: fit-content;right: 15%">
         <div class="rounded-5 d-flex" style="background-color: rgba(1, 73, 107, 0.68)">
             <button onclick="changeUrl('/register');" wire:click="toggleFormRegister" class="btn w-50 text-white my-2 ms-2 rounded-5 {{ $showLogin ? '' : 'custom-bg-primary' }}">انشاء حساب</button>
             <button onclick="changeUrl('/login');" wire:click="toggleFormLogin" class="btn w-50 text-white  my-2 me-2 rounded-5 {{ $showLogin ? 'custom-bg-primary' : '' }}">تسجيل الدخول</button>
