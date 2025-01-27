@@ -108,3 +108,14 @@ input[type="number"]::-webkit-outer-spin-button {
 .add-ads-button:hover {
     transform: scale(1.1); 
 }
+
+.custom-position {
+    position:static; 
+}
+  
+  
+@media (min-width: 576px) {
+    .custom-position {
+      position: absolute;
+    }
+}
