@@ -20,8 +20,8 @@
                     {{-- input Username OR Email --}}
                     <div class="form-group text-end my-2">
                         <label class="form-label me-3">اسم المستخدم أو البريد الإلكتروني</label>
-                        <input class="form-control py-2 rounded-4 custom-input " type="email" name="email" id="email" value="{{ old('email') }}" required>
-                        @error('email')
+                        <input class="form-control py-2 rounded-4 custom-input " type="text" name="login" value="{{ old('login') }}" required>
+                        @error('login')
                             <span class="alert alert-danger" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

@@ -49,7 +49,7 @@ class CategoryController extends Controller
         if ($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        $this->CategoryRepository->store($request);
+        $this->CategoryRepository->store($request->all());
         return redirect()->route('category.index');
 
     }
