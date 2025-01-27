@@ -191,11 +191,11 @@
             {{-- end login with apple and google --}}
 
     </div>
-    {{-- <div class=" d-none d-sm-flex me-2 p-3 col-1 px-4">
-        <a href="{{ url('/') }}" style="height: 45px; width: 45px;">
+     <div class=" d-none d-sm-flex me-2 p-3 col-1 px-4 float-end" style="top: 2%">
+        <a href="{{ url('/login') }}" style="height: 45px; width: 45px;">
             <button class="rounded-circle" style="height: 45px; border: none; background-color: #D2E1E8; width: 45px;">
                 <img src="{{ asset('assets/images/chevron-right.svg') }}">
             </button>
         </a>
-    </div> --}}
+    </div>
 </div>

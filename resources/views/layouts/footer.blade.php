@@ -1,4 +1,4 @@
-<footer class="bg-light py-4">
+<footer dir="ltr" class="bg-light py-4">
     <div class="container">
         <div class="row m-0 justify-content-between align-items-center">
             <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-start mb-3 mb-md-4">

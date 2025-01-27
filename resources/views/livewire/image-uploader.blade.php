@@ -18,7 +18,7 @@
                     <!-- حقل رفع الملف المخفي -->
                     <input id="fileInput" wire:model="mainImage" type="file" accept="image/*" style="display: none;"
                            onchange="previewImage(event)">
-                    
+
                 </div>
             </div>
             <div class="d-flex flex-wrap justify-content-evenly mt-3">
