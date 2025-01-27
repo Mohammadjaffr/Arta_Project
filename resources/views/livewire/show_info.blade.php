@@ -17,7 +17,8 @@
                         <!-- Carousel Inner -->
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset('assets/images/car.jpg') }}" class="d-block w-100 img-fluid" style="height: 400px; object-fit: cover;" alt="...">
+                                <img src="#" class="d-block w-100 img-fluid" style="height: 400px; object-fit: cover;" alt="...">
+
                             </div>
                             <div class="carousel-item">
                                 <img src="{{ asset('assets/images/women_s_fashion.png') }}" class="d-block w-100 img-fluid" style="height: 400px; object-fit: cover;" alt="...">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\web\CategoryController;
 
+use App\Http\Controllers\web\RegionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,7 @@ Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])-
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
 Route::get('/account_show', [App\Http\Controllers\HomeController::class, 'account_show'])->name('account_show');
 Route::resource('/category' ,CategoryController::class);
+Route::resource('/region' ,RegionController::class);
 
 
 
