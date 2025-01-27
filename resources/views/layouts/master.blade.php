@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+<!doctype html >
+<html dir="rtl" lang="en">
 @extends('layouts.head')
 <body>
 @include('layouts.navbar')
