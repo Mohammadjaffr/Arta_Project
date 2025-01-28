@@ -24,7 +24,7 @@
                         @endif
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5 mx-2" @if(request()->is('home')) style="color: var(--primary-custom-color);font-weight: bold;" @endif href="{{ url('/home') }}">الرئيسية</a>
+                        <a class="nav-link fs-5 mx-2" @if(request()->is('/')) style="color: var(--primary-custom-color);font-weight: bold;" @endif href="{{ url('/') }}">الرئيسية</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-5 mx-2"@if(request()->is('about')) style="color: var(--primary-custom-color);font-weight: bold;" @endif href="{{ url('about') }}">من نحن</a>
