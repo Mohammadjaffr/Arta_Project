@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="ar">
+<html lang="ar">
 @extends('layouts.head')
 <body style="overflow-x: hidden">
-        <div class="col-md-5 d-none d-lg-flex row float-start" style="left: 1%;top: -1%;">
-            <div class="col-2 ">  <img style="width:100vh ;min-height: 100vh;max-height: 112vh " src="{{asset('assets/images/backgroundlogin.png')}}"></div>
-            <div class="col-lg-4 mt-1">    <img height="100px" width="200px" style="margin-right: 110px" src="{{asset('assets/images/icon.png')}}"></div>
-            <h5 class="col-5 text-center mt-0 ms-4 " style="padding-top: 35%" >لا تفوت الفرصة، كن جزءًا  <br>من مجتمع المتسوقين الأذكياء</h5>
-        </div>
-        <div class="col-12 col-md-5 container my-5 p-3 rounded-5 custom-shadow position-absolute" style="background-color: #E7E7E7;min-width: 450px; max-width: 500px; max-height: fit-content; right: 20%;top: 3%;">
+    <div class="col-md-5 d-none d-lg-flex row custom-position ">
+        <div class="col-2 ">  <img style="width:100dvh ;min-height: 100vh;max-height: 120vh " src="{{asset('assets/images/backgroundlogin.png')}}"></div>
+        <div class="col-lg-4 mt-1">    <img height="100px" width="200px" style="margin-right: 110px" src="{{asset('assets/images/icon.png')}}"></div>
+        <h5 class="col-5 text-center mt-0 ms-4 d-xl-flex d-none" style="padding-top: 35%" >لا تفوت الفرصة، كن جزءًا  <br>من مجتمع المتسوقين الأذكياء</h5>
+    </div>
+    <div class="col-10 col-lg-5 custom-position container my-5 p-3 rounded-5 custom-shadow" style="background-color: #E7E7E7;min-width: 469px; max-width: 500px; max-height: fit-content;right: 15%">
             <form class="my-1 mx-3 p-2">
 
                 <div class="text-end my-3 me-3 "> <h2>هل نسيت كلمة المرور؟</h2></div>
@@ -32,8 +32,8 @@
             </div>
 
         </div>
-        <div class=" d-none position-absolute d-md-flex me-2 p-3 col-1 px-4" style="top: 2%; right: 8%;">
-            <a href="{{ url('/login') }}" style="height: 45px; width: 45px;">
+        <div class="col-sm-2 col-lg-1 d-none d-sm-flex me-2 p-3 col-1 px-4 float-end" style="top: 2%">
+            <a href="{{ url('/') }}" style="height: 45px; width: 45px;">
                 <button class="rounded-circle" style="height: 45px; border: none; background-color: #D2E1E8; width: 45px;">
                     <img src="{{ asset('assets/images/chevron-right.svg') }}">
                 </button>
