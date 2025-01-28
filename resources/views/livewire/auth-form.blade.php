@@ -1,7 +1,7 @@
 <div>
-    <div class="col-md-5 d-none d-lg-flex row custom-position ">
-        <div class="col-2 ">  <img style="width:100dvh ;min-height: 100vh;max-height: 120vh " src="{{asset('assets/images/backgroundlogin.png')}}"></div>
-        <div class="col-lg-4 mt-1">    <img height="100px" width="200px" style="margin-right: 110px" src="{{asset('assets/images/icon.png')}}"></div>
+    <div class="col-md-5 row custom-position ">
+        <div class="col-2  d-none d-md-flex d-lg-inline">  <img style="width:100dvh ;min-height: 100vh;max-height: 120vh " src="{{asset('assets/images/backgroundlogin.png')}}"></div>
+        <div class="col-lg-4 d-none d-lg-flex mt-1">    <img height="100px" width="200px" style="margin-right: 110px" src="{{asset('assets/images/icon.png')}}"></div>
         <h5 class="col-5 text-center mt-0 ms-4 d-xl-flex d-none" style="padding-top: 35%" >لا تفوت الفرصة، كن جزءًا  <br>من مجتمع المتسوقين الأذكياء</h5>
     </div>
     <div class="col-10 col-lg-5 custom-position container my-5 p-3 rounded-5 custom-shadow" style="background-color: #E7E7E7;min-width: 469px; max-width: 500px; max-height: fit-content;right: 15%">
