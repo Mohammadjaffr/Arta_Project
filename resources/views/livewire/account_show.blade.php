@@ -15,7 +15,7 @@
 
             <!-- اسم المستخدم وأيقونة التعديل -->
             <div class="d-flex justify-content-center align-items-center mt-3">
-                <a href="{{url('account')}}" class="me-2">
+                <a href="{{url('edit_account')}}" class="me-2">
                     <img src="{{'assets/images/pen.png'}}" alt="Edit Icon" class="img-fluid" style="width: 40px; height: 40px;">
                 </a>
                 <h5 class="m-0">محمد سالم</h5>

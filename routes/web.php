@@ -18,10 +18,7 @@ Route::get('/add', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/account', [App\Http\Controllers\HomeController::class, 'account'])->name('account');
-Route::get('/edit_name', [App\Http\Controllers\HomeController::class, 'edit_name'])->name('edit_name');
-Route::get('/edit_email', [App\Http\Controllers\HomeController::class, 'edit_email'])->name('edit_email');
-Route::get('/edit_password', [App\Http\Controllers\HomeController::class, 'edit_password'])->name('edit_password');
-Route::get('/edit_number', [App\Http\Controllers\HomeController::class, 'edit_number'])->name('edit_number');
+Route::get('/edit_account', [App\Http\Controllers\HomeController::class, 'edit_account'])->name('edit_account');
 Route::get('/show_info/{id}', [App\Http\Controllers\HomeController::class, 'show_info'])->name('show_info');
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
