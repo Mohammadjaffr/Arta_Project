@@ -7,8 +7,11 @@ use Livewire\Component;
 class AuthForm extends Component
 {
     public $showLogin;
-    public $showPassword = false;
     public $showConfirmePassword = false;
+    public $type="password";
+    public $icon="eye";
+    public $typeConfirmePassword="password";
+    public $iconConfirmePassword="eye";
 
     public function mount()
     {
@@ -16,12 +19,14 @@ class AuthForm extends Component
     }
     public function togglePassword()
     {
-        $this->showPassword = !$this->showPassword;
+        $this->type = $this->type === "password" ? "text" : "password";
+        $this->icon = $this->type === "text" ? "eye-off" : "eye";
     }
 
     public function toggleConfirmePassword()
     {
-        $this->showConfirmePassword=!$this->showConfirmePassword;
+        $this->typeConfirmePassword= $this->typeConfirmePassword==="password" ? "text" : "password";
+        $this->iconConfirmePassword = $this->typeConfirmePassword === "text" ? "eye-off" : "eye";
     }
 
     public function toggleFormLogin()

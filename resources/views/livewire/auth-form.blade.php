@@ -33,13 +33,8 @@
                     <div class="form-group text-end my-2">
                         <label class="form-label me-3">كلمة المرور</label>
                         <div class="d-flex align-items-center position-relative">
-                            @if ($showPassword)
-                                <input class="form-control rounded-4 py-2 custom-input @error('password') is-invalid @enderror" type="text" name="password" id="password" required autocomplete="current-password">
-                                <img wire:click="togglePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/images/eye-off.svg')}}">
-                            @else
-                                <input class="form-control rounded-4 py-2 custom-input @error('password') is-invalid @enderror" type="password" name="password" id="password" required autocomplete="current-password">
-                                <img wire:click="togglePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/images/eye.svg')}}">
-                            @endif
+                            <input class="form-control rounded-4 py-2 custom-input @error('password') is-invalid @enderror" type="{{$type}}" name="password" id="password" required autocomplete="current-password">
+                            <img wire:click="togglePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{ asset('assets/images/'. $icon .'.svg') }}" alt="{{ $icon }} icon">
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -102,25 +97,15 @@
                         <div class="form-group text-end my-2 col-6">
                             <label class="form-label me-3">إعادة كتابة كلمة المرور</label>
                             <div class="d-flex align-items-center position-relative">
-                            @if ($showConfirmePassword)
-                            <input class="form-control rounded-4 py-2 @error('password') border-red @else custom-input @enderror" name="password_confirmation" type="text" required>
-                            <img wire:click="toggleConfirmePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/images/eye-off.svg')}}">
-                            @else
-                            <input class="form-control rounded-4 py-2 @error('password') border-red @else custom-input @enderror" name="password_confirmation" type="password" required>
-                            <img wire:click="toggleConfirmePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/images/eye.svg')}}">
-                            @endif
+                                <input class="form-control rounded-4 py-2 @error('password') border-red @else custom-input @enderror" name="password_confirmation" type="{{$typeConfirmePassword}}" required>
+                                <img wire:click="toggleConfirmePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{ asset('assets/images/'. $iconConfirmePassword .'.svg') }}" alt="{{ $iconConfirmePassword }} icon">
                             </div>
                         </div>
                         <div class="form-group text-end my-2 col-6">
                             <label class="form-label me-3">كلمة المرور </label>
                             <div class="d-flex align-items-center position-relative">
-                            @if ($showPassword)
-                            <input class="form-control rounded-4 py-2 @error('password') border-red @else custom-input @enderror" name="password" type="text" required>
-                            <img wire:click="togglePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/images/eye-off.svg')}}">
-                            @else
-                            <input class="form-control rounded-4 py-2 @error('password') border-red @else custom-input @enderror" name="password" type="password" required>
-                            <img wire:click="togglePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{asset('assets/images/eye.svg')}}">
-                            @endif
+                                <input class="form-control rounded-4 py-2 @error('password') border-red @else custom-input @enderror" name="password" type="{{$type}}" required>
+                                <img wire:click="togglePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{ asset('assets/images/'. $icon .'.svg') }}" alt="{{ $icon }} icon">
                             </div>
                         </div>
                         @error('password')
