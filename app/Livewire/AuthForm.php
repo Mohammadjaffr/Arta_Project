@@ -7,7 +7,6 @@ use Livewire\Component;
 class AuthForm extends Component
 {
     public $showLogin;
-    public $showConfirmePassword = false;
     public $type="password";
     public $icon="eye";
     public $typeConfirmePassword="password";
