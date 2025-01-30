@@ -9,8 +9,6 @@ class AuthForm extends Component
     public $showLogin;
     public $showPassword = false;
     public $showConfirmePassword = false;
-    public $enteraccount=true;
-
 
     public function mount()
     {
@@ -35,12 +33,7 @@ class AuthForm extends Component
     {
         $this->showLogin = false;
     }
-    public function toaccess()
-    {
-        $this->enteraccount=true;
-    }
-
-
+   
     public function render()
     {
         return view('livewire.auth-form');
