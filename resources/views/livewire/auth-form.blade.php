@@ -6,8 +6,8 @@
     </div>
     <div class="col-10 col-lg-5 custom-position container my-5 p-3 rounded-5 custom-shadow" style="background-color: #E7E7E7;min-width: 469px; max-width: 500px; max-height: fit-content;right: 15%">
         <div class="rounded-5 d-flex" style="background-color: rgba(1, 73, 107, 0.68)">
-            <button onclick="changeUrl('/register');" wire:click="toggleFormRegister" class="btn w-50 text-white my-2 ms-2 rounded-5 {{ $showLogin ? '' : 'custom-bg-primary' }}">انشاء حساب</button>
-            <button onclick="changeUrl('/login');" wire:click="toggleFormLogin" class="btn w-50 text-white  my-2 me-2 rounded-5 {{ $showLogin ? 'custom-bg-primary' : '' }}">تسجيل الدخول</button>
+            <button onclick="changeUrl('/register');" wire:click="toggleForm(false)" class="btn w-50 text-white my-2 ms-2 rounded-5 {{ $showLogin ? '' : 'custom-bg-primary' }}">انشاء حساب</button>
+            <button onclick="changeUrl('/login');" wire:click="toggleForm(true)" class="btn w-50 text-white  my-2 me-2 rounded-5 {{ $showLogin ? 'custom-bg-primary' : '' }}">تسجيل الدخول</button>
         </div>
             @if($showLogin)
             <div class="text-end my-3 me-5 text-black-50">
@@ -34,7 +34,7 @@
                         <label class="form-label me-3">كلمة المرور</label>
                         <div class="d-flex align-items-center position-relative">
                             <input class="form-control rounded-4 py-2 custom-input @error('password') is-invalid @enderror" type="{{$type}}" name="password" id="password" required autocomplete="current-password">
-                            <img wire:click="togglePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{ asset('assets/images/'. $icon .'.svg') }}" alt="{{ $icon }} icon">
+                            <img wire:click="togglePassword('password')" style="position: absolute; right: 15px; cursor: pointer;" src="{{ asset('assets/images/'. $icon .'.svg') }}" alt="{{ $icon }} icon">
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -98,14 +98,14 @@
                             <label class="form-label me-3">إعادة كتابة كلمة المرور</label>
                             <div class="d-flex align-items-center position-relative">
                                 <input class="form-control rounded-4 py-2 @error('password') border-red @else custom-input @enderror" name="password_confirmation" type="{{$typeConfirmePassword}}" required>
-                                <img wire:click="toggleConfirmePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{ asset('assets/images/'. $iconConfirmePassword .'.svg') }}" alt="{{ $iconConfirmePassword }} icon">
+                                <img wire:click="togglePassword('password_confirmation')" style="position: absolute; right: 15px; cursor: pointer;" src="{{ asset('assets/images/'. $iconConfirmePassword .'.svg') }}" alt="{{ $iconConfirmePassword }} icon">
                             </div>
                         </div>
                         <div class="form-group text-end my-2 col-6">
                             <label class="form-label me-3">كلمة المرور </label>
                             <div class="d-flex align-items-center position-relative">
                                 <input class="form-control rounded-4 py-2 @error('password') border-red @else custom-input @enderror" name="password" type="{{$type}}" required>
-                                <img wire:click="togglePassword" style="position: absolute; right: 15px; cursor: pointer;" src="{{ asset('assets/images/'. $icon .'.svg') }}" alt="{{ $icon }} icon">
+                                <img wire:click="togglePassword('password')" style="position: absolute; right: 15px; cursor: pointer;" src="{{ asset('assets/images/'. $icon .'.svg') }}" alt="{{ $icon }} icon">
                             </div>
                         </div>
                         @error('password')

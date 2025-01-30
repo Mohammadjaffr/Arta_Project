@@ -16,28 +16,32 @@ class AuthForm extends Component
     {
         $this->showLogin = request()->is('login');
     }
-    public function togglePassword()
+    
+    public function togglePassword($field)
     {
-        $this->type = $this->type === "password" ? "text" : "password";
-        $this->icon = $this->type === "text" ? "eye-off" : "eye";
+        if ($field === 'password') {
+            $this->type = $this->type === "password" ? "text" : "password";
+            $this->icon = $this->type === "text" ? "eye-off" : "eye";
+        } else {
+            $this->typeConfirmePassword = $this->typeConfirmePassword === "password" ? "text" : "password";
+            $this->iconConfirmePassword = $this->typeConfirmePassword === "text" ? "eye-off" : "eye";
+        }
     }
 
-    public function toggleConfirmePassword()
+    public function toggleForm($isLogin)
     {
-        $this->typeConfirmePassword= $this->typeConfirmePassword==="password" ? "text" : "password";
-        $this->iconConfirmePassword = $this->typeConfirmePassword === "text" ? "eye-off" : "eye";
+        $this->resetFields();
+        $this->showLogin = $isLogin;
     }
 
-    public function toggleFormLogin()
+    protected function resetFields()
     {
-        $this->showLogin = true;
+        $this->type = "password";
+        $this->icon = "eye";
+        $this->typeConfirmePassword = "password";
+        $this->iconConfirmePassword = "eye";
     }
 
-    public function toggleFormRegister()
-    {
-        $this->showLogin = false;
-    }
-   
     public function render()
     {
         return view('livewire.auth-form');
