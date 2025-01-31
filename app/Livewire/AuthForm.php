@@ -30,16 +30,8 @@ class AuthForm extends Component
 
     public function toggleForm($isLogin)
     {
-        $this->resetFields();
+        $this->reset(['type','icon','typeConfirmePassword','iconConfirmePassword']);
         $this->showLogin = $isLogin;
-    }
-
-    protected function resetFields()
-    {
-        $this->type = "password";
-        $this->icon = "eye";
-        $this->typeConfirmePassword = "password";
-        $this->iconConfirmePassword = "eye";
     }
 
     public function render()
