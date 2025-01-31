@@ -8,9 +8,7 @@ use Livewire\Component;
 
 class Listings extends Component
 {
-
     private ListingRepository $ListingRepository;
-
     public function  mount(ListingRepository $ListingRepository)
     {
         $this->ListingRepository = $ListingRepository;

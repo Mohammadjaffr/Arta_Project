@@ -3,11 +3,7 @@
         @foreach($listings as $listing)
             <div class="row listing px-0 my-4 shadow">
                 <div class="col-12 col-lg-2 text-center my-2">
-                    @if($listing->images->isNotEmpty())
-                        <img class="img-fluid" src="{{ $listing->images->first()->path }}" alt="#" style="max-height: 150px; min-height: 150px;">
-                    @else
-                        <p>لا توجد صورة</p> <!-- رسالة بديلة إذا لم توجد صور -->
-                    @endif
+                    <img class="img-fluid" src="{{ $listing->primary_image }}" alt="#" style="max-height: 150px; min-height: 150px;"> 
                 </div>
                 <div class="col-12 col-lg-7 my-2">
                     <h4 class="text-xxl-end text-xl-end text-lg-end text-center" >{{$listing->title}}</h4>
@@ -19,7 +15,7 @@
                             </td>
                             <td>
                                 <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}">
-                                <label>{{$listing->created_at}}</label>
+                                <label>{{ $listing->created_at->diffForHumans() }}</label>
                             </td>
                             <td>
                                 <img  class="mx-1" style="width: 20px;" src="{{asset('assets/images/status_ads.png')}}">
