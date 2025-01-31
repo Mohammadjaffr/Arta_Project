@@ -38,13 +38,18 @@
 
 
         @if(Auth::user())
+
             <div class="dropdown ">
-                <a class="btn btn-primary " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-bars"></i>
+                <a class="btn btn-light mx-4 px-5 text-white " style="background-color: #01496B" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{Auth::user()->name}}
                 </a>
 
                 <ul class="dropdown-menu ">
-                    <a class="link fw-bold text-decoration-none p-0 mx-2" href="{{route('account_show')}}" style="border: none; background: none; font-size: 20px">{{Auth::user()->name}}</a>
+                    <li><a class="dropdown-item" href="{{route('account_show')}}">
+                            <img class="ms-2" src="{{asset('assets/images/person.png')}}" alt="" style="width: 40px; height: 40px; border-radius: 50%;">
+                                <span>البروفايل</span>
+                        </a>
+                    </li>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
                             class="bx bx-log-out"></i> تسجيل خروج</a>
@@ -61,7 +66,6 @@
                 </a>
             </span>
         @endif
-
 
     </div>
 
