@@ -36,11 +36,24 @@
             </div>
         </div>
 
+
         @if(Auth::user())
-            <span class="d-none d-lg-flex align-items-center mx-4">
-                <a class="link fw-bold text-decoration-none p-0 mx-2" href="{{route('account_show')}}" style="border: none; background: none; font-size: 20px">{{Auth::user()->name}}</a>
-                <img class="ms-2" src="{{asset('assets/images/person.png')}}" alt="" style="width: 82px; height: 82px; border-radius: 50%;">
-            </span>
+            <div class="dropdown ">
+                <a class="btn btn-primary " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </a>
+
+                <ul class="dropdown-menu ">
+                    <a class="link fw-bold text-decoration-none p-0 mx-2" href="{{route('account_show')}}" style="border: none; background: none; font-size: 20px">{{Auth::user()->name}}</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                            class="bx bx-log-out"></i> تسجيل خروج</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </ul>
+            </div>
+
         @else
             <span class="d-none d-lg-flex align-items-center mx-4">
                 <a href="{{route('login')}}">
@@ -48,5 +61,8 @@
                 </a>
             </span>
         @endif
+
+
     </div>
+
 </nav>
