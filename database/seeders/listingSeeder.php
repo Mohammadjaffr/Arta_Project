@@ -23,5 +23,16 @@ class listingSeeder extends Seeder
             'status'=>'جديد',
             'primary_image'=>'assets/listing_images/cars.png'
         ]);
+
+        listing::create([
+            'title'=>'بيت جميل جدا جدا',
+            'user_id'=>1,
+            'description'=>'بيت يتكون من غرفتين وحمام ومطبخ',
+            'price'=>'40000',
+            'category_id'=>28,
+            'region_id'=>5,
+            'status'=>'جديد',
+            'primary_image'=>'assets/listing_images/houses.png'
+        ]);
     }
 }
