@@ -54,6 +54,11 @@ class PermissionSeeder extends Seeder
             
             ['id' => 31, 'name' => 'assignRole', 'display_name' => 'تعيين دور'],
             ['id' => 32, 'name' => 'revokeRole', 'display_name' => 'سحب دور'],
+
+            ['id' => 33, 'name' => 'create-Currency', 'display_name' => 'إنشاء عمله'],
+            ['id' => 34, 'name' => 'destroy-Currency', 'display_name' => 'حذف عمله'],
+            ['id' => 35, 'name' => 'view-Currency', 'display_name' => 'عرض عمله'],
+            ['id' => 36, 'name' => 'update-Currency', 'display_name' => 'تعديل عمله'],
             
         ];
         DB::table('permissions')->insert($Permissions);

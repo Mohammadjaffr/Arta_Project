@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->text('description');
             $table->decimal('price', 10, 2);
+            $table->foreignId('currency_id')->constrained('currencies')->onDelete('cascade');
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->foreignId('region_id')->constrained('regions')->onDelete('cascade');
             $table->enum('status', ['جديد', 'شبه جديد', 'مستعمل']);

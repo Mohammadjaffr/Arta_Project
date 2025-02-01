@@ -10,6 +10,7 @@ use App\Http\Controllers\API\ListingController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\Auth\RoleController;
 use App\Http\Controllers\API\ComplaintController;
+use App\Http\Controllers\API\CurrencyController;
 use App\Http\Controllers\API\Auth\UserAuthController;
 use App\Http\Controllers\API\Auth\PermissionController;
 
@@ -24,6 +25,7 @@ Route::middleware(['check.auth'])->group(function () {
     Route::post('/listing', [ListingController::class, 'store']);
     Route::put('/listing/{id}', [ListingController::class, 'update']);
     Route::apiResource('/category',CategoryController::class)->except(['index','show']);
+    Route::apiResource('/currency',CurrencyController::class)->except(['update','show']);
     Route::apiResource('/region',RegionController::class)->except(['index','show']);
     Route::apiResource('/user',UserController::class)->except(['store']);
     Route::apiResource('/comment',CommentController::class)->only(['store','delete']);
