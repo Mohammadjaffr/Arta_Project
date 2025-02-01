@@ -57,18 +57,15 @@
                          style="width: 50px; height: 50px; border-radius: 50%; margin-top: 5px;">
                 </div>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" 
-                   href="#" 
-                   data-toggle="modal" 
-                   data-target="#logoutModal" 
-                   style="transition: background-color 0.3s;">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    تسجيل خروج
-                </a>
+                <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                    @csrf
+                    <button type="submit" class="dropdown-item">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        تسجيل خروج
+                    </button>
+                </form>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" 
-                   href="{{route('account_show')}}" 
-                   style="transition: background-color 0.3s;">
+                <a class="dropdown-item" href="{{route('account_show')}}" >
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     ملفي الشخصي
                 </a>
