@@ -51,11 +51,12 @@ class CurrencyController extends Controller
             $validator = validator::make($request->all(),[
                 'code'=>['required','string','max:10',Rule::unique('currencies','code')],
                 'name'=>['required','string','max:50'],
+                'abbr'=>['required','string','max:10'],
             ]);
             if ($validator->fails()){
                 return ApiResponseClass::sendValidationError($validator->errors());
             }
-            $Currency=$this->CurrencyRepository->store($request->only(['code', 'name']));
+            $Currency=$this->CurrencyRepository->store($request->only(['code', 'name','abbr']));
             return ApiResponseClass::sendResponse($Currency,'Currency saved successfully.');
         } catch (Exception $e) {
             return ApiResponseClass::sendError('Error save Currency: ' . $e->getMessage());

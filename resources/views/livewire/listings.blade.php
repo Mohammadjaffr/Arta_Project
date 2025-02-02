@@ -29,7 +29,7 @@
                             </td>
                             <td>
                                 <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}">
-                                <label>{{$listing->price}} ( {{$listing->currency->name}} )</label>
+                                <label>{{$listing->price}} ( {{$listing->currency->abbr}} )</label>
                             </td>
                             <td>
                                 <span class="badge rounded-pill text-dark" style="background-color:var(--warning-custom-color); font-size: 0.875rem; padding: 0.25rem 0.5rem;">{{$listing->category->name}}</span>

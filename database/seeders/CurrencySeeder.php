@@ -14,10 +14,12 @@ class CurrencySeeder extends Seeder
     public function run(): void
     {
         $currencies = [
-            ['code' => 'SAR', 'name' => 'ر.س'],
-            ['code' => 'USD', 'name' => 'دولار'],
-            ['code' => 'YER_OLD', 'name' => 'ر.ي.ق'],
-            ['code' => 'YER_NEW', 'name' => 'ر.ي.ج'],
+            ['code' => 'SAR', 'name' => 'الريال السعودي', 'abbr' => 'ر.س'],
+            ['code' => 'USD', 'name' => 'الدولار الأمريكي', 'abbr' => 'دولار'],
+            ['code' => 'YER_OLD', 'name' => 'الريال اليمني القديم', 'abbr' => 'ر.ي.ق'],
+            ['code' => 'YER_NEW', 'name' => 'الريال اليمني الجديد', 'abbr' => 'ر.ي.ج'],
+            ['code' => 'OMR', 'name' => 'الريال العماني', 'abbr' => 'ر.ع.'],
+            ['code' => 'AED', 'name' => 'الدرهم الإماراتي', 'abbr' => 'د.إ'],
         ];
 
         foreach ($currencies as $currency) {
