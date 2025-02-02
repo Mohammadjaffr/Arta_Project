@@ -17,7 +17,7 @@ class CurrencyRepository implements RepositoriesInterface
     
     public function index() : \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
-        return Currency::filter()->paginate(10);
+        return Currency::paginate(10);
     }
     
     public function getById($id) : Currency

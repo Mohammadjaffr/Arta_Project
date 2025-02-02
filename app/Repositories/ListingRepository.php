@@ -45,7 +45,7 @@ class ListingRepository implements RepositoriesInterface
             }
         }
 
-        return $query->with(['user:id,name','category:id,name','region:id,name','images','comments.user','currency:code,name'])->filter()->paginate(10);
+        return $query->with(['user:id,name','category:id,name','region:id,name','images','comments.user','currency:id,code,name'])->filter()->paginate(10);
     }
 
     public function getById($id) : listing
