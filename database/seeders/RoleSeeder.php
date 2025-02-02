@@ -24,6 +24,6 @@ class RoleSeeder extends Seeder
         Role::create(
             ['name'=>'user',
             'display_name'=>'مستخدم']
-        )->permissions()->attach([9,10,11,21,25,27,28,29,30]);
+        )->permissions()->attach([9,10,11,21,25,27,28,29,30,35]);
     }
 }
