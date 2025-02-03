@@ -31,7 +31,7 @@
     <!-- الشعار والاسم -->
     <div class="position-absolute my-3 my-md-4" style="width: 25vh; height: auto; left: 1%;">
         <img alt="icon" style="max-width: 100%; height: auto;" src="{{asset('assets/images/icon.png')}}">
-        <h3 style="color:white; font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 2rem; ">منصة عرطة</h3>
+        <h3 style="color:black; font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 2rem; ">منصة عرطة</h3>
     </div>
 </div>
 
