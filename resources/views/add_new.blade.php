@@ -12,26 +12,26 @@
 </head>
 
 <body>
-<div class="d-flex">
+<div class="d-flex ">
     <!-- الصورة الخلفية -->
-    <img class="w-100" style="height: 20vh; object-fit: cover;" src="{{asset('assets/images/navbar_add_ads.png')}}">
+    <img class="w-100" style="height: 25vh; object-fit: cover;" src="{{asset('assets/images/navbar_add_ads.png')}}">
 
     <!-- زر الرجوع -->
-    <div class="position-absolute p-2 p-md-3 py-4 ">
+    <div class="position-absolute p-3 ">
         <a href="{{route('home')}}" class="btn btn-light p-2 " style="border-radius: 50%; ">
-            <img src="{{asset('assets/images/chevron-right.svg')}}" class="" alt="back" style="width: 50px; height: 50px;">
+            <img src="{{asset('assets/images/chevron-right.svg')}}" class="" alt="back" style="width: 40px; height: 40px;">
         </a>
     </div>
 
     <!-- العنوان -->
-    <div class="position-absolute p-2 p-md-3 py-5 mt-3" style="left: 50%; transform: translateX(-50%);">
+    <div class="position-absolute mt-5" style="left: 50%; transform: translateX(-50%);">
         <h2 class="mb-0" style="font-size: 2rem; font-weight: bold;">إضافة إعلان</h2>
     </div>
 
     <!-- الشعار والاسم -->
-    <div class="position-absolute my-3 my-md-4" style="width: 20vh; height: auto; left: 1%;">
+    <div class="position-absolute my-3 my-md-4" style="width: 25vh; height: auto; left: 1%;">
         <img alt="icon" style="max-width: 100%; height: auto;" src="{{asset('assets/images/icon.png')}}">
-        <h3 style="color: var(--primary-custom-color); font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 2rem; ">منصة عرطة</h3>
+        <h3 style="color:white; font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 2rem; ">منصة عرطة</h3>
     </div>
 </div>
 
