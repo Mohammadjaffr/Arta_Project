@@ -25,11 +25,11 @@
 
     <!-- العنوان -->
     <div class="position-absolute mt-5" style="left: 50%; transform: translateX(-50%);">
-        <h2 class="mb-0" style="font-size: 2rem; font-weight: bold;">إضافة إعلان</h2>
+        <h2 class="mb-0" style="color:black; font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 2rem; ">إضافة إعلان</h2>
     </div>
 
     <!-- الشعار والاسم -->
-    <div class="position-absolute my-3 my-md-4" style="width: 25vh; height: auto; left: 1%;">
+    <div class="position-absolute my-3 my-md-4 d-none d-sm-inline" style="width: 25vh; height: auto; left: 1%;">
         <img alt="icon" style="max-width: 100%; height: auto;" src="{{asset('assets/images/icon.png')}}">
         <h3 style="color:black; font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 2rem; ">منصة عرطة</h3>
     </div>
