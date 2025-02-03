@@ -15,6 +15,7 @@ class listing extends Model
         'user_id',
         'description',
         'price',
+        'currency_id',
         'category_id',
         'region_id',
         'status',
@@ -50,5 +51,10 @@ class listing extends Model
 
     public function complaints(){
         return $this->hasMany(Complaint::class);
+    }
+
+    public function currency()
+    {
+        return $this->belongsTo(Currency::class);
     }
 }

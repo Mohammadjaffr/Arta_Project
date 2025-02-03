@@ -49,6 +49,7 @@ class ListingController extends Controller
                 'title'=>['required','string','max:255'],
                 'description'=>['required','string'],
                 'price'=>['required','numeric','between:0,99999999.99'],
+                'currency_id'=>['required',Rule::exists('currencies','id')],
                 'category_id'=>['required',Rule::exists('categories','id')->where(function ($query){return $query->where('parent_id', '!=', null);})],
                 'region_id'=>['required',Rule::exists('regions','id')->where(function ($query){return $query->where('parent_id', '!=', null);})],
                 'status'=>['required','in:جديد,شبه جديد,مستعمل'],
@@ -69,8 +70,6 @@ class ListingController extends Controller
         } catch (Exception $e) {
             return ApiResponseClass::sendError('Error save Listing: ' . $e->getMessage());
         }
-        
-
     }
 
     /**
@@ -100,6 +99,7 @@ class ListingController extends Controller
                 'title'=>['sometimes','string','max:255'],
                 'description'=>['sometimes','string'],
                 'price'=>['sometimes','numeric','between:0,99999999.99'],
+                'currency_id'=>['sometimes',Rule::exists('currencies','id')],
                 'category_id'=>['sometimes',Rule::exists('categories','id')->where(function ($query){return $query->where('parent_id', '!=', null);})],
                 'region_id'=>['sometimes',Rule::exists('regions','id')->where(function ($query){return $query->where('parent_id', '!=', null);})],
                 'status'=>['sometimes','in:جديد,شبه جديد,مستعمل'],

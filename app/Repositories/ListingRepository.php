@@ -45,12 +45,12 @@ class ListingRepository implements RepositoriesInterface
             }
         }
 
-        return $query->with(['user:id,name,username,email,contact_number,whatsapp_number','category:id,name','region:id,name','images','comments.user'])->filter()->paginate(10);
+        return $query->with(['user:id,name','category:id,name','region:id,name','images','comments.user','currency:id,code,name,abbr'])->filter()->paginate(10);
     }
 
     public function getById($id) : listing
     {
-        return listing::with(['user','category','region','images','comments'])->findOrFail($id);
+        return listing::with(['user','category','region','images','comments','currency'])->findOrFail($id);
     }
 
     public function store(array $data) : listing

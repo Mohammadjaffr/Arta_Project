@@ -123,7 +123,7 @@
         {{-- end search--}}
     </div>
     {{-- end contact--}}
-    @livewire('listings')
+    @livewire('listings',['lazy'=>true])
 </div>
 
 @endsection

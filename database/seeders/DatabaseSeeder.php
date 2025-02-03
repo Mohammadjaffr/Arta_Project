@@ -25,7 +25,9 @@ class DatabaseSeeder extends Seeder
             RegionSeeder::class,
             PermissionSeeder::class,
             RoleSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            CurrencySeeder::class,
+            listingSeeder::class
         ]);
     }
 }
