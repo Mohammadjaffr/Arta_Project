@@ -53,57 +53,35 @@
                     </div>                </div>
 
                 <!-- Ad Details Section -->
-                <div class="col-12 col-lg-7 my-2">
-                    <h4 class="text-xxl-end text-xl-end text-lg-end text-center mx-4">سيارة تويوتا موديل 2006</h4>
-
-                    <div class="table-responsive mt-3">
-                        <table class="table table-hover">
-                            <!-- الصف الأول: الموقع، الوقت، الحالة -->
-                            <tr>
-                                <td class="align-middle">
-                                    <div class="d-flex align-items-center">
-                                        <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}" alt="موقع">
-                                        <label class="mb-0">{{$listings->region->name}}</label>
-                                    </div>
-                                </td>
-                                <td class="align-middle">
-                                    <div class="d-flex align-items-center">
-                                        <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}" alt="وقت">
-                                        <label class="mb-0">{{$listings->created_at}}</label>
-                                    </div>
-                                </td>
-                                <td class="align-middle">
-                                    <div class="d-flex align-items-center">
-                                        <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/status_ads.png')}}" alt="حالة">
-                                        <label class="mb-0">{{$listings->status}}</label>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <!-- الصف الثاني: المستخدم، السعر، الفئة -->
-                            <tr>
-                                <td class="align-middle">
-                                    <div class="d-flex align-items-center">
-                                        <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}" alt="مستخدم">
-                                        <label class="mb-0">{{$listings->user->name}}</label>
-                                    </div>
-                                </td>
-                                <td class="align-middle">
-                                    <div class="d-flex align-items-center">
-                                        <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}" alt="سعر">
-                                        <label class="mb-0">{{$listings->price}}</label>
-                                    </div>
-                                </td>
-                                <td class="align-middle">
-                    <span class="badge rounded-pill text-dark" style="background-color:var(--warning-custom-color); font-size: 0.875rem; padding: 0.25rem 0.5rem;">
-                        {{$listings->category->name}}
-                    </span>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
+                <table class="table border-none">
+                    <tr >
+                        <td >
+                            <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Map Point.png')}}">
+                            <label>{{$listings->region->name}}</label>
+                        </td>
+                        <td>
+                            <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/time.png')}}">
+                            <label>{{ $listings->created_at->diffForHumans() }}</label>
+                        </td>
+                        <td>
+                            <img  class="mx-1" style="width: 20px;" src="{{asset('assets/images/status_ads.png')}}">
+                            <label>{{$listings->status}} </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: none">
+                            <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/User Rounded.png')}}">
+                            <label>{{$listings->user->name}}</label>
+                        </td>
+                        <td style="border: none">
+                            <img class="mx-1" style="width: 20px;" src="{{asset('assets/images/Dollar Minimalistic.png')}}">
+                            <label>{{$listings->price}} ( {{$listings->currency->abbr}} )</label>
+                        </td>
+                        <td style="border: none" >
+                            <span class="badge rounded-pill text-dark" style="background-color:var(--warning-custom-color); font-size: 0.875rem; padding: 0.25rem 0.5rem;">{{$listings->category->name}}</span>
+                        </td>
+                    </tr>
+                </table>            </div>
 
             <!-- Ad Description Section -->
             <div class="p-2 my-3">

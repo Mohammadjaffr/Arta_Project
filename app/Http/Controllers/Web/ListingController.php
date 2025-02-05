@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\web;
 
+use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\ListingRepository;
@@ -11,17 +12,19 @@ class ListingController extends Controller
    /**
      * Create a new class instance.
     */
-    public function __construct(private ListingRepository $ListingRepository)
+    public function __construct(private ListingRepository $ListingRepository,private CategoryRepository $CategoryRepository)
     {
         //
     }
-     
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $categories = $this->CategoryRepository->index();
+        return view('add_new', compact('categories'));
+
     }
 
     /**
@@ -29,7 +32,7 @@ class ListingController extends Controller
      */
     public function create()
     {
-        //
+        return view('add_new');
     }
 
     /**
@@ -37,7 +40,7 @@ class ListingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
