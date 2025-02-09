@@ -111,38 +111,62 @@
             </div>
 
             <!-- Comment Section -->
-            <div class="m-3">
-                <div class="w-100 h-75 border rounded-4 my-2 p-3 p-md-5">
-                    fsgsg
-                </div>
-                <button style="background-color: #559FC1" type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
-                    <img style="width: 30px;" src="{{asset('assets/images/Plain.png') }}">
-                    اضافة تعليق
-                </button>
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">اضافة تعليق</h1>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="mb-3">
-                                        <label for="recipient-name" class="col-form-label">{{$listings->user->name}}</label>
+            <div class="container mt-3">
+                <h2>التعليقات</h2>
+
+                @if ($listings->comments->isNotEmpty())
+                    <div class="row">
+                        @foreach ($listings->comments as $comment)
+                            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                                <div class="comment-box shadow-hover p-3 border rounded">
+                                    <h5 class="mb-0">{{ $comment->user->name }}</h5>
+                                    <p>{{ $comment->content }}</p>
+                                    <div class="text-muted">
+                                        <small>تم النشر في {{ $comment->created_at->format('d M Y - H:i') }}</small>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="message-text" class="col-form-label"></label>
-                                        <textarea class="form-control" id="message-text"></textarea>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">الغأ</button>
-                                <button type="button" class="btn btn-primary w-25">ارسال</button>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
-                </div>
+
+                    {{-- زر "عرض المزيد" --}}
+                    <div class="text-center">
+                        <button wire:click="loadMore" class="btn btn-primary mt-3">عرض المزيد</button>
+                    </div>
+
+                    {{-- عرض روابط الصفحات --}}
+                    <div class="mt-3">
+{{--                        {{ $comment->links() }} {{-- عرض روابط التصفح --}}
+                    </div>
+                @else
+                    <div class="alert alert-warning" role="alert">
+                        لا توجد تعليقات على هذا الإعلان.
+                    </div>
+                @endif
+            </div>
+
+            <style>
+                .comment-box {
+                    transition: transform 0.2s, box-shadow 0.2s;
+                }
+
+                .shadow-hover {
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                }
+
+                .comment-box:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                }
+            </style>
+
+
+
+                @if($listings->user->name)
+                    <livewire:add-comment :listingId="$listings->id" />
+                @else
+
+                @endif
             </div>
         </div>
     </div>
