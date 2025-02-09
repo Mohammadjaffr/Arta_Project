@@ -39,7 +39,8 @@
     <!-- النموذج -->
     <div dir="rtl" class="row justify-content-center">
         <div class="col-12 col-lg-6 p-lg-5">
-            @livewire('add-listing')
+{{--            @livewire('add-listing')--}}
+            @include('livewire.add-listing2')
         </div>
     </div>
 

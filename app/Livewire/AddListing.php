@@ -61,12 +61,13 @@ class AddListing extends Component
         $this->reset(['status', 'category_id', 'currency_id', 'region_id', 'title', 'description', 'price', 'primary_image']);
         // إرسال رسالة نجاح
         session()->flash('message', 'تم نشر الإعلان بنجاح!');
+        return redirect()->to('/livewire.add-listing');
     }
 
 
     public function render()
     {
-        $categories = $this->CategoryRepository->getParents();
+        $categories = $this->CategoryRepository->index();
         $Regions = $this->RegionRepository->getParents();
         $currencies= $this->CurrencyRepository->index();
         return view('livewire.add-listing', compact( 'categories','currencies','Regions'));
