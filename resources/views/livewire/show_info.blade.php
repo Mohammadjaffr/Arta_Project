@@ -162,12 +162,13 @@
 
 
 
-                @if($listings->user->name)
+                @if(Auth::user())
                     <livewire:add-comment :listingId="$listings->id" />
-                @else
 
+                @else
+                <div></div>
                 @endif
             </div>
-        </div>
+
     </div>
 @endsection
