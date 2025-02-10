@@ -13,18 +13,25 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label class="col-form-label">{{ $listing->user->name}}</label>
+                            <label class="col-form-label">{{ $listing->user->name }}</label>
                         </div>
                         <div class="mb-3">
-                            <textarea wire:model="content" name="content" class="form-control" placeholder="اكتب تعليقك هنا..."></textarea>                        </div>
+                            <textarea wire:model="content" name="content" class="form-control" placeholder="اكتب تعليقك هنا..."></textarea>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">الغاء</button>
+                    <button id="cancelButton" type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">الغاء</button>
                     <button wire:click.prevent="addComment" type="button" class="btn btn-primary w-25">ارسال</button>
                 </div>
             </div>
         </div>
     </div>
+    
 
 </div>
+<script>
+    window.addEventListener('close-modal', event => {
+        document.getElementById('cancelButton').click(); 
+    });
+</script>

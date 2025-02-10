@@ -85,10 +85,10 @@
 
             <!-- Ad Description Section -->
             <div class="p-2 my-3">
-
                 <h2 class="mb-2">تفاصيل الاعلان</h2>
                 <p>{{$listings->description}}</p>
             </div>
+             <!-- End Ad Description Section -->
 
             <!-- Action Buttons Section -->
             <div class="d-flex flex-wrap justify-content-center">
@@ -111,64 +111,12 @@
             </div>
 
             <!-- Comment Section -->
-            <div class="container mt-3">
-                <h2>التعليقات</h2>
-
-                @if ($listings->comments->isNotEmpty())
-                    <div class="row">
-                        @foreach ($listings->comments as $comment)
-                            <div class="col-12 col-md-6 col-lg-4 mb-3">
-                                <div class="comment-box shadow-hover p-3 border rounded">
-                                    <h5 class="mb-0">{{ $comment->user->name }}</h5>
-                                    <p>{{ $comment->content }}</p>
-                                    <div class="text-muted">
-                                        <small>تم النشر في {{ $comment->created_at->format('d M Y - H:i') }}</small>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-
-                    {{-- زر "عرض المزيد" --}}
-                    <div class="text-center">
-                        <button wire:click="loadMore" class="btn btn-primary mt-3">عرض المزيد</button>
-                    </div>
-
-                    {{-- عرض روابط الصفحات --}}
-                    <div class="mt-3">
-{{--                        {{ $comment->links() }} {{-- عرض روابط التصفح --}}
-                    </div>
-                @else
-                    <div class="alert alert-warning" role="alert">
-                        لا توجد تعليقات على هذا الإعلان.
-                    </div>
-                @endif
-            </div>
-
-            <style>
-                .comment-box {
-                    transition: transform 0.2s, box-shadow 0.2s;
-                }
-
-                .shadow-hover {
-                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                }
-
-                .comment-box:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-                }
-            </style>
-
-
-
+            <livewire:show-comment :listingId="$listings->id" />
                 @if(Auth::user())
                     <livewire:add-comment :listingId="$listings->id" />
-
-                @else
-                <div></div>
                 @endif
-            </div>
+            <!-- End Comment Section -->
+            
 
     </div>
 @endsection

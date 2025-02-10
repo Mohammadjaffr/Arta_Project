@@ -107,9 +107,10 @@ class ListingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $listings=$this->ListingRepository->getById($id);
+        return view('show_info',compact('listings'));
     }
 
     /**

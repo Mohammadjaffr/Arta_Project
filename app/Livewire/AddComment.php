@@ -20,6 +20,7 @@ class AddComment extends Component
     public function __construct()
     {
         $this->CommentRepository = new CommentRepository();
+        $this->listingRepository = new listingRepository();
     }
     public function mount($listingId,ListingRepository $listingRepository)
     {
@@ -31,7 +32,7 @@ class AddComment extends Component
     {
         if (empty($this->content)) {
             session()->flash('error', 'يرجى كتابة تعليق قبل الإرسال.');
-
+            return ;
         }
         $data=[  
             'user_id' => Auth::id(),
@@ -43,8 +44,10 @@ class AddComment extends Component
         $this->reset('content');
 
         // رسالة نجاح
-        session()->flash('message', 'تم إضافة التعليق بنجاح.');
-        return redirect()->to('/show_info/' . $this->listingId);
+        session()->flash('addComment', 'تم إضافة التعليق بنجاح.');
+        
+        $this->dispatch('close-modal');
+        $this->dispatch('refresh-comment');
     }
 
     public function render()
