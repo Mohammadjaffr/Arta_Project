@@ -15,6 +15,12 @@ class AddComment extends Component
     public $content;
     public $listingId;
     private ListingRepository $listingRepository;
+    private CommentRepository $CommentRepository;
+
+    public function __construct()
+    {
+        $this->CommentRepository = new CommentRepository();
+    }
     public function mount($listingId,ListingRepository $listingRepository)
     {
         $this->listingId = $listingId;
@@ -27,12 +33,12 @@ class AddComment extends Component
             session()->flash('error', 'يرجى كتابة تعليق قبل الإرسال.');
 
         }
-
-        Comment::create([
+        $data=[  
             'user_id' => Auth::id(),
             'listing_id' => $this->listingId,
             'content' => $this->content,
-        ]);
+        ];
+        $this->CommentRepository->store($data);
 
         $this->reset('content');
 
