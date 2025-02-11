@@ -4,53 +4,23 @@
     <div dir="rtl" class=" mt-5">
         <div class="container my-4 w-50 ">
             <div class="border rounded-4 w-100 w-md-75 w-lg-50 mx-auto " style="background-color: #f7FBFA">
-                <!-- Carousel Section -->
-                <div class="m-3 border rounded-3 ">
-                    <div id="info_slid" class="carousel slide position-relative">
-                        <!-- Carousel Indicators -->
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#info_slid" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#info_slid" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#info_slid" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        </div>
-
-                        <!-- Carousel Inner -->
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="#" class="d-block w-100 img-fluid" style="height: 400px; object-fit: cover;" alt="...">
-
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('assets/images/women_s_fashion.png') }}" class="d-block w-100 img-fluid" style="height: 400px; object-fit: cover;" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('assets/images/car.jpg') }}" class="d-block w-100 img-fluid" style="height: 400px; object-fit: cover;" alt="...">
-                            </div>
-                        </div>
-
-                        <!-- Image Previews -->
-                        <div class="position-absolute d-flex justify-content-center" style="bottom: 10px; right:-12%; transform: translateX(-50%); gap: 10px;">
-                            <div class="text-center">
-                                <img class="border rounded-3 image-preview" style="width: 80px; height: 60px; object-fit: cover;" src="{{ asset('assets/images/car.jpg') }}" alt="Preview 1" data-bs-target="#info_slid" data-bs-slide-to="0">
-                            </div>
-                            <div class="text-center">
-                                <img class="border rounded-3 image-preview" style="width: 80px; height: 60px; object-fit: cover; " src="{{ asset('assets/images/women_s_fashion.png') }}" alt="Preview 2" data-bs-target="#info_slid" data-bs-slide-to="1">
-                            </div>
-                            <div class="text-center">
-                                <img class="border rounded-3 image-preview" style="width: 80px; height: 60px; object-fit: cover;" src="{{ asset('assets/images/car.jpg') }}" alt="Preview 3" data-bs-target="#info_slid" data-bs-slide-to="2">
-                            </div>
-                        </div>
-
-                        <!-- Carousel Controls -->
-                        <button class="carousel-control-prev" type="button" data-bs-target="#info_slid" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#info_slid" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>                </div>
+               <!-- Carousel Section -->
+               <div class="my-3">
+                <div id="main-image" class="text-center mb-3">
+                    <img src="{{ asset('assets/images/car.jpg') }}" class="img-fluid rounded-3 shadow-lg" style="height: 400px; object-fit: cover;" alt="Main Image">
+                </div>
+                <div class="d-flex justify-content-center gap-2">
+                    <div class="text-center">
+                        <img class="border rounded-3 image-preview" style="width: 80px; height: 60px; object-fit: cover; cursor: pointer;" src="{{ asset('assets/images/car.jpg') }}" alt="Preview 1" data-full-image="{{ asset('assets/images/car.jpg') }}">
+                    </div>
+                    <div class="text-center">
+                        <img class="border rounded-3 image-preview" style="width: 80px; height: 60px; object-fit: cover; cursor: pointer;" src="{{ asset('assets/images/women_s_fashion.png') }}" alt="Preview 2" data-full-image="{{ asset('assets/images/women_s_fashion.png') }}">
+                    </div>
+                    <div class="text-center">
+                        <img class="border rounded-3 image-preview" style="width: 80px; height: 60px; object-fit: cover; cursor: pointer;" src="{{ asset('assets/images/car.jpg') }}" alt="Preview 3" data-full-image="{{ asset('assets/images/car.jpg') }}">
+                    </div>
+                </div>
+            </div>
 
                 <!-- Ad Details Section -->
                 <table class="table border-none">
@@ -118,3 +88,17 @@
 
     </div>
 @endsection
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const mainImage = document.getElementById('main-image').querySelector('img');
+    const previewImages = document.querySelectorAll('.image-preview');
+    previewImages.forEach((img) => {
+        img.addEventListener('click', () => {
+            previewImages.forEach(preview => preview.classList.remove('hidden'));
+            mainImage.src = img.getAttribute('data-full-image');
+            img.classList.add('hidden');
+        });
+    });
+});
+</script>
