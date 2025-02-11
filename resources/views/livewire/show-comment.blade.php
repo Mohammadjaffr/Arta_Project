@@ -2,15 +2,18 @@
     <div class="container mt-3">
         <h2>التعليقات</h2>
         @if ($Comments->isNotEmpty())
-            <div class="row">
+            <div class="comments-section mt-2 p-1">
                 @foreach ($Comments as $comment)
-                    <div class="col-12 col-md-6 col-lg-4 mb-3">
-                        <div class="comment-box shadow-hover p-3 border rounded">
-                            <h5 class="mb-0">{{ $comment->user->name }}</h5>
-                            <p>{{ $comment->content }}</p>
-                            <div class="text-muted">
-                                <small>تم النشر في {{ $comment->created_at->format('d M Y - H:i') }}</small>
+                    <div class="comment-card p-4 mb-3">
+                        <div class="user-info d-flex align-items-center mb-3">
+                            <img src="{{asset('assets/images/person.png')}}" alt="صورة المستخدم">
+                            <div class="d-flex flex-column">
+                                <span class="user-name fw-bold">{{$comment->user->name}}</span>
+                                <span class="comment-date">{{ $comment->created_at->translatedFormat('j F Y - H:i')}}</span>
                             </div>
+                        </div>
+                        <div class="comment-content">
+                            <p>{{$comment->content}}</p>
                         </div>
                     </div>
                 @endforeach

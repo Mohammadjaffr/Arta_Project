@@ -26,10 +26,13 @@ class AddComment extends Component
 
     public function addComment()
     {
-        if (empty($this->content)) {
-            session()->flash('error', 'يرجى كتابة تعليق قبل الإرسال.');
-            return ;
-        }
+        $this->validate([
+            'content'=>['required','string']
+        ]);
+        // if (empty($this->content)) {
+        //     session()->flash('error', 'يرجى كتابة تعليق قبل الإرسال.');
+        //     return ;
+        // }
         $data=[  
             'user_id' => Auth::id(),
             'listing_id' => $this->listingId,
@@ -41,7 +44,6 @@ class AddComment extends Component
 
         // رسالة نجاح
         session()->flash('addComment', 'تم إضافة التعليق بنجاح.');
-        
         $this->dispatch('close-modal');
         $this->dispatch('refresh-comment');
     }
