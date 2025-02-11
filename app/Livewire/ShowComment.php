@@ -3,27 +3,20 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Repositories\ListingRepository;
 use Livewire\Attributes\On;
+use App\Models\Comment;
 
 class ShowComment extends Component
 {
     public $listingId;
-    private ListingRepository $listingRepository;
-    public function __construct()
-    {
-        $this->listingRepository= new listingRepository();
-    }
-
-    public function mount($listingId,ListingRepository $listingRepository)
+    public function mount($listingId)
     {
         $this->listingId = $listingId;
-        $this->listingRepository = $listingRepository;
     }
     #[On('refresh-comment')]
     public function render()
     {
-        $listing = $this->listingRepository->getById($this->listingId);
-        return view('livewire.show-comment' , compact('listing'));
+        $Comments= Comment::where('listing_id',$this->listingId)->get();
+        return view('livewire.show-comment' , compact('Comments'));
     }
 }

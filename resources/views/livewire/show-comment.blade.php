@@ -1,9 +1,9 @@
 <div>
     <div class="container mt-3">
         <h2>التعليقات</h2>
-        @if ($listing->comments->isNotEmpty())
+        @if ($Comments->isNotEmpty())
             <div class="row">
-                @foreach ($listing->comments as $comment)
+                @foreach ($Comments as $comment)
                     <div class="col-12 col-md-6 col-lg-4 mb-3">
                         <div class="comment-box shadow-hover p-3 border rounded">
                             <h5 class="mb-0">{{ $comment->user->name }}</h5>

@@ -13,7 +13,7 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label class="col-form-label">{{ $listing->user->name }}</label>
+                            <label class="col-form-label">{{ Auth::user()->name }}</label>
                         </div>
                         <div class="mb-3">
                             <textarea wire:model="content" name="content" class="form-control" placeholder="اكتب تعليقك هنا..."></textarea>

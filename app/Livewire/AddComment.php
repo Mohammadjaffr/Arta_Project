@@ -5,7 +5,6 @@ namespace App\Livewire;
 use App\Models\Comment;
 use App\Models\listing;
 use App\Repositories\CommentRepository;
-use App\Repositories\ListingRepository;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -14,18 +13,15 @@ class AddComment extends Component
 
     public $content;
     public $listingId;
-    private ListingRepository $listingRepository;
     private CommentRepository $CommentRepository;
 
     public function __construct()
     {
         $this->CommentRepository = new CommentRepository();
-        $this->listingRepository = new listingRepository();
     }
-    public function mount($listingId,ListingRepository $listingRepository)
+    public function mount($listingId)
     {
         $this->listingId = $listingId;
-        $this->listingRepository = $listingRepository;
     }
 
     public function addComment()
@@ -51,7 +47,7 @@ class AddComment extends Component
     }
 
     public function render()
-    {   $listing = $this->listingRepository->getById($this->listingId);
-        return view('livewire.add-comment', compact('listing'));
+    {  
+        return view('livewire.add-comment');
     }
 }
