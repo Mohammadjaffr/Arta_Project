@@ -104,10 +104,8 @@
                     <div class="mx-2"><img src="{{ asset('assets/images/whatsapp.png') }}" style="width: 30px; height: 30px;"></div>
                     <div>{{$listings->user->whatsapp_number}}</div>
                 </a>
-                <a href="#" class="btn btn-light border rounded-3 p-2 d-flex m-2" style="background-color: #559FC1">
-                    <div class="mx-2"><img src="{{ asset('assets/images/Dislike.png') }}" style="width: 30px; height: 30px;"></div>
-                    <div>التبليغ عن الاعلان</div>
-                </a>
+                <livewire:add-complaint :listingId="$listings->id" />
+
             </div>
 
             <!-- Comment Section -->
@@ -145,21 +143,6 @@
                 @endif
             </div>
 
-            <style>
-                .comment-box {
-                    transition: transform 0.2s, box-shadow 0.2s;
-                }
-
-                .shadow-hover {
-                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                }
-
-                .comment-box:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-                }
-            </style>
-
 
 
                 @if(Auth::user())
@@ -172,3 +155,18 @@
 
     </div>
 @endsection
+
+<style>
+    .comment-box {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .shadow-hover {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .comment-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+</style>
