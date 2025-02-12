@@ -1,5 +1,5 @@
 <div>
-    <button style="background-color: #559FC1" type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button style="background-color: #559FC1" type="button" class="btn btn-light mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <img style="width: 30px;" src="{{ asset('assets/images/Plain.png') }}">
         اضافة تعليق
     </button>

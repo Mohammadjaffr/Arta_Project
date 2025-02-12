@@ -1,9 +1,9 @@
 <div>
     <div class="container mt-3">
         <h2>التعليقات</h2>
-        @if ($Comments->isNotEmpty())
-            <div class="comments-section mt-2 p-1">
-                @foreach ($Comments as $comment)
+        @if ($comments->isNotEmpty())
+            <div class="comments-section mt-3 p-1">
+                @foreach ($comments as $comment)
                     <div class="comment-card p-4 mb-3">
                         <div class="user-info d-flex align-items-center mb-3">
                             <img src="{{asset('assets/images/person.png')}}" alt="صورة المستخدم">
@@ -18,14 +18,16 @@
                     </div>
                 @endforeach
             </div>
-            {{-- زر "عرض المزيد" --}}
-            <div class="text-center">
-                <button wire:click="loadMore" class="btn btn-primary mt-3">عرض المزيد</button>
-            </div>
         @else
             <div class="alert alert-warning" role="alert">
                 لا توجد تعليقات على هذا الإعلان.
             </div>
+        @endif
+
+        @if($showLoadMore)
+        <div class="text-center">
+            <button wire:click="loadMoreComments" class="btn btn-primary mt-3">عرض المزيد</button>
+        </div>
         @endif
     </div>
 </div>
