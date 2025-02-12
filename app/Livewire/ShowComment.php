@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Comment;
 use Livewire\Component;
 use Livewire\Attributes\On;
 use App\Repositories\CommentRepository;
@@ -24,7 +25,8 @@ class ShowComment extends Component
     #[On('refresh-comment')]
     public function render()
     {
-        $commentsQuery = $this->CommentRepository->getByListingID($this->listingId);
+        $commentsQuery = Comment::where('listing_id', $this->listingId)
+        ->orderBy('created_at', 'desc');
         $totalComments = $commentsQuery->count();
         $comments = $commentsQuery->take($this->commentsToShow)->get();
         return view('livewire.show-comment', [

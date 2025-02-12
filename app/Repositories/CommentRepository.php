@@ -43,9 +43,4 @@ class CommentRepository implements RepositoriesInterface
         return $Comment->delete() > 0;
     }
 
-    public function getByListingID($listingId) : Comment
-    {
-        return Comment::where('listing_id', $listingId)
-        ->orderBy('created_at', 'desc')->get();;
-    }
 }
