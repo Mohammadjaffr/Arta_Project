@@ -1,4 +1,33 @@
 <div>
+    {{--search--}}
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-4" style="direction: rtl;">
+        <form class="flex-grow-1 position-relative">
+            <img src="{{ asset('assets/images/search.svg') }}" alt="Search Icon" style="position: absolute; left: 5px; top: 50%; transform: translateY(-50%);">
+            <input wire:model.live='title' class="form-control rounded-4 ps-2" type="text" placeholder="ابحث هنا...">
+        </form>
+        <select wire:model.live='Parent_id' class="form-select w-auto rounded-4">
+            <option {{ is_null($Parent_id) ? 'selected' : '' }}>المحافظة</option>
+            @foreach ($Parents as $Parent)
+            <option value="{{$Parent->id}}">{{$Parent->name}}</option>
+            @endforeach
+
+        </select>
+        <select class="form-select w-auto rounded-4">
+            <option disabled selected>المدينة</option>
+            <option>القطن</option>
+            <option>سيئون</option>
+        </select>
+        <a href="#" class="btn btn-light border-2 rounded-4" style="background-color: #046998;">
+            أقل سعراً
+            <img src="{{ asset('assets/images/arrow-down.svg') }}" alt="#" class="ms-2">
+        </a>
+        <a href="#" class="btn btn-light border-2 rounded-4" style="background-color: #046998;">
+            أعلى سعراً
+            <img src="{{ asset('assets/images/arrow-up.svg') }}" alt="#" class="ms-2">
+        </a>
+    </div>
+    {{-- end search--}}
+
     <div class="container-fluid my-4" style="direction: rtl; background-color: #F7FBFA;">
         @foreach($listings as $listing)
             <div class="row listing px-0 my-4 shadow">

@@ -95,32 +95,7 @@
                 </div>
             </div>
         </div>
-        {{--search--}}
-        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-4" style="direction: rtl;">
-            <form class="flex-grow-1 position-relative">
-                <img src="{{ asset('assets/images/search.svg') }}" alt="Search Icon" style="position: absolute; left: 5px; top: 50%; transform: translateY(-50%);">
-                <input class="form-control rounded-4 ps-2" type="text" placeholder="ابحث هنا...">
-            </form>
-            <select class="form-select w-auto rounded-4">
-                <option>المدينة</option>
-                <option>القطن</option>
-                <option>سيئون</option>
-            </select>
-            <select class="form-select w-auto rounded-4">
-                <option>المنطقة</option>
-                <option>القطن</option>
-                <option>سيئون</option>
-            </select>
-            <a href="#" class="btn btn-light border-2 rounded-4" style="background-color: #046998;">
-                أقل سعراً
-                <img src="{{ asset('assets/images/arrow-down.svg') }}" alt="#" class="ms-2">
-            </a>
-            <a href="#" class="btn btn-light border-2 rounded-4" style="background-color: #046998;">
-                أعلى سعراً
-                <img src="{{ asset('assets/images/arrow-up.svg') }}" alt="#" class="ms-2">
-            </a>
-        </div>
-        {{-- end search--}}
+        
     </div>
     {{-- end contact--}}
     @livewire('listings',['lazy'=>true])
