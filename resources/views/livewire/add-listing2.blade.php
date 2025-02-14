@@ -1,12 +1,3 @@
-{{--@if ($errors->any())--}}
-{{--    <div class="alert alert-danger">--}}
-{{--        <ul>--}}
-{{--            @foreach ($errors->all() as $error)--}}
-{{--                <li>{{ $error }}</li>--}}
-{{--            @endforeach--}}
-{{--        </ul>--}}
-{{--    </div>--}}
-{{--@endif--}}
     <form action="{{route('listing.store')}}"  method="post">
         @csrf
         <!-- اختر القسم الرئيسي -->
@@ -109,7 +100,7 @@
         @enderror
 {{--        @livewire('image-uploader')--}}
 
-      
+
         <div class="row justify-content-center my-5">
             <div class="col-12 text-center">
                 <button type="submit"  class="btn w-50 rounded-4 py-3 text-white" style="background-color: #01496B;font-size: 25px">حفظ ونشر الإعلان</button>

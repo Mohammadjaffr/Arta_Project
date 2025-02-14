@@ -16,7 +16,11 @@
                             <label class="col-form-label">{{ $listing->user->name}}</label>
                         </div>
                         <div class="mb-3">
-                            <textarea wire:model="content" name="content" class="form-control" placeholder="اكتب تعليقك هنا..."></textarea>                        </div>
+                            <textarea wire:model="content" name="content" class="form-control" placeholder="اكتب تعليقك هنا..." required></textarea>
+                        </div>
+                        @error('content')
+                        <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
                     </form>
                 </div>
                 <div class="modal-footer">

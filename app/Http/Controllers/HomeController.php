@@ -45,7 +45,8 @@ class HomeController extends Controller
         return view('livewire.show_info',compact('listings'));
     }
     public function account_show(){
-        return view('livewire.account_show');
+        $listings=$this->ListingRepository->index();
+        return view('livewire.account_show',compact('listings'));
     } public function contact(){
         return view('livewire.contact');
     }

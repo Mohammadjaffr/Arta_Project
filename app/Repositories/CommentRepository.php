@@ -14,12 +14,12 @@ class CommentRepository implements RepositoriesInterface
     {
         //
     }
-    
+
     public function index() : \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
-        return Comment::with(['user','listing'])->filter()->paginate(10);
+        return Comment::with(['user','listing'])->filter()->paginate(3);
     }
-    
+
     public function getById($id) : Comment
     {
         return Comment::findOrFail($id);

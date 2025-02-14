@@ -33,7 +33,7 @@ class AddComment extends Component
             session()->flash('error', 'يرجى كتابة تعليق قبل الإرسال.');
 
         }
-        $data=[  
+        $data=[
             'user_id' => Auth::id(),
             'listing_id' => $this->listingId,
             'content' => $this->content,
