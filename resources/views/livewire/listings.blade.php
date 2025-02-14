@@ -17,7 +17,7 @@
         {{-- Children Regions --}}
         @if ($childrens)
             <select wire:model.live="region_child_id" class="form-select w-auto rounded-4">
-                <option value="{{ null }}">الكل</option> 
+                <option selected value="{{ null }}">الكل</option> 
                 @foreach ($childrens as $children)
                     <option value="{{ $children->id }}">{{ $children->name }}</option>
                 @endforeach
