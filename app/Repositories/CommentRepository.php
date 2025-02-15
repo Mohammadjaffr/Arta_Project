@@ -42,4 +42,5 @@ class CommentRepository implements RepositoriesInterface
         $Comment = $this->getById($id);
         return $Comment->delete() > 0;
     }
+
 }

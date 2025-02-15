@@ -1,5 +1,5 @@
 <div>
-    <button style="background-color: #559FC1" type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button style="background-color: #559FC1" type="button" class="btn btn-light mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <img style="width: 30px;" src="{{ asset('assets/images/Plain.png') }}">
         اضافة تعليق
     </button>
@@ -13,22 +13,25 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label class="col-form-label">{{ $listing->user->name}}</label>
+                            <label class="col-form-label">{{ Auth::user()->name }}</label>
                         </div>
                         <div class="mb-3">
-                            <textarea wire:model="content" name="content" class="form-control" placeholder="اكتب تعليقك هنا..." required></textarea>
+                            <textarea wire:model="content" name="content" class="form-control" placeholder="اكتب تعليقك هنا..."></textarea>
                         </div>
-                        @error('content')
-                        <div class="alert alert-danger">{{$message}}</div>
-                        @enderror
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">الغاء</button>
+                    <button id="cancelButton" type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">الغاء</button>
                     <button wire:click.prevent="addComment" type="button" class="btn btn-primary w-25">ارسال</button>
                 </div>
             </div>
         </div>
     </div>
+    
 
 </div>
+<script>
+    window.addEventListener('close-modal', event => {
+        document.getElementById('cancelButton').click(); 
+    });
+</script>
