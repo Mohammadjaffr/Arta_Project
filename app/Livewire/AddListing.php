@@ -30,6 +30,8 @@ class AddListing extends Component
 
     public $primary_image;
 
+    public $child;
+
     private CategoryRepository $CategoryRepository;
     private RegionRepository $RegionRepository;
 
@@ -67,9 +69,10 @@ class AddListing extends Component
 
     public function render()
     {
-        $categories = $this->CategoryRepository->index();
+        $categories = $this->CategoryRepository->getParents();
+
         $Regions = $this->RegionRepository->getParents();
         $currencies= $this->CurrencyRepository->index();
-        return view('livewire.add-listing', compact( 'categories','currencies','Regions'));
+        return view('livewire.add-listing', compact( 'categories','currencies','Regions','catchs'));
     }
 }

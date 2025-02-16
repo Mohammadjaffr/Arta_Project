@@ -8,14 +8,16 @@ use Livewire\Component;
 
 class DeleteListing extends Component
 {
-
-    public function delete( $id)
+    public $listingId;
+    public function delete($listingId)
     {
-      Listings::find($id)->delete();
+        Listing::query()->find($listingId)->delete();
+        session()->flash('message', 'Listing deleted successfully.');
+        return redirect()->to('/account_show');
     }
     public function render()
     {
-        $listings = Listing::all();
-        return view('livewire.delete-listing', compact(['listings']));
+        $listing = Listing::query()->find($this->listingId);
+        return view('livewire.delete-listing', compact('listing'));
     }
 }

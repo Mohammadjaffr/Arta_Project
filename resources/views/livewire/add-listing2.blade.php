@@ -14,6 +14,8 @@
             @enderror
         </div>
 
+
+
         <div class="mb-3">
             <label class="form-label py-3" style="font-size: 30px">المنطقه</label>
             <select  name="region_id" class="form-select border-2 text-end" style="border-color: #62A1BE;font-size: 20px">
