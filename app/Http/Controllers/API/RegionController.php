@@ -114,7 +114,7 @@ class RegionController extends Controller
             $Regions=$this->RegionRepository->update($validatedData,$id);
             return ApiResponseClass::sendResponse($Regions,'Region is updated successfully.');
         } catch (Exception $e) {
-            return ApiResponseClass::sendError('Error save Region: ' . $e->getMessage());
+            return ApiResponseClass::sendError('Error updated Region: ' . $e->getMessage());
         }
     }
 
