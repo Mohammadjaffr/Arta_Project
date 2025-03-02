@@ -60,6 +60,10 @@ class User extends Authenticatable implements LaratrustUser
     public function listings(){
         return $this->hasMany(Listing::class);
     }
+    public function socialMediaAccounts()
+    {
+        return $this->hasOne(SocialMediaAccounts::class);
+    }
 
     public function comments(){
         return $this->hasMany(Comment::class);
