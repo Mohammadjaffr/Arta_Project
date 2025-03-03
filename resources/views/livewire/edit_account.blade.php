@@ -66,24 +66,25 @@
                     <h2>حسابات التواصل الاجتماعي</h2>
                     <div class="row my-4">
                         <div class="col-lg-4 col-md-4">
-                            <input value="{{$users->socialMediaAccounts->twitter}}" class="form-control" type="text" placeholder="twitter" name="twitter">
+
+                            <input  class="form-control" type="text" placeholder="twitter" name="twitter">
                         </div>
                         <div class="col-lg-4 col-md-4">
-                            <input value="{{$users->socialMediaAccounts->facebook}}" class="form-control" type="text"placeholder="facebook"  name="facebook">
+                            <input  class="form-control" type="text"placeholder="facebook"  name="facebook">
                         </div>
                         <div class="col-lg-4 col-md-4">
-                            <input value="{{$users->socialMediaAccounts->instagram}}" class="form-control" type="text" placeholder="instagram"  name="instagram">
+                            <input  class="form-control" type="text" placeholder="instagram"  name="instagram">
                         </div>
                     </div>
                     <div class="row my-4">
                         <div class="col-lg-4 col-md-4">
-                            <input value="{{$users->socialMediaAccounts->linkedin}}" class="form-control" type="text" placeholder="linkedin" name="linkedin">
+                            <input  class="form-control" type="text" placeholder="linkedin" name="linkedin">
                         </div>
                         <div class="col-lg-4 col-md-4">
-                            <input value="{{$users->socialMediaAccounts->youtube}}" class="form-control" type="text" placeholder="youtube" name="youtube">
+                            <input  class="form-control" type="text" placeholder="youtube" name="youtube">
                         </div>
                         <div class="col-lg-4 col-md-4">
-                            <input value="{{$users->socialMediaAccounts->snapchat}}" class="form-control" type="text" placeholder="snapchat" name="snapchat">
+                            <input  class="form-control" type="text" placeholder="snapchat" name="snapchat">
                         </div>
                     </div>
                     <h2>صورة البروفايل</h2>

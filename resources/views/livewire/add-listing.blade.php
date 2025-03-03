@@ -50,7 +50,7 @@
                     <label class="form-label py-3" style="font-size: 30px">اختر المديرية</label>
                     <select wire:model.live="region_child_id" name="region_child_id" class="form-select border-2 text-end" style="border-color: #62A1BE;font-size: 20px">
                         <option value="{{null}}">اختر المديرية</option>
-                        @foreach( $children_regions as $child)
+                        @foreach($children_regions as $child)
                             <option value="{{ $child->id }}">{{$child->name }}</option>
                         @endforeach
                     </select>
@@ -125,9 +125,7 @@
                     <h6 style="font-size: large;">رفع الصورة</h6>
 
                     <!-- مربع رفع الصورة -->
-                    <div class="border border-dark rounded-3"
-                         style="width: 100px; height: 80px; position: relative; background-color: #C3C3C3; cursor: pointer;"
-                         onclick="document.getElementById('primary-image-upload').click()">
+                    <div class="border border-dark rounded-3" style="width: 100px; height: 80px; position: relative; background-color: #C3C3C3; cursor: pointer;"        onclick="document.getElementById('primary-image-upload').click()">
 
                         <!-- عرض الصورة داخل المربع إذا تم رفعها -->
                         @if($primary_image)
@@ -154,37 +152,25 @@
                         <div class="text-center" style="width: 120px; height: 100px;">
                             <!-- عرض الصورة المرفوعة -->
                             @if(isset($images[$i]) && $images[$i])
-                                <img class="border rounded-3 image-preview"
-                                     style="width: 120px; height: 100px; object-fit: cover;"
-                                     src="{{ $images[$i]->temporaryUrl() }}"
-                                     alt="صورة مرفوعة">
+                                <img class="border rounded-3 image-preview" style="width: 120px; height: 100px; object-fit: cover;" src="{{ $images[$i]->temporaryUrl() }}" alt="صورة مرفوعة">
                             @else
                                 <!-- مربع فارغ مع أيقونة إضافة الصور في المربع الأول فقط -->
-                                <div class="border rounded-3"
-                                     style="width: 120px; height: 100px; background-color: #C3C3C3; cursor: pointer;"
-                                     onclick="document.getElementById('image-upload-{{ $i }}').click()">
+                                <div class="border rounded-3"  style="width: 120px; height: 100px; background-color: #C3C3C3; cursor: pointer;"  onclick="document.getElementById('image-upload-{{ $i }}').click()">
                                     @if ($i === 0)
                                         <!-- أيقونة إضافة الصور (تظهر فقط في المربع الأول) -->
-                                        <img src="{{ asset('assets/images/add-photo.png') }}"
-                                             alt="إضافة صورة"
-                                             style="width: 70px; height: 70px; margin-top: 10%;">
+                                        <img src="{{ asset('assets/images/add-photo.png') }}" alt="إضافة صورة"  style="width: 70px; height: 70px; margin-top: 10%;">
                                     @endif
                                 </div>
                             @endif
 
                             <!-- حقل رفع الملف -->
-                            <input wire:model="images.{{ $i }}"
-                                   type="file"
-                                   accept="image/*"
-                                   id="image-upload-{{ $i }}"
-                                   style="display: none;">
+                            <input wire:model="images.{{ $i }}" type="file"   accept="image/*" id="image-upload-{{ $i }}" style="display: none;">
                         </div>
                     @endfor
                 </div>
             </div>
 
         </div>
-
 
 
         <!-- زر الحفظ والنشر -->
