@@ -163,7 +163,7 @@ class CategorySeeder extends Seeder
 
             // ____________________________________________________
             // الفئة الرئيسية للمركبات
-            ['id' => 115, 'name' => 'مركبات', 'parent_id' => null, 'image' => 'assets/Category_images/vehicles.png'],
+            ['id' => 115, 'name' => 'مركبات', 'parent_id' => null, 'image' => 'assets/Category_images/Motorcycles.png'],
 
             // فئات المركبات
             ['id' => 116, 'name' => 'دراجات نارية', 'parent_id' => 115, 'image' => null],

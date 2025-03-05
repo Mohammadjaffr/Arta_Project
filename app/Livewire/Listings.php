@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Category;
 use Carbon\Carbon;
 use App\Models\Listing;
 use Livewire\Component;
@@ -15,18 +16,23 @@ class Listings extends Component
     public $region_parent_id;
     public $region_child_id;
     public $sort = 'asc';
-    public $category = null; // خاصية لتخزين الفئة المحددة
+    public $selectedCategory = null;
 
-    // تصفية حسب الفئة
-    public function filterByCategory($category)
-    {
-        $this->category = $category;
-    }
+    public $category_parent_id;
+    public $category_child_id;
+
 
     // تصفية حسب السعر
     public function sortByPrice($order)
     {
         $this->sort = $order;
+    }
+
+    // تصفية حسب الفئة
+    public function filterByCategory($categoryId)
+    {
+
+        $this->selectedCategory = $categoryId;
     }
 
     public function mount()
@@ -42,16 +48,38 @@ class Listings extends Component
     public function render()
     {
         $query = Listing::query();
+//        list the children_categories in new select
+        $children_categories = $this->selectedCategory
+            ? Category::where('parent_id', $this->selectedCategory)->get()
+            : null;
 
+        if ($this->category_child_id and $this->selectedCategory) {
+
+            $query->where('category_id', $this->category_child_id);
+        }elseif ($this->selectedCategory) {
+            $this->category_child_id=null;
+            $category = Category::with('children')->find($this->category_parent_id);
+            if ($category) {
+                $categoryIds = $category->children()->pluck('id')->push($category->id);
+                $allcategoryIds = Category::whereIn('parent_id', $categoryIds)->pluck('id');
+                $categoryIds = $categoryIds->merge($allcategoryIds);
+                $query->whereIn('category_id', $categoryIds);
+            }
+        }
+//        end the list children_categories
         // تصفية حسب الفئة
-        if ($this->category) {
-            $query->whereHas('category', function ($q) {
-                $q->where('name', $this->category);
-            });
+        if ($this->selectedCategory) {
+            $category = Category::with('children')->find($this->selectedCategory);
+            if ($category) {
+                $categoryIds = $category->children()->pluck('id')->push($category->id);
+                $allCategoryIds = Category::whereIn('parent_id', $categoryIds)->pluck('id');
+                $categoryIds = $categoryIds->merge($allCategoryIds);
+                $query->whereIn('category_id', $categoryIds);
+            }
         }
 
         // تصفية حسب المنطقة
-        $childrens = $this->region_parent_id
+        $children = $this->region_parent_id
             ? Region::where('parent_id', $this->region_parent_id)->get()
             : null;
 
@@ -93,7 +121,10 @@ class Listings extends Component
         // جلب المناطق الرئيسية
         $Parents = Region::whereNull('parent_id')->get();
 
+        // جلب الفئات
+        $categories = Category::whereNull('parent_id')->get();
+
         Carbon::setLocale('ar');
-        return view('livewire.listings', compact('listings', 'Parents', 'childrens'));
+        return view('livewire.listings', compact('listings', 'Parents', 'children', 'categories','children_categories'));
     }
 }

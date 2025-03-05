@@ -1,89 +1,26 @@
 <div>
-    <div>
-        <div class="container mt-2 text-center">
-            <div class="row align-items-start">
-                <div class="col-12">
-                    <div class="table-responsive scrollable" style="overflow-x: auto;">
-                        <table class="table">
-                            <tr>
-                                <td>
-                                    <div class="card" style="border: none;">
-                                        <a wire:click="filterByCategory('السيارات')" class="text-decoration-none">
-                                            <img style="width: 8rem; height: 4rem;" src="{{ asset('assets/images/Autos.png') }}" class="card-img-top img-fluid" alt="...">
-                                            <div class="card-body">
-                                                <h5 style="font-size: 0.8rem; color: black">السيارات</h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="card" style="border: none;">
-                                        <a wire:click="filterByCategory('رياضه')" >
-                                            <img style="width: 8rem; height: 4rem;" src="{{ asset('assets/images/sports.png') }}" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 style="font-size: 0.8rem;">رياضه</h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="card" style="border: none;">
-                                        <a wire:click="filterByCategory('الاكترونيات')" >
-                                            <img style="width: 8rem; height: 4rem;" src="{{ asset('assets/images/electronic.png') }}" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 style="font-size: 0.8rem;">الاكترونيات</h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="card" style="border: none;">
-                                        <a wire:click="filterByCategory('الاثاث')" >
-                                            <img style="width: 8rem; height: 4rem;" src="{{ asset('assets/images/furniture.png') }}" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 style="font-size: 0.8rem;">الاثاث</h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="card" style="border: none;">
-                                        <a wire:click="filterByCategory('عقارات')" >
-                                            <img style="width: 8rem; height: 4rem;" src="{{ asset('assets/images/houses.png') }}" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 style="font-size: 0.8rem;">عقارات</h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="card" style="border: none;">
-                                        <a wire:click="filterByCategory('مركبات')" >
-                                            <img style="width: 8rem; height: 4rem;" src="{{ asset('assets/images/motor.png') }}" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 style="font-size: 0.8rem;">مركبات</h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="card" style="border: none;">
-                                        <a wire:click="filterByCategory('ازياء نسائية')">
-                                            <img style="width: 8rem; height: 4rem;" src="{{ asset('assets/images/women_s_fashion.png') }}" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 style="font-size: 0.8rem;">ازياء نسائية</h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+    <div class="container mt-2 text-center">
+        <div class="row align-items-start">
+            <div class="col-12">
+                <div class="table-responsive scrollable" style="overflow-x: auto;">
+                    <table class="table">
+                        <tr>
+                            @foreach($categories as $category)
+                            <td>
+                                <div class="card" style="border: none;">
+                                    <a wire:click="filterByCategory({{$category->id}})"  class="text-decoration-none" ><img style="width: 8rem; height: 4rem;" src="{{$category->image}}" class="card-img-top img-fluid" alt="...">
+                                        <div class="card-body">
+                                            <h5 style="font-size: 0.8rem; color: black">{{$category->name}}</h5>
+                                        </div>
+                                    </a>
+                                </div>
+                            </td>
+                            @endforeach
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
-
-        {{-- باقي الكود (Search, Listings, Pagination) --}}
     </div>
     {{-- Search --}}
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-4" style="direction: rtl;">
@@ -91,7 +28,14 @@
             <img src="{{ asset('assets/images/search.svg') }}" alt="Search Icon" style="position: absolute; left: 5px; top: 50%; transform: translateY(-50%);">
             <input wire:model.live="title" class="form-control rounded-4 ps-2" type="text" placeholder="ابحث هنا...">
         </form>
-
+        @if($children_categories)
+        <select wire:model.live="category_child_id" class="form-select w-auto rounded-4">
+            <option value="{{ null }}" selected>ااختر النوع</option>
+            @foreach( $children_categories as  $child)
+                <option value="{{ $child->id }}">{{$child->name }}</option>
+            @endforeach
+        </select>
+        @endif
         {{-- Parent Region --}}
         <select wire:model.live="region_parent_id" class="form-select w-auto rounded-4">
             <option value="{{ null }}" selected>المحافظة</option>
@@ -101,11 +45,11 @@
         </select>
 
         {{-- Children Regions --}}
-        @if ($childrens)
+        @if ($children)
             <select wire:model.live="region_child_id" class="form-select w-auto rounded-4">
                 <option selected value="{{ null }}">الكل</option>
-                @foreach ($childrens as $children)
-                    <option value="{{ $children->id }}">{{ $children->name }}</option>
+                @foreach ($children as $child)
+                    <option value="{{ $child->id }}">{{ $child->name }}</option>
                 @endforeach
             </select>
         @endif
@@ -176,5 +120,4 @@
             <img class="float-start" src="{{ asset('assets/images/arrow-left1.svg') }}">
         </a>
     </div>
-</div>
 </div>

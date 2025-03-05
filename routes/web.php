@@ -27,6 +27,10 @@ Route::get('/account_show', [App\Http\Controllers\HomeController::class, 'accoun
 Route::resource('/category' ,CategoryController::class);
 Route::resource('/listing' ,ListingController::class);
 Route::resource('/region' ,RegionController::class);
+Route::post('change_password', [App\Http\Controllers\HomeController::class, 'change_password'])->name('change_password');
+Route::get('/change_password',function (){
+    return view('livewire.change_password');
+});
 
 
 

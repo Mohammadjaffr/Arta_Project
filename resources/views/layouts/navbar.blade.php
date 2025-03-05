@@ -54,7 +54,7 @@
                  aria-labelledby="userDropdown" style="text-align: start;">
                 <div class="dropdown-item" style="display: flex; flex-direction: column; align-items: center; background-color: rgba(248, 249, 250, 0.8); padding: 10px; border-radius: 5px; background-repeat: repeat; background-size: 20px 20px;">
                     @if(Auth::user()->image == true)
-                    <img src="{{Auth::user()->image}}" alt="User Image"
+                    <img src="http://127.0.0.1:8000/{{Auth::user()->image}}" alt="User Image"
                          style="width: 90px; height: 90px; border-radius: 50%; margin-top: 5px;">
                     @else
                         <img src="#" alt="User Image"

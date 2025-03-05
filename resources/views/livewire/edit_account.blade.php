@@ -39,16 +39,7 @@
                             <input value="{{$users->location}}" class="form-control" type="text" name="location">
                         </div>
                     </div>
-                    <div class="row my-4">
-                        <div class="col-lg-6 col-md-6">
-                            <label class="form-label">كلمة المرور الجديدة</label>
-                            <input value="{{$users->password}}" class="form-control" type="password" name="password">
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <label class="form-label">تاكيد كلمة المرور</label>
-                            <input class="form-control" type="password" name="password_confirmation">
-                        </div>
-                    </div>
+
                     <div class="row my-4">
                         <div class="col-lg-6 col-md-6">
                             <label class="form-label">المنطقة</label>
@@ -62,6 +53,12 @@
                             <label class="form-label">الموقع</label>
                             <input value="{{$users->location}}" class="form-control" type="text" name="location">
                         </div>
+                    </div>
+                    <div class="row my-4">
+                        <div class="col-lg col-md">
+                            <a class="btn btn-primary" href="{{url('/a')}}">تغيير كلمة المرور</a>
+                        </div>
+
                     </div>
                     <h2>حسابات التواصل الاجتماعي</h2>
                     <div class="row my-4">
