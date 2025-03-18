@@ -1,11 +1,41 @@
 <div>
+    <div class="container mt-2 text-center">
+        <div class="row align-items-start">
+            <div class="col-12">
+                <div class="table-responsive scrollable" style="overflow-x: auto;">
+                    <table class="table">
+                        <tr>
+                            @foreach($categories as $category)
+                            <td>
+                                <div class="card" style="border: none;">
+                                    <a wire:click="filterByCategory({{$category->id}})"  class="text-decoration-none" ><img style="width: 8rem; height: 4rem;" src="{{$category->image}}" class="card-img-top img-fluid" alt="...">
+                                        <div class="card-body">
+                                            <h5 style="font-size: 0.8rem; color: black">{{$category->name}}</h5>
+                                        </div>
+                                    </a>
+                                </div>
+                            </td>
+                            @endforeach
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
     {{-- Search --}}
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-4" style="direction: rtl;">
         <form class="flex-grow-1 position-relative">
             <img src="{{ asset('assets/images/search.svg') }}" alt="Search Icon" style="position: absolute; left: 5px; top: 50%; transform: translateY(-50%);">
             <input wire:model.live="title" class="form-control rounded-4 ps-2" type="text" placeholder="ابحث هنا...">
         </form>
-
+        @if($children_categories)
+        <select wire:model.live="category_child_id" class="form-select w-auto rounded-4">
+            <option value="{{ null }}" selected>ااختر النوع</option>
+            @foreach( $children_categories as  $child)
+                <option value="{{ $child->id }}">{{$child->name }}</option>
+            @endforeach
+        </select>
+        @endif
         {{-- Parent Region --}}
         <select wire:model.live="region_parent_id" class="form-select w-auto rounded-4">
             <option value="{{ null }}" selected>المحافظة</option>
@@ -15,23 +45,23 @@
         </select>
 
         {{-- Children Regions --}}
-        @if ($childrens)
+        @if ($children)
             <select wire:model.live="region_child_id" class="form-select w-auto rounded-4">
-                <option selected value="{{ null }}">الكل</option> 
-                @foreach ($childrens as $children)
-                    <option value="{{ $children->id }}">{{ $children->name }}</option>
+                <option selected value="{{ null }}">الكل</option>
+                @foreach ($children as $child)
+                    <option value="{{ $child->id }}">{{ $child->name }}</option>
                 @endforeach
             </select>
         @endif
 
-        <a href="#" class="btn btn-light border-2 rounded-4" style="background-color: #046998;">
+        <button wire:click="sortByPrice('asc')" class="btn btn-light border-2 rounded-4" style="background-color: #046998;">
             أقل سعراً
             <img src="{{ asset('assets/images/arrow-down.svg') }}" alt="#" class="ms-2">
-        </a>
-        <a href="#" class="btn btn-light border-2 rounded-4" style="background-color: #046998;">
+        </button>
+        <button wire:click="sortByPrice('desc')" class="btn btn-light border-2 rounded-4" style="background-color: #046998;">
             أعلى سعراً
             <img src="{{ asset('assets/images/arrow-up.svg') }}" alt="#" class="ms-2">
-        </a>
+        </button>
     </div>
     {{-- End Search --}}
 

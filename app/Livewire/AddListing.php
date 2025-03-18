@@ -55,9 +55,9 @@ class AddListing extends Component
             'currency_id' => 'required|exists:currencies,id',
             'category_id' => 'required|exists:categories,id',
             'region_id' => 'required|exists:regions,id',
-            'primary_image' => 'nullable|image|max:2048', // 2MB Max
-            'images' => 'nullable|array|max:5', // Maximum 5 additional images
-            'images.*' => 'nullable|image|max:2048', // 2MB Max per image
+//            'primary_image' => 'nullable|image|max:2048', // 2MB Max
+//            'images' => 'nullable|array|max:5', // Maximum 5 additional images
+//            'images.*' => 'nullable|image|max:2048', // 2MB Max per image
         ];
     }
 
@@ -76,10 +76,10 @@ class AddListing extends Component
         'category_id.exists' => 'الفئة المحددة غير صالحة.',
         'region_id.required' => 'المنطقة مطلوبة.',
         'region_id.exists' => 'المنطقة المحددة غير صالحة.',
-        'primary_image.image' => 'يجب أن تكون الصورة الرئيسية ملف صورة.',
-        'primary_image.max' => 'يجب ألا تتجاوز الصورة الرئيسية 2 ميجابايت.',
-        'images.*.image' => 'يجب أن تكون جميع الصور ملفات صور.',
-        'images.*.max' => 'يجب ألا تتجاوز كل صورة 2 ميجابايت.',
+//        'primary_image.image' => 'يجب أن تكون الصورة الرئيسية ملف صورة.',
+//        'primary_image.max' => 'يجب ألا تتجاوز الصورة الرئيسية 2 ميجابايت.',
+//        'images.*.image' => 'يجب أن تكون جميع الصور ملفات صور.',
+//        'images.*.max' => 'يجب ألا تتجاوز كل صورة 2 ميجابايت.',
     ];
     public function __construct(){
         $this->categoryRepository = new CategoryRepository();
@@ -100,7 +100,7 @@ class AddListing extends Component
     // Handle form submission
     public function createListing()
     {
-        $this->validate();
+//        $this->validate();
         // Store the listing
         $listing = $this->listingRepository->store([
             'status' => $this->status,

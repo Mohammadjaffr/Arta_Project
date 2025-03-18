@@ -8,7 +8,9 @@ use App\Models\User;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ListingRepository;
 use App\Repositories\RegionRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,7 +21,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(private CategoryRepository $CategoryRepository,private RegionRepository $RegionRepository,private ListingRepository $ListingRepository)
+    public function __construct(private CategoryRepository $CategoryRepository,private RegionRepository $RegionRepository,private ListingRepository $ListingRepository,private UserRepository $userRepository)
     {
         // $this->middleware('auth');
     }
@@ -64,7 +66,7 @@ class HomeController extends Controller
             $extension = $image->getClientOriginalExtension();
             $filename = uniqid('', true) . '.' . $extension;
             $filePath = $image->storeAs('user_images', $filename, 'public');
-            $user->image = asset('storage/' . $filePath);
+            $user->image = 'storage/' . $filePath;
         } else {
             $user->image = null;
         }
@@ -97,5 +99,14 @@ class HomeController extends Controller
     }
      public function about(){
         return view('livewire.about');
+    }
+    public function change_password(Request $request)
+    {
+        $data= [
+            'old_password'=>$request->old_password,
+            'password'=>$request->password,
+        ];
+        $this->userRepository->changePassword($data,Auth::user());
+        return redirect('/home');
     }
 }

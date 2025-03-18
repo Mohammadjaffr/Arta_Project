@@ -1,7 +1,7 @@
 <div>
 
 <div class="d-flex">
-    <button wire:click="share" href="#" class="btn btn-light border rounded-3 p-2 d-flex m-2 justify-content-center" style="background-color: #559FC1">
+    <button wire:click="share"  class="btn btn-light border rounded-3 p-2 d-flex m-2 justify-content-center" style="background-color: #559FC1">
         <div class="mx-2"><img src="{{ asset('assets/images/share.png') }}" style="width: 30px; height: 30px;"></div>
         <label>مشاركة الاعلان</label>
     </button>
@@ -29,16 +29,6 @@
             </div>
         </div>
     </div>
-    @if (session()->has('success'))
-        <div class="alert alert-success mt-3">
-            {{ session('success') }}
-        </div>
-    @endif
-    @if (session()->has('error'))
-        <div class="alert alert-danger mt-3">
-            {{ session('$error') }}
-        </div>
-    @endif
     <button
         wire:click="redirectToWhatsApp({{ $listings->id }})"  class="btn btn-light border rounded-3 p-2 d-flex m-2" style="background-color: #559FC1" >
         <div class="mx-2">

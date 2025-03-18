@@ -40,21 +40,26 @@
         @if(Auth::user())
 
         <div class="nav-item dropdown no-arrow ms-4 d-none d-lg-flex">
-            <a class="btn" 
-               style="background-color: transparent; border: 2px solid #0056b3; color: #007BFF; border-radius: 5px; padding: 5px 10px;" 
-               href="#" 
-               role="button" 
-               data-bs-toggle="dropdown" 
+            <a class="btn"
+               style="background-color: transparent; border: 2px solid #0056b3; color: #007BFF; border-radius: 5px; padding: 5px 10px;"
+               href="#"
+               role="button"
+               data-bs-toggle="dropdown"
                aria-expanded="false">
                 <i class="fas fa-user">{{ Auth::user()->name }}</i>
             </a>
-            
+
             <!-- Dropdown - User Information -->
-            <div class="dropdown-menu dropdown-menu-right shadow-lg animated--grow-in" 
+            <div class="dropdown-menu dropdown-menu-right shadow-lg animated--grow-in"
                  aria-labelledby="userDropdown" style="text-align: start;">
-                <div class="dropdown-item" style="display: flex; flex-direction: column; align-items: center; background-color: rgba(248, 249, 250, 0.8); padding: 10px; border-radius: 5px; background-image: url('{{ asset('assets/images/icon.png') }}'); background-repeat: repeat; background-size: 20px 20px;">
-                    <img src="{{asset('assets/images/person.png')}}" alt="User Image" 
-                         style="width: 50px; height: 50px; border-radius: 50%; margin-top: 5px;">
+                <div class="dropdown-item" style="display: flex; flex-direction: column; align-items: center; background-color: rgba(248, 249, 250, 0.8); padding: 10px; border-radius: 5px; background-repeat: repeat; background-size: 20px 20px;">
+                    @if(Auth::user()->image == true)
+                    <img src="http://127.0.0.1:8000/{{Auth::user()->image}}" alt="User Image"
+                         style="width: 90px; height: 90px; border-radius: 50%; margin-top: 5px;">
+                    @else
+                        <img src="#" alt="User Image"
+                             style="width: 90px; height: 90px; border-radius: 50%; margin-top: 5px;">
+                    @endif
                 </div>
                 <div class="dropdown-divider"></div>
                 <form action="{{ route('logout') }}" method="POST" style="display: inline;">
@@ -71,9 +76,9 @@
                 </a>
             </div>
         </div>
-        
-        
-        
+
+
+
         @else
             <span class="d-none d-lg-flex align-items-center mx-4">
                 <a href="{{route('login')}}">

@@ -22,16 +22,16 @@
                 </div>
                 <div class="modal-footer">
                     <button id="cancelButton" type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">الغاء</button>
-                    <button wire:click.prevent="addComment" type="button" class="btn btn-primary w-25">ارسال</button>
+                    <button wire:click.prevent="addComment" type="button" class="btn btn-primary w-25" >ارسال</button>
                 </div>
             </div>
         </div>
     </div>
-    
+
 
 </div>
 <script>
     window.addEventListener('close-modal', event => {
-        document.getElementById('cancelButton').click(); 
+        document.getElementById('cancelButton').click();
     });
 </script>

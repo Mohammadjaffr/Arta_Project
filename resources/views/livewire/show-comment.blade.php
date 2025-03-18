@@ -7,7 +7,12 @@
 
                     <div class="comment-card p-4 mb-3">
                         <div class="user-info d-flex align-items-center mb-3">
-                            <img src="http://127.0.0.1:8000/{{$comment->user->image}}" class="img-fluid" alt="صورة المستخدم">
+                            @if(Auth::user()->image ==true)
+                            <img src="{{Auth::user()->image}}" class="img-fluid" alt="صورة المستخدم">
+                            @else
+                            <img src="#" class="img-fluid" alt="صورة المستخدم">
+
+                            @endif
                             <div class="d-flex flex-column">
                                 <span class="user-name fw-bold">{{$comment->user->name}}</span>
                                 <span class="comment-date">{{ $comment->created_at->translatedFormat('j F Y - H:i')}}</span>

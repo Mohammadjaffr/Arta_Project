@@ -29,11 +29,11 @@ class AddComment extends Component
         $this->validate([
             'content'=>['required','string']
         ]);
-        // if (empty($this->content)) {
-        //     session()->flash('error', 'يرجى كتابة تعليق قبل الإرسال.');
-        //     return ;
-        // }
-        $data=[  
+         if (empty($this->content)) {
+             session()->flash('error', 'يرجى كتابة تعليق قبل الإرسال.');
+             return ;
+         }
+        $data=[
             'user_id' => Auth::id(),
             'listing_id' => $this->listingId,
             'content' => $this->content,
@@ -49,7 +49,7 @@ class AddComment extends Component
     }
 
     public function render()
-    {  
+    {
         return view('livewire.add-comment');
     }
 }

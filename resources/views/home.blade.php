@@ -26,76 +26,76 @@
             <div></div>
             @endif
         </div>
-        <div class="container mt-2 text-center">
-            <div class="row align-items-start">
-                <div class="col-12">
-                    <div class="table-responsive scrollable" style="overflow-x: auto;">
-                        <table class="table">
-                            <tr>
-                                <td>
-                                    <div class="card" style="border: none;">
-                                        <a  class="text-decoration-none" href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/Autos.png')}}" class="card-img-top img-fluid" alt="...">
-                                            <div class="card-body">
-                                                <h5 style="font-size: 0.8rem; color: black">السيارات</h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="card" style="border: none;">
-                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/sports.png')}}" class="card-img-top" alt="..."></a>
-                                        <div class="card-body">
-                                            <h5 style="font-size: 0.8rem;">رياضه</h5>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="card" style="border: none;">
-                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/electronic.png')}}" class="card-img-top" alt="..."></a>
-                                        <div class="card-body">
-                                            <h5 style="font-size: 0.8rem;">الاكترونيات</h5>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="card" style="border: none;">
-                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/furniture.png')}}" class="card-img-top" alt="..."></a>
-                                        <div class="card-body">
-                                            <h5 style="font-size: 0.8rem;">الاثاث</h5>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="card" style="border: none;">
-                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/houses.png')}}" class="card-img-top" alt="..."></a>
-                                        <div class="card-body">
-                                            <h5 style="font-size: 0.8rem;">عقارات</h5>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="card" style="border: none;">
-                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/motor.png')}}" class="card-img-top" alt="..."></a>
-                                        <div class="card-body">
-                                            <h5 style="font-size: 0.8rem;">مركبات</h5>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="card" style="border: none;">
-                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/women_s_fashion.png')}}" class="card-img-top" alt="..."></a>
-                                        <div class="card-body">
-                                            <h5 style="font-size: 0.8rem;">ازياء نسائية</h5>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+{{--        <div class="container mt-2 text-center">--}}
+{{--            <div class="row align-items-start">--}}
+{{--                <div class="col-12">--}}
+{{--                    <div class="table-responsive scrollable" style="overflow-x: auto;">--}}
+{{--                        <table class="table">--}}
+{{--                            <tr>--}}
+{{--                                <td>--}}
+{{--                                    <div class="card" style="border: none;">--}}
+{{--                                        <a  class="text-decoration-none" href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/Autos.png')}}" class="card-img-top img-fluid" alt="...">--}}
+{{--                                            <div class="card-body">--}}
+{{--                                                <h5 style="font-size: 0.8rem; color: black">السيارات</h5>--}}
+{{--                                            </div>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </td>--}}
+{{--                                <td>--}}
+{{--                                    <div class="card" style="border: none;">--}}
+{{--                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/sports.png')}}" class="card-img-top" alt="..."></a>--}}
+{{--                                        <div class="card-body">--}}
+{{--                                            <h5 style="font-size: 0.8rem;">رياضه</h5>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </td>--}}
+{{--                                <td>--}}
+{{--                                    <div class="card" style="border: none;">--}}
+{{--                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/electronic.png')}}" class="card-img-top" alt="..."></a>--}}
+{{--                                        <div class="card-body">--}}
+{{--                                            <h5 style="font-size: 0.8rem;">الاكترونيات</h5>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </td>--}}
+{{--                                <td>--}}
+{{--                                    <div class="card" style="border: none;">--}}
+{{--                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/furniture.png')}}" class="card-img-top" alt="..."></a>--}}
+{{--                                        <div class="card-body">--}}
+{{--                                            <h5 style="font-size: 0.8rem;">الاثاث</h5>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </td>--}}
+{{--                                <td>--}}
+{{--                                    <div class="card" style="border: none;">--}}
+{{--                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/houses.png')}}" class="card-img-top" alt="..."></a>--}}
+{{--                                        <div class="card-body">--}}
+{{--                                            <h5 style="font-size: 0.8rem;">عقارات</h5>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </td>--}}
+{{--                                <td>--}}
+{{--                                    <div class="card" style="border: none;">--}}
+{{--                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/motor.png')}}" class="card-img-top" alt="..."></a>--}}
+{{--                                        <div class="card-body">--}}
+{{--                                            <h5 style="font-size: 0.8rem;">مركبات</h5>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </td>--}}
+{{--                                <td>--}}
+{{--                                    <div class="card" style="border: none;">--}}
+{{--                                        <a href="#"><img style="width: 8rem; height: 4rem;" src="{{asset('assets/images/women_s_fashion.png')}}" class="card-img-top" alt="..."></a>--}}
+{{--                                        <div class="card-body">--}}
+{{--                                            <h5 style="font-size: 0.8rem;">ازياء نسائية</h5>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </td>--}}
+{{--                            </tr>--}}
+{{--                        </table>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
     </div>
     {{-- end contact--}}
     @livewire('listings',['lazy'=>true])
