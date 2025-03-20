@@ -72,4 +72,8 @@ class User extends Authenticatable implements LaratrustUser
     public function complaints(){
         return $this->hasMany(Complaint::class);
     }
+    public function location()
+    {
+        return $this->hasOne(Location::class);
+    }
 }

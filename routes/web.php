@@ -6,6 +6,8 @@ use App\Http\Controllers\web\ListingController;
 use App\Http\Controllers\web\RegionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\GoogleLoginController;
+use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', function () {
     return view('home');
@@ -23,14 +25,24 @@ Route::get('/edit_account/{id}', [App\Http\Controllers\HomeController::class, 'e
 Route::put('/update/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
+Route::get('/chat', [App\Http\Controllers\HomeController::class, 'chat'])->name('chat');
+
 Route::get('/account_show', [App\Http\Controllers\HomeController::class, 'account_show'])->name('account_show');
 Route::resource('/category' ,CategoryController::class);
 Route::resource('/listing' ,ListingController::class);
 Route::resource('/region' ,RegionController::class);
-Route::post('change_password', [App\Http\Controllers\HomeController::class, 'change_password'])->name('change_password');
+Route::post('/change_password', [App\Http\Controllers\HomeController::class, 'change_password'])->name('change_password');
 Route::get('/change_password',function (){
     return view('livewire.change_password');
 });
 
+
+
+
+Route::get('/auth/google/redirect', function (){
+    return Socialite::driver('google')->stateless()->redirect();
+});
+//Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('/auth/google/callback', [GoogleLoginController::class, 'handleGoogleCallback']);
 
 

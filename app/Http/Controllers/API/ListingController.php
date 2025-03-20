@@ -26,11 +26,12 @@ class ListingController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request) // https://example.com?user_id=[value] || https://example.com?region_id=[value] || https://example.com?category_id=[value] || https://example.com?sort=[field],sort_type sort_type=desc or asc 
+    public function index(Request $request) // https://example.com?user_id=[value] || https://example.com?region_id=[value] || https://example.com?category_id=[value] || https://example.com?sort=[field],sort_type
+
     {
         try {
             $listings=$this->ListingRepository->index($request->region_id,$request->category_id);
-            return ApiResponseClass::sendResponse($listings, 'All Listings retrieved successfully.'); 
+            return ApiResponseClass::sendResponse($listings, 'All Listings retrieved successfully.');
         } catch (Exception $e) {
             return ApiResponseClass::sendError('Error retrieving Listings: ' . $e->getMessage());
         }

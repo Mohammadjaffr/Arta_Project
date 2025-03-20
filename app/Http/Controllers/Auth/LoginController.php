@@ -49,6 +49,8 @@ class LoginController extends Controller
         return view('auth-form');
     }
 
+
+
     /**
      * Get the login username to be used by the controller.
      *
@@ -56,7 +58,7 @@ class LoginController extends Controller
      */
     public function username()
     {
-        $login = request()->input('login'); 
+        $login = request()->input('login');
         $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         request()->merge([$field => $login]);
         return $field;

@@ -85,7 +85,7 @@ class UserAuthController extends Controller
         }
         Auth::login($user);
         $token = $user->createToken($user->username . '-AuthToken')->plainTextToken;
-        $result= $result=['token' => $token, 'user' => $user];
+         $result = ['token' => $token, 'user' => $user];
         return ApiResponseClass::sendResponse($result, 'User logged in successfully');
 
     }

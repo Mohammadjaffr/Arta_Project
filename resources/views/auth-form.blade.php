@@ -20,10 +20,10 @@
                 {{-- end login with apple --}}
 
                 {{-- start login with google --}}
-                <div class="col-5 mx-2 btn border shadow rounded-4 custom-button">
+                <a href="http://127.0.0.1:8000/auth/google/redirect" class="col-5 mx-2 btn border shadow rounded-4 custom-button">
                     <img src="{{asset('assets/images/google.svg')}}" alt="Google">
                     <span>المواصلة مع قوقل</span>
-                </div>
+                </a>
                 {{-- end login with google --}}
             </div>
             {{-- end login with apple and google --}}

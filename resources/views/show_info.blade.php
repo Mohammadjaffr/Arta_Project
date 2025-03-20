@@ -8,7 +8,7 @@
                 <div class="my-3">
                     <div id="main-image" class="text-center mb-3">
 
-                        <img src="http://127.0.0.1:8000/{{ $listings->primary_image }}" class="img-fluid rounded-3 shadow-lg" style="height: 400px; object-fit: cover;" alt="Main Image">
+                        <img src="http://127.0.0.1:8000/{{ $listings->primary_image }}" class="img-fluid rounded-3 shadow-lg " style="height: 400px; object-fit: cover;" alt="Main Image">
                     </div>
                     <div class="d-flex justify-content-center gap-2">
                         @foreach($listings->images as $listing)
@@ -28,7 +28,7 @@
                 <table class="table border-none">
                     <tr>
                         <td>
-                            <img class="mx-1" style="width: 20px;" src="{{ asset('assets/images/Map Point.png') }}">
+                            <img class="mx-1 " style="width: 20px;" src="{{ asset('assets/images/Map Point.png') }}">
                             <label>{{ $listings->region->name }}</label>
 
                         </td>
@@ -67,6 +67,10 @@
             <div class="d-flex justify-content-evenly">
                 <livewire:share-listing :listingId="$listings->id" />
             </div>
+            <div class="d-flex justify-content-evenly">
+{{--                <livewire:chat :listing_id="$listings->id" />--}}
+            </div>
+
             <!-- Comment Section -->
             <livewire:show-comment :listingId="$listings->id" />
                 @if(Auth::user())

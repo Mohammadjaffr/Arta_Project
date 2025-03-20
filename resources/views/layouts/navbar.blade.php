@@ -17,6 +17,10 @@
                             <div class="d-lg-none text-center mb-2">
                                 <a class="link fw-bold text-decoration-none" style="color: var(--warning-custom-color);font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 20px" href="{{route('account_show')}}" style="font-size: 20px">{{Auth::user()->name}}</a>
                             </div>
+                        <div>
+                            <a class="nav-link fs-5 mx-2" @if(request()->is('/chat')) style="color: var(--primary-custom-color);font-weight: bold;" @endif href="{{ url('/chat') }}">المحادثه</a>
+                        </div>
+
                         @else
                             <span class="d-lg-none text-center mb-2">
                                 <button class="btn btn-primary border" style="font-size: 20px">تسجيل الدخول</button>
@@ -32,6 +36,8 @@
                     <li class="nav-item">
                         <a class="nav-link fs-5 mx-2" @if(request()->is('contact')) style="color: var(--primary-custom-color);font-weight: bold;" @endif  href="{{ url('contact') }}">اتصل بنا</a>
                     </li>
+
+
                 </ul>
             </div>
         </div>
