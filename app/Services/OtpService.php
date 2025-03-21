@@ -2,22 +2,22 @@
 
 namespace App\Services;
 
-use App\Repositories\OTPRepository;
+use App\Repositories\OtpRepository;
 
-class OTPService
+class OtpService
 {
     /**
      * Create a new class instance.
      */
-    public function __construct(private OTPRepository $OTPRepository)
+    public function __construct(private OtpRepository $OtpRepository)
     {
         //
     }
     public function generateOTP($email,$purpose='account_creation')
     {
-        $existingOtp=$this->OTPRepository->findByEmail($email);
+        $existingOtp=$this->OtpRepository->findByEmail($email);
         if($existingOtp){
-            $this->OTPRepository->delete($existingOtp->id);
+            $this->OtpRepository->delete($existingOtp->id);
         }
         $otp = rand(100000, 999999);
         $expiresAt = now()->addMinutes(10);
@@ -27,13 +27,13 @@ class OTPService
             'expires_at' => $expiresAt,
             'purpose' => $purpose,
         ];
-        $this->OTPRepository->store($data);
+        $this->OtpRepository->store($data);
         return $otp;
     }
 
     public function verifyOTP($email, $code)
     {
-        $otp = $this->OTPRepository->verifyOTP($email, $code);
+        $otp = $this->OtpRepository->verifyOTP($email, $code);
 
         if ($otp) {
             $otp->is_used = true;

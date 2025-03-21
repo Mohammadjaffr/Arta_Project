@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\API\Auth;
+namespace App\Http\Controllers\API\auth;
 
 use Exception;
 use App\Mail\OtpMail;
 use App\Services\OtpService;
 use Illuminate\Http\Request;
-//use App\Jobs\SendOtpEmailJob;
+use App\Jobs\SendOtpEmailJob;
 use Illuminate\Validation\Rule;
 use App\Classes\ApiResponseClass;
 use App\Http\Controllers\Controller;
@@ -14,11 +14,10 @@ use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-
 class OTPController extends Controller
 {
 
-    public function __construct(private OTPService $OTPService,private UserRepository $UserRepository)
+    public function __construct(private OtpService $otpService, private UserRepository $UserRepository)
     {
         //
     }
@@ -27,7 +26,7 @@ class OTPController extends Controller
             'email' => ['required','email',Rule::exists('users','email')],
         ]);
         try {
-            $otp=$this->OTPService->generateOTP($fields['email']);
+            $otp=$this->otpService->generateOTP($fields['email']);
             // SendOtpEmailJob::dispatch($fields['email'], $otp);
             Mail::to($fields['email'])->send(new OtpMail($otp));
             return ApiResponseClass::sendResponse(null,'تم إرسال رمز التحقق الى : ' . $fields['email']);
@@ -52,7 +51,7 @@ class OTPController extends Controller
         }
         $fields=$request->only(['email', 'otp']);
         // Verify the provided OTP using the OTP service
-        if($this->OTPService->verifyOTP($fields['email'],$fields['otp'])){
+        if($this->otpService->verifyOTP($fields['email'],$fields['otp'])){
             $user=$this->UserRepository->findByEmail($fields['email']);
 
             // Update the user record to mark email as verified and set the last login time

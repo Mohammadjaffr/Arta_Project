@@ -9,17 +9,17 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class OTPMail extends Mailable
+class OtpMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $OTP;
+    public $Otp;
     /**
      * Create a new message instance.
      */
-    public function __construct($OTP)
+    public function __construct($Otp)
     {
-        $this->OTP = $OTP;
+        $this->Otp = $Otp;
     }
 
     /**

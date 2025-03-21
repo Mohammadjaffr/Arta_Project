@@ -5,7 +5,7 @@ use App\Interfaces\RepositoriesInterface;
 use App\Models\Otp;
 use Illuminate\Support\Facades\DB;
 
-class OTPRepository implements RepositoriesInterface
+class OtpRepository implements RepositoriesInterface
 {
     /**
      * Create a new class instance.
@@ -22,7 +22,7 @@ class OTPRepository implements RepositoriesInterface
      */
     public function index(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
-        return OTP::paginate(10);
+        return Otp::paginate(10);
     }
 
     /**
