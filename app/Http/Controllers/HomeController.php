@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Torann\GeoIP\GeoIP;
+
 
 class HomeController extends Controller
 {
@@ -60,7 +62,6 @@ class HomeController extends Controller
         $user->username= $request->username;
         $user->contact_number= $request->contact_number;
         $user->whatsapp_number =$request->whatsapp_number;
-        $user->password=$request->password;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $extension = $image->getClientOriginalExtension();
@@ -70,6 +71,10 @@ class HomeController extends Controller
         } else {
             $user->image = null;
         }
+        $user->location()->updateOrCreate(
+            ['user_id' => $user->id],
+            ['latitude' => $request->latitude, 'longitude' => $request->longitude]
+        );
         $user->socialMediaAccounts()->updateOrCreate(
             ['user_id' => $user->id],
             [
@@ -99,6 +104,10 @@ class HomeController extends Controller
     }
      public function about(){
         return view('livewire.about');
+    }
+    public function chat(){
+        $listings = Listing::all();
+        return view('livewire.chat',compact(['listings']));
     }
     public function change_password(Request $request)
     {

@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Category;
 use Carbon\Carbon;
 use App\Models\Listing;
+use Laravel\Pail\ValueObjects\Origin\Http;
 use Livewire\Component;
 use App\Models\Region;
 use Livewire\Attributes\Url;
@@ -21,7 +22,60 @@ class Listings extends Component
     public $category_parent_id;
     public $category_child_id;
 
+    public $view_stats = 'list';
 
+    public $page=1;
+    public $listing_more=true;
+    public $all_listinges;
+
+    public function list_all_listing()
+    {
+        $this->selectedCategory = null;
+        $this->category_parent_id = null;
+        $this->category_child_id = null;
+        $this->region_parent_id = null;
+        $this->region_child_id = null;
+        $this->title = null;
+        $this->sort = 'asc';
+        $this->page = 1;
+    }
+
+    public function set_view_stats($mode)
+    {
+        $this->view_stats = $mode;
+
+    }
+
+    public function loadMore()
+    {
+        $this->page++;
+    }
+
+    public function getRegionFromIp()
+    {
+        if (app()->environment('local')) {
+            return null; // أو إرجاع منطقة افتراضية
+        }
+
+        $ip = request()->ip();
+        $response = Http::get("https://ipinfo.io/{$ip}?token=cf551691cec329");
+        $data = $response->json();
+
+        $regionName = $data['region'] ?? null;
+
+        if ($regionName) {
+            $region = Region::where('name', 'like', "%{$regionName}%")->first();
+            return $region ? $region->id : null;
+        }
+
+        return null;
+    }
+
+    public function changeRegion($regionId)
+    {
+        $this->region_parent_id = $regionId;
+        $this->region_child_id = null;
+    }
     // تصفية حسب السعر
     public function sortByPrice($order)
     {
@@ -48,7 +102,6 @@ class Listings extends Component
     public function render()
     {
         $query = Listing::query();
-//        list the children_categories in new select
         $children_categories = $this->selectedCategory
             ? Category::where('parent_id', $this->selectedCategory)->get()
             : null;
@@ -108,7 +161,7 @@ class Listings extends Component
             $query->orderBy('price', 'desc');
         }
 
-        // جلب البيانات مع العلاقات
+
         $listings = $query->with([
             'user:id,name',
             'category:id,name',
@@ -116,7 +169,9 @@ class Listings extends Component
             'images',
             'comments.user',
             'currency:id,code,name,abbr'
-        ])->paginate(10);
+        ])->paginate(5 * $this->page);
+
+        $this->listing_more =$listings->hasMorePages();
 
         // جلب المناطق الرئيسية
         $Parents = Region::whereNull('parent_id')->get();
@@ -124,7 +179,8 @@ class Listings extends Component
         // جلب الفئات
         $categories = Category::whereNull('parent_id')->get();
 
+
         Carbon::setLocale('ar');
-        return view('livewire.listings', compact('listings', 'Parents', 'children', 'categories','children_categories'));
+        return view('livewire.listings', compact('listings', 'Parents', 'children', 'categories','children_categories',));
     }
 }

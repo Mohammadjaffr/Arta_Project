@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Auth\OTPController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
@@ -56,6 +57,8 @@ Route::post('/register',[UserAuthController::class,'register']);
 Route::post('/login',[UserAuthController::class,'login']);
 Route::get('/login/google', [UserAuthController::class, 'redirectToGoogle']);
 Route::get('/login/google/callback', [UserAuthController::class, 'handleGoogleCallback']);
+Route::post('/verifyOtpAndLogin',[OTPController::class,'verifyOtpAndLogin']);
+Route::post('/resendOTP',[OTPController::class,'resendOTP']);
 
 
 
