@@ -3,6 +3,11 @@
 namespace App\Livewire;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+use App\Models\Message;
+use Illuminate\Support\Facades\Auth;
+>>>>>>> Stashed changes
 =======
 use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +17,10 @@ use Livewire\Component;
 class Chat extends Component
 {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
     public $listingId;
     public $receiverId;
     public $message;
@@ -58,6 +66,9 @@ class Chat extends Component
         $this->dispatch('messageSent');
     }
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     public function render()
     {

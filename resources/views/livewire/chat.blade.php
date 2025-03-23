@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 @extends('layouts.master')
 
 @section('title', 'المحادثه')
@@ -88,6 +89,8 @@
     </script>
 @endsection
 =======
+=======
+>>>>>>> Stashed changes
 <div>
     <div class="chat-container">
         <div class="messages border p-3" style="height: 300px; overflow-y: scroll;">
@@ -110,4 +113,7 @@
     </div>
 
 </div>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

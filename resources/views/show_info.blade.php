@@ -67,14 +67,20 @@
             <div class="d-flex justify-content-evenly">
                 <livewire:share-listing :listingId="$listings->id" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             </div>
             <div class="d-flex justify-content-evenly">
 {{--                <livewire:chat :listing_id="$listings->id" />--}}
 =======
+=======
+>>>>>>> Stashed changes
 
             </div>
             <div class="d-flex justify-content-evenly">
                 <livewire:chat :listingId="$listings->id" :receiverId="$listings->user_id" />
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             </div>
 
