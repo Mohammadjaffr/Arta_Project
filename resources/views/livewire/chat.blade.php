@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 @extends('layouts.master')
 
 @section('title', 'المحادثه')
@@ -86,3 +87,27 @@
         });
     </script>
 @endsection
+=======
+<div>
+    <div class="chat-container">
+        <div class="messages border p-3" style="height: 300px; overflow-y: scroll;">
+            @foreach ($messages as $msg)
+                <div class="message mb-2 {{ $msg['sender_id'] == auth()->id() ? 'text-end' : 'text-start' }}">
+                <span class="badge {{ $msg['sender_id'] == auth()->id() ? 'bg-primary' : 'bg-secondary' }}">
+                    {{ $msg['message'] }}
+                </span>
+                </div>
+            @endforeach
+        </div>
+
+        <form wire:submit.prevent="sendMessage" class="mt-3">
+            <div class="input-group">
+                <input type="text" wire:model="message" class="form-control" placeholder="اكتب رسالتك هنا...">
+                <button class="btn btn-primary" type="submit">إرسال</button>
+            </div>
+            @error('message') <span class="text-danger">{{ $message }}</span> @enderror
+        </form>
+    </div>
+
+</div>
+>>>>>>> Stashed changes
