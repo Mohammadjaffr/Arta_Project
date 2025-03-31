@@ -105,10 +105,7 @@ class HomeController extends Controller
      public function about(){
         return view('livewire.about');
     }
-    public function chat(){
-        $listings = Listing::all();
-        return view('livewire.chat',compact(['listings']));
-    }
+
     public function change_password(Request $request)
     {
         $data= [

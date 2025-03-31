@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class region extends Model
 {
     use HasFactory;
-    
-    protected $fillable = ['name', 'parent_id'];
+
+    protected $fillable = ['name', 'parent_id','latitude','longitude'];
 
     public function children()
     {

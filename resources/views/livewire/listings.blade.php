@@ -39,6 +39,10 @@
             <button wire:click="set_view_stats('list')" class="btn btn-light"><i class="fa-solid fa-list"></i></button>
             <button wire:click="set_view_stats('card')" class="btn btn-light"><i class="fa-solid fa-grip"></i></button>
         </div>
+        <div>
+            <button wire:click="" class="btn btn-light rounded-circle" > <img class="mx-1" style="width: 20px;" src="{{ asset('assets/images/Map Point.png') }}">
+            </button>
+        </div>
         <form class="flex-grow-1 position-relative">
             <img src="{{ asset('assets/images/search.svg') }}" alt="Search Icon" style="position: absolute; left: 5px; top: 50%; transform: translateY(-50%);">
             <input wire:model.live="title" class="form-control rounded-4 ps-2" type="text" placeholder="ابحث هنا...">
@@ -187,5 +191,6 @@
             <img class="float-start" src="{{ asset('assets/images/arrow-left1.svg') }}">
         </button>
     </div>
+
     @endif
 </div>

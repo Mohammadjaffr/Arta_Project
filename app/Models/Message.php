@@ -12,8 +12,8 @@ class Message extends Model
     protected $fillable = [
         'sender_id',
         'receiver_id',
-        'listing_id',
         'message',
+        'read_at'
     ];
 
     public function sender()
@@ -26,8 +26,5 @@ class Message extends Model
         return $this->belongsTo(User::class, 'receiver_id');
     }
 
-    public function listing()
-    {
-        return $this->belongsTo(listing::class);
-    }
+
 }

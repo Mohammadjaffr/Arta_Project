@@ -66,22 +66,16 @@
             <!-- Action Buttons Section -->
             <div class="d-flex justify-content-evenly">
                 <livewire:share-listing :listingId="$listings->id" />
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            </div>
-            <div class="d-flex justify-content-evenly">
-{{--                <livewire:chat :listing_id="$listings->id" />--}}
-=======
-=======
->>>>>>> Stashed changes
 
             </div>
             <div class="d-flex justify-content-evenly">
-                <livewire:chat :listingId="$listings->id" :receiverId="$listings->user_id" />
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
+
+            </div>
+            <div class="d-flex justify-content-evenly">
+                <a class="nav-link fs-5 mx-2" @if(request()->is('chat/'.$listings->user_id)) style="color: var(--primary-custom-color);font-weight: bold;" @endif  href="{{ url('chat/'.$listings->user_id) }}">chating</a>
+
+
             </div>
 
             <!-- Comment Section -->
@@ -108,3 +102,4 @@
     });
 });
 </script>
+</div>

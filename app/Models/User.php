@@ -76,4 +76,10 @@ class User extends Authenticatable implements LaratrustUser
     {
         return $this->hasOne(Location::class);
     }
+    public function isOnline()
+    {
+        return cache()->has('user-is-online-' . $this->id);
+    }
+
+
 }
