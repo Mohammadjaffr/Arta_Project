@@ -1,4 +1,4 @@
-@extends('layouts.master')
+    @extends('layouts.master')
 @section('title', 'معلومات الحساب')
 @section('contact')
     <div class="my-5" dir="rtl">

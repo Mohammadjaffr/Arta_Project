@@ -24,6 +24,7 @@ return new class extends Migration
 
             $table->string('primary_image');
             $table->timestamps();
+            $table->index(['region_id']);
         });
     }
 

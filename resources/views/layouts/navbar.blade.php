@@ -17,9 +17,7 @@
                             <div class="d-lg-none text-center mb-2">
                                 <a class="link fw-bold text-decoration-none" style="color: var(--warning-custom-color);font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 20px" href="{{route('account_show')}}" style="font-size: 20px">{{Auth::user()->name}}</a>
                             </div>
-                        <div>
-                            <a class="nav-link fs-5 mx-2" @if(request()->is('/chat')) style="color: var(--primary-custom-color);font-weight: bold;" @endif href="{{ url('/chat') }}">المحادثه</a>
-                        </div>
+
 
                         @else
                             <span class="d-lg-none text-center mb-2">
@@ -36,13 +34,72 @@
                     <li class="nav-item">
                         <a class="nav-link fs-5 mx-2" @if(request()->is('contact')) style="color: var(--primary-custom-color);font-weight: bold;" @endif  href="{{ url('contact') }}">اتصل بنا</a>
                     </li>
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link fs-5 mx-2" @if(request()->is('users')) style="color: var(--primary-custom-color);font-weight: bold;" @endif  href="{{ url('users') }}">الرسائل</a>--}}
+{{--                    </li>--}}
+                    @auth
+                    <a class="btn position-relative p-2"
+                       style="color: var(--primary-custom-color); font-weight: bold;"
+                       href="#"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false"
+                       aria-label="الرسائل مع إشعارات">
+
+                        <i class="fas fa-envelope fs-5"></i>
+
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                             {{Auth::user()->unreadNotifications->count()}}
+      <span class="visually-hidden">رسائل غير مقروءة</span>
+   </span>
+                    </a>
+
+
+
+                    <li class="nav-item">
+                        <div class="nav-item dropdown no-arrow ms-4 d-none d-lg-flex">
+
+                            <div class="dropdown-menu dropdown-menu-right shadow-lg animated--grow-in p-0"
+                                 aria-labelledby="alertsDropdown" style="text-align: start; min-width: 350px;">
+                                <div class="dropdown-header d-flex justify-content-between align-items-center">
+                                    <span>الإشعارات</span>
+{{--                                    <small><a href="{{ route('markAllAsRead') }}" class="text-primary">تعيين الكل كمقروء</a></small>--}}
+                                </div>
+                                <div class="dropdown-divider m-0"></div>
+                                <div class="list-group notification-container" style="max-height: 400px; overflow-y: auto;">
+                                    @forelse(Auth::user()->unreadNotifications as $notification)
+                                        <!-- إشعار مع صورة - غير مقروء -->
+                                        <a href="{{ route('notification', ['id' => $notification->data['message_id']]) }}"
+                                           class="list-group-item list-group-item-action notification-item notification-unread p-3 border-0">
+                                            <div class="d-flex align-items-start">
+                                                <img src="{{ asset(Auth::user()->image) }}" class="rounded-circle me-3" width="50" height="50" alt="صورة المستخدم">
+                                                <div class="flex-grow-1">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <h6 class="mb-1">{{ $notification->data['user_name'] }}</h6>
+                                                        <small class="notification-time text-muted">{{ $notification->created_at->diffForHumans() }}</small>
+                                                    </div>
+                                                    <p class="mb-1">قام بتعليق جديد على منشورك: <strong>{{ $notification->data['message'] }}</strong></p>
+                                                    <small class="text-muted">اضغط لعرض التعليق</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    @empty
+                                        <div class="p-3 text-center text-muted">لا توجد إشعارات جديدة</div>
+                                    @endforelse
+                                </div>
+                                <div class="dropdown-footer text-center py-2">
+{{--                                    <a href="{{ route('allNotifications') }}" class="text-primary">عرض جميع الإشعارات</a>--}}
+                                </div>
+                            </div>
+                        </div>
+                    </li>
 
 
                 </ul>
             </div>
         </div>
 
-
+        @endauth
         @if(Auth::user())
 
         <div class="nav-item dropdown no-arrow ms-4 d-none d-lg-flex">

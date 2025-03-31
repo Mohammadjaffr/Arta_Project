@@ -36,13 +36,14 @@
         </div>
         <div >التواصل واتساب</div>
     </button>
-    <button onclick="toggleWhatsAppNumber(this)" class="btn btn-light border rounded-3 p-2 d-flex m-2 " style="background-color: #559FC1">
-        <div class="mx-2">
-            <i class="fa-solid fa-phone fa-2x"></i>       </div>
-        <div id="whatsappNumber" style="display: none;">{{ $listings->user->whatsapp_number }}</div>
-        <div id="partialNumber">{{ substr($listings->user->whatsapp_number, 0, 3) . 'xxxxxx' }}</div>
+    @auth
+        @if(Auth::id() != $listings->user_id)
+            <button class="btn btn-light border rounded-3 p-2 d-flex m-2" style="background-color: #559FC1">
+                <a class="nav-link fs-5 mx-2" @if(request()->is('chat/'.$listings->user_id)) style="color: var(--primary-custom-color);font-weight: bold;" @endif href="{{ url('chat/'.$listings->user_id) }}">تواصل مع المعلن</a>
+            </button>
+        @endif
+    @endauth
 
-    </button>
 
     <script>
         function toggleWhatsAppNumber(button) {

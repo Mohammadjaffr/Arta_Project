@@ -57,4 +57,17 @@ class listing extends Model
     {
         return $this->belongsTo(Currency::class);
     }
+    public function scopeNearby($query, $latitude, $longitude, $radius)
+    {
+        return $query->selectRaw(
+            "*,
+            (6371 * acos(cos(radians(?)) * cos(radians(regions.latitude)) *
+            cos(radians(regions.longitude) - radians(?)) + sin(radians(?)) *
+            sin(radians(regions.latitude)))) AS distance",
+            [$latitude, $longitude, $latitude]
+        )
+            ->join('regions', 'regions.id', '=', 'listings.region_id')
+            ->having('distance', '<', $radius)
+            ->orderBy('distance');
+    }
 }
