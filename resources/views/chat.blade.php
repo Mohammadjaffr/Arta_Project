@@ -1,37 +1,128 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat with {{ $receiver->name }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    @vite(['resources/js/app.js'])
-</head>
-<body>
-<div class="container mt-5">
-    <h1>Chat with {{ $receiver->name }}</h1>
-    <div id="chat-box" class="border rounded-3 p-3" style="height: 400px; overflow-y: scroll;">
-        @if(is_iterable($messages))
-            @foreach ($messages as $message)
-                <div class="mb-2 {{ $message->sender_id == auth()->id() ? 'text-start' : 'text-end' }}">
-            <span class="badge {{ $message->sender_id == auth()->id() ? 'bg-primary' : 'bg-secondary' }}">
-                {{ $message->message }}
-            </span>
-                </div>
-            @endforeach
-        @else
-            <div class="alert alert-warning">لا توجد رسائل لعرضها</div>
-        @endif
-    </div>
-    <div id="typing-indicator" class="mt-2  " style="display: none;color: green">{{ $receiver->name }} is typing...</div>
-    <form id="message-form" class="mt-3">
-        @csrf
-        <div class="input-group">
-            <input type="text" id="message-input" class="form-control" placeholder="Type a message...">
-            <button type="submit" class="btn btn-primary">Send</button>
+@extends('layouts.master')
+@section('title' ,'الدردشه')
+@section('contact')
+
+<div class="container mt-4">
+    <div class="border rounded-3 shadow-sm">
+        <div class="border rounded  text-white d-flex justify-content-between align-items-center py-2" style="background-color: #046998;">
+            <div  class="badge mx-3  {{ Auth::user()->isOnline() ? 'bg-success' : 'bg-secondary' }}">
+                {{ Auth::user()->isOnline() ? 'متصل الآن' : 'غير متصل' }}
+            </div>
+            <h5 class="mx-3 ">
+                <i class="bi bi-chat-left-text me-2"></i>
+                دردشة مع {{ $receiver->name }}
+            </h5>
+
         </div>
-    </form>
+
+        <div class=" p-0">
+            <!-- منطقة الرسائل -->
+            <div id="chat-box" class="p-3" style="height: 400px; overflow-y: auto; background-color: #f8f9fa;">
+                @if(is_iterable($messages) && count($messages) > 0)
+                    @foreach ($messages as $message)
+                        <div class="message-wrapper mb-3 d-flex {{ $message->sender_id == auth()->id() ? 'justify-content-end' : 'justify-content-start' }}">
+                            <div class="{{ $message->sender_id == auth()->id() ? ' text-white' : 'bg-light text-dark' }}  rounded-4 p-3 shadow-sm" style="max-width: 75%;background-color: #046998">
+                                <div class="message-content">
+                                    {{ $message->message }}
+                                </div>
+                                <div class="message-time text-end mt-1" style="font-size: 0.75rem; color: {{ $message->sender_id == auth()->id() ? 'rgba(255,255,255,0.7)' : '#6c757d' }};">
+                                    {{ $message->created_at->format('h:i A') }}
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <div class="text-center">
+                            <i class="bi bi-chat-square-text display-5 text-muted mb-3"></i>
+                            <p class="text-muted">لا توجد رسائل لعرضها</p>
+                            <p class="text-muted small">ابدأ المحادثة بإرسال رسالة...</p>
+                        </div>
+                    </div>
+                @endif
+            </div>
+
+            <!-- مؤشر الكتابة -->
+            <div id="typing-indicator" class="px-3 py-2 bg-light" style="display: none;">
+                <div class="d-flex align-items-center">
+                    <div class="typing-dots me-2">
+                        <span class="dot" style="animation-delay: 0s;"></span>
+                        <span class="dot" style="animation-delay: 0.2s;"></span>
+                        <span class="dot" style="animation-delay: 0.4s;"></span>
+                    </div>
+                    <span class="text-muted small">{{ $receiver->name }} يكتب...</span>
+                </div>
+            </div>
+
+            <!-- نموذج الإرسال -->
+            <div class="p-3 border-top">
+                <form id="message-form">
+                    @csrf
+                    <div class="input-group">
+                        <button type="submit" class="btn btn-light rounded-end-3" style="background-color: #046998">
+                            <i class="bi bi-send-fill"></i> إرسال
+                        </button>
+                        <input type="text" id="message-input" class="form-control rounded-start-3" placeholder="اكتب رسالتك هنا..." autocomplete="off">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+
+<style>
+    /* أنيميشن نقاط الكتابة */
+    .typing-dots {
+        display: inline-flex;
+        align-items: center;
+        height: 17px;
+    }
+
+    .typing-dots .dot {
+        width: 6px;
+        height: 6px;
+        margin: 0 2px;
+        background-color: #6c757d;
+        border-radius: 50%;
+        display: inline-block;
+        animation: bounce 1.4s infinite ease-in-out both;
+    }
+
+    @keyframes bounce {
+        0%, 80%, 100% { transform: scale(0); }
+        40% { transform: scale(1); }
+    }
+
+    /* تخصيص شريط التمرير */
+    #chat-box::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    #chat-box::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    #chat-box::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 3px;
+    }
+
+    #chat-box::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
+    }
+
+    /* تأثيرات الرسائل */
+    .message-wrapper {
+        transition: all 0.3s ease;
+    }
+
+    .message-wrapper:hover {
+        transform: translateX(2px);
+    }
+</style>
+
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function (){
@@ -90,7 +181,7 @@
                 });
                 const messageDiv = document.createElement('div');
                 messageDiv.className = 'mb-2 text-start';
-                messageDiv.innerHTML = `<span class="badge bg-primary">${message}</span>`;
+                messageDiv.innerHTML = `<span class="badge " style="background-color: #046998">${message}</span>`;
                 chatBox.appendChild(messageDiv);
                 chatBox.scrollTop = chatBox.scrollHeight;
                 messageInput.value = '';
@@ -114,5 +205,4 @@
 
     });
 </script>
-</body>
-</html>
+@endsection

@@ -22,19 +22,43 @@ class ChatController extends Controller
     {
         $users = User::where('id', '!=', Auth::id())->get();
         $count_message = Message::where('receiver_id', auth()->id())->whereNull('read_at')->count();
-        return view('users', compact('users', 'count_message'));
+        return view('users_chat', compact('users', 'count_message'));
     }
+
+
 
     public function chat($receiverId)
     {
         $receiver = User::find($receiverId);
 
-        $messages = Message::where(function ($query) use ($receiverId){
+        if (!$receiver) {
+            return redirect()->route('chat.index')->withErrors('User not found.');
+        }
+
+        // استرداد الرسائل
+        $messages = Message::where(function ($query) use ($receiverId) {
             $query->where('sender_id', Auth::id())->where('receiver_id', $receiverId);
         })->orWhere(function ($query) use ($receiverId) {
             $query->where('sender_id', $receiverId)->where('receiver_id', Auth::id());
         })->get();
 
+        // بدء المعاملة
+        DB::transaction(function () use ($receiverId) {
+            // تحديث حالة الرسائل كمقروءة
+            Message::where('receiver_id', Auth::id())
+                ->where('sender_id', $receiverId)
+                ->where('read_at', null) // تأكد من عدم تحديث الرسائل المقروءة مسبقًا
+                ->update(['read_at' => now()]);
+
+            // تحديث الإشعارات كمقروءة
+             DB::table('notifications')
+                ->where('data->user_id', $receiverId) // تأكد من أن لديك المفتاح المناسب
+                ->where('notifiable_id', Auth::id()) // المستخدم الذي تم إشعاره
+                ->whereNull('read_at') // تأكد من عدم تحديث الإشعارات المقروءة مسبقًا
+                ->update(['read_at' => now()]);
+
+            // التحقق
+        });
 
         return view('chat', compact('receiver', 'messages'));
     }
@@ -47,25 +71,16 @@ class ChatController extends Controller
             'receiver_id'   => $receiverId,
             'message'       => $request->message,
         ]);
-        $users = User::query()->where('id', '!=', Auth::id())->get();
+        $users = User::find($message->receiver_id);
+        $user_sender = $message->sender->id;
         $user_name = $message->sender->name;
-        Notification::send($users, new ChatMessage($message->id,$user_name,$message->message));
+        Notification::send($users, new ChatMessage($message->id,$user_name,$message->message,$user_sender));
         // Fire the message event
         broadcast(new MessageSent($message))->toOthers();
 
         return response()->json(['status' => 'Message sent!']);
     }
-    public function show($id)
-    {
-        Message::findOrFail($id);
 
-        // For authenticated user's notifications
-        auth()->user()->notifications()
-            ->where('data->message_id', $id)
-            ->update(['read_at' => now()]);
-
-        return redirect('users');
-    }
     public function typing()
     {
         // Fire the typing event
@@ -84,5 +99,10 @@ class ChatController extends Controller
         Cache::forget('user-is-online-' . Auth::id());
         return response()->json(['status' => 'Offline']);
     }
+        public function show_users_notifications()
+    {
+        return view('users_notifications');
+    }
+
 
 }
