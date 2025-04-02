@@ -1,10 +1,10 @@
 @php use Illuminate\Support\Facades\Auth; @endphp
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow" style="max-height: 120px; position: relative;" dir="rtl" id="navbar">
     <div class="container-fluid">
-        <div class="d-flex flex-column align-items-center justify-content-between mt-1" style="width: 150px; height: 100px;">
-            <img alt="icon" style="max-width: 150px; max-height: 200px; height:auto" src="{{asset('assets/images/icon.png')}}">
-            <h3 class="fw-bold" style="color: var(--primary-custom-color); font-family: 'Tajawal', sans-serif;" >منصة عرطة</h3>
         <!-- Logo and Brand -->
+        <a href="{{ url('/') }}" class="d-flex flex-column align-items-center justify-content-between mt-1 text-decoration-none" style="width: 150px; height: 100px;">
+            <img alt="icon" class="img-fluid" style="max-width: 150px; max-height: 80px;" src="{{ asset('assets/images/icon.png') }}">
+            <h3 class="fw-bold m-0" style="color: var(--primary-custom-color); font-family: 'Tajawal', sans-serif;">منصة عرطة</h3>
         </a>
 
         <!-- Mobile Toggle Button -->
@@ -15,8 +15,6 @@
         <!-- Main Navigation -->
         <div class="collapse navbar-collapse bg-light" id="navbarNavDropdown" style="z-index: 1000;">
             <div class="mx-auto text-center">
-                        @if(Auth::user())
-                            </div>
                 <ul class="navbar-nav d-inline-flex align-items-center">
                     <!-- Mobile User Info -->
                     @auth
