@@ -34,6 +34,10 @@ class AdminPanelProvider extends PanelProvider
                 'warning' => Color::Orange,
             ])
             ->font('Oswald')
+            ->brandLogo(asset('assets/images/icon.png'))
+            ->brandLogoHeight('4rem')
+            ->favicon(asset('assets/images/icon.png'))
+            ->brandName('arta platform')
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
             ->pages([

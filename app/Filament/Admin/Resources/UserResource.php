@@ -17,12 +17,17 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static ?string $navigationGroup = 'User Management';
+    protected static ?int $navigationSort = 1;
+
+
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
+            Forms\Components\Section::make([
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -33,22 +38,25 @@ class UserResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\FileUpload::make('image')
-                    ->image(),
-                Forms\Components\TextInput::make('contact_number')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('whatsapp_number')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('google_id')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
+            ])->columns(3),
+                Forms\Components\Section::make([
+
+                    Forms\Components\TextInput::make('password')
+                        ->password()
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('contact_number')
+                        ->maxLength(255)
+                        ->default(null),
+                    Forms\Components\TextInput::make('whatsapp_number')
+                        ->maxLength(255)
+                        ->default(null),])->columns(3),
+
+                Forms\Components\Section::make([
+                    Forms\Components\FileUpload::make('image')
+                    ->image(),]),
+
+
             ]);
     }
 

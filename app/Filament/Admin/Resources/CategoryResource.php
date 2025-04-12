@@ -17,20 +17,32 @@ class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-tag';
+    protected static ?string $navigationGroup = 'Content Management';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(100),
-                Forms\Components\TextInput::make('parent_id')
-                    ->numeric()
-                    ->default(null),
+                Forms\Components\Section::make('الفئات')->description('قم ب اضفة الاسم و اسم الفئه')
+                ->schema([
+                            Forms\Components\TextInput::make('name')
+                                ->required()
+                                ->maxLength(100),
+                            Forms\Components\Select::make('parent_id')
+                                ->relationship(name: 'parent' ,titleAttribute: 'name')
+                                ->searchable()
+                                ->live()
+                                ->preload()
+                                ->required(),
+                        ])->columns(2),
+
+            Forms\Components\Section::make('صورة الفئة')->description('قم باضافة صوره للفئه')
+                ->schema([
                 Forms\Components\FileUpload::make('image')
                     ->image(),
+            ]),
+
             ]);
     }
 

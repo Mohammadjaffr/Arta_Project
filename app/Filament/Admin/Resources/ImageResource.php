@@ -17,18 +17,22 @@ class ImageResource extends Resource
 {
     protected static ?string $model = Image::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-photo';
+    protected static ?string $navigationGroup = 'Content Management';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('listing_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('path')
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\Section::make([
+                    Forms\Components\TextInput::make('listing_id')
+                        ->required()
+                        ->numeric(),
+                    Forms\Components\TextInput::make('path')
+                        ->required()
+                        ->maxLength(255),
+                ])->columns(2),
+
             ]);
     }
 

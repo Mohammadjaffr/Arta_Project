@@ -17,7 +17,10 @@ class SocialMediaAccountsResource extends Resource
 {
     protected static ?string $model = SocialMediaAccounts::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-share';
+    protected static ?string $navigationGroup = 'User Management';
+    protected static ?int $navigationSort = 3;
+
 
     public static function form(Form $form): Form
     {
