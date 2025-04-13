@@ -25,18 +25,25 @@ class RegionResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(100),
-                Forms\Components\TextInput::make('parent_id')
-                    ->numeric()
-                    ->default(null),
-                Forms\Components\TextInput::make('latitude')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('longitude')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Section::make([
+                    Forms\Components\TextInput::make('name')
+                        ->required()
+                        ->maxLength(100),
+                    Forms\Components\Select::make('parent_id')
+                        ->relationship(name: 'parent', titleAttribute: 'name')
+                        ->required()
+                        ->preload()
+                        ->searchable()
+                        ->label('Region')
+                        ->live(),
+        Forms\Components\TextInput::make('latitude')
+                        ->required()
+                        ->numeric(),
+                    Forms\Components\TextInput::make('longitude')
+                        ->required()
+                        ->numeric(),
+                ])->columns(4),
+
             ]);
     }
 

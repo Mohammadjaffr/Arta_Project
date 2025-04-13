@@ -26,15 +26,17 @@ class CommentResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('listing_id')
+                Forms\Components\Section::make([
+                    Forms\Components\TextInput::make('listing_id')
                     ->required()
                     ->numeric(),
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\Textarea::make('content')
-                    ->required()
-                    ->columnSpanFull(),
+                    Forms\Components\TextInput::make('user_id')
+                        ->required()
+                        ->numeric(),
+                    Forms\Components\Textarea::make('content')
+                        ->required()
+                        ->columnSpanFull(),]),
+
             ]);
     }
 

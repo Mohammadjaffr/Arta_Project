@@ -25,15 +25,19 @@ class RoleResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('display_name')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('description')
-                    ->maxLength(255)
-                    ->default(null),
+                Forms\Components\Section::make([])->columns(2),
+                Forms\Components\Section::make([
+                    Forms\Components\TextInput::make('name')
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('display_name')
+                        ->maxLength(255)
+                        ->default(null),
+                    Forms\Components\TextInput::make('description')
+                        ->maxLength(255)
+                        ->default(null),
+                ])->columns(3),
+
             ]);
     }
 
