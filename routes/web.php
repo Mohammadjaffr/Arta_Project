@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function (){
     Route::post('/chat/typing', [ChatController::class, 'typing']);
     Route::post('/online', [ChatController::class, 'setOnline']);
     Route::post('/offline', [ChatController::class, 'setOffline']);
-    Route::get('/notification/{id}', [ChatController::class, 'show'])->name('notification');
+    Route::get('/chats', [ChatController::class, 'index'])->name('chat.index');
+    Route::get('/show_users_notifications', [ChatController::class, 'show_users_notifications'])->name('show_users_notifications');
 });
 
