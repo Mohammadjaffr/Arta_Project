@@ -20,7 +20,11 @@ class RegionResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-globe-alt';
     protected static ?string $navigationGroup =  'إدارة المحتوى';
     protected static ?string $navigationLabel = 'المناطق والاحياء';
-
+    protected static ?string $pluralModelLabel = 'المناطق';
+    protected static ?string $modelLabel = 'منطقة';
+    // protected static ?string $title = 'إدارة المناطق';
+    protected static bool $shouldRegisterNavigation = true;
+   
 
     public static function form(Form $form): Form
     {
@@ -29,20 +33,22 @@ class RegionResource extends Resource
                 Forms\Components\Section::make([
                     Forms\Components\TextInput::make('name')
                         ->required()
-                        ->maxLength(100),
+                        ->maxLength(100)
+                        ->label('المدينة او الحي'),
                     Forms\Components\Select::make('parent_id')
                         ->relationship(name: 'parent', titleAttribute: 'name')
-                        ->required()
                         ->preload()
                         ->searchable()
-                        ->label('Region')
+                        ->label('المدينة')
                         ->live(),
         Forms\Components\TextInput::make('latitude')
                         ->required()
-                        ->numeric(),
+                        ->numeric()
+                        ->label('خط العرض'),
                     Forms\Components\TextInput::make('longitude')
                         ->required()
-                        ->numeric(),
+                        ->numeric()
+                        ->label('خط الطول'),
                 ])->columns(4),
 
             ]);
@@ -53,10 +59,13 @@ class RegionResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('parent_id')
+                    ->searchable()
+                    ->label('المدينة او الحي'),
+                Tables\Columns\TextColumn::make('parent.name')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->label('المدينة')
+                    ->placeholder('غير محدد'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -67,17 +76,20 @@ class RegionResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('latitude')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->label('خط العرض'),
                 Tables\Columns\TextColumn::make('longitude')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->label('خط الطول'),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+                // Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -97,9 +109,9 @@ class RegionResource extends Resource
     {
         return [
             'index' => Pages\ListRegions::route('/'),
-            'create' => Pages\CreateRegion::route('/create'),
-            'view' => Pages\ViewRegion::route('/{record}'),
-            'edit' => Pages\EditRegion::route('/{record}/edit'),
+            // 'create' => Pages\CreateRegion::route('/create'),
+            // 'view' => Pages\ViewRegion::route('/{record}'),
+            // 'edit' => Pages\EditRegion::route('/{record}/edit'),
         ];
     }
 }

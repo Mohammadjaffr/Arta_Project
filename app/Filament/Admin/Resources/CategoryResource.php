@@ -8,6 +8,7 @@ use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -19,7 +20,9 @@ class CategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
     protected static ?string $navigationGroup = 'إدارة المحتوى';
-    protected static ?string $navigationLabel = 'الفئات';
+    protected static ?string $navigationLabel = 'الاصناف';
+    protected static ?string $pluralModelLabel = 'الاصناف';
+    protected static ?string $modelLabel = 'صنف';
 
     public static function form(Form $form): Form
     {
@@ -54,11 +57,20 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('parent_id')
+                    ->searchable()
+                    ->label('الصنف الفرعي او الرئيسي'),
+                Tables\Columns\TextColumn::make('parent.name')
                     ->numeric()
-                    ->sortable(),
-                Tables\Columns\ImageColumn::make('image'),
+                    ->sortable()
+                    ->label('الصنف الرئيسي')
+                    ->placeholder('غير محدد'),
+                    ImageColumn::make('image')
+                    ->label('الصورة')
+                    ->width(50)
+                    ->state(function ($record) {
+                       return $record->image;
+                    })
+                    ->height(50) ,
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -72,8 +84,9 @@ class CategoryResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+                // Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -93,9 +106,9 @@ class CategoryResource extends Resource
     {
         return [
             'index' => Pages\ListCategories::route('/'),
-            'create' => Pages\CreateCategory::route('/create'),
-            'view' => Pages\ViewCategory::route('/{record}'),
-            'edit' => Pages\EditCategory::route('/{record}/edit'),
+            // 'create' => Pages\CreateCategory::route('/create'),
+            // 'view' => Pages\ViewCategory::route('/{record}'),
+            // 'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];
     }
 }

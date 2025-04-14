@@ -66,21 +66,20 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                    ->searchable()
+                    ->label('الإسم'),
                 Tables\Columns\TextColumn::make('username')
-                    ->searchable(),
+                    ->searchable()
+                    ->label('أسم المستخدم'),
                 Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
+                    ->searchable()
+                    ->label('البريد الإلكتروني'),
                 Tables\Columns\TextColumn::make('contact_number')
-                    ->searchable(),
+                    ->searchable()
+                    ->label('رقم الهاتف'),
                 Tables\Columns\TextColumn::make('whatsapp_number')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('google_id')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable(),
+                    ->searchable()
+                    ->label('رقم الواتساب'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

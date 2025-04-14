@@ -18,6 +18,6 @@ class region extends Model
 
     public function parent()
     {
-        return $this->belongsTo(Region::class, 'parent_id')->withDefault(['name'=>'لايوجد']);
+        return $this->belongsTo(Region::class, 'parent_id');
     }
 }
