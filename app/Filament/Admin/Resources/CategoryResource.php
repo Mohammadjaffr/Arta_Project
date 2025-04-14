@@ -25,23 +25,25 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('الفئات')->description('قم ب اضفة الاسم و اسم الفئه')
+                Forms\Components\Section::make('الإصناف')->description('قم بإضافة الصنف الفرعي والرئيسي ان وجد')
                 ->schema([
                             Forms\Components\TextInput::make('name')
                                 ->required()
-                                ->maxLength(100),
+                                ->maxLength(100)
+                                ->label('أسم الصنف'),
                             Forms\Components\Select::make('parent_id')
                                 ->relationship(name: 'parent' ,titleAttribute: 'name')
                                 ->searchable()
                                 ->live()
                                 ->preload()
-                                ->required(),
+                                ->label('الصنف الرئيسي'),
                         ])->columns(2),
 
-            Forms\Components\Section::make('صورة الفئة')->description('قم باضافة صوره للفئه')
+            Forms\Components\Section::make('صورة الفئة')->description('قم باضافة صوره للصنف')
                 ->schema([
                 Forms\Components\FileUpload::make('image')
-                    ->image(),
+                    ->image()
+                    ->label('الصورة'),
             ]),
 
             ]);

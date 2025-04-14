@@ -107,6 +107,7 @@ class ListingResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('region_id')
+                
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status'),
