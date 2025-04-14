@@ -26,15 +26,24 @@ class ComplaintResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('listing_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\Textarea::make('content')
-                    ->required()
-                    ->columnSpanFull(),
+                Forms\Components\Section::make([
+                    Forms\Components\Select::make('اسم_المستخدم')
+                        ->relationship(name: 'user',titleAttribute: 'name')
+                        ->required()
+                        ->searchable()
+                        ->live()
+                        ->preload(),
+                    Forms\Components\Select::make('listing_id')
+                        ->relationship(name: 'listing',titleAttribute: 'title')
+                        ->required()
+                        ->searchable()
+                        ->live()
+                        ->preload(),
+                    Forms\Components\Textarea::make('content')
+                        ->required()
+                        ->columnSpanFull(),
+                ])->columns(2),
+
             ]);
     }
 

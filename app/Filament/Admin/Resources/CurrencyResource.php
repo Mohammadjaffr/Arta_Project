@@ -25,15 +25,18 @@ class CurrencyResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('code')
-                    ->required()
-                    ->maxLength(10),
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(50),
-                Forms\Components\TextInput::make('abbr')
-                    ->required()
-                    ->maxLength(10),
+                Forms\Components\Section::make([
+                    Forms\Components\TextInput::make('code')
+                        ->required()
+                        ->maxLength(10),
+                    Forms\Components\TextInput::make('name')
+                        ->required()
+                        ->maxLength(50),
+                    Forms\Components\TextInput::make('abbr')
+                        ->required()
+                        ->maxLength(10),
+                ])->columns(3),
+
             ]);
     }
 

@@ -25,15 +25,22 @@ class LocationResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('latitude')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('longitude')
-                    ->maxLength(255)
-                    ->default(null),
+                Forms\Components\Section::make([
+                    Forms\Components\Select::make('user_id')
+                        ->relationship(name: 'user' ,titleAttribute: 'name')
+                        ->placeholder('Select user')
+                        ->live()
+                        ->searchable()
+                        ->preload()
+                        ->required(),
+                    Forms\Components\TextInput::make('latitude')
+                        ->maxLength(255)
+                        ->default(null),
+                    Forms\Components\TextInput::make('longitude')
+                        ->maxLength(255)
+                        ->default(null),
+                ])->columns(3),
+
             ]);
     }
 

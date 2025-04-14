@@ -7,6 +7,7 @@ use App\Filament\Admin\Resources\ListingResource\RelationManagers;
 use App\Models\Listing;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -25,34 +26,65 @@ class ListingResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Section::make([
+                Forms\Components\Section::make([
                 Forms\Components\TextInput::make('title')
+                    ->label('عنوان الاعلان')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('user_id')
+                Forms\Components\Select::make('اسم_المستخدم')
+                    ->relationship(name: 'user',titleAttribute: 'name')
                     ->required()
-                    ->numeric(),
-                Forms\Components\Textarea::make('description')
-                    ->required()
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('price')
-                    ->required()
-                    ->numeric()
-                    ->prefix('$'),
-                Forms\Components\TextInput::make('currency_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('category_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('region_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('status')
-                    ->required(),
-                Forms\Components\FileUpload::make('primary_image')
-                    ->image()
-                    ->required(),
+                    ->searchable()
+                    ->live()
+                    ->preload(),
+
+                    Forms\Components\Textarea::make('وصف_الاعلان')
+                ->required()
+                ->columnSpanFull(),
+                    ])->columns(2),
+                Forms\Components\Section::make([
+                    Forms\Components\TextInput::make('السعر')
+
+                        ->required()
+                        ->numeric(),
+                    Forms\Components\Select::make('العمله')
+                        ->relationship(name: 'currency',titleAttribute: 'name')
+                        ->preload()
+                        ->searchable()
+                        ->live()
+                        ->required(),
+                    Forms\Components\Select::make('category_id')
+                        ->required()
+                        ->relationship(name: 'category',titleAttribute: 'name')
+                        ->searchable()
+                        ->live()
+                        ->preload(),
+                ])->columns(3),
+
+                Forms\Components\Section::make([
+                    Forms\Components\Select::make('region_id')
+                        ->required()
+                        ->relationship(name: 'region',titleAttribute: 'name')
+                        ->searchable()
+                        ->preload()
+                        ->live(),
+                    Forms\Components\Select::make('status')
+                    ->options([
+                        'new' => 'جديد',
+                        'no_new' => 'مستعمل',
+                        'around_new' => 'شبه مستخدم',
+                    ])
+                        ->placeholder('اختر الحاله')
+                        ->required(),
+                    Forms\Components\FileUpload::make('primary_image')
+                        ->image()
+                        ->required()
+                        ->columnSpanFull(),
+                ])->columns(2),
+                ]),
             ]);
+
     }
 
     public static function table(Table $table): Table

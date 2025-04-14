@@ -26,16 +26,19 @@ class MessageResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('sender_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('receiver_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\DateTimePicker::make('read_at'),
-                Forms\Components\Textarea::make('message')
-                    ->required()
-                    ->columnSpanFull(),
+                Forms\Components\Section::make([
+                    Forms\Components\TextInput::make('sender_id')
+                        ->required()
+                        ->numeric(),
+                    Forms\Components\TextInput::make('receiver_id')
+                        ->required()
+                        ->numeric(),
+
+                    Forms\Components\Textarea::make('message')
+                        ->required()
+                        ->columnSpanFull(),
+                ])->columns(2),
+
             ]);
     }
 
