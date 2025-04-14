@@ -18,7 +18,8 @@ class RegionResource extends Resource
     protected static ?string $model = Region::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-globe-alt';
-    protected static ?string $navigationGroup = 'Content Management';
+    protected static ?string $navigationGroup =  'إدارة المحتوى';
+    protected static ?string $navigationLabel = 'المناطق والاحياء';
 
 
     public static function form(Form $form): Form

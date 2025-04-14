@@ -19,7 +19,8 @@ class ListingResource extends Resource
     protected static ?string $model = Listing::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-list-bullet';
-    protected static ?string $navigationGroup = 'Content Management';
+    protected static ?string $navigationGroup = 'إدارة المحتوى';
+    protected static ?string $navigationLabel = 'الإعلانات';
 
 
     public static function form(Form $form): Form

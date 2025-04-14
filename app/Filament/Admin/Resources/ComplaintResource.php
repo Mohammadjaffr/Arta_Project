@@ -18,8 +18,9 @@ class ComplaintResource extends Resource
     protected static ?string $model = Complaint::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-exclamation-triangle';
-    protected static ?string $navigationGroup = 'User Management';
+    protected static ?string $navigationGroup ='إدارة المستخدمين';
     protected static ?int $navigationSort = 4;
+    protected static ?string $navigationLabel = 'المشاكل والشكاوي';
 
 
     public static function form(Form $form): Form
