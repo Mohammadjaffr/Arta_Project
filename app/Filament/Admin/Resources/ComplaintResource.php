@@ -21,6 +21,9 @@ class ComplaintResource extends Resource
     protected static ?string $navigationGroup ='إدارة المستخدمين';
     protected static ?int $navigationSort = 4;
     protected static ?string $navigationLabel = 'المشاكل والشكاوي';
+    protected static ?string $modelLabel = 'المشاكل والشكاوي ';
+    protected static bool $shouldRegisterNavigation = true;
+
 
 
     public static function form(Form $form): Form
@@ -28,19 +31,22 @@ class ComplaintResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Section::make([
-                    Forms\Components\Select::make('اسم_المستخدم')
+                    Forms\Components\Select::make('user_id')
+                        ->label('اسم المستخدم')
                         ->relationship(name: 'user',titleAttribute: 'name')
                         ->required()
                         ->searchable()
                         ->live()
                         ->preload(),
                     Forms\Components\Select::make('listing_id')
+                        ->label('اسم الاعلان')
                         ->relationship(name: 'listing',titleAttribute: 'title')
                         ->required()
                         ->searchable()
                         ->live()
                         ->preload(),
                     Forms\Components\Textarea::make('content')
+                        ->label('المحتوى')
                         ->required()
                         ->columnSpanFull(),
                 ])->columns(2),
@@ -52,17 +58,19 @@ class ComplaintResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')
+                Tables\Columns\TextColumn::make('user.name')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('listing_id')
+                Tables\Columns\TextColumn::make('listing.title')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('تم انشائها')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('تم تحديثها')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -71,8 +79,9 @@ class ComplaintResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+//                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -92,9 +101,9 @@ class ComplaintResource extends Resource
     {
         return [
             'index' => Pages\ListComplaints::route('/'),
-            'create' => Pages\CreateComplaint::route('/create'),
-            'view' => Pages\ViewComplaint::route('/{record}'),
-            'edit' => Pages\EditComplaint::route('/{record}/edit'),
+//            'create' => Pages\CreateComplaint::route('/create'),
+//            'view' => Pages\ViewComplaint::route('/{record}'),
+//            'edit' => Pages\EditComplaint::route('/{record}/edit'),
         ];
     }
 }

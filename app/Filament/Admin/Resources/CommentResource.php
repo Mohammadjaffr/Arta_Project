@@ -23,6 +23,8 @@ class CommentResource extends Resource
     protected static ?string $pluralModelLabel = 'التعليقات';
     protected static ?string $modelLabel = 'تعليق';
     protected static ?int $navigationSort = 5;
+    protected static bool $shouldRegisterNavigation = true;
+
 
 
     public static function form(Form $form): Form
@@ -31,14 +33,20 @@ class CommentResource extends Resource
             ->schema([
                 Forms\Components\Section::make([
                     Forms\Components\TextInput::make('listing_id')
+                        ->label('اسم الاعلان')
                     ->required()
                     ->numeric(),
-                    Forms\Components\TextInput::make('user_id')
+                    Forms\Components\Select::make('user_id')
+                        ->label('المستخدم')
+                        ->relationship(name: 'user',titleAttribute: 'name')
                         ->required()
-                        ->numeric(),
+                        ->searchable()
+                        ->live()
+                        ->preload(),
                     Forms\Components\Textarea::make('content')
+                        ->label('المحتوى')
                         ->required()
-                        ->columnSpanFull(),]),
+                        ->columnSpanFull(),])->columns(2),
 
             ]);
     }
@@ -47,17 +55,21 @@ class CommentResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('listing_id')
+                Tables\Columns\TextColumn::make('listing.title')
+                    ->label('اسم الاعلان')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('user_id')
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label('المستخدم')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('تم انشائها')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('تم تحديثها')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -66,8 +78,9 @@ class CommentResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+//                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -87,9 +100,9 @@ class CommentResource extends Resource
     {
         return [
             'index' => Pages\ListComments::route('/'),
-            'create' => Pages\CreateComment::route('/create'),
-            'view' => Pages\ViewComment::route('/{record}'),
-            'edit' => Pages\EditComment::route('/{record}/edit'),
+//            'create' => Pages\CreateComment::route('/create'),
+//            'view' => Pages\ViewComment::route('/{record}'),
+//            'edit' => Pages\EditComment::route('/{record}/edit'),
         ];
     }
 }

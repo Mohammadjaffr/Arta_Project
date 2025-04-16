@@ -22,9 +22,8 @@ class RegionResource extends Resource
     protected static ?string $navigationLabel = 'المناطق والاحياء';
     protected static ?string $pluralModelLabel = 'المناطق';
     protected static ?string $modelLabel = 'منطقة';
-    // protected static ?string $title = 'إدارة المناطق';
     protected static bool $shouldRegisterNavigation = true;
-   
+
 
     public static function form(Form $form): Form
     {
@@ -67,10 +66,13 @@ class RegionResource extends Resource
                     ->label('المدينة')
                     ->placeholder('غير محدد'),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('تم انشائها')
+
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('تم تحديثها')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

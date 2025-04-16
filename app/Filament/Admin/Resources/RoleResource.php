@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class RoleResource extends Resource
 {
     protected static ?string $model = Role::class;
+    protected static ?string $modelLabel = 'الإدوار ';
 
     protected static ?string $navigationIcon = 'heroicon-o-shield-check';
     protected static ?string $navigationGroup =  'إعدادات النظام';
@@ -26,15 +27,17 @@ class RoleResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make([])->columns(2),
                 Forms\Components\Section::make([
                     Forms\Components\TextInput::make('name')
+                        ->label('الاسم')
                         ->required()
                         ->maxLength(255),
                     Forms\Components\TextInput::make('display_name')
+                        ->label('الدور')
                         ->maxLength(255)
                         ->default(null),
                     Forms\Components\TextInput::make('description')
+                        ->label('الوصف')
                         ->maxLength(255)
                         ->default(null),
                 ])->columns(3),
@@ -47,16 +50,21 @@ class RoleResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label('الاسم')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('display_name')
+                    ->label('الدور')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('description')
+                    ->label('الوصف')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('تم انشائها')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('تم تحديثها')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -65,8 +73,9 @@ class RoleResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+//                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -86,9 +95,9 @@ class RoleResource extends Resource
     {
         return [
             'index' => Pages\ListRoles::route('/'),
-            'create' => Pages\CreateRole::route('/create'),
-            'view' => Pages\ViewRole::route('/{record}'),
-            'edit' => Pages\EditRole::route('/{record}/edit'),
+//            'create' => Pages\CreateRole::route('/create'),
+//            'view' => Pages\ViewRole::route('/{record}'),
+//            'edit' => Pages\EditRole::route('/{record}/edit'),
         ];
     }
 }

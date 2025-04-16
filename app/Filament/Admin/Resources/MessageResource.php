@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class MessageResource extends Resource
 {
     protected static ?string $model = Message::class;
+    protected static ?string $modelLabel = 'الرسائل ';
 
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
     protected static ?string $navigationGroup = 'إدارة المستخدمين';
@@ -29,13 +30,16 @@ class MessageResource extends Resource
             ->schema([
                 Forms\Components\Section::make([
                     Forms\Components\TextInput::make('sender_id')
+                        ->label('المرسل')
                         ->required()
                         ->numeric(),
                     Forms\Components\TextInput::make('receiver_id')
+                        ->label('المستلم')
                         ->required()
                         ->numeric(),
 
                     Forms\Components\Textarea::make('message')
+                        ->label('الرسالة')
                         ->required()
                         ->columnSpanFull(),
                 ])->columns(2),
@@ -47,20 +51,25 @@ class MessageResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('sender_id')
+                Tables\Columns\TextColumn::make('sender.name')
+                    ->label('المرسل')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('receiver_id')
+                Tables\Columns\TextColumn::make('receiver.name')
+                    ->label('المستلم')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('read_at')
+                    ->label('تم القراء')
                     ->dateTime()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('تم انشائها')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('تم تحديثها')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -69,8 +78,9 @@ class MessageResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+//                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -90,9 +100,9 @@ class MessageResource extends Resource
     {
         return [
             'index' => Pages\ListMessages::route('/'),
-            'create' => Pages\CreateMessage::route('/create'),
-            'view' => Pages\ViewMessage::route('/{record}'),
-            'edit' => Pages\EditMessage::route('/{record}/edit'),
+//            'create' => Pages\CreateMessage::route('/create'),
+//            'view' => Pages\ViewMessage::route('/{record}'),
+//            'edit' => Pages\EditMessage::route('/{record}/edit'),
         ];
     }
 }

@@ -21,6 +21,8 @@ class UserResource extends Resource
     protected static ?string $navigationGroup = 'إدارة المستخدمين';
     protected static ?int $navigationSort = 1;
     protected static ?string $navigationLabel = 'المستخدمين';
+    protected static ?string $modelLabel = 'المستخدمين ';
+    protected static bool $shouldRegisterNavigation = true;
 
 
 
@@ -30,12 +32,15 @@ class UserResource extends Resource
             ->schema([
             Forms\Components\Section::make([
                 Forms\Components\TextInput::make('name')
+                    ->label('الاسم')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('username')
+                    ->label('اسم المستخدم')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')
+                    ->label('الايميل')
                     ->email()
                     ->required()
                     ->maxLength(255),
@@ -43,18 +48,22 @@ class UserResource extends Resource
                 Forms\Components\Section::make([
 
                     Forms\Components\TextInput::make('password')
+                        ->label('كلمة المرور')
                         ->password()
                         ->required()
                         ->maxLength(255),
                     Forms\Components\TextInput::make('contact_number')
+                        ->label('رقم الهاتف')
                         ->maxLength(255)
                         ->default(null),
                     Forms\Components\TextInput::make('whatsapp_number')
+                        ->label('رقم الواتس')
                         ->maxLength(255)
                         ->default(null),])->columns(3),
 
                 Forms\Components\Section::make([
                     Forms\Components\FileUpload::make('image')
+                        ->label('الصوره')
                     ->image(),]),
 
 
@@ -78,13 +87,16 @@ class UserResource extends Resource
                     ->searchable()
                     ->label('رقم الهاتف'),
                 Tables\Columns\TextColumn::make('whatsapp_number')
+                    ->label('رقم الواتس')
                     ->searchable()
                     ->label('رقم الواتساب'),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('تم انشائها')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('تم تحديثها')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -93,8 +105,9 @@ class UserResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+//                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -114,9 +127,9 @@ class UserResource extends Resource
     {
         return [
             'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'view' => Pages\ViewUser::route('/{record}'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+//            'create' => Pages\CreateUser::route('/create'),
+//            'view' => Pages\ViewUser::route('/{record}'),
+//            'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
 }

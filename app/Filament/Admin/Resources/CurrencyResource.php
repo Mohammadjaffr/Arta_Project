@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class CurrencyResource extends Resource
 {
     protected static ?string $model = Currency::class;
+    protected static ?string $modelLabel = 'العملات ';
+
 
     protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
     protected static ?string $navigationGroup =  'إعدادات النظام';
@@ -28,12 +30,15 @@ class CurrencyResource extends Resource
             ->schema([
                 Forms\Components\Section::make([
                     Forms\Components\TextInput::make('code')
+                        ->label('الرمز')
                         ->required()
                         ->maxLength(10),
                     Forms\Components\TextInput::make('name')
+                        ->label('الاسم')
                         ->required()
                         ->maxLength(50),
                     Forms\Components\TextInput::make('abbr')
+                        ->label('العمله')
                         ->required()
                         ->maxLength(10),
                 ])->columns(3),
@@ -46,16 +51,21 @@ class CurrencyResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('code')
+                    ->label('الكود')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('name')
+                    ->label('اسم العمله')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('abbr')
+                    ->label('العمله')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('تم انشائها')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('تم تحديثها')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -64,8 +74,9 @@ class CurrencyResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+//                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -85,9 +96,9 @@ class CurrencyResource extends Resource
     {
         return [
             'index' => Pages\ListCurrencies::route('/'),
-            'create' => Pages\CreateCurrency::route('/create'),
-            'view' => Pages\ViewCurrency::route('/{record}'),
-            'edit' => Pages\EditCurrency::route('/{record}/edit'),
+//            'create' => Pages\CreateCurrency::route('/create'),
+//            'view' => Pages\ViewCurrency::route('/{record}'),
+//            'edit' => Pages\EditCurrency::route('/{record}/edit'),
         ];
     }
 }
