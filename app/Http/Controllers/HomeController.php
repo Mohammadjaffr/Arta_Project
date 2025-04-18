@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Torann\GeoIP\GeoIP;
@@ -120,17 +121,21 @@ class HomeController extends Controller
         return redirect('/home');
     }
     public function resendOTP(Request $request) {
-        $fields = $request->validate([
+        
+        $validator = validator::make($request->all(),[
             'email' => ['required','email',Rule::exists('users','email')],
         ]);
+        if ($validator->fails()){
+            return redirect()->route('password.request')->withErrors($validator->errors());
+        }
 
         try {
+            $fields=$request->only(['email']);
             $otp = $this->otpService->generateOTP($fields['email']);
             Mail::to($fields['email'])->send(new OtpMail($otp));
-            dd('dasf');
-            return redirect()->route('forget_password')->with('success', 'تم إرسال رمز التحقق إلى بريدك الإلكتروني');        }
+            return redirect()->route('password.request')->with('success', 'تم إرسال رمز التحقق إلى بريدك الإلكتروني');        }
         catch (\Exception $e) {
-            return redirect()->route('forget_password')->with('error', 'فشل إرسال رمز التحقق: ' . $e->getMessage());
+            return redirect()->route('password.request')->with('error', 'فشل إرسال رمز التحقق: ' . $e->getMessage());
         }
     }
 }

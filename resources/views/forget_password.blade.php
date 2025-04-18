@@ -8,13 +8,16 @@
         <h5 class="col-5 text-center mt-0 ms-4 d-xl-flex d-none" style="padding-top: 35%" >لا تفوت الفرصة، كن جزءًا  <br>من مجتمع المتسوقين الأذكياء</h5>
     </div>
     <div class="col-10 col-lg-5 custom-position container my-5 p-3 rounded-5 custom-shadow" style="background-color: #E7E7E7;min-width: 469px; max-width: 500px; max-height: fit-content;right: 15%">
-            <form method="post" action="{{url('login')}}" class="my-1 mx-3 p-2">
-@csrf
+            <form method="post" action="{{route('resendOTP')}}" class="my-1 mx-3 p-2">
+                @csrf
                 <div class="text-end my-3 me-3 "> <h2>هل نسيت كلمة المرور؟</h2></div>
                 <div class="text-end my-3 me-3 fw-bold text-black-50">لا تقلق، أدخل بريدك الإلكتروني أدناه لاستعادة كلمة المرور الخاصة بك </div>
                 <div class="form-group text-end my-2" >
                     <label class="form-label me-3">البريد الاكتروني</label>
-                    <input class="form-control py-2 rounded-4 custom-input" style="width: 100%;padding: 10px 10px;color: #555;max-font-size: 33px"  name="email" id="email" type="email" >
+                    @error('email')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <input class="form-control py-2 rounded-4 custom-input" style="width: 100%;padding: 10px 10px;color: #555;max-font-size: 33px"  name="email" id="email" type="email" value="{{ old('email') }}" >
                 </div>
 
                 <div class="text-center"><input class="btn  w-75 mt-4 py-3 rounded-4 text-white" style="background-color: #01496B" type="submit" value="ارسال"></div>
