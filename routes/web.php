@@ -40,7 +40,7 @@ Route::get('/change_password',function (){
 });
 // GOOGLE  //
 Route::get('/auth/google/redirect', function (){
-    return Socialite::driver('google')->stateless()->redirect();
+    // return Socialite::driver('google')->stateless()->redirect();
 });
 //Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('/auth/google/callback', [GoogleLoginController::class, 'handleGoogleCallback']);
