@@ -34,6 +34,7 @@ Route::resource('/category' ,CategoryController::class);
 Route::resource('/listing' ,ListingController::class);
 Route::resource('/region' ,RegionController::class);
 Route::post('/change_password', [App\Http\Controllers\HomeController::class, 'change_password'])->name('change_password');
+Route::post('/resendOTP', [App\Http\Controllers\HomeController::class, 'resendOTP'])->name('resendOTP');
 Route::get('/change_password',function (){
     return view('livewire.change_password');
 });

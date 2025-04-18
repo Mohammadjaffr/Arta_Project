@@ -8,8 +8,8 @@
         <h5 class="col-5 text-center mt-0 ms-4 d-xl-flex d-none" style="padding-top: 35%" >لا تفوت الفرصة، كن جزءًا  <br>من مجتمع المتسوقين الأذكياء</h5>
     </div>
     <div class="col-10 col-lg-5 custom-position container my-5 p-3 rounded-5 custom-shadow" style="background-color: #E7E7E7;min-width: 469px; max-width: 500px; max-height: fit-content;right: 15%">
-            <form class="my-1 mx-3 p-2">
-
+            <form method="post" action="{{url('login')}}" class="my-1 mx-3 p-2">
+@csrf
                 <div class="text-end my-3 me-3 "> <h2>هل نسيت كلمة المرور؟</h2></div>
                 <div class="text-end my-3 me-3 fw-bold text-black-50">لا تقلق، أدخل بريدك الإلكتروني أدناه لاستعادة كلمة المرور الخاصة بك </div>
                 <div class="form-group text-end my-2" >

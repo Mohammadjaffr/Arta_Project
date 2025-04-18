@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OtpMail;
 use App\Models\image;
 use App\Models\listing;
 use App\Models\User;
@@ -9,10 +10,13 @@ use App\Repositories\CategoryRepository;
 use App\Repositories\ListingRepository;
 use App\Repositories\RegionRepository;
 use App\Repositories\UserRepository;
+use App\Services\OtpService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Torann\GeoIP\GeoIP;
 
 
@@ -23,7 +27,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(private CategoryRepository $CategoryRepository,private RegionRepository $RegionRepository,private ListingRepository $ListingRepository,private UserRepository $userRepository)
+    public function __construct(private CategoryRepository $CategoryRepository,private RegionRepository $RegionRepository,private ListingRepository $ListingRepository,private UserRepository $userRepository,private OtpService $otpService)
     {
         // $this->middleware('auth');
     }
@@ -114,5 +118,19 @@ class HomeController extends Controller
         ];
         $this->userRepository->changePassword($data,Auth::user());
         return redirect('/home');
+    }
+    public function resendOTP(Request $request) {
+        $fields = $request->validate([
+            'email' => ['required','email',Rule::exists('users','email')],
+        ]);
+
+        try {
+            $otp = $this->otpService->generateOTP($fields['email']);
+            Mail::to($fields['email'])->send(new OtpMail($otp));
+            dd('dasf');
+            return redirect()->route('forget_password')->with('success', 'تم إرسال رمز التحقق إلى بريدك الإلكتروني');        }
+        catch (\Exception $e) {
+            return redirect()->route('forget_password')->with('error', 'فشل إرسال رمز التحقق: ' . $e->getMessage());
+        }
     }
 }
