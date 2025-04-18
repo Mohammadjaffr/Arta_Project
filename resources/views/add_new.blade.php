@@ -38,20 +38,10 @@
 <div class="container">
     <!-- النموذج -->
     <div dir="rtl" class="row justify-content-center">
-        <div class="col-12 col-lg-6 p-lg-5">
-
-
+        <div class="col-12 col-lg-6 px-lg-4 py-lg-2 border rounded-3 shadow">
             @livewire('add-listing')
-
         </div>
     </div>
-
-    <!-- رفع الصورة -->
-
-
-
-    <!-- زر حفظ ونشر الإعلان -->
-
 </div>
 @livewireScripts
 <script src="{{asset('assets/Js/custom-Js.js')}}"></script>
