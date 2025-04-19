@@ -9,7 +9,7 @@
     </div>
     <div class="col-10 col-lg-5 custom-position container my-5 p-3 rounded-5 custom-shadow" style="background-color: #E7E7E7;min-width: 469px; max-width: 500px; max-height: fit-content;right: 15%">
         @if(session('success') || session('error'))
-            <div class="message-center" style="position: fixed;left: 50%;transform: translate(-50%, -50%);z-index: 9999;padding: 20px;border-radius: 8px;text-align: center;animation: fadeInOut 4s forwards;
+            <div class="message-center" style="position: fixed;right: 50%;transform: translate(-50%, -50%);z-index: 9999;padding: 20px;border-radius: 8px;text-align: center;animation: fadeInOut 4s forwards;
         {{ session('success') ? 'background: #4CAF50; color: white;' : 'background: #F44336; color: white;' }}">
                 {{ session('success') ?? session('error') }}
             </div>
@@ -25,19 +25,67 @@
         </style>
             <form method="post" action="{{route('change_password')}}" class="my-1 mx-3 p-2">
                 @csrf
-                <div class="text-end my-3 me-3 "> <h2>ادخل كلمة المرور</h2></div>
-                <div class="text-end my-3 me-3 fw-bold text-black-50">لا تقلق، أدخل كلمة المرور القديمة أدناه لعمل كلمة مرور جديده </div>
-                <div class="form-group text-end my-2" >
-                    <label class="form-label">كلمة المرور القديمة</label>
-                    <input class="form-control py-2 rounded-4 custom-input my-2" style="width: 100%;padding: 10px 10px;color: #555;max-font-size: 33px" id="old_password" name="old_password" required type="password" value="{{ old('old_password') }}" >
-                    <label class="form-label me-3">كلمة المرور الجديدة</label>
-                    <input class="form-control py-2 rounded-4 custom-input " style="width: 100%;padding: 10px 10px;color: #555;max-font-size: 33px"  id="password" name="password" required type="password" value="{{ old('password') }}" >
-                    <label class="form-label me-3">تاكيد كلمة المرور</label>
-                    <input class="form-control py-2 rounded-4 custom-input " style="width: 100%;padding: 10px 10px;color: #555;max-font-size: 33px"  id="confirm_password" name="confirm_password" required type="password" value="{{ old('confirm_password') }}" >
-
+                <div class="text-end my-3 me-3">
+                    <h2>ادخل كلمة المرور</h2>
+                </div>
+                <div class="text-end my-3 me-3 fw-bold text-black-50">
+                    لا تقلق، أدخل كلمة المرور القديمة أدناه لعمل كلمة مرور جديده
                 </div>
 
-                <div class="text-center"><input class="btn  w-75 mt-4 py-3 rounded-4 text-white" style="background-color: #01496B" type="submit" value="تحقق"></div>
+                <div class="form-group text-end my-2">
+                    <!-- كلمة المرور القديمة -->
+                    <div style="position: relative;">
+                        <label class="form-label">كلمة المرور القديمة</label>
+                        @error('old_password')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <input class="form-control py-2 rounded-4 custom-input my-2"
+                               style="width: 100%;padding: 10px 10px;color: #555;max-font-size: 33px"
+                               id="old_password" name="old_password" required type="password"
+                               value="{{ old('old_password') }}">
+                        <span class="toggle-password"
+                              style="position: absolute; right: 10px; top: 75%; transform: translateY(-50%); cursor: pointer;">
+                <i class="fas fa-eye"></i>
+            </span>
+                    </div>
+
+                    <!-- كلمة المرور الجديدة -->
+                    <div style="position: relative;">
+                        <label class="form-label me-3">كلمة المرور الجديدة</label>
+                        @error('password')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <input class="form-control py-2 rounded-4 custom-input"
+                               style="width: 100%;padding: 10px 10px;color: #555;max-font-size: 33px"
+                               id="password" name="password" required type="password"
+                               value="{{ old('password') }}">
+                        <span class="toggle-password"
+                              style="position: absolute; right: 10px; top: 72%; transform: translateY(-50%); cursor: pointer;">
+                <i class="fas fa-eye"></i>
+            </span>
+                    </div>
+
+                    <!-- تأكيد كلمة المرور -->
+                    <div style="position: relative;">
+                        <label class="form-label me-3">تأكيد كلمة المرور</label>
+                        @error('confirm_password')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <input class="form-control py-2 rounded-4 custom-input"
+                               style="width: 100%;padding: 10px 10px;color: #555;max-font-size: 33px"
+                               id="confirm_password" name="confirm_password" required type="password"
+                               value="{{ old('confirm_password') }}">
+                        <span class="toggle-password"
+                              style="position: absolute; right: 10px; top: 72%; transform: translateY(-50%); cursor: pointer;">
+                <i class="fas fa-eye"></i>
+            </span>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <input class="btn w-75 mt-4 py-3 rounded-4 text-white"
+                           style="background-color: #01496B" type="submit" value="تحقق">
+                </div>
             </form>
 
         </div>
@@ -48,6 +96,28 @@
                 </button>
             </a>
         </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButtons = document.querySelectorAll('.toggle-password,.toggle-old_password,toggle-comfarim_password');
+
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const input = this.parentElement.querySelector('input');
+                    const icon = this.querySelector('i');
+
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else {
+                        input.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
 

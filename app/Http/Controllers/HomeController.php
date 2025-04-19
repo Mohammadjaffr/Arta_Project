@@ -28,11 +28,13 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(private CategoryRepository $CategoryRepository,
-                                private RegionRepository $RegionRepository,
-                                private ListingRepository $ListingRepository,
-                                private UserRepository $userRepository,
-                                private OtpService $otpService,)
+    public function __construct(
+        private CategoryRepository $CategoryRepository,
+        private RegionRepository $RegionRepository,
+        private ListingRepository $ListingRepository,
+        private UserRepository $userRepository,
+        private OtpService $otpService,
+    )
     {
         // $this->middleware('auth');
     }
@@ -115,19 +117,37 @@ class HomeController extends Controller
         return view('livewire.about');
     }
 
+
     public function change_password(Request $request)
     {
         try {
-            $data= [
-                'old_password'=>$request->old_password,
-                'password'=>$request->password,
+
+            $validator = Validator::make($request->all(), [
+                'old_password' => 'required',
+                'password' => 'required|min:8|confirmed',
+            ], [
+                'old_password.required' => 'كلمة المرور القديمة مطلوبة',
+                'password.required' => 'كلمة المرور الجديدة مطلوبة',
+                'password.min' => 'كلمة المرور يجب أن تكون على الأقل 8 أحرف',
+                'password.confirmed' => 'تأكيد كلمة المرور غير متطابق',
+            ]);
+
+            if ($validator->fails()) {
+                return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
+            $data = [
+                'old_password' => $request->old_password,
+                'password' => $request->password,
             ];
-            $this->userRepository->changePassword($data,Auth::user());
+
+            $this->userRepository->changePassword($data, Auth::user());
             return redirect('/home')->with('success', 'تم تغيير كلمة المرور بنجاح');
-        }   catch (\Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->route('OTP')->with('error', 'فشل في تغيير المرور: ' . $e->getMessage());
         }
-
     }
     public function resendOTP(Request $request) {
 
