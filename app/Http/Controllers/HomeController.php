@@ -28,7 +28,11 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(private CategoryRepository $CategoryRepository,private RegionRepository $RegionRepository,private ListingRepository $ListingRepository,private UserRepository $userRepository,private OtpService $otpService)
+    public function __construct(private CategoryRepository $CategoryRepository,
+                                private RegionRepository $RegionRepository,
+                                private ListingRepository $ListingRepository,
+                                private UserRepository $userRepository,
+                                private OtpService $otpService,)
     {
         // $this->middleware('auth');
     }
@@ -113,29 +117,90 @@ class HomeController extends Controller
 
     public function change_password(Request $request)
     {
-        $data= [
-            'old_password'=>$request->old_password,
-            'password'=>$request->password,
-        ];
-        $this->userRepository->changePassword($data,Auth::user());
-        return redirect('/home');
+        try {
+            $data= [
+                'old_password'=>$request->old_password,
+                'password'=>$request->password,
+            ];
+            $this->userRepository->changePassword($data,Auth::user());
+            return redirect('/home')->with('success', 'تم تغيير كلمة المرور بنجاح');
+        }   catch (\Exception $e) {
+            return redirect()->route('OTP')->with('error', 'فشل في تغيير المرور: ' . $e->getMessage());
+        }
+
     }
     public function resendOTP(Request $request) {
-        
-        $validator = validator::make($request->all(),[
-            'email' => ['required','email',Rule::exists('users','email')],
+
+        $validator = Validator::make($request->all(), [
+                     'email' => ['required','email', Rule::exists('users', 'email'),
+            ],
+        ], [
+            'email.required' => 'يجب إدخال البريد الإلكتروني',
+            'email.email' => 'يجب إدخال بريد إلكتروني صحيح',
+            'email.exists' => 'البريد الإلكتروني غير مسجل في النظام',
         ]);
-        if ($validator->fails()){
-            return redirect()->route('password.request')->withErrors($validator->errors());
+
+        if ($validator->fails()) {
+            return redirect()->route('OTP')->withErrors($validator);
         }
 
         try {
             $fields=$request->only(['email']);
             $otp = $this->otpService->generateOTP($fields['email']);
             Mail::to($fields['email'])->send(new OtpMail($otp));
-            return redirect()->route('password.request')->with('success', 'تم إرسال رمز التحقق إلى بريدك الإلكتروني');        }
+            return redirect()->route('OTP')->with('success', 'تم إرسال رمز التحقق إلى بريدك الإلكتروني');        }
         catch (\Exception $e) {
-            return redirect()->route('password.request')->with('error', 'فشل إرسال رمز التحقق: ' . $e->getMessage());
+            return redirect()->route('OTP')->with('error', 'فشل إرسال رمز التحقق: ' . $e->getMessage());
         }
+    }
+    public function OTP()
+    {
+        return view('OTP');
+    }
+    public function change_password_login()
+    {
+        return view('change_password_login');
+    }
+    public function verifyOtpAndLogin(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'email' => ['required','email'],
+            'otp' => ['required','numeric'],
+        ],[
+            'email.required'=>'يجب كتابة البريد الإلكتروني',
+            'email.email'=>'يجب ان يكون المدخل بريد الإلكتروني',
+            'otp.required'=>'يجب كتابة رمز التحقق',
+            'otp.numeric'=>'يجب ان يكون رمز التحقق رقما',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('OTP')->withErrors($validator);
+        }
+
+        $fields = $request->only(['email', 'otp']);
+
+        // Verify the provided OTP using the OTP service
+        if($this->otpService->verifyOTP($fields['email'], $fields['otp'])) {
+            $user = $this->userRepository->findByEmail($fields['email']);
+
+            // Update the user record to mark email as verified and set the last login time
+            $this->userRepository->update(['email_verified' => true,'last_login' => now()
+            ], $user->id);
+
+            Auth::login($user);
+
+            // Create a new authentication token for the user
+            $token = $user->createToken($user->username . '-AuthToken')->plainTextToken;
+
+            return redirect()->route('change_password_login')->with([
+                'token' => $token,
+                'user' => $user,
+                'success' => 'تم تسجيل المستخدم بنجاح'
+            ]);
+        }
+
+        // Return with error if OTP verification fails
+        return redirect()->route('OTP')->withErrors([
+            'otp' => 'رمز التحقق غير صالح او منتهي الصلاحية'
+        ]);
     }
 }

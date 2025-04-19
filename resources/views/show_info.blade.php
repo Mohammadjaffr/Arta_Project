@@ -1,105 +1,96 @@
 @extends('layouts.master')
-@section('title', 'المعلومات')
+@section('title', 'تفاصيل الإعلان')
 @section('contact')
-    <div dir="rtl" class=" mt-5">
-        <div class="container my-4 w-50 ">
-            <div class="border rounded-4 w-100 w-md-75 w-lg-50 mx-auto" style="background-color: #f7FBFA">
-                <!-- Carousel Section -->
-                <div class="my-3">
-                    <div id="main-image" class="text-center mb-3">
-
-                        <img src="http://127.0.0.1:8000/{{ $listings->primary_image }}" class="img-fluid rounded-3 shadow-lg " style="height: 400px; object-fit: cover;" alt="Main Image">
+        <div dir="rtl" class="mt-5">
+            <div class="container my-4 w-50">
+                <div class="border rounded-4 w-100 w-md-75 w-lg-50 mx-auto" style="background-color: #f7FBFA">
+                    <!-- معرض الصور -->
+                    <div class="my-3">
+                        <div id="mainListingImageContainer" class="text-center mb-3">
+                            <img src="{{ asset($listings->primary_image) }}"
+                                 class="img-fluid rounded-3 shadow-lg listing-main-image"
+                                 style="height: 400px; object-fit: cover;"
+                                 alt="الصورة الرئيسية للإعلان">
+                        </div>
+                        <div class="d-flex justify-content-center gap-2">
+                            @foreach($listings->images as $image)
+                                <div class="text-center">
+                                    <img class="border rounded-3 listing-thumbnail"
+                                         style="width: 80px; height: 60px; object-fit: cover; cursor: pointer;"
+                                         src="{{ asset($image->path) }}"
+                                         alt="معاينة صورة الإعلان"
+                                         data-full-image="{{ asset($image->path) }}">
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
-                    <div class="d-flex justify-content-center gap-2">
-                        @foreach($listings->images as $listing)
 
-                            <div class="text-center">
-                                <img class="border rounded-3 image-preview"
-                                     style="width: 80px; height: 60px; object-fit: cover; cursor: pointer;"
-                                     src="http://127.0.0.1:8000/{{ $listing->path }}"
-                                     alt="Preview"
-                                     data-full-image="http://127.0.0.1:8000/{{ $listing->path }}">
-                            </div>
-                        @endforeach
-                    </div>
+                    <!-- معلومات الإعلان -->
+                    <table class="table border-none listing-details-table">
+                        <tr>
+                            <td>
+                                <img class="mx-1 location-icon" style="width: 20px;" src="{{ asset('assets/images/Map Point.png') }}">
+                                <span class="listing-region">{{ $listings->region->name }}</span>
+                            </td>
+                            <td>
+                                <img class="mx-1 time-icon" style="width: 20px;" src="{{ asset('assets/images/time.png') }}">
+                                <span class="listing-post-date">{{ $listings->created_at->diffForHumans() }}</span>
+                            </td>
+                            <td>
+                                <img class="mx-1 status-icon" style="width: 20px;" src="{{ asset('assets/images/status_ads.png') }}">
+                                <span class="listing-status">{{ $listings->status }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: none">
+                                <img class="mx-1 user-icon" style="width: 20px;" src="{{ asset('assets/images/User Rounded.png') }}">
+                                <span class="listing-owner">{{ $listings->user->name }}</span>
+                            </td>
+                            <td style="border: none">
+                                <img class="mx-1 price-icon" style="width: 20px;" src="{{ asset('assets/images/Dollar Minimalistic.png') }}">
+                                <span class="listing-price">{{ $listings->price }} ({{ $listings->currency->abbr }})</span>
+                            </td>
+                            <td style="border: none">
+                            <span class="badge rounded-pill text-dark listing-category"
+                                  style="background-color: var(--warning-custom-color); font-size: 0.875rem; padding: 0.25rem 0.5rem;">
+                                {{ $listings->category->name }}
+                            </span>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
 
-                <!-- Ad Details Section -->
-                <table class="table border-none">
-                    <tr>
-                        <td>
-                            <img class="mx-1 " style="width: 20px;" src="{{ asset('assets/images/Map Point.png') }}">
-                            <label>{{ $listings->region->name }}</label>
+                <!-- وصف الإعلان -->
+                <div class="p-2 my-3 listing-description-section">
+                    <h2 class="mb-2">تفاصيل الإعلان</h2>
+                    <p class="listing-description-text">{{$listings->description}}</p>
+                </div>
 
-                        </td>
-                        <td>
-                            <img class="mx-1" style="width: 20px;" src="{{ asset('assets/images/time.png') }}">
-                            <label>{{ $listings->created_at->diffForHumans() }}</label>
-                        </td>
-                        <td>
-                            <img class="mx-1" style="width: 20px;" src="{{ asset('assets/images/status_ads.png') }}">
-                            <label>{{ $listings->status }}</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="border: none">
-                            <img class="mx-1" style="width: 20px;" src="{{ asset('assets/images/User Rounded.png') }}">
-                            <label>{{ $listings->user->name }}</label>
-                        </td>
-                        <td style="border: none">
-                            <img class="mx-1" style="width: 20px;" src="{{ asset('assets/images/Dollar Minimalistic.png') }}">
-                            <label>{{ $listings->price }} ({{ $listings->currency->abbr }})</label>
-                        </td>
-                        <td style="border: none">
-                            <span class="badge rounded-pill text-dark" style="background-color: var(--warning-custom-color); font-size: 0.875rem; padding: 0.25rem 0.5rem;">{{ $listings->category->name }}</span>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+                <!-- أزرار الإجراءات -->
+                <div class="d-flex justify-content-evenly listing-actions">
+                    <livewire:share-listing :listingId="$listings->id" />
+                </div>
 
-            <!-- Ad Description Section -->
-            <div class="p-2 my-3">
-                <h2 class="mb-2">تفاصيل الاعلان</h2>
-                <p>{{$listings->description}}</p>
-            </div>
-             <!-- End Ad Description Section -->
-            <!-- Action Buttons Section -->
-            <div class="d-flex justify-content-evenly">
-                <livewire:share-listing :listingId="$listings->id" />
-
-            </div>
-            <div class="d-flex justify-content-evenly">
-
-
-            </div>
-            <div class="d-flex justify-content-evenly">
-                <a class="nav-link fs-5 mx-2" @if(request()->is('chat/'.$listings->user_id)) style="color: var(--primary-custom-color);font-weight: bold;" @endif  href="{{ url('chat/'.$listings->user_id) }}">chating</a>
-
-
-            </div>
-
-            <!-- Comment Section -->
-            <livewire:show-comment :listingId="$listings->id" />
-                @if(Auth::user())
+                <!-- قسم التعليقات -->
+                <livewire:show-comment :listingId="$listings->id" />
+                @auth
                     <livewire:add-comment :listingId="$listings->id" />
-                @endif
-            <!-- End Comment Section -->
+                @endauth
+            </div>
+        </div>
+    @endsection
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainListingImage = document.getElementById('mainListingImageContainer').querySelector('img');
+            const listingThumbnails = document.querySelectorAll('.listing-thumbnail');
 
-    </div>
-@endsection
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const mainImage = document.getElementById('main-image').querySelector('img');
-    const previewImages = document.querySelectorAll('.image-preview');
-    previewImages.forEach((img) => {
-        img.addEventListener('click', () => {
-            previewImages.forEach(preview => preview.classList.remove('hidden'));
-            mainImage.src = img.getAttribute('data-full-image');
-            img.classList.add('hidden');
+            listingThumbnails.forEach((thumbnail) => {
+                thumbnail.addEventListener('click', () => {
+                    listingThumbnails.forEach(thumb => thumb.classList.remove('thumbnail-active'));
+                    mainListingImage.src = thumbnail.getAttribute('data-full-image');
+                    thumbnail.classList.add('thumbnail-active');
+                });
+            });
         });
-    });
-});
-</script>
-</div>
+    </script>

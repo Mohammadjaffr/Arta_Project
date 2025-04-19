@@ -8,6 +8,17 @@
         <h5 class="col-5 text-center mt-0 ms-4 d-xl-flex d-none" style="padding-top: 35%" >لا تفوت الفرصة، كن جزءًا  <br>من مجتمع المتسوقين الأذكياء</h5>
     </div>
     <div class="col-10 col-lg-5 custom-position container my-5 p-3 rounded-5 custom-shadow" style="background-color: #E7E7E7;min-width: 469px; max-width: 500px; max-height: fit-content;right: 15%">
+        @if (session()->has('message'))
+            <div x-data="{ show: true }"
+                 x-show="show"
+                 x-transition:leave="transition ease-in duration-300"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 x-init="setTimeout(() => show = false, 5000)"
+                 class="success-message">
+                تم إرسال رقم التحقق إليك بنجاح
+            </div>
+        @endif
             <form method="post" action="{{route('resendOTP')}}" class="my-1 mx-3 p-2">
                 @csrf
                 <div class="text-end my-3 me-3 "> <h2>هل نسيت كلمة المرور؟</h2></div>
