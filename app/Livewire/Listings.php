@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Category;
 use Carbon\Carbon;
 use App\Models\Listing;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Pail\ValueObjects\Origin\Http;
 use Livewire\Component;
 use App\Models\Region;
@@ -102,6 +103,9 @@ class Listings extends Component
     public function render()
     {
         $query = Listing::query();
+        if (Auth::check()) {
+            $query->where('user_id', '!=', Auth::id());
+        }
         $children_categories = $this->selectedCategory
             ? Category::where('parent_id', $this->selectedCategory)->get()
             : null;

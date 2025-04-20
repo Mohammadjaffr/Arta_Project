@@ -1,6 +1,20 @@
 @extends('layouts.master')
 @section('title', 'تفاصيل الإعلان')
 @section('contact')
+    @if(session('success') || session('error'))
+        <div class="message-center" style="position: fixed;right: 40%;transform: translate(-50%, -50%);z-index: 9999;padding: 20px;border-radius: 8px;text-align: center;animation: fadeInOut 4s forwards;
+        {{ session('success') ? 'background: #4CAF50; color: white;' : 'background: #F44336; color: white;' }}">
+            {{ session('success') ?? session('error') }}
+        </div>
+    @endif
+    <style>
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+    </style>
         <div dir="rtl" class="mt-5">
             <div class="container my-4 w-50">
                 <div class="border rounded-4 w-100 w-md-75 w-lg-50 mx-auto" style="background-color: #f7FBFA">

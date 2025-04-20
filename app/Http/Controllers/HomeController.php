@@ -173,9 +173,40 @@ class HomeController extends Controller
             return redirect()->route('OTP')->with('error', 'فشل إرسال رمز التحقق: ' . $e->getMessage());
         }
     }
+    public function resendOTP_Register(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'email' => ['required','email', Rule::exists('users', 'email'),
+            ],
+        ], [
+            'email.required' => 'يجب إدخال البريد الإلكتروني',
+            'email.email' => 'يجب إدخال بريد إلكتروني صحيح',
+            'email.exists' => 'البريد الإلكتروني غير مسجل في النظام',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('OTP_Register_Email')->withErrors($validator);
+        }
+
+        try {
+            $fields=$request->only(['email']);
+            $otp = $this->otpService->generateOTP($fields['email']);
+            Mail::to($fields['email'])->send(new OtpMail($otp));
+            return redirect()->route('VerifyOtpRegister')->with('success', 'تم إرسال رمز التحقق إلى بريدك الإلكتروني');        }
+        catch (\Exception $e) {
+            return redirect()->route('VerifyOtpRegister')->with('error', 'فشل إرسال رمز التحقق: ' . $e->getMessage());
+        }
+    }
     public function OTP()
     {
         return view('OTP');
+    } public function VerifyOtpRegister()
+    {
+        return view('VerifyOtpRegister');
+    }
+    public function OTP_Register_Email()
+    {
+        return view('OTP_Register_Email');
     }
     public function change_password_login()
     {
@@ -220,6 +251,48 @@ class HomeController extends Controller
 
         // Return with error if OTP verification fails
         return redirect()->route('OTP')->withErrors([
+            'otp' => 'رمز التحقق غير صالح او منتهي الصلاحية'
+        ]);
+    }
+    public function VerifyOtpAndRegisterLogin(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'email' => ['required','email'],
+            'otp' => ['required','numeric'],
+        ],[
+            'email.required'=>'يجب كتابة البريد الإلكتروني',
+            'email.email'=>'يجب ان يكون المدخل بريد الإلكتروني',
+            'otp.required'=>'يجب كتابة رمز التحقق',
+            'otp.numeric'=>'يجب ان يكون رمز التحقق رقما',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('VerifyOtpRegister')->withErrors($validator);
+        }
+
+        $fields = $request->only(['email', 'otp']);
+
+        // Verify the provided OTP using the OTP service
+        if($this->otpService->verifyOTP($fields['email'], $fields['otp'])) {
+            $user = $this->userRepository->findByEmail($fields['email']);
+
+            // Update the user record to mark email as verified and set the last login time
+            $this->userRepository->update(['email_verified' => true,'last_login' => now()
+            ], $user->id);
+
+            Auth::login($user);
+
+            // Create a new authentication token for the user
+            $token = $user->createToken($user->username . '-AuthToken')->plainTextToken;
+
+            return redirect()->route('home')->with([
+                'token' => $token,
+                'user' => $user,
+                'success' => 'تم تسجيل المستخدم بنجاح'
+            ]);
+        }
+
+        // Return with error if OTP verification fails
+        return redirect()->route('OTP_Register_Email')->withErrors([
             'otp' => 'رمز التحقق غير صالح او منتهي الصلاحية'
         ]);
     }

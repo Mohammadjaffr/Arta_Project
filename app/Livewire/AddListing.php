@@ -119,7 +119,7 @@ class AddListing extends Component
             $this->listingRepository->saveImages($this->images, $listing->id);
         }
 
-        session()->flash('message', 'تم نشر الإعلان بنجاح!');
+        session()->flash('success', 'تم نشر الإعلان بنجاح!');
         $this->resetFormFields();
 
         return redirect()->to('/listing');

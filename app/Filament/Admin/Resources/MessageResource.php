@@ -22,7 +22,10 @@ class MessageResource extends Resource
     protected static ?string $navigationGroup = 'إدارة المستخدمين';
     protected static ?int $navigationSort = 2;
     protected static ?string $navigationLabel = 'الرسائل';
-
+    public static function canCreate(): bool
+    {
+        return false;
+    }
 
     public static function form(Form $form): Form
     {

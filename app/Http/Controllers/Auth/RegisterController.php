@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/OTP_Register_Email';
 
     /**
      * Create a new controller instance.
@@ -62,9 +62,32 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'whatsapp_number'=>['required','string','max:16','regex:/^[0-9]+$/'],
-            'contact_number'=>['required','string','max:16','regex:/^[0-9]+$/']
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'confirmed',
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/'
+            ],
+            'whatsapp_number' => ['required', 'string', 'max:16', 'regex:/^[0-9]+$/'],
+            'contact_number' => ['required', 'string', 'max:16', 'regex:/^[0-9]+$/']
+        ], [
+            'name.required' => 'حقل الاسم مطلوب.',
+            'name.string' => 'يجب أن يكون الاسم نصًا.',
+            'name.max' => 'يجب ألا يتجاوز الاسم 255 حرفًا.',
+            'email.required' => 'حقل البريد الإلكتروني مطلوب.',
+            'email.email' => 'يجب إدخال بريد إلكتروني صالح.',
+            'email.unique' => 'هذا البريد الإلكتروني مستخدم بالفعل.',
+            'password.required' => 'حقل كلمة المرور مطلوب.',
+            'password.min' => 'يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل.',
+            'password.confirmed' => 'تأكيد كلمة المرور غير متطابق.',
+            'password.regex' => 'يجب أن تحتوي كلمة المرور على حرف كبير، حرف صغير، رقم، وحرف خاص.',
+            'whatsapp_number.required' => 'حقل رقم الواتساب مطلوب.',
+            'whatsapp_number.regex' => 'يجب أن يحتوي رقم الواتساب على أرقام فقط.',
+            'whatsapp_number.max' => 'يجب ألا يتجاوز رقم الواتساب 16 رقماً.',
+            'contact_number.required' => 'حقل رقم الاتصال مطلوب.',
+            'contact_number.regex' => 'يجب أن يحتوي رقم الاتصال على أرقام فقط.',
+            'contact_number.max' => 'يجب ألا يتجاوز رقم الاتصال 16 رقماً.',
         ]);
     }
 
@@ -76,6 +99,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return $this->UserRepository->store($data);
+        return $this->UserRepository->store([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'whatsapp_number' => $data['whatsapp_number'],
+            'contact_number' => $data['contact_number']
+        ]);
+    }
+    protected function registered($request, $user)
+    {
+        return redirect($this->redirectPath())
+            ->with('success', 'تم تسجيل حسابك بنجاح! يمكنك الآن تسجيل الدخول.');
     }
 }

@@ -30,8 +30,9 @@ class AddComment extends Component
             'content'=>['required','string']
         ]);
          if (empty($this->content)) {
+             $this->reset('content');
              session()->flash('error', 'يرجى كتابة تعليق قبل الإرسال.');
-             return ;
+             return redirect()->to('/listing/' . $this->listingId);
          }
         $data=[
             'user_id' => Auth::id(),
@@ -43,9 +44,13 @@ class AddComment extends Component
         $this->reset('content');
 
         // رسالة نجاح
-        session()->flash('addComment', 'تم إضافة التعليق بنجاح.');
-        $this->dispatch('close-modal');
-        $this->dispatch('refresh-comment');
+        $this->reset('content');
+        session()->flash('success', 'تم إضافة التعليق بنجاح.');
+//        $this->dispatch('close-modal');
+//        $this->dispatch('refresh-comment');
+        return redirect()->to('/listing/' . $this->listingId);
+
+
     }
 
     public function render()

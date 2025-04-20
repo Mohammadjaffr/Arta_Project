@@ -17,7 +17,7 @@
                 <a href="{{url('edit_account/'. Auth::user()->id)}}" class="me-2">
                     <img src="{{'assets/images/pen.png'}}" alt="Edit Icon" class="img-fluid" style="width: 40px; height: 40px;">
                 </a>
-                <h5 class="m-0">{{Auth::user()->name ." ".Auth::user()->username}}</h5>
+                <h5 class="m-0">{{Auth::user()->name}}</h5>
             </div>
         </div>
         @if($listings != null)

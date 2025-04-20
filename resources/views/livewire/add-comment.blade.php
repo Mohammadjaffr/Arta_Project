@@ -18,6 +18,9 @@
                         <div class="mb-3">
                             <textarea wire:model="content" name="content" class="form-control" placeholder="اكتب تعليقك هنا..."></textarea>
                         </div>
+                        @error('content')
+                        <span class="alert alert-success">{{$message}}</span>
+                        @enderror
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -27,8 +30,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 <script>
     window.addEventListener('close-modal', event => {

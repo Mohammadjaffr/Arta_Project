@@ -1,14 +1,66 @@
 <div>
+    <style>
+        .social-share-button {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
+        .social-share-button:hover {
+            color: white !important;
+        }
+
+        .whatsapp-button {
+            color: #25D366;
+            border: 1px solid #25D366;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #25D366;
+        }
+
+        .facebook-button {
+            color: #1877F2;
+            border: 1px solid #1877F2;
+        }
+
+        .facebook-button:hover {
+            background-color: #1877F2;
+        }
+
+        .twitter-button {
+            color: #1DA1F2;
+            border: 1px solid #1DA1F2;
+        }
+
+        .twitter-button:hover {
+            background-color: #1DA1F2;
+        }
+        .instagram-button {
+            color: #E1306C;
+            border: 1px solid #E1306C;
+        }
+
+        .instagram-button:hover {
+            background-color: #E1306C;
+            color: white;
+        }
+    </style>
 <div class="d-flex">
     <button wire:click="share"  class="btn btn-light border rounded-3 p-2 d-flex m-2 justify-content-center" style="background-color: #559FC1">
         <div class="mx-2"><img src="{{ asset('assets/images/share.png') }}" style="width: 30px; height: 30px;"></div>
         <label>مشاركة الاعلان</label>
     </button>
+    @auth
     <button class="btn btn-light border rounded-3 p-2 d-flex m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-color: #559FC1">
         <div class="mx-2"><img src="{{ asset('assets/images/Dislike.png') }}" style="width: 30px; height: 30px;"></div>
         التبليغ عن الاعلان
     </button>
+    @endauth
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -17,10 +69,10 @@
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">التبليغ عن الاعلان</h1>
                 </div>
                 <div class="modal-body">
-                    <textarea class="form-control" wire:model="content"  placeholder="اكتب الشكوه هنا ..."></textarea>
+                    <textarea class="form-control" wire:model="content" name="content" placeholder="اكتب الشكوه هنا ..."></textarea>
                 </div>
                 @error('content')
-                <div class="alert alert-danger">{{$message}}</div>
+                <div class="alert alert-success">{{$message}}</div>
                 @enderror
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">الغا</button>
@@ -36,89 +88,13 @@
         </div>
         <div >التواصل واتساب</div>
     </button>
-    @auth
-        @if(Auth::id() != $listings->user_id)
-            <button class="btn btn-light border rounded-3 p-2 d-flex m-2" style="background-color: #559FC1">
-                <a class="nav-link fs-5 mx-2" @if(request()->is('chat/'.$listings->user_id)) style="color: var(--primary-custom-color);font-weight: bold;" @endif href="{{ url('chat/'.$listings->user_id) }}">تواصل مع المعلن</a>
-            </button>
-        @endif
-    @endauth
-
-
-    <script>
-        function toggleWhatsAppNumber(button) {
-            const whatsappNumber = button.querySelector('#whatsappNumber');
-            const partialNumber = button.querySelector('#partialNumber');
-            const placeholder = button.querySelector('#placeholder');
-
-            if (whatsappNumber.style.display === 'none') {
-                // إذا كان الرقم مخفيًا، قم بعرضه
-                whatsappNumber.style.display = 'block'; // عرض الرقم الكامل
-                partialNumber.style.display = 'none'; // إخفاء الرقم الجزئي
-                placeholder.style.display = 'none'; // إخفاء النص البديل
-            } else {
-                // إذا كان الرقم مرئيًا، قم بإخفائه
-                whatsappNumber.style.display = 'none'; // إخفاء الرقم الكامل
-                partialNumber.style.display = 'block'; // عرض الرقم الجزئي
-                placeholder.style.display = 'block'; // عرض النص البديل
-            }
-        }
-    </script>
+    @if(Auth::id() != $listings->user_id)
+        <button class="btn btn-light border rounded-3 p-2 d-flex m-2" style="background-color: #559FC1">
+            <a class="nav-link fs-5 mx-2" @if(request()->is('chat/'.$listings->user_id)) style="color: var(--primary-custom-color);font-weight: bold;" @endif href="{{ url('chat/'.$listings->user_id) }}">تواصل مع المعلن</a>
+        </button>
+    @endif
 </div>
-
     @if ($showFallbackOptions)
-        <style>
-            .social-share-button {
-                text-decoration: none;
-                display: flex;
-                align-items: center;
-                gap: 5px;
-                padding: 8px 12px;
-                border-radius: 5px;
-                transition: background-color 0.3s, color 0.3s;
-            }
-
-            .social-share-button:hover {
-                color: white !important;
-            }
-
-            .whatsapp-button {
-                color: #25D366;
-                border: 1px solid #25D366;
-            }
-
-            .whatsapp-button:hover {
-                background-color: #25D366;
-            }
-
-            .facebook-button {
-                color: #1877F2;
-                border: 1px solid #1877F2;
-            }
-
-            .facebook-button:hover {
-                background-color: #1877F2;
-            }
-
-            .twitter-button {
-                color: #1DA1F2;
-                border: 1px solid #1DA1F2;
-            }
-
-            .twitter-button:hover {
-                background-color: #1DA1F2;
-            }
-            .instagram-button {
-                color: #E1306C;
-                border: 1px solid #E1306C;
-            }
-
-            .instagram-button:hover {
-                background-color: #E1306C;
-                color: white;
-            }
-        </style>
-
         <div style="margin-top: 20px;">
             <p style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">مشاركة عبر:</p>
             <div style="display: flex; gap: 15px;">
@@ -148,7 +124,25 @@
             </div>
         </div>
     @endif
+    <script>
+        function toggleWhatsAppNumber(button) {
+            const whatsappNumber = button.querySelector('#whatsappNumber');
+            const partialNumber = button.querySelector('#partialNumber');
+            const placeholder = button.querySelector('#placeholder');
 
+            if (whatsappNumber.style.display === 'none') {
+                // إذا كان الرقم مخفيًا، قم بعرضه
+                whatsappNumber.style.display = 'block'; // عرض الرقم الكامل
+                partialNumber.style.display = 'none'; // إخفاء الرقم الجزئي
+                placeholder.style.display = 'none'; // إخفاء النص البديل
+            } else {
+                // إذا كان الرقم مرئيًا، قم بإخفائه
+                whatsappNumber.style.display = 'none'; // إخفاء الرقم الكامل
+                partialNumber.style.display = 'block'; // عرض الرقم الجزئي
+                placeholder.style.display = 'block'; // عرض النص البديل
+            }
+        }
+    </script>
 
     <!-- JavaScript لتنفيذ Web Share API -->
     <script>

@@ -10,17 +10,10 @@
     <div class="col-10 col-lg-5 custom-position container my-5 p-3 rounded-5 custom-shadow" style="background-color: #E7E7E7;min-width: 469px; max-width: 500px; max-height: fit-content;right: 15%">
         @livewire('auth-form')
         <hr>
-            {{-- start login with apple and google --}}
-            <div class="row text-center d-flex justify-content-center">
-                {{-- start login with apple --}}
-                <div class="col-5 mx-2 btn border shadow rounded-4 custom-button">
-                    <img src="{{asset('assets/images/apple-icon.png')}}" alt="Apple">
-                    <span>المواصلة مع أبل</span>
-                </div>
-                {{-- end login with apple --}}
-
+            {{-- start login with ap'ple and google --}}
+            <div class="text-center ">
                 {{-- start login with google --}}
-                <a href="http://127.0.0.1:8000/auth/google/redirect" class="col-5 mx-2 btn border shadow rounded-4 custom-button">
+                <a href="http://127.0.0.1:8000/auth/google/redirect" class="w-100 mx-2 btn border shadow rounded-4 custom-button">
                     <img src="{{asset('assets/images/google.svg')}}" alt="Google">
                     <span>المواصلة مع قوقل</span>
                 </a>

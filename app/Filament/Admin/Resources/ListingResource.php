@@ -27,7 +27,10 @@ class ListingResource extends Resource
     protected static ?string $modelLabel = 'الإعلانات ';
     protected static bool $shouldRegisterNavigation = true;
 
-
+    public static function canCreate(): bool
+    {
+        return false;
+    }
     public static function form(Form $form): Form
     {
         return $form

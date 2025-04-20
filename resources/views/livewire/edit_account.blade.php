@@ -3,7 +3,7 @@
 @section('contact')
     <div class="my-5" dir="rtl">
         <div>
-            <div class="container border">
+            <div class="container border rounded-3 shadow">
                 <h1 class="my-3">تفاصيل الحساب</h1>
                 <h3 class="my-3">اسم المستخدم: <span>{{$users->username}}</span></h3>
                 <form autocomplete="off" method="POST" action="{{ route('update', $users->id) }}" enctype="multipart/form-data">
@@ -104,7 +104,7 @@
                     </div>
                     <h2>صورة البروفايل</h2>
                     <div class="row my-4">
-                        <div class="border rounded-3 mx-3" style="width: 150px; height: 150px; background-image: url({{ Auth::user()->image }}); background-size: cover; background-position: center; cursor: pointer;" onclick="document.getElementById('fileInput').click();">
+                        <div class="border rounded-3 mx-3" style="width: 150px; height: 150px; @if($users->image) background-image: url({{ $users->image }});@endif  background-size: cover; background-position: center; cursor: pointer;" onclick="document.getElementById('fileInput').click();">
                             <input name="image" id="fileInput" class="form-control" type="file" style="display: none;" onchange="updateImage(event)">
                         </div>
                     </div>

@@ -24,7 +24,10 @@ class ComplaintResource extends Resource
     protected static ?string $modelLabel = 'المشاكل والشكاوي ';
     protected static bool $shouldRegisterNavigation = true;
 
-
+    public static function canCreate(): bool
+    {
+        return false;
+    }
 
     public static function form(Form $form): Form
     {

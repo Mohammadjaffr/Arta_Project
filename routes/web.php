@@ -34,9 +34,19 @@ Route::resource('/category' ,CategoryController::class);
 Route::resource('/listing' ,ListingController::class);
 Route::resource('/region' ,RegionController::class);
 Route::post('/change_password', [App\Http\Controllers\HomeController::class, 'change_password'])->name('change_password');
+////////////////////////////////
 Route::post('/resendOTP', [App\Http\Controllers\HomeController::class, 'resendOTP'])->name('resendOTP');
 Route::post('/verifyOtpAndLogin', [App\Http\Controllers\HomeController::class, 'verifyOtpAndLogin'])->name('verifyOtpAndLogin');
 Route::get('/OTP', [App\Http\Controllers\HomeController::class, 'OTP'])->name('OTP');
+////////////////////////////////////////////////
+///
+
+Route::post('/resendOTP_Register', [App\Http\Controllers\HomeController::class, 'resendOTP_Register'])->name('resendOTP_Register');
+Route::post('/VerifyOtpAndRegisterLogin', [App\Http\Controllers\HomeController::class, 'VerifyOtpAndRegisterLogin'])->name('VerifyOtpAndRegisterLogin');
+Route::get('/OTP_Register_Email', [App\Http\Controllers\HomeController::class, 'OTP_Register_Email'])->name('OTP_Register_Email');
+Route::get('/VerifyOtpRegister', [App\Http\Controllers\HomeController::class, 'VerifyOtpRegister'])->name('VerifyOtpRegister');
+//////////////////////
+
 Route::get('/change_password_login', [App\Http\Controllers\HomeController::class, 'change_password_login'])->name('change_password_login');
 Route::get('/change_password',function (){
     return view('livewire.change_password');

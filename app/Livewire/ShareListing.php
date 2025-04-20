@@ -10,8 +10,8 @@ use Livewire\Component;
 
 class ShareListing extends Component
 {
-    public $listingId; // معرّف الإعلان
-    public $listingData = []; // بيانات الإعلان
+    public $listingId;
+    public $listingData = [];
     #[Rule('required')]
     public $content;
 
@@ -27,7 +27,7 @@ class ShareListing extends Component
     // سحب بيانات الإعلان من قاعدة البيانات
     private function loadlistingData()
     {
-        $listing = listing::query()->find($this->listingId); // استرجاع الإعلان باستخدام المعرّف
+        $listing = listing::query()->find($this->listingId);
         if ($listing) {
             $this->listingData = [
                 'title' => $listing->title,
@@ -38,16 +38,15 @@ class ShareListing extends Component
                 'category_id' => $listing->category_id,
                 'region_id' => $listing->region_id,
                 'primary_image' => $listing->primary_image,
-                'url' => route('listing.show', $listing->id), // رابط الإعلان
-                'location' => $listing->location, // إضافة الموقع
-                'additional_images' => $listing->images, // الصور الإضافية
-                'published_at' => $listing->created_at, // تاريخ النشر
-                'views' => $listing->views, // عدد المشاهدات
+                'url' => route('listing.show', $listing->id),
+                'location' => $listing->location,
+                'additional_images' => $listing->images,
+                'published_at' => $listing->created_at,
+                'views' => $listing->views,
             ];
         }
     }
 
-    // دالة المشاركة
     public function share()
     {
         if (isset($this->listingData['url'])) {
@@ -61,7 +60,6 @@ class ShareListing extends Component
 
     }
 
-    // التحقق من دعم Web Share API
     private function canShare()
     {
         return method_exists('navigator' ,'share');
@@ -76,7 +74,7 @@ class ShareListing extends Component
             'listing_id' => $this->listingId,
         ]);
         $this->reset('content');
-        session()->flash('message', 'Complaint created successfully.');
+        session()->flash('success', 'تم انشاء الشكوى بنجاح');
         return redirect()->to('/listing/' . $this->listingId);
     }
     public function redirectToWhatsApp($listingId)

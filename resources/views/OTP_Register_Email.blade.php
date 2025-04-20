@@ -21,10 +21,10 @@
         @endif
 
 
-            <form method="post" action="{{route('resendOTP')}}" class="my-1 mx-3 p-2">
+            <form method="post" action="{{route('resendOTP_Register')}}" class="my-1 mx-3 p-2">
                 @csrf
-                <div class="text-end my-3 me-3 "> <h2>هل نسيت كلمة المرور؟</h2></div>
-                <div class="text-end my-3 me-3 fw-bold text-black-50">لا تقلق، أدخل بريدك الإلكتروني أدناه لاستعادة كلمة المرور الخاصة بك </div>
+                <div class="text-end my-3 me-3 "> <h2>استمتع معنا.....؟</h2></div>
+                <div class="text-end my-3 me-3 fw-bold text-black-50">لا تقلق، أدخل بريدك الإلكتروني لارسال رقم التحقق </div>
                 <div class="form-group text-end my-2" >
                     <label class="form-label me-3">البريد الاكتروني</label>
                     @error('email')

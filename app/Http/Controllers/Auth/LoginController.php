@@ -36,7 +36,7 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $this->middleware('auth')->only('logout');
+//        $this->middleware('auth')->only('logout');
     }
 
     /**
@@ -91,7 +91,17 @@ class LoginController extends Controller
         $request->validate([
             'login' => 'required|string',
             'password' => 'required|string',
+        ], [
+            'login.required' => 'حقل اسم المستخدم مطلوب.',
+            'login.string' => 'يجب أن يكون اسم المستخدم نصًا.',
+            'password.required' => 'حقل كلمة المرور مطلوب.',
+            'password.string' => 'يجب أن تكون كلمة المرور نصًا.',
         ]);
-    }
 
+    }
+    protected function authenticated(Request $request, $user)
+    {
+        return redirect()->intended($this->redirectPath())
+            ->with('success', 'تم تسجيل دخولك بنجاح!');
+    }
 }

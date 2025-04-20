@@ -26,7 +26,10 @@ class CommentResource extends Resource
     protected static bool $shouldRegisterNavigation = true;
 
 
-
+    public static function canCreate(): bool
+    {
+        return false;
+    }
     public static function form(Form $form): Form
     {
         return $form
