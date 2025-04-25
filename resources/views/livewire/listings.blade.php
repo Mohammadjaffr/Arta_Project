@@ -77,11 +77,11 @@
             </select>
         @endif
 
-        <button wire:click="sortByPrice('asc')" class="btn btn-light border-2 rounded-4 price-sort-button price-lowest">
+        <button wire:click="sortByPrice('asc')" class="btn btn-light border-2 rounded-4 price-sort-button price-lowest" style="background-color: #046998;">
             أقل سعراً
             <img src="{{ asset('assets/images/arrow-down.svg') }}" alt="سعر منخفض" class="ms-2 sort-icon">
         </button>
-        <button wire:click="sortByPrice('desc')" class="btn btn-light border-2 rounded-4 price-sort-button price-highest">
+        <button wire:click="sortByPrice('desc')" class="btn btn-light border-2 rounded-4 price-sort-button price-highest" style="background-color: #046998;">
             أعلى سعراً
             <img src="{{ asset('assets/images/arrow-up.svg') }}" alt="سعر مرتفع" class="ms-2 sort-icon">
         </button>

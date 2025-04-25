@@ -108,9 +108,10 @@ class HomeController extends Controller
         return view('livewire.show_info',compact('listings'));
     }
     public function account_show(){
-        $listings= Listing::query()->get();
+        $listings= Listing::query()->where('user_id', Auth::id())->get();
         return view('livewire.account_show',compact('listings'));
-    } public function contact(){
+    }
+    public function contact(){
         return view('livewire.contact');
     }
      public function about(){

@@ -59,8 +59,8 @@ class ChatController extends Controller
 
             // التحقق
         });
-
-        return view('chat', compact('receiver', 'messages'));
+       $user= User::where('id', '!=', auth()->id())->first();
+        return view('chat', compact('receiver', 'messages','user'));
     }
 
     public function sendMessage(Request $request, $receiverId)
@@ -76,7 +76,7 @@ class ChatController extends Controller
         $user_name = $message->sender->name;
         Notification::send($users, new ChatMessage($message->id,$user_name,$message->message,$user_sender));
         // Fire the message event
-        broadcast(new MessageSent($message))->toOthers();
+        event(new MessageSent($message));
 
         return response()->json(['status' => 'Message sent!']);
     }
@@ -84,7 +84,7 @@ class ChatController extends Controller
     public function typing()
     {
         // Fire the typing event
-        broadcast(new UserTyping(Auth::id()))->toOthers();
+        event(new UserTyping(auth()->id()));
         return response()->json(['status' => 'typing broadcasted!']);
     }
 
@@ -99,6 +99,7 @@ class ChatController extends Controller
         Cache::forget('user-is-online-' . Auth::id());
         return response()->json(['status' => 'Offline']);
     }
+
         public function show_users_notifications()
     {
         return view('users_notifications');

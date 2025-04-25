@@ -25,10 +25,13 @@
             <div class="form-group text-end my-2">
                 <label class="form-label me-3">كلمة المرور</label>
                     <input class="form-control rounded-4 py-2 custom-input  @error('password') is-invalid @else custom-input @enderror" type="{{$type}}" name="password" id="password"   autocomplete="current-password">
-                    @error('password')
-                    <span class="custom-validation-error" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                <img wire:click="togglePassword('password')" style="position: absolute; right: 35px;top: 49% ; cursor: pointer;" src="{{ asset('assets/images/'. $iconConfirmePassword .'.svg') }}" alt="{{ $iconConfirmePassword }} icon">
+
+                @error('password')
+                <span class="me-2 custom-validation-error">
+                        <strong>{{ $message }}</strong>
+                        <img src="{{asset('assets/images/Vector.svg')}}" alt="">
+                    </span>
                     @enderror
 
             </div>
@@ -79,30 +82,38 @@
                     {{-- end email input --}}
 
                     {{-- start password input --}}
-                    <div class="row">
+                    <div class="row d-flex">
                         <div class="form-group text-end my-2 col-6">
                             <label class="form-label me-3">إعادة كتابة كلمة المرور</label>
                             <div class="d-flex align-items-center position-relative">
                                 <input class="form-control rounded-4 py-2 @error('password') border-red @else custom-input @enderror" name="password_confirmation" type="{{$typeConfirmePassword}}" >
                                 <img wire:click="togglePassword('password_confirmation')" style="position: absolute; right: 15px; cursor: pointer;" src="{{ asset('assets/images/'. $iconConfirmePassword .'.svg') }}" alt="{{ $iconConfirmePassword }} icon">
                             </div>
-                            @error('password_confirmation')
-                            <span class="me-2 custom-validation-error">
-                                <strong>{{ $message }}</strong>
-                                <img src="{{asset('assets/images/Vector.svg')}}" alt="">
-                            </span>
-                            @enderror
+
                         </div>
-                        <div class="form-group text-end my-2 col-6">
+                        <div class="form-group  text-end my-2 col-6">
                             <label class="form-label me-3">كلمة المرور </label>
                             <div class="d-flex align-items-center position-relative">
                                 <input class="form-control rounded-4 py-2 @error('password') border-red @else custom-input @enderror" name="password" type="{{$type}}" >
                                 <img wire:click="togglePassword('password')" style="position: absolute; right: 15px; cursor: pointer;" src="{{ asset('assets/images/'. $icon .'.svg') }}" alt="{{ $icon }} icon">
                             </div>
+
+                        </div>
+                        <div class="text-end">
                             @error('password')
+                            <span class=" custom-validation-error">
+{{--                                <img class="text-end" src="{{asset('assets/images/Vector.svg')}}" alt="">--}}
+
+                              <strong>{{ $message }}</strong>
+
+
+
+                            </span>
+                            @enderror
+                            @error('password_confirmation')
                             <span class="me-2 custom-validation-error">
+                            <img class="text-end" src="{{asset('assets/images/Vector.svg')}}" alt="">
                                 <strong>{{ $message }}</strong>
-                                <img src="{{asset('assets/images/Vector.svg')}}" alt="">
                             </span>
                             @enderror
                         </div>

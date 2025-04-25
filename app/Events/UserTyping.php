@@ -31,7 +31,11 @@ class UserTyping implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('typing.' . $this->typerId),
+            new Channel('typing.' . $this->typerId),
         ];
+    }
+    public function broadcastAs()
+    {
+        return 'UserTyping';
     }
 }

@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Facades\Auth; @endphp
 @extends('layouts.master')
 @section('title' ,'الدردشه')
 @section('contact')
@@ -5,9 +6,9 @@
 <div class="container mt-4">
     <div class="border rounded-3 shadow-sm">
         <div class="border rounded  text-white d-flex justify-content-between align-items-center py-2" style="background-color: #046998;">
-            <div  class="badge mx-3  {{ Auth::user()->isOnline() ? 'bg-success' : 'bg-secondary' }}">
-                {{ Auth::user()->isOnline() ? 'متصل الآن' : 'غير متصل' }}
-            </div>
+                <div class="badge mx-3 {{ $user->isOnline() ? 'bg-success' : 'bg-secondary' }}">
+                    {{ $user->isOnline() ? 'متصل الآن' : 'غير متصل' }}
+                </div>
             <h5 class="mx-3 ">
                 <i class="bi bi-chat-left-text me-2"></i>
                 دردشة مع {{ $receiver->name }}
@@ -123,86 +124,89 @@
 </style>
 
 
+    <script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
+    <script>
+        Pusher.logToConsole = true; // يمكن إزالته في الإنتاج
+        const pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
+            cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
+            encrypted: true
+        });
+        document.addEventListener('DOMContentLoaded', function (){
+                     let receiverId = {{ $receiver->id }};
+            let senderId = {{ auth()->id() }};
+            let chatBox = document.getElementById('chat-box');
+            let messageForm = document.getElementById('message-form');
+            let messageInput = document.getElementById('message-input');
+            let typingIndicator = document.getElementById('typing-indicator');
 
-<script>
-    document.addEventListener('DOMContentLoaded', function (){
-
-        let receiverId = {{ $receiver->id }};
-        let senderId = {{ auth()->id() }};
-        let chatBox = document.getElementById('chat-box');
-        let messageForm = document.getElementById('message-form');
-        let messageInput = document.getElementById('message-input');
-        let typingIndicator = document.getElementById('typing-indicator');
-
-        // Set user online
-        fetch('/online',
-            {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '{{ csrf_token() }}'
+            fetch('/online',
+                {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '{{ csrf_token() }}'
+                    }
                 }
-            }
-        );
+            );
+            // الاشتراك في قناة الشات
+            const chatChannel = pusher.subscribe('chat.' + senderId);
 
-
-        // subscribe to chat channel
-        window.Echo.private('chat.' + senderId)
-            .listen('MessageSent', (e) => {
-                // show the message
+            // استقبال الرسائل
+            chatChannel.bind('MessageSent', function(data) {
+                // عرض الرسالة في الواجهة
                 const messageDiv = document.createElement('div');
                 messageDiv.className = 'mb-2 text-end';
-                messageDiv.innerHTML = `<span class="badge bg-secondary">${e.message.message}</span>`;
+                messageDiv.innerHTML = `<span class="badge bg-secondary">${data.message.message}</span>`;
                 chatBox.appendChild(messageDiv);
                 chatBox.scrollTop = chatBox.scrollHeight;
             });
 
+            // الاشتراك في قناة الكتابة
+            const typingChannel = pusher.subscribe('typing.' + receiverId);
 
-        // subscribe to typing channel
-        window.Echo.private('typing.' + receiverId)
-            .listen('UserTyping', (e) => {
-                if(e.typerId === receiverId){
+            // استقبال إشعارات الكتابة
+            typingChannel.bind('UserTyping', function(data) {
+                if(data.typerId === receiverId){
                     typingIndicator.style.display = 'block';
                     setTimeout(() => typingIndicator.style.display = 'none', 3000);
                 }
             });
 
-
-        messageForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const message = messageInput.value;
-            if (message) {
-                fetch(`/chat/${receiverId}/send`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({ message })
-                });
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'mb-2 text-start';
-                messageDiv.innerHTML = `<span class="badge " style="background-color: #046998">${message}</span>`;
-                chatBox.appendChild(messageDiv);
-                chatBox.scrollTop = chatBox.scrollHeight;
-                messageInput.value = '';
-            }
-        });
-
-        let typingTimeOut;
-        messageInput.addEventListener('input', function () {
-            clearTimeout(typingTimeOut);
-            fetch(`/chat/typing`, {
-                method: 'POST',
-                headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
+            // إرسال الرسالة
+            messageForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const message = messageInput.value;
+                if (message) {
+                    fetch(`/chat/${receiverId}/send`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({ message })
+                    });
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'mb-2 text-start';
+                    messageDiv.innerHTML = `<span class="badge " style="background-color: #046998">${message}</span>`;
+                    chatBox.appendChild(messageDiv);
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                    messageInput.value = '';
+                }
             });
-            typingTimeOut = setTimeout(() => {typingIndicator.style.display = 'none'}, 1000);
+
+            let typingTimeOut;
+            messageInput.addEventListener('input', function () {
+                clearTimeout(typingTimeOut);
+                fetch(`/chat/typing`, {
+                    method: 'POST',
+                    headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
+                });
+                typingTimeOut = setTimeout(() => {typingIndicator.style.display = 'none'}, 1000);
+            });
+
+            window.addEventListener('beforeunload', function () {
+                fetch('/offline', { method: 'POST', headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' } });
+            });
         });
 
-        // Set user offline on window close
-        window.addEventListener('beforeunload', function () {
-            fetch('/offline', { method: 'POST', headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' } });
-        });
-
-    });
-</script>
+    </script>
 @endsection

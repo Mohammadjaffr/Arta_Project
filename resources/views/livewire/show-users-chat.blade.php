@@ -12,19 +12,6 @@
 
         <div class="p-0">
             @if(Auth::user())
-                @php
-                    // جلب المستخدمين مع حالة الاتصال
-                    $users = App\Models\User::query()
-                        ->where('id', '!=', Auth::id()) // استبعاد المستخدم الحالي
-                        ->get()
-                        ->map(function ($user) {
-                            return [
-                                'user' => $user,
-                                'is_online' => $user->isOnline()
-                            ];
-                        });
-                @endphp
-
                 <ul class=" list-group-flush">
                     @if($users->count() > 0)
                         @foreach($users as $item)

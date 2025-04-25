@@ -89,14 +89,16 @@ class LoginController extends Controller
     protected function validateLogin(Request $request)
     {
         $request->validate([
-            'login' => 'required|string',
+            'login' => 'required|string|exists:users,email',
             'password' => 'required|string',
         ], [
             'login.required' => 'حقل اسم المستخدم مطلوب.',
             'login.string' => 'يجب أن يكون اسم المستخدم نصًا.',
+            'login.exists' => ' الايميل غير مسجل في النظام.',
             'password.required' => 'حقل كلمة المرور مطلوب.',
             'password.string' => 'يجب أن تكون كلمة المرور نصًا.',
         ]);
+
 
     }
     protected function authenticated(Request $request, $user)

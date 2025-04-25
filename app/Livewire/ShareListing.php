@@ -79,11 +79,10 @@ class ShareListing extends Component
     }
     public function redirectToWhatsApp($listingId)
     {
-        // جلب بيانات المعلن
         $listing = listing::query()->find($listingId);
 
         if ($listing && $listing->user->whatsapp_number) {
-            // تنظيف رقم الهاتف (إزالة الرموز غير الضرورية)
+
             $phoneNumber = $listing->user->whatsapp_number;
 
             // إنشاء رابط واتساب

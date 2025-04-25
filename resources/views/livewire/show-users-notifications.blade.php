@@ -1,3 +1,4 @@
+@php use Psy\Util\Str; @endphp
 <div>
 
     <div class="notifications-container py-5 px-3 px-md-5">
@@ -18,23 +19,6 @@
 
             <div class=" p-0">
                 @if(Auth::user()->unreadNotifications->count() > 0)
-                    @php
-                        $notifications = Auth::user()->unreadNotifications
-                            ->where('data.user_id', '!=', null)
-                            ->sortByDesc('created_at')
-                            ->groupBy('data.user_id')
-                            ->map(function ($notifications) {
-                                $latest = $notifications->first();
-                                $user = App\Models\User::query()->find($latest->data['user_id']);
-                                return [
-                                    'notification' => $latest,
-                                    'user' => $user,
-                                    'count' => $notifications->count(),
-                                    'is_online' => $user && $user->isOnline(),
-                                    'message' => Str::limit($latest->data['message'] ?? 'إشعار جديد', 60)
-                                ];
-                            });
-                    @endphp
 
                     <ul class="list-group list-group-flush">
                         @foreach($notifications as $item)

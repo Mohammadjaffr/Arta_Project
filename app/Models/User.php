@@ -81,5 +81,4 @@ class User extends Authenticatable implements LaratrustUser
         return cache()->has('user-is-online-' . $this->id);
     }
 
-
 }

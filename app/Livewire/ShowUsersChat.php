@@ -10,8 +10,16 @@ class ShowUsersChat extends Component
 {
     public function render()
     {
+        $users = User::where('id', '!=', Auth::id())->get()
+            ->map(function ($user) {
+                return [
+                    'user' => $user,
+                    'is_online' => $user->isOnline()
+                ];
+            });
 
-        $users = User::where('id', '!=', Auth::id())->get();
-        return view('livewire.show-users-chat', compact('users'));
+        return view('livewire.show-users-chat', [
+            'users' => $users
+        ]);
     }
 }
