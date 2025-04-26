@@ -98,8 +98,9 @@
                         <a class="nav-link fs-5 mx-2 @if(request()->is('users')) active @endif" href="{{ url('users') }}">الدردشات</a>
                     </li>
 
-                    <!-- Desktop Notifications (Authenticated Users) -->
+
                     @auth
+{{--                        @include('notification')--}}
                         @livewire('notifications-nav')
                     @endauth
                 </ul>

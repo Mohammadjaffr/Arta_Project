@@ -25,7 +25,7 @@ class NotificationsNav extends Component
     {
         $this->showAll = true;
         $this->perPage = Auth::user()->unreadNotifications->count();
-        $this->isDropdownOpen = true; // إبقاء القائمة مفتوحة
+        $this->isDropdownOpen = true;
     }
 
     public function toggleDropdown()

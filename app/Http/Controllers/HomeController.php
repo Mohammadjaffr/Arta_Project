@@ -297,4 +297,5 @@ class HomeController extends Controller
             'otp' => 'رمز التحقق غير صالح او منتهي الصلاحية'
         ]);
     }
+
 }
