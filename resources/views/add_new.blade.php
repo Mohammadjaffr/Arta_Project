@@ -1,114 +1,51 @@
-<!DOCTYPE html>
-<html lang="ar">
-@extends('layouts.head')
+<!doctype html>
+<html dir="rtl" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اضافة اعلان</title>
+    @vite(['resources/sass/app.scss','resources/js/app.js'])
+    <link rel="stylesheet" href="{{asset('assets/css/custom-style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/css2.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @livewireStyles
+</head>
+
 <body>
-    {{-- navbar add new listing --}}
-    <div class="d-flex flex-row justify-content-between" style="max-height: 90px">
-        <div class="mt-1">
-            <img  width="200px"  src="{{asset('assets/img/icon.png')}}">
-        </div>
-        <div class="mt-4">
-            <h2  >إضافة اعلان جديد</h2>
-        </div>
-        <div class="m-3">
-            <a href="{{ url('login') }}" style="height: 45px; width: 45px;">
-                <button class="rounded-circle" style="height: 45px; border: none; background-color: #D2E1E8; width: 45px;">
-                    <img src="{{ asset('assets/img/chevron-right.svg') }}">
-                </button>
-            </a>
-        </div>
-    </div>
-    {{-- form for add new listing --}}
-    <div class="row " >
-        <div class="col-6 text-end container  p-lg-5 ">
-            <form>
-                <label class="py-3">اختر القسم الرئيسي</label>
-                <select class="form-select  border-2 text-end"  style="border-color: #62A1BE">
-                    <option> العقارات</option>
-                    <option> السيارات</option>
-                    <option> الملابس</option>
-                </select>
-                <label class="py-3">المدينه</label>
-                <select class="form-select  border-2 text-end" style="border-color: #62A1BE">
-                    <option> سيئون</option>
-                    <option> القطن</option>
-                    <option> تريم</option>
-                </select>
-                <h6 class="py-3"> اسم الاعلان</h6>
-                <input class="form-control border-2 " type="text" style="border-color: #62A1BE" >
-                <h6 class="py-3">تفاصيل الاعلان</h6>
-                <input class="form-control border-2  py-lg-5" type="text" style="border-color: #62A1BE" >
-                <h6 class="py-3">سعر الاعلان</h6>
-                <input class="form-control border-2  py-2" type="number" style="border-color: #62A1BE" >
-                <h6 class="py-3" >رقم الجوال</h6>
-                <input class="form-control border-2  py-2" type="number" style="border-color: #62A1BE" >
-                <h6 class="py-3">رقم الواتساب</h6>
-                <input class="form-control border-2  py-2" type="number"  style="border-color: #62A1BE">
-                <h6 class="py-3">حالة المنتج</h6>
-                <div class="d-flex float-end">
-                    <div class="form-check px-3 ">
-                        <input class="form-check-input" style="border-color: #62A1BE" type="radio" value="option1" name="ads">
-                        <label class="form-check-label">
-                            جديد
-                        </label>
-                    </div>
-                    <div class="form-check px-3">
-                        <input class="form-check-input" style="border-color: #62A1BE" type="radio" name="ads" value="option2">
-                        <label class="form-check-label">
-                            مستعمل
-                        </label>
-                    </div>
-                    <div class="form-check px-3 border-2" >
-                        <input class="form-check-input" style="border-color: #62A1BE" type="radio" name="ads" value="option3">
-                        <label class="form-check-label">
-                            شبه جديد
-                        </label>
-                    </div>
-                </div>
+<div class="d-flex ">
+    <!-- الصورة الخلفية -->
+    <img class="w-100" style="height: 25vh; object-fit: cover;" src="{{asset('assets/images/navbar_add_ads.png')}}">
 
-            </form>
-        </div>
+    <!-- زر الرجوع -->
+    <div class="position-absolute p-3 ">
+        <a href="{{route('home')}}" class="btn btn-light p-2 " style="border-radius: 50%; ">
+            <img src="{{asset('assets/images/chevron-right.svg')}}" class="" alt="back" style="width: 40px; height: 40px;">
+        </a>
     </div>
-    <div class="container border  col-5 rounded-5 text-end p-3" style="width: auto; height: auto;background-color:rgba(1, 73, 107, 0.68);">
-        <div class="container p-3">
-            <h6>رفع الصوره</h6>
-            <div><label class="px-3">حدد الصوره الاساسيه</label><img class="border  border-amber-600 rounded-2 " style="width: 70px;height: 70px" src="{{asset('assets/images/facebook.svg')}}"></div>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 text-center"><input class="border  rounded-3 p-3 " src="{{asset('assets/images/add-photo.png')}}" style="width: 100px; height: 100px;background-color: #C3C3C3C3" type="image" alt="" ></div>
-            <div class="col-lg-3"><input class="border rounded-3" style="width: 120px; height: 100px;background-color: #C3C3C3C3" type="image" alt="" ></div>
-            <div class="col-lg-3"><input class="border rounded-3" style="width: 120px; height: 100px;background-color: #C3C3C3C3" type="image" alt="" ></div>
-            <div class="col-lg-3"><input class="border rounded-3" style="width: 120px; height: 100px;background-color: #C3C3C3C3" type="image" alt="" ></div>
-        </div>
-    </div>
-    <div class="container text-center my-5">
-            <input class="w-25 border rounded-4 py-3 text-center text-white" type="submit" style="background-color: #01496B" value="حفظ ونشر الاعلان">
 
+    <!-- العنوان -->
+    <div class="position-absolute mt-5" style="left: 50%; transform: translateX(-50%);">
+        <h2 class="mb-0" style="color:black; font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 2rem; ">إضافة إعلان</h2>
     </div>
-<hr>
-    <div class="row">
-        <div class="row d-flex  " style="padding-bottom: 0px">
-            <div class="col-6 " style="padding: 10px 0px 0px 100px;">
-                <button class="rounded-circle" style="height: 45px;border: none;background-color: #BDD6F4;width:45px;"><img src="{{asset('assets/images/facebook.svg')}}"></button>
-                <button class="rounded-circle" style="height: 45px;border: none;background-color: #BDD6F4;width:45px;"><img src="{{asset('assets/images/twitter.svg')}}"></button>
-                <button class="rounded-circle" style="height: 45px;border: none;background-color: #BDD6F4;width:45px;"><img src="{{asset('assets/images/instagram.svg')}}"></button>
-                <button class="rounded-circle " style="height: 45px;border: none;background-color: #BDD6F4;width:45px;"><img style="width: 25px;" src="{{asset('assets/images/whatsapp.svg')}}"></button>
-            </div>
-            <div class="col-6 text-end" ><img style="width: 200px;height: 200px;" src="{{asset('assets/img/icon.png')}}"></div>
-        </div>
-        <div class="row ">
-            <h4 style="padding: 0px 10px 10px 100px">استكشف التطبيق الخاص بنا</h4>
-            <div class="col-4 text-center">
-                <button style="border: none;background-color: white"><img  style="width:150px" src="{{asset('assets/images/appstore.png')}}"></button>
-                <button style="border: none;background-color: white"><img style="width:150px" src="{{asset('assets/images/googlestore.png')}}"></button>
-            </div>
-            <div class="col-4 text-center py-3">تواصل معنا: info@company.com <br> جميع الحقوق محفوظة @ 2024. <br></div>
-            <div class="col-4 text-center text-end py-3">"نص تجريبي يستخدم في تصميم الواجهات والمشاريع. هذا النص هو مجرد نص وهمي يهدف إلى ملء المساحات، وعادةً ما يُستخدم في الطباعة والتصميم."</div>
 
-        </div>
+    <!-- الشعار والاسم -->
+    <div class="position-absolute my-3 my-md-4 d-none d-sm-inline" style="width: 25vh; height: auto; left: 1%;">
+        <img alt="icon" style="max-width: 100%; height: auto;" src="{{asset('assets/images/icon.png')}}">
+        <h3 style="color:black; font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 2rem; ">منصة عرطة</h3>
     </div>
 </div>
 
-
+<div class="container">
+    <!-- النموذج -->
+    <div dir="rtl" class="row justify-content-center">
+        <div class="col-12 col-lg-6 px-lg-4 py-lg-2 border rounded-3 shadow">
+            @livewire('add-listing')
+        </div>
+    </div>
+</div>
+@livewireScripts
+<script src="{{asset('assets/Js/custom-Js.js')}}"></script>
+<hr>
+@include('layouts.footer')
 </body>
 </html>

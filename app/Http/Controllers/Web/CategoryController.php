@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\web;
 
+use App\Classes\ApiResponseClass;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\CategoryRepository;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -22,7 +25,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category=Category::all();
+        $category=$this->CategoryRepository->index();
         return view('add_new',compact('category'));
     }
 
@@ -31,7 +34,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('add_new');
     }
 
     /**
@@ -39,7 +42,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'name' => ['required','string'],
+            'parent_id' => ['nullable',Rule::exists('categories','id')]
+        ]);
+        if ($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $this->CategoryRepository->store($request->all());
+        return redirect()->route('category.index');
+
     }
 
     /**
@@ -55,7 +67,7 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('add_new');
     }
 
     /**

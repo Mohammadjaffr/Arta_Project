@@ -21,5 +21,14 @@ class UserSeeder extends Seeder
             'contact_number'=>'777777777',
             'whatsapp_number'=>'777777777',
         ])->addRole('admin');
+        User::query()->create([
+            'name'=>'sub',
+            'email'=>'sub@hotmail.com',
+            'password'=>'123456789',
+            'username'=>'sub',
+            'contact_number'=>'777777777',
+            'whatsapp_number'=>'777777777',
+        ])->addRole('user');
     }
+
 }

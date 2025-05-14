@@ -34,10 +34,32 @@ class PermissionSeeder extends Seeder
             ['id' => 15, 'name' => 'view-permission', 'display_name' => 'عرض صلاحية'],
             ['id' => 16, 'name' => 'update-permission', 'display_name' => 'تعديل صلاحية'],
 
-            ['id' => 17, 'name' => 'create-role', 'display_name' => 'إنشاء نوع'],
-            ['id' => 18, 'name' => 'destroy-role', 'display_name' => 'حذف نزع'],
-            ['id' => 19, 'name' => 'view-role', 'display_name' => 'عرض نزع'],
-            ['id' => 20, 'name' => 'update-role', 'display_name' => 'تعديل نزع'],
+            ['id' => 17, 'name' => 'create-role', 'display_name' => 'إنشاء دور'],
+            ['id' => 18, 'name' => 'destroy-role', 'display_name' => 'حذف دور'],
+            ['id' => 19, 'name' => 'view-role', 'display_name' => 'عرض دور'],
+            ['id' => 20, 'name' => 'update-role', 'display_name' => 'تعديل دور'],
+            
+            ['id' => 21, 'name' => 'create-complaint', 'display_name' => 'إنشاء شكوى'],
+            ['id' => 22, 'name' => 'destroy-complaint', 'display_name' => 'حذف شكوى'],
+            ['id' => 23, 'name' => 'view-complaint', 'display_name' => 'عرض شكوى'],
+            ['id' => 24, 'name' => 'update-complaint', 'display_name' => 'تعديل شكوى'],
+
+            ['id' => 25, 'name' => 'destroy-user', 'display_name' => 'حذف مستخدم'],
+            ['id' => 26, 'name' => 'view-users', 'display_name' => 'عرض المستخدمين'],
+            ['id' => 27, 'name' => 'view-user', 'display_name' => 'عرض مستخدم'],
+
+            ['id' => 28, 'name' => 'create-listing', 'display_name' => 'إنشاء إعلان'],
+            ['id' => 29, 'name' => 'destroy-listing', 'display_name' => 'حذف إعلان'],
+            ['id' => 30, 'name' => 'update-listing', 'display_name' => 'تعديل إعلان'],
+            
+            ['id' => 31, 'name' => 'assignRole', 'display_name' => 'تعيين دور'],
+            ['id' => 32, 'name' => 'revokeRole', 'display_name' => 'سحب دور'],
+
+            ['id' => 33, 'name' => 'create-Currency', 'display_name' => 'إنشاء عمله'],
+            ['id' => 34, 'name' => 'destroy-Currency', 'display_name' => 'حذف عمله'],
+            ['id' => 35, 'name' => 'view-Currency', 'display_name' => 'عرض عمله'],
+            ['id' => 36, 'name' => 'update-Currency', 'display_name' => 'تعديل عمله'],
+            
         ];
         DB::table('permissions')->insert($Permissions);
     }

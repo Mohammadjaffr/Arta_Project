@@ -105,7 +105,7 @@ class RoleController extends Controller
             if ($this->RoleRepository->delete($roleId)) {
                 return ApiResponseClass::sendResponse($role, "{$role->role_name} deleted successfully.");
             }
-            return ApiResponseClass::sendError("Notification with ID {$roleId} may not be found or not deleted. Try again.");
+            return ApiResponseClass::sendError("role with ID {$roleId} may not be found or not deleted. Try again.");
         } catch (Exception $e) {
             return ApiResponseClass::sendError('Error deleting role: ' . $e->getMessage());
         }
