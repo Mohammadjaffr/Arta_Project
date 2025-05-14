@@ -62,8 +62,8 @@ Route::post('/resendOTP',[OTPController::class,'resendOTP']);
 //Route::get('/login/google', [UserAuthController::class, 'redirectToGoogle']);
 //Route::get('/login/google/callback', [UserAuthController::class, 'handleGoogleCallback']);
 //             Forget Password     //
-Route::post('/forgetPassword', [forgetPasswordController::class,'forgetPassword']);
-Route::post('/resetPassword', [forgetPasswordController::class,'resetPassword']);
+    Route::post('/forgetPassword', [forgetPasswordController::class,'forgetPassword']);
+    Route::post('/resetPassword', [forgetPasswordController::class,'resetPassword']);
 
     Route::get('/chat', [ChatController::class, 'index']);
     Route::get('/chat/{receiverId}', [ChatController::class, 'chat']);
