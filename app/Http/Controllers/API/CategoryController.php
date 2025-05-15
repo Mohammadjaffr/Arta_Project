@@ -69,7 +69,7 @@ class CategoryController extends Controller
             $validator = Validator::make($request->all(),[
                 'name' => ['required','string'],
                 'parent_id' => ['nullable',Rule::exists('categories','id')],
-                'image' => ['image',Rule::requiredIf(function () use ($request) {return is_null($request->parent_id);}),],
+                'image' => ['image','mimes:jpeg,png,jpg,gif,svg','max:2048',Rule::requiredIf(function () use ($request) {return is_null($request->parent_id);}),],
             ]);
             if ($validator->fails()){
                 return ApiResponseClass::sendValidationError($validator->errors());
