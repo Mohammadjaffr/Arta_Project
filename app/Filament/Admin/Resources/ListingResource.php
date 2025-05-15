@@ -174,11 +174,8 @@ class ListingResource extends Resource
                     ->label('المنطقه')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
-            ->label('الحاله'),
-                Tables\Columns\ImageColumn::make('primary_image')
-                    ->label('الصورة')
-                    ->width(80)
-                    ->height(80),
+            ->label('الحاله')
+                ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('تم انشائها')
                     ->dateTime()

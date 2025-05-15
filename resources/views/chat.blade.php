@@ -1,4 +1,4 @@
-@php use Illuminate\Support\Facades\Auth; @endphp
+
 @extends('layouts.master')
 @section('title' ,'الدردشه')
 @section('contact')
@@ -18,7 +18,7 @@
 
         <div class=" p-0">
             <!-- منطقة الرسائل -->
-            <div id="chat-box" class="p-3" style="height: 400px; overflow-y: auto; background-color: #f8f9fa;">
+            <div id="chat-box " class="p-3" style="height: 400px; overflow-y: auto; background-color: #f8f9fa;">
                 @if(is_iterable($messages) && count($messages) > 0)
                     @foreach ($messages as $message)
                         <div class="message-wrapper mb-3 d-flex {{ $message->sender_id == auth()->id() ? 'justify-content-end' : 'justify-content-start' }}">

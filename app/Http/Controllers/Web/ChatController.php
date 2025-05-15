@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Notification;
 class ChatController extends Controller
 {
 
-    public $count =0;
     public function index()
     {
         $users = User::where('id', '!=', Auth::id())->get();

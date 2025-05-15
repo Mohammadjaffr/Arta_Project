@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\api\Auth;
 
+use App\Mail\OtpMail;
 use App\Models\User;
+use App\Services\OtpService;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Classes\ApiResponseClass;
@@ -21,7 +24,7 @@ class UserAuthController extends Controller
     /**
      * Create a new class instance.
      */
-    public function __construct(private UserRepository $UserRepository)
+    public function __construct(private UserRepository $UserRepository,private OtpService $otpService)
     {
         //
     }
@@ -32,14 +35,33 @@ class UserAuthController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8','confirmed'],
-            'whatsapp_number'=>['nullable','string','max:16','regex:/^[0-9]+$/'],
-            'contact_number'=>['nullable','string','max:16','regex:/^[0-9]+$/']
+            'whatsapp_number'=>['nullable','string','min:9','max:15','regex:/^[0-9]+$/'],
+            'contact_number'=>['nullable','string','min:9','max:15','regex:/^[0-9]+$/'],
+        ],[
+            'name.required' => 'الاسم مطلوب.',
+            'email.required' => 'يجب إدخال البريد الإلكتروني',
+            'email.email' => 'يجب إدخال بريد إلكتروني صالح',
+            'email.unique' => 'البريد الإلكتروني مسجل مسبقًا.',
+            'password.required' => 'كلمة المرور مطلوبة.',
+            'password.min' => 'كلمة المرور يجب أن تحتوي على 6 أحرف على الأقل.',
+            'password.confirmed' => 'تأكيد كلمة المرور غير متطابق.',
+            'whatsapp_number.required' => 'رقم واتساب مطلوب.',
+            'contact_number.required' => 'رقم الاتصال مطلوب.',
+            'whatsapp_number.regex' => 'يجب أن يحتوي رقم واتساب على أرقام فقط.',
+            'contact_number.regex' => 'يجب أن يحتوي رقم الاتصال على أرقام فقط.',
+            'whatsapp_number.min' => 'يجب أن يكون رقم واتساب على الأقل :min أرقام.',
+            'contact_number.min' => 'يجب أن يكون رقم الاتصال على الأقل :min أرقام.',
+            'whatsapp_number.max' => 'يجب أن لا يتجاوز رقم واتساب :max رقماً.',
+            'contact_number.max' => 'يجب أن لا يتجاوز رقم الاتصال :max رقماً.',
         ]);
         if ($validator->fails())
             return ApiResponseClass::sendValidationError($validator->errors()
         );
         $userData=$this->UserRepository->store($request->all());
-        return ApiResponseClass::sendResponse($userData,'User created successfully');
+        $otp=$this->otpService->generateOTP($userData->email,'account_creation');
+        Mail::to($userData->email)->send(new OtpMail($otp));
+
+        return ApiResponseClass::sendResponse($userData,'تم إرسال رمز التحقق الى البريد الإلكتروني :'. $userData->email);
     }
 
     public function login(Request $request)
