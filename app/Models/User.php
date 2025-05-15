@@ -56,7 +56,15 @@ class User extends Authenticatable implements LaratrustUser
             'password' => 'hashed',
         ];
     }
-
+    public function has_role(string $roleName): bool
+    {
+        // First verify the user has a role assigned
+        if (!$this->role) {
+            return false;
+        }
+        // Compare the user's role name with the specified role name
+        return $this->role->name === $roleName;
+    }
     public function listings(){
         return $this->hasMany(Listing::class);
     }
@@ -79,6 +87,10 @@ class User extends Authenticatable implements LaratrustUser
     public function isOnline()
     {
         return cache()->has('user-is-online-' . $this->id);
+    }
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 
 }

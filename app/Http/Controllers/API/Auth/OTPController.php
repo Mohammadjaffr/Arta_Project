@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\API\auth;
+namespace App\Http\Controllers\API\Auth;
 
 use Exception;
 use App\Mail\OtpMail;
 use App\Services\OtpService;
 use Illuminate\Http\Request;
-use App\Jobs\SendOtpEmailJob;
+//use App\Jobs\SendOtpEmailJob;
 use Illuminate\Validation\Rule;
 use App\Classes\ApiResponseClass;
 use App\Http\Controllers\Controller;
@@ -22,16 +22,24 @@ class OTPController extends Controller
         //
     }
     public function resendOTP(Request $request) {
-        $fields=$request->validate([
+        $validator = Validator::make($request->all(), [
             'email' => ['required','email',Rule::exists('users','email')],
+        ],[
+            'email.required'=>'يجب كتابة البريد الإلكتروني',
+            'email.email'=>'يجب ان يكون المدخل بريد الإلكتروني',
+            'email.exists'=> 'البريد الإلكتروني غير موجود في النظام',
         ]);
+        if ($validator->fails()) {
+            return ApiResponseClass::sendValidationError($validator->errors()->first(),$validator->errors());
+        }
         try {
+            $fields=$request->only(['email']);
             $otp=$this->otpService->generateOTP($fields['email']);
             // SendOtpEmailJob::dispatch($fields['email'], $otp);
             Mail::to($fields['email'])->send(new OtpMail($otp));
             return ApiResponseClass::sendResponse(null,'تم إرسال رمز التحقق الى : ' . $fields['email']);
         } catch (Exception $e) {
-            return ApiResponseClass::sendError(null,'Failed to resend OTP. ' . $e->getMessage());
+            return ApiResponseClass::sendError(null,'فشل في ارسال رمز OTP. ' . $e->getMessage());
         }
 
     }
@@ -53,14 +61,15 @@ class OTPController extends Controller
         // Verify the provided OTP using the OTP service
         if($this->otpService->verifyOTP($fields['email'],$fields['otp'])){
             $user=$this->UserRepository->findByEmail($fields['email']);
+//            return $user;
 
             // Update the user record to mark email as verified and set the last login time
-            $this->UserRepository->update(['email_verified'=>true,'last_login'=>now()],$user->id);
-            Auth::login($user);
 
+            $user->email_verified_at=now();
+            Auth::login($user);
             // Create a new authentication token for the user
             $token = $user->createToken($user->username . '-AuthToken')->plainTextToken;
-            return ApiResponseClass::sendResponse(['token' => $token, 'user' => $user], 'User logged in successfully');
+            return ApiResponseClass::sendResponse(['user'=>$user,'token'=>$token], 'تم التحقق بنجاح');
         }
         return ApiResponseClass::sendError('رمز التحقق غير صالح او منتهي الصلاحيه',[],400);
     }

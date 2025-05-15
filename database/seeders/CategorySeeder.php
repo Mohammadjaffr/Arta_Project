@@ -14,6 +14,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
+
         $categories = [
             // الفئة السيارات
             ['id' => 1, 'name' => 'سيارات', 'parent_id' => null, 'image' => 'assets/Category_images/cars.png'],

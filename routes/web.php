@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\web\CategoryController;
 
 use App\Http\Controllers\Web\ChatController;
@@ -68,4 +68,5 @@ Route::middleware('auth')->group(function (){
     Route::get('/chats', [ChatController::class, 'index'])->name('chat.index');
     Route::get('/show_users_notifications', [ChatController::class, 'show_users_notifications'])->name('show_users_notifications');
 });
+
 

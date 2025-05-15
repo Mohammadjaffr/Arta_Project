@@ -13,8 +13,7 @@
         </a>
 
         <!-- Desktop Notifications Dropdown -->
-        <div class="dropdown-menu dropdown shadow-lg p-0"
-             style="min-width: 350px; display: {{ $isDropdownOpen ? 'block' : 'none' }};">
+        <div class="dropdown-menu dropdown-menu-end  shadow-lg p-0" style="min-width: 350px; display: {{ $isDropdownOpen ? 'block' : 'none' }};">
             <div class="dropdown-header d-flex justify-content-between">
                 <span>الإشعارات</span>
                 @if(!$showAll && $totalUnread > 4)
@@ -26,8 +25,8 @@
                 @if($totalUnread > 0)
                     @foreach($notifications as $item)
                         <a href="{{ route('show_users_notifications') }}"
-                           class="list-group-item list-group-item-action p-3 border-0"
-                           wire:click.prevent>
+                           class="list-group-item list-group-item-action p-3 border-0">
+
                             <div class="d-flex align-items-start mx-2">
                                 <img src="{{ asset($item['user']->image ?? 'assets/images/default-user.png') }}"
                                      class="rounded-circle" width="40" height="40"

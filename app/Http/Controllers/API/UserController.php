@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Repositories\RoleRepository;
 use Exception;
 use Illuminate\Http\Request;
 use App\Classes\ApiResponseClass;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\PersonalAccessToken;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
@@ -16,7 +18,7 @@ class UserController extends Controller
     /**
      * Create a new class instance.
     */
-    public function __construct(private UserRepository $UserRepository)
+    public function __construct(private UserRepository $UserRepository,private RoleRepository $RoleRepository)
     {
         //
     }
@@ -24,10 +26,10 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request) // https://example.com?like=name,meh
+    public function index() // https://example.com?like=name,meh
     {
         try {
-            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('view-users')){
+            if (!Auth::user()->has_role('admin')) {
                 return ApiResponseClass::sendError('Unauthorized', 403);
             }
             $Users=$this->UserRepository->index();
@@ -37,7 +39,7 @@ class UserController extends Controller
         }
 
     }
-   
+
     /**
      * Display the specified resource.
      */
@@ -62,12 +64,19 @@ class UserController extends Controller
      */
     public function update(Request $request,$id)
     {
+        if($id != Auth::id()){
+            return ApiResponseClass::sendError('انت لا تمتلك صلاحية لتحديث هذا المستخدم');
+        }
         try {
             $validator = Validator::make($request->all(), [
                 'name' => ['sometimes', 'string', 'max:255'],
                 'whatsapp_number'=>['sometimes','string','max:16','regex:/^[0-9]+$/'],
                 'contact_number'=>['sometimes','string','max:16','regex:/^[0-9]+$/'],
                 'image'=>['sometimes','image','max:2048']
+            ],[
+                'name.max' => 'الاسم يجب ألا يتجاوز 255 حرفًا.',
+                'whatsapp_number.regex' => 'رقم الواتساب يجب أن يحتوي على أرقام فقط.',
+                'image.max' => 'حجم الصورة يجب ألا يتجاوز 2 ميجابايت.',
             ]);
             if ($validator->fails())
                 return ApiResponseClass::sendValidationError($validator->errors()
@@ -82,7 +91,7 @@ class UserController extends Controller
         } catch (Exception $e) {
             return ApiResponseClass::sendError('Error Update User: ' . $e->getMessage());
         }
-       
+
     }
 
     /**
@@ -104,26 +113,34 @@ class UserController extends Controller
         }
     }
 
-    public function changePassword(Request $request){
+    public function changePassword(Request $request,$id){
+        if($id != Auth::id()){
+            return ApiResponseClass::sendError('You do not have permission to changePassword this user.');
+        }
+        $validator=Validator::make($request->all(),[
+            'old_password'=>['required'],
+            'new_password'=>['required', 'string', 'min:8','confirmed'],
+        ],[
+            'old_password.required'=>'يجب كتابة كلمة المرور القديمة',
+            'new_password.required'=>'يجب كتابة كلمة المرور الجديده',
+            'new_password.confirmed' => 'يجب تأكيد كلمة المرور الجديدة',
+            'new_password.min' => 'يجب أن تتكون كلمة المرور الجديدة من 8 أحرف على الأقل',
+        ]);
+        if ($validator->fails()) {
+            return ApiResponseClass::sendValidationError($validator->errors()->first(),$validator->errors());
+        }
         try {
-            $validator=Validator::make($request->all(),[
-                'old_password'=>['required'],
-                'password'=>['required', 'string', 'min:8','confirmed'],
-            ]);
-            if ($validator->fails()) {
-                return response()->json($validator->errors(), 422);
-            }
-            $user=$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id);
-            $result=$this->UserRepository->changePassword($request->all(),$user);
+            $user=$this->UserRepository->getById(Auth::id());
+            $fields=$request->only(['old_password','new_password']);
+            $result=$this->UserRepository->changePassword($fields,$user);
             if($result){
-                PersonalAccessToken::findToken($request->bearerToken())->delete();
-                return ApiResponseClass::sendResponse(null," {$user->id} password has been changed.. Login again ",);
+                $user->tokens()->delete();
+                return ApiResponseClass::sendResponse(null, "تم تغيير كلمة المرور الخاصة بـ {$user->name}. يرجى تسجيل الدخول مرة أخرى.");
             }
-            return ApiResponseClass::sendError('the password is incorrect');
+            return ApiResponseClass::sendError('كلمة المرور غير صحيحة');
         } catch (Exception $e) {
             return ApiResponseClass::sendError('Error change Password: ' . $e->getMessage());
         }
-        
     }
 
     public function assignRole(Request $request, $user_id){
@@ -140,7 +157,7 @@ class UserController extends Controller
             $roles=$this->UserRepository->assignRole($user_id,$request->role);
             return ApiResponseClass::sendResponse(['roles'=>$roles]," {$request->role} Role assigned successfully. ",);
 
-            
+
         } catch (Exception $e) {
             return ApiResponseClass::sendError('Error User Not Found: ' . $e->getMessage());
         }
