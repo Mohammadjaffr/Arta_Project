@@ -188,6 +188,7 @@ class CategorySeeder extends Seeder
             ['id' => 129, 'name' => 'أثاث غرف أطفال', 'parent_id' => 122, 'image' => null],
             ['id' => 130, 'name' => 'أثاث غرف طعام', 'parent_id' => 122, 'image' => null],
         ];
+
         DB::table('categories')->insert($categories);
     }
 }

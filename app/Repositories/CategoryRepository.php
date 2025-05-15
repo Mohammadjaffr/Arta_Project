@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Repositories;
-use App\Interfaces\RepositoriesInterface;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
+use App\Interfaces\RepositoriesInterface;
 
 
 class CategoryRepository implements RepositoriesInterface
@@ -27,6 +28,13 @@ class CategoryRepository implements RepositoriesInterface
 
     public function store(array $data) : Category
     {
+        if(!empty($data['image'])){
+            $extions=$data['image']->getclientoriginalextension();
+            $filename = uniqid('',true).'.'.$extions;
+            $File_path = Storage::putFileAs('Category_images',$data['image'],$filename);
+            $File_path ='storage/'.$File_path;
+            $data['image']=$File_path;
+        }
         return Category::create($data);
     }
 

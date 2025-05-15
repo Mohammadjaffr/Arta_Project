@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Classes\ApiResponseClass;
 use App\Http\Controllers\Controller;
+use App\Repositories\UserRepository;
 use App\Repositories\CommentRepository;
 use Laravel\Sanctum\PersonalAccessToken;
 use Illuminate\Support\Facades\Validator;
@@ -16,7 +17,7 @@ class CommentController extends Controller
      /**
      * Create a new class instance.
     */
-    public function __construct(private CommentRepository $CommentRepository)
+    public function __construct(private CommentRepository $CommentRepository,private UserRepository $UserRepository)
     {
         //
     }
@@ -41,6 +42,9 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         try {
+            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('create-comment')){
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
             $validator = Validator::make($request->all(), [
                 'content' => ['required','string'],
                 'listing_id'=>['required',Rule::exists('listings','id')]
@@ -82,9 +86,12 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
         try {
+            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('destroy-comment')){
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
             $comment=$this->CommentRepository->getById($id);
             if($this->CommentRepository->delete($comment->id)){
                 return ApiResponseClass::sendResponse($comment, "{$comment->id} unsaved successfully.");

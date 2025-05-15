@@ -66,9 +66,10 @@ class CategoryController extends Controller
             if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('create-categorie')){
                 return ApiResponseClass::sendError('Unauthorized', 403);
             }
-            $validator = Validator::make($request->all(), [
+            $validator = Validator::make($request->all(),[
                 'name' => ['required','string'],
-                'parent_id' => ['nullable',Rule::exists('categories','id')]
+                'parent_id' => ['nullable',Rule::exists('categories','id')],
+                'image' => ['image',Rule::requiredIf(function () use ($request) {return is_null($request->parent_id);}),],
             ]);
             if ($validator->fails()){
                 return ApiResponseClass::sendValidationError($validator->errors());
@@ -86,13 +87,13 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-         try{
-             $Category = $this->CategoryRepository->getById($id);
-             return ApiResponseClass::sendResponse($Category, " data got  successfully");
-         }catch(Exception $e)
-         {
-             return ApiResponseClass::sendError('Error returned Category: ' . $e->getMessage());
-         }
+        try{
+            $Category = $this->CategoryRepository->getById($id);
+            return ApiResponseClass::sendResponse($Category, " data getted  successfully");
+        }catch(Exception $e)
+        {
+            return ApiResponseClass::sendError('Error returned Category: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -131,7 +132,7 @@ class CategoryController extends Controller
         try {
             $category=$this->CategoryRepository->getById($id);
             if($this->CategoryRepository->delete($category->id)){
-                return ApiResponseClass::sendResponse($category, "{$category->id} unsaved successfully");
+                return ApiResponseClass::sendResponse($category, "{$category->id} unsaved successfully.");
             }
             return ApiResponseClass::sendError("Category with ID {$id} may not be found or not deleted. Try again.");
         } catch (Exception $e) {

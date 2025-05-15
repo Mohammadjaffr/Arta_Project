@@ -4,18 +4,20 @@ namespace App\Http\Controllers\API;
 
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Classes\ApiResponseClass;
 use App\Http\Controllers\Controller;
+use App\Repositories\UserRepository;
 use App\Repositories\RegionRepository;
+use Laravel\Sanctum\PersonalAccessToken;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
 class RegionController extends Controller
 {
     /**
      * Create a new class instance.
      */
-    public function __construct(private RegionRepository $RegionRepository)
+    public function __construct(private RegionRepository $RegionRepository,private UserRepository $UserRepository)
     {
         //
     }
@@ -61,6 +63,9 @@ class RegionController extends Controller
     public function store(Request $request)
     {
         try {
+            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('create-region')){
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
             $validator = Validator::make($request->all(), [
                 'name' => ['required','string'],
                 'parent_id' => ['nullable',Rule::exists('Regions','id')]
@@ -80,13 +85,13 @@ class RegionController extends Controller
      */
     public function show($id)
     {
-        // try{
-        //     $Region = $this->RegionRepository->getById($id);
-        //     return ApiResponseClass::sendResponse($Region, " data getted  successfully");
-        // }catch(Exception $e)
-        // {
-        //     return ApiResponseClass::sendError('Error returned Region: ' . $e->getMessage());
-        // }
+        try{
+            $Region = $this->RegionRepository->getById($id);
+            return ApiResponseClass::sendResponse($Region, " data getted  successfully");
+        }catch(Exception $e)
+        {
+            return ApiResponseClass::sendError('Error returned Region: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -95,6 +100,9 @@ class RegionController extends Controller
     public function update(Request $request,$id)
     {
         try {
+            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('update-region')){
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
             $validator = Validator::make($request->all(), [
                 'name' => ['nullable','string'],
                 'parent_id' => ['nullable',Rule::exists('Regions','id')]
@@ -106,16 +114,19 @@ class RegionController extends Controller
             $Regions=$this->RegionRepository->update($validatedData,$id);
             return ApiResponseClass::sendResponse($Regions,'Region is updated successfully.');
         } catch (Exception $e) {
-            return ApiResponseClass::sendError('Error save Region: ' . $e->getMessage());
+            return ApiResponseClass::sendError('Error updated Region: ' . $e->getMessage());
         }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
         try {
+            if(!$this->UserRepository->getById(PersonalAccessToken::findToken($request->bearerToken())->tokenable_id)->hasPermission('destroy-region')){
+                return ApiResponseClass::sendError('Unauthorized', 403);
+            }
             $Region=$this->RegionRepository->getById($id);
             if($this->RegionRepository->delete($Region->id)){
                 return ApiResponseClass::sendResponse($Region, "{$Region->id} unsaved successfully.");

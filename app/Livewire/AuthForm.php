@@ -7,39 +7,34 @@ use Livewire\Component;
 class AuthForm extends Component
 {
     public $showLogin;
-    public $showPassword = false;
-    public $showConfirmePassword = false;
-    public $enteraccount=true;
-
+    public $type="password";
+    public $icon="eye";
+    public $typeConfirmePassword="password";
+    public $iconConfirmePassword="eye";
 
     public function mount()
     {
         $this->showLogin = request()->is('login');
     }
-    public function togglePassword()
+
+    public function togglePassword($field)
     {
-        $this->showPassword = !$this->showPassword;
+
+        if ($field === 'password') {
+            $this->type = $this->type === "password" ? "text" : "password";
+            $this->icon = $this->type === "text" ? "eye-off" : "eye";
+        } else {
+            $this->typeConfirmePassword = $this->typeConfirmePassword === "password" ? "text" : "password";
+            $this->iconConfirmePassword = $this->typeConfirmePassword === "text" ? "eye-off" : "eye";
+        }
     }
 
-    public function toggleConfirmePassword()
+    public function toggleForm($isLogin)
     {
-        $this->showConfirmePassword=!$this->showConfirmePassword;
-    }
+        $this->reset(['type','icon','typeConfirmePassword','iconConfirmePassword']);
 
-    public function toggleFormLogin()
-    {
-        $this->showLogin = true;
+        $this->showLogin = $isLogin;
     }
-
-    public function toggleFormRegister()
-    {
-        $this->showLogin = false;
-    }
-    public function toaccess()
-    {
-        $this->enteraccount=true;
-    }
-
 
     public function render()
     {
